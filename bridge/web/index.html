@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Apex Coach • Mobile Workspace</title>
+  <title>Apex Coach • Mobile Training System</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,17 +56,32 @@
       </div>
     </section>
 
-    <!-- TAB 2: LOGGING & SMART QUEUE -->
+    <!-- TAB 2: LOGGING & SMART QUEUE (WITH TEST / DUMMY MODE) -->
     <section class="tab-pane" id="tab-log">
       <div class="section-title">
         <h2>Ingest Workout</h2>
-        <p>Paste notes, voice dictate, or submit to Antigravity.</p>
+        <p>Log a real gym session or run a test simulation.</p>
+      </div>
+
+      <!-- Mode Selector: Live vs Dummy Run -->
+      <div class="mode-switch-bar">
+        <button class="mode-toggle active" id="modeLive" onclick="setEntryMode(false)">
+          <span class="dot live"></span> Live Production
+        </button>
+        <button class="mode-toggle" id="modeDummy" onclick="setEntryMode(true)">
+          <span class="dot test"></span> 🧪 Test / Dummy Run
+        </button>
+      </div>
+
+      <div class="test-banner" id="testBanner" style="display:none;">
+        <span class="test-badge">TEST MODE ACTIVE</span>
+        <p>Submitting now will test the parser & double-progression coach feedback without modifying your actual database.</p>
       </div>
 
       <!-- Quick Session Selector -->
       <div class="type-selector">
         <button class="btn-chip active" data-type="Pull">Pull A</button>
-        <button class="btn-chip" data-type="Legs">Legs & APT</button>
+        <button class="btn-chip" data-type="Legs">Legs & Posture</button>
         <button class="btn-chip" data-type="Push">Push B</button>
         <button class="btn-chip" data-type="Rest">Rest Day</button>
       </div>
@@ -79,20 +94,29 @@
             <span class="icon">🎙️</span> Dictate
           </button>
           <button class="btn-submit" id="btnSubmitLog">
-            <span>Process Workout</span> ➔
+            <span id="submitLabel">Process Workout</span> ➔
           </button>
         </div>
+      </div>
+
+      <!-- Simulation Result Card (Shown after Dummy Run) -->
+      <div class="simulation-card" id="simulationCard" style="display:none;">
+        <div class="sim-header">
+          <span class="sim-badge">🧪 SIMULATION RESULTS</span>
+          <button class="sim-close" onclick="closeSimulation()">✕</button>
+        </div>
+        <div class="sim-body" id="simBody"></div>
       </div>
 
       <!-- Smart Queue Section (Offline / Sync / Discard) -->
       <div class="queue-container">
         <div class="queue-header">
-          <h3>Pending Queue (<span id="queueCount">0</span>)</h3>
+          <h3>Pending Offline Queue (<span id="queueCount">0</span>)</h3>
           <span class="queue-sub">Saved locally if PC is offline</span>
         </div>
         
         <div class="queue-list" id="queueList">
-          <!-- Rendered via JS: items with "Sync to PC" and "Discard / Delete" -->
+          <!-- Rendered via JS -->
         </div>
       </div>
     </section>
@@ -139,48 +163,196 @@
       </div>
     </section>
 
-    <!-- TAB 4: PROGRESS & CHARTS -->
+    <!-- TAB 4: PROGRESS & MUSCLE ANALYTICS (REPLACED WEIGHT/PROTEIN) -->
     <section class="tab-pane" id="tab-progress">
       <div class="section-title">
-        <h2>Progress Analytics</h2>
-        <p>Empirical metrics tracked across 30 days.</p>
+        <h2>Hypertrophy & Overload</h2>
+        <p>Progressive overload trajectories and muscle volume balance.</p>
       </div>
 
-      <!-- KPI Summary Row -->
-      <div class="kpi-grid">
-        <div class="kpi-card">
-          <span class="kpi-title">Current Weight</span>
-          <span class="kpi-value" id="kpiWeight">71.5 kg</span>
-          <span class="kpi-sub">30D Avg: 72.59 kg</span>
+      <!-- Trend Summary Cards -->
+      <div class="trend-summary-grid">
+        <div class="trend-card highlight">
+          <span class="trend-label">OVERLOAD RATE</span>
+          <span class="trend-value" id="trendOverloadRate">85.7%</span>
+          <span class="trend-sub">6 of 7 recorded sessions progressed</span>
         </div>
-        <div class="kpi-card">
-          <span class="kpi-title">Daily Protein</span>
-          <span class="kpi-value" id="kpiProtein">132 g</span>
-          <span class="kpi-sub">Target: 150 g floor</span>
-        </div>
-        <div class="kpi-card">
-          <span class="kpi-title">Target Energy</span>
-          <span class="kpi-value">1,850 kcal</span>
-          <span class="kpi-sub">Deficit: ~250 kcal</span>
+        <div class="trend-card">
+          <span class="trend-label">CURRENT PHASE</span>
+          <span class="trend-value small">Hypertrophy + APT Fix</span>
+          <span class="trend-sub">5-Day Split Adherence: 100%</span>
         </div>
       </div>
 
-      <!-- Weight Trend Chart -->
+      <!-- Actionable Bottlenecks Card -->
+      <div class="bottleneck-card">
+        <div class="bn-title">⚡ Immediate Overload Targets</div>
+        <div class="bn-list" id="bottleneckList">
+          <div class="bn-item">
+            <strong>Incline DB Press (20kg)</strong>: Hit 3x10 ceiling ➔ Increase to 22.5kg next Push!
+          </div>
+          <div class="bn-item">
+            <strong>Lat Pulldown (50kg)</strong>: Hit 8 reps ➔ Drive to 10 reps before moving pin!
+          </div>
+          <div class="bn-item">
+            <strong>DB Lateral Raise (5kg)</strong>: Hit 4x15 ➔ Micro-jump to 6kg or slow eccentric!
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Exercise Overload Trajectory (Interactive Chart) -->
       <div class="chart-card">
-        <h3>Weight Trend (Last 20 Weigh-Ins)</h3>
-        <canvas id="weightCanvas" width="500" height="240"></canvas>
+        <div class="chart-header-row">
+          <h3>Exercise Progression Trajectory</h3>
+        </div>
+        <div class="exercise-selector-chips" id="exerciseChips">
+          <button class="ex-chip active" data-eid="INCLINE_DB_PRESS">Incline DB</button>
+          <button class="ex-chip" data-eid="LAT_PULLDOWN">Lat Pulldown</button>
+          <button class="ex-chip" data-eid="FLAT_BB_BENCH">BB Bench</button>
+          <button class="ex-chip" data-eid="TRICEPS_PUSHDOWN">Triceps Push</button>
+          <button class="ex-chip" data-eid="DB_LATERAL_RAISE">Lateral Raise</button>
+        </div>
+
+        <div class="exercise-focus-summary" id="exFocusSummary">
+          <div class="focus-title" id="focusName">Incline Dumbbell Press</div>
+          <div class="focus-verdict" id="focusVerdict">CEILING HIT (3x10) • READY FOR 22.5kg</div>
+          <div class="focus-target" id="focusTarget">Next: 22.5 kg × 8 reps (Load Jump)</div>
+        </div>
+
+        <canvas id="exerciseTrajectoryCanvas" width="500" height="240"></canvas>
       </div>
 
-      <!-- Protein Trend Chart -->
+      <!-- Muscle Group Weekly Volume Distribution -->
       <div class="chart-card">
-        <h3>Protein Consistency (Target: 150g)</h3>
-        <canvas id="proteinCanvas" width="500" height="240"></canvas>
+        <h3>Weekly Muscle Volume (Sets / Week)</h3>
+        <p class="chart-sub">Optimal hypertrophy zone is 10–14 sets. Glutes intentionally 0 (Anti-APT Guardrail).</p>
+        <div class="muscle-volume-list" id="muscleVolumeList">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: COACH GUIDE & PLAYBOOK (COMPLETE SYSTEM INSTRUCTIONS) -->
+    <section class="tab-pane" id="tab-guide">
+      <div class="section-title">
+        <h2>Coach Playbook & Rules</h2>
+        <p>Bite-sized coaching rationale, posture mechanics, and rules.</p>
+      </div>
+
+      <div class="guide-accordion">
+
+        <!-- Rule 1: The Glute & Pelvic Tilt Reality -->
+        <details class="guide-item" open>
+          <summary class="guide-summary">
+            <span class="guide-icon">🍑</span>
+            <strong>The Butt Silhouette & Pelvic Tilt Truth</strong>
+          </summary>
+          <div class="guide-content">
+            <p><strong>Why do your glutes jut out like a female silhouette?</strong></p>
+            <p>This is almost entirely <strong>Anterior Pelvic Tilt (APT)</strong> caused by your 9-hour desk job. Sitting keeps your hip flexors (psoas) in a chronically shortened, tight position. When you stand up, the psoas pulls the front of your pelvis downward, rotating your tailbone up and backward.</p>
+            <div class="callout warning">
+              <strong>The Problem with Normal Leg Days:</strong> Doing standard deep barbell squats, Romanian deadlifts (RDLs), or hip thrusts will grow the gluteus maximus further, worsening the protruding silhouette.
+            </div>
+            <p><strong>The Fix in Your Program:</strong></p>
+            <ul>
+              <li><strong>Zero Glute Hypertrophy Movements</strong>: No squats, no RDLs, no hip thrusts.</li>
+              <li><strong>Quad & Calf Isolation Only</strong>: Leg Extensions, narrow-stance Leg Press, and Seated Leg Curls (knee flexion isolates hamstrings without loading glutes).</li>
+              <li><strong>Posterior Pelvic Tilt Training</strong>: Deadbugs with lower back glued to the floor teach your lower abs to pull the pelvis level.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Rule 2: 9-Hour Desk Worker Micro-Resets -->
+        <details class="guide-item">
+          <summary class="guide-summary">
+            <span class="guide-icon">⏰</span>
+            <strong>9-Hour Desk Worker Daily Protocol</strong>
+          </summary>
+          <div class="guide-content">
+            <p><strong>1. Hourly 30-Second Micro-Reset (At Your Desk):</strong></p>
+            <ul>
+              <li>Stand up from your desk chair.</li>
+              <li>Tuck your tailbone forward (squeeze lower abs and lower glute fold).</li>
+              <li>Roll shoulders back and pull chin in (reversing forward head posture).</li>
+              <li>Take 3 deep belly breaths while holding this neutral pelvis.</li>
+            </ul>
+            <p><strong>2. Daily 5-Minute Reset Routine (Morning or Evening):</strong></p>
+            <ul>
+              <li><strong>Half-Kneeling Hip Flexor Stretch</strong>: 45s per side (squeezing rear glute).</li>
+              <li><strong>Scapular Wall Slides</strong>: 15 slow reps against wall.</li>
+              <li><strong>Deadbugs</strong>: 3 sets × 15 reps (Zero arching of lower back).</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Rule 3: Double Progression System -->
+        <details class="guide-item">
+          <summary class="guide-summary">
+            <span class="guide-icon">📈</span>
+            <strong>The Double Progression Standard</strong>
+          </summary>
+          <div class="guide-content">
+            <p>This is the core law of hypertrophy for this system. Never guess your weights.</p>
+            <ol>
+              <li>Each exercise has a <strong>target rep range</strong> (e.g., 8–10 reps).</li>
+              <li>Keep the weight constant and work on adding reps until you hit the <strong>top rep target on ALL working sets</strong> with clean form and 1–2 RIR.</li>
+              <li><em>Example</em>: If target is 8–10 reps and you get 10, 8, 7 ➔ DO NOT increase weight! Keep the same weight next time until you get 10, 10, 10.</li>
+              <li>Once you hit 10, 10, 10, advance the weight by the <strong>smallest possible increment</strong> (e.g., +2.5kg or +1kg per dumbbell) on the next session. Reps will naturally drop back to 8, and the cycle repeats.</li>
+            </ol>
+          </div>
+        </details>
+
+        <!-- Rule 4: Intensity & RIR Standards -->
+        <details class="guide-item">
+          <summary class="guide-summary">
+            <span class="guide-icon">🔥</span>
+            <strong>RIR Standards (Reps in Reserve)</strong>
+          </summary>
+          <div class="guide-content">
+            <p><strong>RIR = How many more clean reps you could have done before failing.</strong></p>
+            <ul>
+              <li><strong>Working Sets</strong>: Always aim for <strong>1–2 RIR</strong> on compound presses and rows. Stop 1 rep before your form breaks down.</li>
+              <li><strong>Warm-Up Sets</strong>: Sets with RIR > 3 are warm-ups. They prepare your joints and nervous system but DO NOT count toward your hypertrophy volume.</li>
+              <li><strong>Drop Sets</strong>: Tagged with 'D'. Reduce load by ~25% immediately without rest to flush metabolic stimulus.</li>
+            </ol>
+          </div>
+        </details>
+
+        <!-- Rule 5: Nutrition Truth & Muscle Flatness -->
+        <details class="guide-item">
+          <summary class="guide-summary">
+            <span class="guide-icon">🥩</span>
+            <strong>Nutrition & Muscle Flatness Truth</strong>
+          </summary>
+          <div class="guide-content">
+            <p><strong>Why your muscles felt flat:</strong></p>
+            <p>When you dropped calories down to 1,352 kcal and protein dropped to 70g, your muscle glycogen stores emptied out completely. Muscles are 70% water stored by glycogen. Low intake flattens muscle bellies and gives the false impression of muscle loss.</p>
+            <p><strong>Your Non-Negotiable Nutrition Rules:</strong></p>
+            <ul>
+              <li><strong>Protein Floor</strong>: 145–150g every single day (Eggs, whey, chicken breast, paneer, soya chunks).</li>
+              <li><strong>Calorie Target</strong>: ~1,850 kcal (moderate 250 kcal deficit for fat loss while maintaining full muscle fullness).</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Rule 6: Dumbbell Load Convention -->
+        <details class="guide-item">
+          <summary class="guide-summary">
+            <span class="guide-icon">⚖️</span>
+            <strong>Dumbbell Weight Convention</strong>
+          </summary>
+          <div class="guide-content">
+            <p>In this system and all database tables, dumbbell loads are recorded as <strong>load per single hand in kilograms</strong>.</p>
+            <p><em>Example</em>: If you press with two 20 kg dumbbells, record <code>20.0 kg</code>, NOT 40.0 kg.</p>
+          </div>
+        </details>
+
       </div>
     </section>
 
   </main>
 
-  <!-- Bottom Navigation Bar (Phone Optimized) -->
+  <!-- Bottom Navigation Bar (5 Phone-Optimized Tabs) -->
   <nav class="bottom-nav">
     <button class="nav-item active" data-tab="tab-workout">
       <span class="nav-icon">🏋️</span>
@@ -197,6 +369,10 @@
     <button class="nav-item" data-tab="tab-progress">
       <span class="nav-icon">📈</span>
       <span class="nav-text">Progress</span>
+    </button>
+    <button class="nav-item" data-tab="tab-guide">
+      <span class="nav-icon">📖</span>
+      <span class="nav-text">Playbook</span>
     </button>
   </nav>
 

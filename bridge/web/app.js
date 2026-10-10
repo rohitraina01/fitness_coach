@@ -8,12 +8,15 @@ let dashboardData = null;
 let currentRestTimer = null;
 let recognition = null;
 let isRecording = false;
+let isTestMode = false;
+let selectedExerciseId = "INCLINE_DB_PRESS";
 
 // 1. Initialization
 document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
   initVoice();
   initLogSubmission();
+  initExerciseChips();
   checkConnection();
   setInterval(checkConnection, 8000); // Poll status every 8s
   renderQueue();
@@ -32,22 +35,39 @@ function initNavigation() {
 
       btn.classList.add("active");
       const tabId = btn.getAttribute("data-tab");
-      document.getElementById(tabId).classList.add("active");
+      const pane = document.getElementById(tabId);
+      if (pane) pane.classList.add("active");
 
       if (tabId === "tab-progress" && dashboardData) {
-        renderCharts(dashboardData);
+        renderProgressTab(dashboardData);
       }
     });
   });
 
   // Chip selector on log tab
-  const chips = document.querySelectorAll(".btn-chip");
+  const chips = document.querySelectorAll(".type-selector .btn-chip");
   chips.forEach(c => {
     c.addEventListener("click", () => {
       chips.forEach(chip => chip.classList.remove("active"));
       c.classList.add("active");
     });
   });
+}
+
+// Mode toggle for Live vs Test/Dummy Run
+function setEntryMode(isTest) {
+  isTestMode = isTest;
+  document.getElementById("modeLive").classList.toggle("active", !isTest);
+  document.getElementById("modeDummy").classList.toggle("active", isTest);
+  
+  const banner = document.getElementById("testBanner");
+  const submitLabel = document.getElementById("submitLabel");
+  if (banner) banner.style.display = isTest ? "block" : "none";
+  if (submitLabel) submitLabel.innerText = isTest ? "Simulate Dummy Run" : "Process Workout";
+  
+  if (isTest) {
+    showToast("🧪 Test Mode: Zero database changes will be made.");
+  }
 }
 
 // 3. Connectivity & Data Fetching
@@ -82,8 +102,7 @@ async function fetchDashboardData() {
     if (data.success) {
       dashboardData = data;
       renderWorkout(data);
-      renderKPIs(data);
-      renderCharts(data);
+      renderProgressTab(data);
     }
   } catch (e) {
     console.warn("Could not fetch remote dashboard data:", e);
@@ -102,6 +121,7 @@ const FALLBACK_EXERCISES = [
 
 function renderWorkout(data) {
   const feed = document.getElementById("exerciseFeed");
+  if (!feed) return;
   feed.innerHTML = "";
 
   const exercises = FALLBACK_EXERCISES;
@@ -234,7 +254,7 @@ function initVoice() {
   const textarea = document.getElementById("rawLogInput");
 
   if (!("webkitSpeechRecognition" in window) && !("SpeechRecognition" in window)) {
-    btnVoice.style.display = "none";
+    if (btnVoice) btnVoice.style.display = "none";
     return;
   }
 
@@ -271,7 +291,7 @@ function initVoice() {
   });
 }
 
-// 8. Log Submission & Smart Queue Management
+// 8. Log Submission & Smart Queue Management (With Dummy Mode Support)
 function initLogSubmission() {
   const submitBtn = document.getElementById("btnSubmitLog");
   const textarea = document.getElementById("rawLogInput");
@@ -283,8 +303,9 @@ function initLogSubmission() {
       return;
     }
 
-    const activeChip = document.querySelector(".btn-chip.active");
-    const sessionType = activeChip ? activeChip.getAttribute("data-type") : "Push";
+    const activeChip = document.querySelector(".type-selector .btn-chip.active");
+    const sessionType = activeChip ? activeChip.getAttribute("data-type") : "Pull";
+    const forceDummy = isTestMode || text.toLowerCase().includes("dummy") || text.toLowerCase().includes("test");
 
     const payload = {
       id: "entry_" + Date.now(),
@@ -292,12 +313,13 @@ function initLogSubmission() {
       date: new Date().toISOString().split("T")[0],
       session_type: sessionType,
       raw_text: text,
-      duration: 60
+      duration: 60,
+      is_dummy: forceDummy
     };
 
     if (isOnline) {
       submitBtn.disabled = true;
-      submitBtn.innerText = "Processing via Antigravity...";
+      submitBtn.innerText = forceDummy ? "Simulating via Coach..." : "Processing via Antigravity...";
       try {
         const res = await fetch("/api/log-workout", {
           method: "POST",
@@ -306,25 +328,53 @@ function initLogSubmission() {
         });
         const resJson = await res.json();
         if (resJson.success) {
-          showToast("✅ Workout processed & committed to PC!");
-          textarea.value = "";
-          fetchDashboardData();
+          if (resJson.dummy) {
+            showSimulationResults(resJson.coach_feedback);
+            showToast("🧪 DUMMY RUN VERIFIED! Zero database changes.");
+          } else {
+            showToast("✅ Workout processed & committed to PC!");
+            textarea.value = "";
+            fetchDashboardData();
+          }
         } else {
           throw new Error(resJson.error);
         }
       } catch (e) {
-        enqueueWorkout(payload);
-        showToast("⚠️ Could not reach PC. Saved to local queue.");
+        if (!forceDummy) {
+          enqueueWorkout(payload);
+          showToast("⚠️ Could not reach PC. Saved to local queue.");
+        } else {
+          showToast("Error running simulation: " + e.message);
+        }
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = "<span>Process Workout</span> ➔";
+        submitBtn.innerHTML = forceDummy ? "<span id='submitLabel'>Simulate Dummy Run</span> ➔" : "<span id='submitLabel'>Process Workout</span> ➔";
       }
     } else {
-      enqueueWorkout(payload);
-      textarea.value = "";
-      showToast("⚠️ PC is Offline. Workout saved in queue.");
+      if (!forceDummy) {
+        enqueueWorkout(payload);
+        textarea.value = "";
+        showToast("⚠️ PC is Offline. Workout saved in queue.");
+      } else {
+        showToast("⚠️ PC is offline; dummy simulations require PC bridge connection.");
+      }
     }
   });
+}
+
+function showSimulationResults(feedbackText) {
+  const card = document.getElementById("simulationCard");
+  const body = document.getElementById("simBody");
+  if (card && body) {
+    body.innerText = feedbackText;
+    card.style.display = "block";
+    card.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+function closeSimulation() {
+  const card = document.getElementById("simulationCard");
+  if (card) card.style.display = "none";
 }
 
 function enqueueWorkout(item) {
@@ -339,6 +389,7 @@ function renderQueue() {
   const countSpan = document.getElementById("queueCount");
   const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
 
+  if (!list || !countSpan) return;
   countSpan.innerText = queue.length;
   list.innerHTML = "";
 
@@ -407,35 +458,99 @@ function discardQueueItem(index) {
   }
 }
 
-// 9. KPIs & Canvas Chart Rendering
-function renderKPIs(data) {
-  if (data.latest_weight) document.getElementById("kpiWeight").innerText = `${data.latest_weight} kg`;
-  if (data.avg_protein_30d) document.getElementById("kpiProtein").innerText = `${data.avg_protein_30d} g`;
+// 9. PROGRESS TAB: Muscle Volume & Exercise Trajectories
+function initExerciseChips() {
+  const chips = document.querySelectorAll(".ex-chip");
+  chips.forEach(c => {
+    c.addEventListener("click", () => {
+      chips.forEach(chip => chip.classList.remove("active"));
+      c.classList.add("active");
+      selectedExerciseId = c.getAttribute("data-eid");
+      if (dashboardData) {
+        renderExerciseTrajectory(dashboardData, selectedExerciseId);
+      }
+    });
+  });
 }
 
-function renderCharts(data) {
-  drawWeightChart(data.weight_history || []);
-  drawProteinChart(data.nutrition_history || []);
+function renderProgressTab(data) {
+  // 1. Trend Summary Cards
+  if (data.trend_summary) {
+    const rateEl = document.getElementById("trendOverloadRate");
+    if (rateEl) rateEl.innerText = data.trend_summary.overload_rate || "85.7%";
+  }
+
+  // 2. Muscle Volume List
+  if (data.muscle_progress) {
+    const list = document.getElementById("muscleVolumeList");
+    if (list) {
+      list.innerHTML = "";
+      data.muscle_progress.forEach(m => {
+        const item = document.createElement("div");
+        item.className = "mv-item";
+
+        let badgeClass = "optimal";
+        if (m.muscle === "Glutes") badgeClass = "locked";
+        else if (m.weekly_sets === 0) badgeClass = "prescribed";
+
+        const fillPct = m.muscle === "Glutes" ? 0 : Math.min(100, Math.round((m.weekly_sets / 16) * 100));
+
+        item.innerHTML = `
+          <div class="mv-header">
+            <span>${m.muscle}</span>
+            <span class="mv-status-badge ${badgeClass}">${m.status}</span>
+          </div>
+          <div class="mv-bar-wrap">
+            <div class="mv-bar-fill ${badgeClass}" style="width: ${fillPct}%;"></div>
+          </div>
+          <div class="mv-sub">
+            <span>${m.weekly_sets} sets/wk</span>
+            <span>Target: ${m.target_range} (${m.priority})</span>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+    }
+  }
+
+  // 3. Exercise Trajectory Chart
+  renderExerciseTrajectory(data, selectedExerciseId);
 }
 
-function drawWeightChart(history) {
-  const canvas = document.getElementById("weightCanvas");
+function renderExerciseTrajectory(data, eid) {
+  const traj = data.exercise_trajectories ? data.exercise_trajectories[eid] : null;
+  if (!traj) return;
+
+  const nameEl = document.getElementById("focusName");
+  const verdictEl = document.getElementById("focusVerdict");
+  const targetEl = document.getElementById("focusTarget");
+
+  if (nameEl) nameEl.innerText = traj.name;
+  if (verdictEl) verdictEl.innerText = traj.progression_verdict;
+  if (targetEl) targetEl.innerText = traj.next_target;
+
+  drawExerciseChart(traj);
+}
+
+function drawExerciseChart(traj) {
+  const canvas = document.getElementById("exerciseTrajectoryCanvas");
   if (!canvas || !canvas.getContext) return;
   const ctx = canvas.getContext("2d");
   const w = canvas.width;
   const h = canvas.height;
   ctx.clearRect(0, 0, w, h);
 
+  const history = traj.history || [];
   if (history.length < 2) return;
 
-  const weights = history.map(d => d.weight);
-  const minW = Math.min(...weights) - 0.5;
-  const maxW = Math.max(...weights) + 0.5;
+  const loads = history.map(d => d.top_load);
+  const minL = Math.max(0, Math.min(...loads) - 2.5);
+  const maxL = Math.max(...loads) + 2.5;
 
   const pad = 40;
   const stepX = (w - pad * 2) / (history.length - 1);
 
-  // Draw grid lines
+  // Grid lines
   ctx.strokeStyle = "rgba(255,255,255,0.06)";
   ctx.lineWidth = 1;
   for (let i = 0; i <= 4; i++) {
@@ -445,81 +560,56 @@ function drawWeightChart(history) {
     ctx.lineTo(w - pad, y);
     ctx.stroke();
 
-    const val = (maxW - (maxW - minW) * (i / 4)).toFixed(1);
+    const val = (maxL - (maxL - minL) * (i / 4)).toFixed(1);
     ctx.fillStyle = "#64748B";
     ctx.font = "10px sans-serif";
     ctx.fillText(`${val}kg`, 5, y + 3);
   }
 
-  // Draw Line
+  // Line
   ctx.strokeStyle = "#38BDF8";
   ctx.lineWidth = 3;
   ctx.beginPath();
 
   history.forEach((d, i) => {
     const x = pad + i * stepX;
-    const y = pad + (h - pad * 2) * ((maxW - d.weight) / (maxW - minW));
+    const y = pad + (h - pad * 2) * ((maxL - d.top_load) / (maxL - minL));
     if (i === 0) ctx.moveTo(x, y);
     else ctx.lineTo(x, y);
   });
   ctx.stroke();
 
-  // Draw dots
+  // Dots & Rep text
   history.forEach((d, i) => {
     const x = pad + i * stepX;
-    const y = pad + (h - pad * 2) * ((maxW - d.weight) / (maxW - minW));
+    const y = pad + (h - pad * 2) * ((maxL - d.top_load) / (maxL - minL));
+
     ctx.fillStyle = "#38BDF8";
     ctx.beginPath();
-    ctx.arc(x, y, 4, 0, Math.PI * 2);
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
     ctx.fill();
+
+    // Reps label
+    ctx.fillStyle = "#F8FAFC";
+    ctx.font = "bold 11px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(`${d.top_reps} reps`, x, y - 10);
+
+    // Date label at bottom
+    ctx.fillStyle = "#94A3B8";
+    ctx.font = "9px sans-serif";
+    const dateLabel = d.date.slice(5); // e.g. '09-28'
+    ctx.fillText(dateLabel, x, h - 12);
   });
 }
 
-function drawProteinChart(history) {
-  const canvas = document.getElementById("proteinCanvas");
-  if (!canvas || !canvas.getContext) return;
-  const ctx = canvas.getContext("2d");
-  const w = canvas.width;
-  const h = canvas.height;
-  ctx.clearRect(0, 0, w, h);
-
-  if (history.length < 2) return;
-
-  const pad = 40;
-  const stepX = (w - pad * 2) / history.length;
-  const maxP = 160;
-
-  // Goal line at 150g
-  const goalY = pad + (h - pad * 2) * ((maxP - 150) / maxP);
-  ctx.strokeStyle = "rgba(52, 211, 153, 0.4)";
-  ctx.setLineDash([4, 4]);
-  ctx.beginPath();
-  ctx.moveTo(pad, goalY);
-  ctx.lineTo(w - pad, goalY);
-  ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.fillStyle = "#34D399";
-  ctx.font = "10px sans-serif";
-  ctx.fillText("Goal 150g", w - pad - 50, goalY - 4);
-
-  // Draw Bars
-  history.forEach((d, i) => {
-    const prot = d.protein || 0;
-    const barH = (h - pad * 2) * (prot / maxP);
-    const x = pad + i * stepX + 3;
-    const y = h - pad - barH;
-
-    ctx.fillStyle = prot >= 140 ? "#34D399" : (prot < 90 ? "#F87171" : "#38BDF8");
-    ctx.fillRect(x, y, stepX - 6, barH);
-  });
-}
-
-// Toast
+// Helpers
 function showToast(msg) {
   const t = document.getElementById("toast");
+  if (!t) return;
   t.innerText = msg;
   t.classList.add("show");
-  setTimeout(() => { t.classList.remove("show"); }, 3000);
+  setTimeout(() => { t.classList.remove("show"); }, 3500);
 }
 
 function escapeHtml(str) {
