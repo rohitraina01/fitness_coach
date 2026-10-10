@@ -19,9 +19,12 @@
         <span class="sub-label">Autonomous Fitness System</span>
       </div>
     </div>
-    <div class="bridge-status" id="bridgeStatusBadge">
-      <span class="status-dot pulsing"></span>
-      <span class="status-text" id="statusText">Checking...</span>
+    <div class="header-right">
+      <button class="btn-cloud-settings" id="btnCloudSettings" onclick="openSettingsModal()" title="Cloud & Sync Settings">⚙️</button>
+      <div class="bridge-status" id="bridgeStatusBadge">
+        <span class="status-dot pulsing"></span>
+        <span class="status-text" id="statusText">Checking...</span>
+      </div>
     </div>
   </header>
 
@@ -375,6 +378,32 @@
       <span class="nav-text">Playbook</span>
     </button>
   </nav>
+
+  <!-- Cloud Sync Settings Modal -->
+  <div class="modal-backdrop" id="settingsModal" style="display:none;">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3>☁️ Cloud Sync (PC-Free)</h3>
+        <button class="modal-close" onclick="closeSettingsModal()">✕</button>
+      </div>
+      <p class="modal-desc">Configure GitHub Actions so you can log workouts from the web even when your PC is completely turned off.</p>
+      
+      <div class="form-group">
+        <label>GitHub Repository</label>
+        <input type="text" id="ghRepoInput" placeholder="username/fitness_coach">
+      </div>
+
+      <div class="form-group">
+        <label>GitHub Personal Access Token (PAT)</label>
+        <input type="password" id="ghTokenInput" placeholder="ghp_xxxxxxxxxxxx">
+        <span class="form-help">Requires 'repo' scope. Stored locally in your phone's browser only.</span>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-save-settings" onclick="saveCloudSettings()">Save Settings</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Toast Notification -->
   <div class="toast" id="toast"></div>

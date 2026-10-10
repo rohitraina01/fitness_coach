@@ -1,18 +1,20 @@
 """
 ingest_workout.py - Autonomous Workout Ingestion & System Updater
 Executes the full 7-stage workout entry workflow:
-1. Ingest & normalize sets
+1. Ingest & normalize sets (from JSON or natural language notes)
 2. Append to DATA/workouts.csv & DATA/workout_sets.csv
 3. Generate WORKOUT_LOGS/YYYY/YYYY-MM/YYYY-MM-DD_<type>.md
-4. Update CURRENT_STATUS.md
+4. Update CURRENT_STATUS.md & CURRENT_NEXT_WORKOUT.md
 5. Refresh DASHBOARD/fitness_dashboard.xlsx
 6. Refresh OUTPUTS/mobile/
 7. Run audit_integrity.py
 """
 
 import os
+import sys
 import csv
 import json
+import re
 import argparse
 from datetime import datetime
 import subprocess
@@ -30,14 +32,52 @@ def load_catalog():
             catalog[r["exercise_id"]] = r
     return catalog
 
-def normalize_exercise(name, catalog):
-    name_clean = name.strip().lower().replace("-", " ").replace("_", " ")
+def match_exercise(line, catalog):
+    line_clean = line.lower().replace("-", " ").replace("_", " ")
     for eid, data in catalog.items():
-        c_name = data["exercise_name"].lower()
-        if name_clean in c_name or c_name in name_clean or eid.lower() == name_clean:
+        name_clean = data["exercise_name"].lower().replace("-", " ")
+        if name_clean in line_clean or eid.lower().replace("_", " ") in line_clean:
             return eid, data["exercise_name"]
-    # Fallback uppercase
-    return name.strip().upper().replace(" ", "_"), name.strip()
+    
+    line_tokens = set(re.findall(r"\b[a-z]{3,}\b", line_clean))
+    line_tokens -= {"sets", "reps", "rir", "rpe", "dummy", "test", "per", "hand", "min", "drop"}
+    best_eid = None
+    best_score = 0
+    for eid, data in catalog.items():
+        name_clean = data["exercise_name"].lower().replace("-", " ")
+        name_tokens = set(re.findall(r"\b[a-z]{3,}\b", name_clean))
+        overlap = len(line_tokens & name_tokens)
+        if overlap > best_score:
+            best_score = overlap
+            best_eid = eid
+            
+    if best_eid and best_score >= 1:
+        return best_eid, catalog[best_eid]["exercise_name"]
+    return None, None
+
+def parse_notes_to_sets(raw_notes, catalog):
+    lines = [l.strip() for l in raw_notes.split("\n") if l.strip()]
+    sets_data = []
+    for line in lines:
+        if any(w in line.lower() for w in ["dummy", "test", "duration", "status", "reported"]):
+            continue
+        eid, disp_name = match_exercise(line, catalog)
+        if eid:
+            load_match = re.search(r"(\d+(?:\.\d+)?)\s*(?:kg|lbs|bw)?", line, re.IGNORECASE)
+            rep_matches = re.findall(r"(?:x|\*|@|,)\s*(\d+)", line, re.IGNORECASE)
+            load = float(load_match.group(1)) if load_match else 0.0
+            reps_list = [int(r) for r in rep_matches] if rep_matches else [10]
+            for r in reps_list:
+                sets_data.append({
+                    "exercise": eid,
+                    "load": load,
+                    "reps": r,
+                    "units": "kg",
+                    "set_type": "S",
+                    "rir": 2,
+                    "notes": line
+                })
+    return sets_data
 
 def append_csv(filename, fieldnames, row_dict):
     filepath = os.path.join(DATA_DIR, filename)
@@ -59,7 +99,7 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
         "date": date_str,
         "session_type": session_type,
         "session_name": session_name or f"{session_type} Workout",
-        "duration_min": duration_min or "",
+        "duration_min": duration_min or 60,
         "readiness_score": 8,
         "status": "COMPLETED",
         "notes": raw_notes or ""
@@ -72,7 +112,8 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
 
     for idx, s in enumerate(sets_data, 1):
         sid = f"S-{date_obj.strftime('%Y%m%d')}-01-{idx:02d}"
-        eid, disp_name = normalize_exercise(s.get("exercise", ""), catalog)
+        eid = s.get("exercise", "")
+        disp_name = catalog.get(eid, {}).get("exercise_name", eid)
         s_row = {
             "set_id": sid,
             "workout_id": wid,
@@ -80,12 +121,12 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
             "set_order": idx,
             "set_type": s.get("set_type", "S"),
             "parent_set_id": s.get("parent_set_id", ""),
-            "load": s.get("load", ""),
+            "load": s.get("load", 0.0),
             "units": s.get("units", "kg"),
-            "reps": s.get("reps", ""),
-            "rir": s.get("rir", ""),
+            "reps": s.get("reps", 10),
+            "rir": s.get("rir", 2),
             "rpe": s.get("rpe", ""),
-            "rest_sec": s.get("rest_sec", ""),
+            "rest_sec": s.get("rest_sec", 90),
             "is_pr": s.get("is_pr", 0),
             "notes": s.get("notes", "")
         }
@@ -106,14 +147,14 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
 
 **Workout ID**: `{wid}`  
 **Date**: {date_str}  
-**Session Type**: {session_type} ({session_name})  
-**Duration**: {duration_min or 'Unrecorded'} min  
+**Session Type**: {session_type} ({session_name or session_type})  
+**Duration**: {duration_min or '60'} min  
 **Status**: `COMPLETED`
 
 ---
 
 ## 1. RAW WORKOUT REPORT
-> {raw_notes or 'Logged via CLI / structured entry'}
+> {raw_notes or 'Logged via mobile/cloud entry'}
 
 ---
 
@@ -125,8 +166,8 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
 ---
 
 ## 3. COACH'S POST-WORKOUT ASSESSMENT
-- Successfully recorded and normalized into database.
-- Evaluated under double-progression rules.
+- Successfully recorded and normalized into relational database.
+- Evaluated under strict double-progression rules.
 
 ---
 
@@ -141,30 +182,36 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
 
     # 4. Refresh Dashboard
     build_script = os.path.join(BASE_DIR, "scripts", "build_dashboard.py")
-    subprocess.run(["python", build_script], check=True)
+    subprocess.run([sys.executable, build_script], check=True)
 
     # 5. Refresh Mobile
     mobile_script = os.path.join(BASE_DIR, "scripts", "export_mobile.py")
-    subprocess.run(["python", mobile_script], check=True)
+    subprocess.run([sys.executable, mobile_script], check=True)
 
     # 6. Audit Integrity
     audit_script = os.path.join(BASE_DIR, "scripts", "audit_integrity.py")
-    subprocess.run(["python", audit_script], check=True)
+    subprocess.run([sys.executable, audit_script], check=True)
 
     print(f"\nWorkout {wid} successfully ingested and verified!")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ingest workout into personal coaching system")
     parser.add_argument("--date", help="YYYY-MM-DD", default=datetime.now().strftime("%Y-%m-%d"))
-    parser.add_argument("--type", help="Session Type (Push/Pull/Legs)", default="Push")
-    parser.add_argument("--name", help="Session Name (e.g. Push A)", default="")
+    parser.add_argument("--type", help="Session Type (Push/Pull/Legs)", default="Pull")
+    parser.add_argument("--name", help="Session Name (e.g. Pull A)", default="")
     parser.add_argument("--duration", type=int, help="Duration in minutes", default=60)
     parser.add_argument("--notes", help="Raw notes", default="")
     parser.add_argument("--json-sets", help="JSON string representing array of set objects")
     args = parser.parse_args()
 
+    sets = []
     if args.json_sets:
         sets = json.loads(args.json_sets)
+    elif args.notes:
+        catalog = load_catalog()
+        sets = parse_notes_to_sets(args.notes, catalog)
+
+    if sets:
         ingest(args.date, args.type, args.name, args.duration, args.notes, sets)
     else:
-        print("Usage: python ingest_workout.py --json-sets '[{\"exercise\": \"INCLINE_DB_PRESS\", \"load\": 22, \"reps\": 10}]'")
+        print("Warning: No sets provided or parsed from notes.")

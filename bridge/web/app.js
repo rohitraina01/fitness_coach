@@ -351,15 +351,84 @@ function initLogSubmission() {
         submitBtn.innerHTML = forceDummy ? "<span id='submitLabel'>Simulate Dummy Run</span> ➔" : "<span id='submitLabel'>Process Workout</span> ➔";
       }
     } else {
-      if (!forceDummy) {
-        enqueueWorkout(payload);
-        textarea.value = "";
-        showToast("⚠️ PC is Offline. Workout saved in queue.");
+      // PC LOCALHOST IS DEAD / OFF -> DISPATCH TO GITHUB CLOUD
+      const ghRepo = localStorage.getItem("apex_gh_repo");
+      const ghToken = localStorage.getItem("apex_gh_token");
+
+      if (ghRepo && ghToken && !forceDummy) {
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Dispatching to Cloud Runner...";
+        try {
+          const ghRes = await fetch(`https://api.github.com/repos/${ghRepo}/dispatches`, {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${ghToken}`,
+              "Accept": "application/vnd.github.v3+json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              event_type: "log_workout",
+              client_payload: payload
+            })
+          });
+
+          if (ghRes.ok || ghRes.status === 204) {
+            showToast("⚡ SENT TO GITHUB CLOUD! Cloud runner is executing.");
+            textarea.value = "";
+          } else {
+            throw new Error(`GitHub returned status ${ghRes.status}`);
+          }
+        } catch (err) {
+          enqueueWorkout(payload);
+          showToast("⚠️ Cloud dispatch failed. Saved in queue: " + err.message);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = "<span id='submitLabel'>Process Workout</span> ➔";
+        }
       } else {
-        showToast("⚠️ PC is offline; dummy simulations require PC bridge connection.");
+        if (!forceDummy) {
+          enqueueWorkout(payload);
+          textarea.value = "";
+          showToast("⚠️ PC is Offline. Saved to queue. (Tap ⚙️ to configure 24/7 Cloud Sync)");
+        } else {
+          showToast("⚠️ PC is offline; dummy simulations require PC bridge connection.");
+        }
       }
     }
   });
+}
+
+// Cloud Settings Modal
+function openSettingsModal() {
+  const modal = document.getElementById("settingsModal");
+  const repoInput = document.getElementById("ghRepoInput");
+  const tokenInput = document.getElementById("ghTokenInput");
+
+  if (repoInput) repoInput.value = localStorage.getItem("apex_gh_repo") || "";
+  if (tokenInput) tokenInput.value = localStorage.getItem("apex_gh_token") || "";
+  if (modal) modal.style.display = "flex";
+}
+
+function closeSettingsModal() {
+  const modal = document.getElementById("settingsModal");
+  if (modal) modal.style.display = "none";
+}
+
+function saveCloudSettings() {
+  const repoInput = document.getElementById("ghRepoInput");
+  const tokenInput = document.getElementById("ghTokenInput");
+
+  const repo = repoInput ? repoInput.value.trim() : "";
+  const token = tokenInput ? tokenInput.value.trim() : "";
+
+  if (repo) localStorage.setItem("apex_gh_repo", repo);
+  else localStorage.removeItem("apex_gh_repo");
+
+  if (token) localStorage.setItem("apex_gh_token", token);
+  else localStorage.removeItem("apex_gh_token");
+
+  closeSettingsModal();
+  showToast("☁️ Cloud settings saved!");
 }
 
 function showSimulationResults(feedbackText) {
