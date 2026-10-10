@@ -403,31 +403,42 @@ function initLogSubmission() {
 }
 
 // Security PIN Lock
+function getStoredPin() {
+  return localStorage.getItem(PIN_STORAGE_KEY) || "123";
+}
+
 function initSecurityLock() {
   const isUnlocked = localStorage.getItem(PIN_UNLOCKED_KEY) === "true";
   const lockScreen = document.getElementById("lockScreen");
   if (lockScreen) {
     lockScreen.style.display = isUnlocked ? "none" : "flex";
   }
+  updatePinDots();
 }
 
 function updatePinDots() {
-  for (let i = 0; i < 4; i++) {
-    const dot = document.getElementById(`dot${i}`);
-    if (dot) {
-      dot.classList.toggle("filled", i < enteredPin.length);
-    }
+  const display = document.getElementById("pinDisplay");
+  if (!display) return;
+  const targetLen = Math.max(3, getStoredPin().length);
+  display.innerHTML = "";
+  for (let i = 0; i < targetLen; i++) {
+    const dot = document.createElement("span");
+    dot.className = "pin-dot" + (i < enteredPin.length ? " filled" : "");
+    display.appendChild(dot);
   }
 }
 
 function pressPin(digit) {
-  if (enteredPin.length < 4) {
+  if (enteredPin.length < 8) {
     enteredPin += digit;
     updatePinDots();
     if (navigator.vibrate) navigator.vibrate(30);
 
-    if (enteredPin.length === 4) {
-      setTimeout(verifyPin, 150);
+    const correctPin = getStoredPin();
+    if (enteredPin === correctPin) {
+      setTimeout(verifyPin, 120);
+    } else if (enteredPin.length >= correctPin.length && correctPin.length >= 3) {
+      setTimeout(verifyPin, 180);
     }
   }
 }
@@ -445,7 +456,7 @@ function backspacePin() {
 }
 
 function verifyPin() {
-  const correctPin = localStorage.getItem(PIN_STORAGE_KEY) || "1234";
+  const correctPin = getStoredPin();
   if (enteredPin === correctPin) {
     localStorage.setItem(PIN_UNLOCKED_KEY, "true");
     const lockScreen = document.getElementById("lockScreen");
@@ -490,7 +501,7 @@ function openSettingsModal() {
 
   if (repoInput) repoInput.value = localStorage.getItem("apex_gh_repo") || "";
   if (tokenInput) tokenInput.value = localStorage.getItem("apex_gh_token") || "";
-  if (pinInput) pinInput.value = localStorage.getItem(PIN_STORAGE_KEY) || "1234";
+  if (pinInput) pinInput.value = getStoredPin();
   if (modal) modal.style.display = "flex";
 }
 
@@ -514,11 +525,12 @@ function saveCloudSettings() {
   if (token) localStorage.setItem("apex_gh_token", token);
   else localStorage.removeItem("apex_gh_token");
 
-  if (pin && pin.length === 4) {
+  if (pin && pin.length >= 3) {
     localStorage.setItem(PIN_STORAGE_KEY, pin);
   }
 
   closeSettingsModal();
+  updatePinDots();
   showToast("☁️ Settings & PIN saved!");
 }
 

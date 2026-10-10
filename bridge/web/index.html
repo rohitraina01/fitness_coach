@@ -42,7 +42,6 @@
         <span class="pin-dot" id="dot0"></span>
         <span class="pin-dot" id="dot1"></span>
         <span class="pin-dot" id="dot2"></span>
-        <span class="pin-dot" id="dot3"></span>
       </div>
 
       <div class="pin-keypad">
@@ -55,12 +54,12 @@
         <button class="key-btn" onclick="pressPin('7')">7</button>
         <button class="key-btn" onclick="pressPin('8')">8</button>
         <button class="key-btn" onclick="pressPin('9')">9</button>
-        <button class="key-btn action" onclick="clearPin()">C</button>
+        <button class="key-btn action" onclick="backspacePin()" title="Backspace">⌫</button>
         <button class="key-btn" onclick="pressPin('0')">0</button>
-        <button class="key-btn action" onclick="backspacePin()">⌫</button>
+        <button class="key-btn action unlock" onclick="verifyPin()" title="Unlock">➔</button>
       </div>
 
-      <p class="pin-hint">Default PIN: <code>1234</code></p>
+      <p class="pin-hint">Default PIN: <code>123</code> (Change to 4 digits in ⚙️ Settings)</p>
     </div>
   </div>
 
@@ -436,9 +435,9 @@
       </div>
 
       <div class="form-group">
-        <label>Security PIN (4 Digits)</label>
-        <input type="password" id="appPinInput" maxlength="4" placeholder="1234">
-        <span class="form-help">Protects your workouts if someone accesses your public GitHub Pages link. Default: 1234</span>
+        <label>Security PIN (e.g. 4 Digits)</label>
+        <input type="password" id="appPinInput" maxlength="8" placeholder="123">
+        <span class="form-help">Current default is 123. Enter your secret 4-digit PIN here to protect the app.</span>
       </div>
 
       <div class="modal-actions">
