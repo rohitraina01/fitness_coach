@@ -1,46 +1,55 @@
 # CURRENT SYSTEM STATUS & OPERATIONAL SNAPSHOT
 
 *Last Refreshed: 2026-10-11*  
-*Active System Version: 1.0*  
-*Authoritative Record: Local Markdown, CSV tables, and Excel workbook*
+*Active System Version: 1.1 (Full Historical Migration Complete)*  
+*Authoritative Record: Local Markdown, CSV databases, and Excel analytics dashboard*
 
 ---
 
 ## 1. CURRENT PHASE & GOALS
-- **Active Phase**: Phase 1: Recomposition & Conservative Calorie Deficit (Oct – Dec 2026).
-- **Core Targets**:
-  - Caloric target: 1,850 kcal/day ($\pm 50$ kcal).
-  - Protein target: 145–155 g/day (~2.0 g/kg).
-  - Daily steps: 8,000 – 8,500 target (historically ~6,000).
-  - Scale weight trend target: -0.3 kg/week toward 70.0 kg baseline.
-- **Physique Priority**: Tier 1: Lateral Delts, Lats, Arms (Triceps/Biceps), Upper Chest.
+- **Active Phase**: Phase 1: Recomposition & Calibrated Deficit.
+- **Goal**: V-Taper, Upper Chest Shelf, Arm Thickness (Biceps & Triceps), Capped Lateral Delts, Waist Trimming.
+- **Calorie Target**: 1,850 kcal/day (App 30-day empirical average: 1,731 kcal).
+- **Protein Floor**: 145–150 g/day (~2.0 g/kg). **CRITICAL COACHING NOTE**: App 30-day average is **108.1 g/day**, with lows of 70g. Must be closed immediately!
+- **Daily Steps**: Target 8,000–8,500 (Current: ~6,000).
 
 ---
 
-## 2. TRAINING STATUS & NEXT WORKOUT
-- **Active Program**: 5-Day Aesthetic Hypertrophy Split (Push A / Pull A / Legs & Core / Push B / Pull B).
-- **Last Completed Session**:
-  - **Date**: 2026-10-10
-  - **Type**: Push Workout
-  - **Exercises Logged**: DB Lateral Raises, Incline DB Press, Flat BB Bench Press, Overhead Triceps Extension, Pec Deck Fly, Cable Triceps Pushdown.
-  - **Status**: `INCOMPLETE_HISTORICAL` (Date and exercises confirmed; exact set/rep loads awaiting trainee backfill).
-- **Immediate Next Workout**:
-  - **Target Session**: **Pull A** (Lat Width, Upper Back, Biceps)
-  - **Location**: `CURRENT_NEXT_WORKOUT.md` & `OUTPUTS/mobile/next_workout.html`
-  - **Key Objective**: Establish rigorous calibrated baseline for Lat Pulldown, Chest-Supported Row, and Bicep flexion.
+## 2. BIOMETRICS & 30-DAY APP TRENDS
+- **Latest Scale Weight (2026-10-11)**: **71.5 kg** (Lowest recorded in 30 days).
+- **30-Day Weight Average**: **72.59 kg** (True baseline range: 71.5 to 73.2 kg).
+- **Net Scale Change**: -1.7 kg since Sep 11, 2026 (accounting for initial high post-meal water spike as noted by trainee).
+- **30-Day Calorie Average**: 1,731 kcal/day (Yesterday: 1,352 kcal).
+- **30-Day Protein Average**: 108.1 g/day (Yesterday: 132 g; High: 149 g; Low: 70 g).
 
 ---
 
-## 3. BODY METRICS & NUTRITION RECENT TRENDS
-- **Current Scale Weight**: ~72.0–73.0 kg (Self-reported baseline; awaiting daily morning weigh-ins).
-- **7-Day Moving Average**: Baseline initialization pending 7 logged weigh-ins.
-- **Estimated Maintenance Calories**: 2,000 – 2,200 kcal/day (Unverified theoretical range; calibration in progress).
-- **Waist Circumference**: Baseline measurement pending.
+## 3. TRAINING PERFORMANCE & OVERLOAD TRAJECTORY
+All 7 historical workouts (125 total sets) are now fully imported and verified:
+- **Incline DB Press**: Progressed from 17.5kg $\times$ 12, 20kg $\times$ 8, 6 (Sep 21) to **20kg $\times$ 9, 10, 10 (Oct 10)**. Solid double-progression accomplishment.
+- **Flat Barbell Bench Press**: Progressed from 42.5kg $\times$ 6 (Sep 28) to **42.5kg $\times$ 10 (Oct 10 PR)**!
+- **Dumbbell Lateral Raise**: Cleared 4 sets $\times$ 15 reps @ 5kg. Ready to test 7.5kg or switch to Cable Lateral Raises.
+- **Lat Pulldown**: 50kg $\times$ 8 (Sep 24) $\rightarrow$ 50kg $\times$ 8, 8, 8 (Sep 25) $\rightarrow$ **50kg $\times$ 9 PR (Oct 01)**.
+- **Workout Duration**: Fixed! Slashed marathon 128m push session (Oct 04) down to **63m (Oct 10)** with zero junk volume.
 
 ---
 
-## 4. KNOWN LIMITATIONS & UNRESOLVED DATA (TODO LIST)
-1. **Historical Workout Backfill**: The 7 historical sessions (2026-09-21 through 2026-10-10) are indexed with dates and exercises, but exact loads and reps were not recorded in prior logs. Trainee can backfill specific weights/reps if personal notes exist.
-2. **Lower Body Absence**: Zero leg training sessions recorded in late September / early October. Leg day (Day 3) must be integrated to prevent muscular imbalances and metabolic stagnation.
-3. **Daily Weight Logging**: Need consistent morning weigh-in entries into `BODY_METRICS/weigh_ins.csv` to compute true 7-day rolling averages and verify maintenance energy expenditure.
-4. **Circumference Measurements**: Baseline tape measurements (waist at navel, chest, shoulders, arms) needed in `BODY_METRICS/body_measurements.csv` for tracking hypertrophy independent of scale weight.
+## 4. IMMEDIATE NEXT SESSION
+- **Scheduled Session**: **PULL A (Lat Width, Upper Back & Biceps)**
+- **Target Date**: 2026-10-11 / 2026-10-12
+- **Focus Movements**:
+  1. Lat Pulldown: Target 3 sets $\times$ 8–10 reps @ 50kg (aim for 50kg $\times$ 10 clean).
+  2. Chest-Supported Row Machine: 3 sets $\times$ 8–10 reps.
+  3. Straight-Arm Cable Pulldown: 3 sets $\times$ 12–15 reps @ 15–20kg.
+  4. Reverse Pec Deck: 3 sets $\times$ 12–15 reps @ 15kg.
+  5. Standing Cable Bicep Curl: 3 sets $\times$ 10–12 reps @ 20kg.
+  6. Dumbbell Hammer Curl: 3 sets $\times$ 8–10 reps @ 7.5kg per hand (up from 5kg).
+- **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
+
+---
+
+## 5. RESOLVED VS REMAINING BOTTLENECKS
+- **Resolved**: All historical set data recovered and relational tables synchronized.
+- **Resolved**: Push session duration trimmed from 128m to 63m.
+- **Critical Action Required**: Leg Day (Day 3) has zero sessions logged in 30 days. Must schedule Legs & Core.
+- **Critical Action Required**: Elevate daily protein floor from 108g average to 145g minimum.

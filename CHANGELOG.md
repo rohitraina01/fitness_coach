@@ -1,17 +1,24 @@
 # SYSTEM CHANGELOG & VERSION HISTORY
 
-All modifications to programs, schemas, calibrations, and system tools are recorded here in reverse chronological order.
+---
+
+### [2026-10-11 - Update 1.1] - Full Historical Workout Recovery & App Data Integration
+- **Full Historical Sets Ingestion**:
+  - Ingested 125 exact sets across all 7 historical workouts (2026-09-21 through 2026-10-10) with exact loads, reps, PR flags, drop set parent-child linkages, and verified durations.
+  - Slashed all `INCOMPLETE_HISTORICAL` tags to `COMPLETED` (with 2026-10-01 marked `PARTIAL` for the 4 confirmed exercises).
+- **Nutrition & Weight App Ingestion**:
+  - Ingested 30-day empirical trends from trainee's app screenshots:
+    - Latest scale weight: 71.5 kg (today, 2026-10-11); 30-day average: 72.59 kg; range: 71.5 to 73.2 kg.
+    - 30-day average calories: 1,731.03 kcal/day; latest day: 1,352 kcal.
+    - 30-day average protein: 108.1 g/day; lowest: 70 g; highest: 149 g.
+- **Relational Databases & Dashboard**:
+  - Synchronized `DATA/workouts.csv`, `DATA/workout_sets.csv`, `DATA/body_metrics.csv`, `DATA/nutrition.csv`, and regenerated `DASHBOARD/fitness_dashboard.xlsx`.
+- **Validation**:
+  - Verified 100% pass across all 14 unit tests and the data integrity audit script.
+- **Git Commit**:
+  - Committed version 1.1 into the local repository.
 
 ---
 
-### [2026-10-11] - System Architecture Initialization & Baseline Migration
-- **System Launch**: Created core coaching infrastructure, evidence-based master coach prompt, profile, goals, coaching rules, nutrition rules, data dictionary, and canonical paths.
-- **Data Schemas**: Established relational tables (`DATA/workouts.csv`, `DATA/workout_sets.csv`, `DATA/exercise_catalog.csv`, `DATA/body_metrics.csv`, `DATA/nutrition.csv`, `DATA/adherence.csv`).
-- **Historical Migration**:
-  - Ingested 7 known historical sessions (2026-09-21, 2026-09-24, 2026-09-25, 2026-09-28, 2026-10-01, 2026-10-04, 2026-10-10).
-  - Preserved historical dates, session types, and exercises. Explicitly flagged sessions as `INCOMPLETE_HISTORICAL` due to missing exact set-by-set load/rep values in the source record.
-- **Excel Dashboard**: Created automated openpyxl dashboard generation script with structured Excel tables, formulas, and charts (`DASHBOARD/fitness_dashboard.xlsx`).
-- **Skills System**: Implemented 8 modular skills for ingestion, analysis, next workout planning, reviews, dashboard maintenance, and integrity audits.
-- **Mobile Workflow**: Created phone-optimized export pipeline (`OUTPUTS/mobile/next_workout.txt` and `.html`).
-- **Current Program**: Formulated 5-day aesthetic hypertrophy split prioritizing Lateral Delts, Lats, Arms, and Upper Chest while ensuring lower body coverage.
-- **Next Workout**: Programmed immediate next session `CURRENT_NEXT_WORKOUT.md` (Pull A).
+### [2026-10-11 - Initial] - System Initialization
+- Created core architecture, master coach prompt, profile, goals, coaching rules, nutrition rules, data dictionary, test suites, automation scripts, and mobile exports.

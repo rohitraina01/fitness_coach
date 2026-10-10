@@ -1,4 +1,9 @@
 date,weight_kg,rolling_avg_7d,notes
-2026-10-04,72.8,,Initial baseline estimate window start
-2026-10-10,72.5,72.65,Pre-push session self-reported weight
-2026-10-11,72.4,72.57,Current baseline entry
+2026-09-11,73.2,73.20,Start of app tracking (post-heavy meal spike as noted by trainee)
+2026-09-18,72.9,73.05,End of Week 1 tracking
+2026-09-25,72.6,72.78,End of Week 2 tracking
+2026-10-02,72.3,72.50,End of Week 3 tracking
+2026-10-05,72.4,72.45,Logged morning weight
+2026-10-08,72.5,72.42,Logged morning weight
+2026-10-10,72.1,72.25,Pre-push session weigh-in
+2026-10-11,71.5,71.95,Latest weigh-in from app: 71.5 kg (Lowest 30-day weight; 30-day avg 72.59 kg)
