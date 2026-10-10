@@ -122,3 +122,15 @@
 - **Primary Movers**: Rectus Abdominis.
 - **Execution Cues**: Kneel in front of high cable rope. Lock hips in space. Curl torso like rolling a carpet, bringing elbows toward knees.
 - **Progression Model**: Double progression, 12–15 reps.
+
+### 3.6 Deadbug Anti-APT Core (`DEADBUG`)
+- **Primary Movers**: Deep Lower Abdominals (Transverse Abdominis, Rectus Abdominis).
+- **Role**: Reversing Anterior Pelvic Tilt (APT) from prolonged 9-hour desk sitting.
+- **Execution Cues**: Lie on back. Lower back MUST remain glued to floor with zero gap. Extend opposite arm and leg while bracing core. If lower back lifts, reduce limb travel.
+- **Progression Model**: Rep progression, 12–15 reps per side.
+
+### 3.7 Hanging Knee Raise (`HANGING_KNEE_RAISE`)
+- **Primary Movers**: Rectus Abdominis, Lower Abs.
+- **Execution Cues**: Hang from pull-up bar. Posterior pelvic tilt: tuck pelvis under and roll knees upward toward chest. Avoid swinging.
+- **Progression Model**: Rep progression, 12–15 reps.
+

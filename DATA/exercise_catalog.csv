@@ -27,3 +27,6 @@ LEG_CURL,Leg Curl Machine,Hamstrings,Gastrocnemius,Machine,10-12,90,machine_pin,
 LEG_EXTENSION,Leg Extension Machine,Quads,,Machine,10-15,90,machine_pin,Tier 3
 CALF_RAISE,Standing Calf Raise,Calves,,Machine,12-15,60,machine_pin,Tier 3
 CABLE_CRUNCH,Kneeling Cable Crunch,Abs,Obliques,Cable,12-15,60,machine_pin,Tier 2
+DEADBUG,Deadbug Anti-APT Core,Abs,Hip Flexors,Bodyweight,12-15,60,bw_plus,Tier 2
+HANGING_KNEE_RAISE,Hanging Knee Raise,Abs,Hip Flexors,Bodyweight,12-15,60,bw_plus,Tier 2
+

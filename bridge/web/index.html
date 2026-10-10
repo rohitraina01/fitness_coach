@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Apex Coach • Mobile Workspace</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Status Top Bar -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">⚡</div>
+      <div class="brand-text">
+        <h1>APEX COACH</h1>
+        <span class="sub-label">Autonomous Fitness System</span>
+      </div>
+    </div>
+    <div class="bridge-status" id="bridgeStatusBadge">
+      <span class="status-dot pulsing"></span>
+      <span class="status-text" id="statusText">Checking...</span>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="main-content">
+
+    <!-- TAB 1: WORKOUT FLOOR (TODAY'S WORKOUT) -->
+    <section class="tab-pane active" id="tab-workout">
+      <div class="session-card-header">
+        <div class="session-badge" id="sessionBadge">NEXT SESSION</div>
+        <h2 id="sessionTitle">PULL A • Lat Width & Biceps</h2>
+        <p class="session-sub" id="sessionSubtitle">Focus on strict elbow drive to hip pockets. 60 min time cap.</p>
+      </div>
+
+      <!-- Rest Timer Component -->
+      <div class="rest-timer-bar">
+        <div class="timer-display">
+          <span class="timer-label">REST TIMER:</span>
+          <span class="timer-digits" id="timerDigits">00:00</span>
+        </div>
+        <div class="timer-buttons">
+          <button class="btn-timer" onclick="startRest(60)">60s</button>
+          <button class="btn-timer" onclick="startRest(90)">90s</button>
+          <button class="btn-timer" onclick="startRest(150)">150s</button>
+          <button class="btn-timer reset" onclick="resetTimer()">✕</button>
+        </div>
+      </div>
+
+      <!-- Interactive Exercise Checklist -->
+      <div class="exercise-feed" id="exerciseFeed">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- TAB 2: LOGGING & SMART QUEUE -->
+    <section class="tab-pane" id="tab-log">
+      <div class="section-title">
+        <h2>Ingest Workout</h2>
+        <p>Paste notes, voice dictate, or submit to Antigravity.</p>
+      </div>
+
+      <!-- Quick Session Selector -->
+      <div class="type-selector">
+        <button class="btn-chip active" data-type="Pull">Pull A</button>
+        <button class="btn-chip" data-type="Legs">Legs & APT</button>
+        <button class="btn-chip" data-type="Push">Push B</button>
+        <button class="btn-chip" data-type="Rest">Rest Day</button>
+      </div>
+
+      <div class="log-input-box">
+        <textarea id="rawLogInput" placeholder="Lat pulldown 50kg x 10, 10, 8 (1 RIR)&#10;Chest supported row 25kg x 10, 10&#10;Cable curls 20kg x 12, 10&#10;Hammer curls 7.5kg x 10, 10..."></textarea>
+        
+        <div class="input-actions">
+          <button class="btn-voice" id="btnVoice" title="Voice Dictation">
+            <span class="icon">🎙️</span> Dictate
+          </button>
+          <button class="btn-submit" id="btnSubmitLog">
+            <span>Process Workout</span> ➔
+          </button>
+        </div>
+      </div>
+
+      <!-- Smart Queue Section (Offline / Sync / Discard) -->
+      <div class="queue-container">
+        <div class="queue-header">
+          <h3>Pending Queue (<span id="queueCount">0</span>)</h3>
+          <span class="queue-sub">Saved locally if PC is offline</span>
+        </div>
+        
+        <div class="queue-list" id="queueList">
+          <!-- Rendered via JS: items with "Sync to PC" and "Discard / Delete" -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: POSTURE & ANTI-APT HUB -->
+    <section class="tab-pane" id="tab-posture">
+      <div class="section-title">
+        <h2>9-Hour Desk Posture Reset</h2>
+        <p>Reverse Anterior Pelvic Tilt and rounded shoulders daily.</p>
+      </div>
+
+      <div class="posture-card">
+        <div class="posture-header">
+          <span class="badge-posture apt">ANTI-PELVIC TILT</span>
+          <h3>Half-Kneeling Hip Flexor Stretch</h3>
+        </div>
+        <p class="posture-desc">Kneel on one knee. Actively squeeze the rear glute and tuck your pelvis under. Opens chronically tight psoas from 9h chair sitting.</p>
+        <div class="posture-action">
+          <button class="btn-hold" onclick="startHoldTimer(45, this)">Start 45s Hold</button>
+          <span class="hold-countdown"></span>
+        </div>
+      </div>
+
+      <div class="posture-card">
+        <div class="posture-header">
+          <span class="badge-posture rounded">ANTI-ROUNDED SHOULDERS</span>
+          <h3>Scapular Wall Slides</h3>
+        </div>
+        <p class="posture-desc">Back, elbows, and wrists flat against wall. Slide arms overhead into a "Y". Activates lower traps and opens tight chest.</p>
+        <div class="posture-action">
+          <span class="reps-target">Target: 15 Slow Reps</span>
+        </div>
+      </div>
+
+      <div class="posture-card">
+        <div class="posture-header">
+          <span class="badge-posture core">LOWER ABS BRACING</span>
+          <h3>Deadbugs (Posterior Tilt Lock)</h3>
+        </div>
+        <p class="posture-desc">Lie on back. Lower back MUST stay completely glued to the floor. Alternate arm and leg extensions without arching.</p>
+        <div class="posture-action">
+          <span class="reps-target">Target: 3 sets x 15 reps</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: PROGRESS & CHARTS -->
+    <section class="tab-pane" id="tab-progress">
+      <div class="section-title">
+        <h2>Progress Analytics</h2>
+        <p>Empirical metrics tracked across 30 days.</p>
+      </div>
+
+      <!-- KPI Summary Row -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-title">Current Weight</span>
+          <span class="kpi-value" id="kpiWeight">71.5 kg</span>
+          <span class="kpi-sub">30D Avg: 72.59 kg</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Daily Protein</span>
+          <span class="kpi-value" id="kpiProtein">132 g</span>
+          <span class="kpi-sub">Target: 150 g floor</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Target Energy</span>
+          <span class="kpi-value">1,850 kcal</span>
+          <span class="kpi-sub">Deficit: ~250 kcal</span>
+        </div>
+      </div>
+
+      <!-- Weight Trend Chart -->
+      <div class="chart-card">
+        <h3>Weight Trend (Last 20 Weigh-Ins)</h3>
+        <canvas id="weightCanvas" width="500" height="240"></canvas>
+      </div>
+
+      <!-- Protein Trend Chart -->
+      <div class="chart-card">
+        <h3>Protein Consistency (Target: 150g)</h3>
+        <canvas id="proteinCanvas" width="500" height="240"></canvas>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation Bar (Phone Optimized) -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-tab="tab-workout">
+      <span class="nav-icon">🏋️</span>
+      <span class="nav-text">Workout</span>
+    </button>
+    <button class="nav-item" data-tab="tab-log">
+      <span class="nav-icon">📝</span>
+      <span class="nav-text">Log</span>
+    </button>
+    <button class="nav-item" data-tab="tab-posture">
+      <span class="nav-icon">🧘</span>
+      <span class="nav-text">Posture</span>
+    </button>
+    <button class="nav-item" data-tab="tab-progress">
+      <span class="nav-icon">📈</span>
+      <span class="nav-text">Progress</span>
+    </button>
+  </nav>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

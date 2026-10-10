@@ -47,16 +47,26 @@
 
 ---
 
-### DAY 3: LEGS & CORE (FOUNDATION & ABS)
-| Order | Exercise | Sets | Rep Range | Rest (s) | Target RIR | Execution Cues & Progression |
+### DAY 3: LEGS & POSTURE (QUAD SWEEP, CALVES & ANTI-PELVIC TILT)
+*Designed specifically to build masculine quad sweep and calves without adding glute mass, while directly reversing 9-hour desk Anterior Pelvic Tilt (APT).*
+
+| Order | Exercise | Sets | Rep Range | Rest (s) | Target RIR | Biomechanical Cues & Anti-Glute Focus |
 | :---: | :--- | :---: | :---: | :---: | :---: | :--- |
-| 1 | **Leg Press** | 3 | 8–10 | 180 | 1–2 | Mid-platform foot placement. Deep 90° knee flexion without butt tuck. |
-| 2 | **Dumbbell Romanian Deadlift (RDL)**| 3 | 8–10 | 150 | 2 | Push hips back until hamstring stretch. Flat spine. |
-| 3 | **Seated or Lying Leg Curl** | 3 | 10–12 | 90 | 0–1 | Dorsiflex ankles. Slow 3-second negative. |
-| 4 | **Standing Calf Raise** | 3 | 12–15 | 60 | 0 | 2-second pause in full stretch at bottom of rep. |
-| 5 | **Kneeling Cable Crunch** | 3 | 12–15 | 60 | 0–1 | Flex spine; bring elbows towards knees. Lock hips. |
+| 1 | **Leg Press (Narrow / Mid-Low Stance)** | 3 | 10–12 | 150 | 1–2 | Feet low-to-mid platform, hip-width apart. Pure quad loading. Avoid wide/high stance which loads glutes. |
+| 2 | **Leg Extension Machine** | 3 | 12–15 | 90 | 0–1 | **Pure quad isolation (0% glute recruitment).** 1s pause at peak extension, 3s eccentric. |
+| 3 | **Seated or Lying Leg Curl** | 3 | 10–12 | 90 | 0–1 | **Knee flexion only (zero glute extension).** Strengthens hamstrings to help pull anterior pelvic tilt back to neutral. |
+| 4 | **Standing Calf Raise** | 4 | 12–15 | 60 | 0 | Builds lower leg athletic taper. 2s pause in deep stretch at the bottom. |
+| 5 | **Deadbugs or Hanging Knee Raise** | 3 | 12–15 | 60 | 0–1 | **Crucial Anti-APT exercise.** Flatten lower back into floor/pad, posterior pelvic tilt tuck. |
+| 6 | **Half-Kneeling Hip Flexor Stretch** | 2 | 45s/side | 30 | — | Lengthens shortened psoas from 9h desk sitting. Squeeze rear glute to push hip forward. |
 
 ---
+
+## 3. DAILY 5-MINUTE DESK WORKER POSTURE RESET (FOR 9-HR SITTING)
+Perform either mid-day at your desk or immediately after work:
+1. **Half-Kneeling Couch / Hip Flexor Stretch**: 60s per leg. Tuck your pelvis under (posterior tilt). You will feel a deep release in the front of your hip.
+2. **Scapular Wall Slides / Doorway Pec Stretch**: 15 slow reps. Reverses rounded shoulders by stretching tight chest muscles and activating lower traps.
+3. **Standing Glute & Abdominal Lock**: Stand up, squeeze your abs and glutes together for 10 seconds $\times$ 5 rounds, bringing your pelvis into true neutral. Notice how your stomach and buttocks immediately tuck into an athletic, flat profile!
+
 
 ### DAY 4: REST / ACTIVE RECOVERY
 - Target: 8,000–10,000 steps.

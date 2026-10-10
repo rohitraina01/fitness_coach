@@ -1,4 +1,13 @@
-# SYSTEM CHANGELOG & VERSION HISTORY
+### [2026-10-11 - Update 1.2] - Apex Coach Mobile Bridge & Offline Smart Queue
+- **Mobile Bridge Architecture**:
+  - Implemented `bridge/server.py` running on port 8080.
+  - Implemented responsive mobile web app (`bridge/web/`):
+    - Workout checklist with local checkbox state preservation and buzzer rest timers.
+    - Voice dictation and text ingestion console.
+    - Smart Queue system: Saves logs when PC is offline, provides both **Sync to PC** and **Discard / Delete** buttons to prevent duplicate entries if entered manually on PC.
+    - 9-Hour Desk Postural Hub with interactive hold timers for Anti-APT stretches and wall slides.
+    - Canvas-driven progress charts for body weight and protein tracking.
+  - Created 1-click batch launcher `bridge/start_bridge.bat` and usage documentation in `bridge/README.md`.
 
 ---
 
