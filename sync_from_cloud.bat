@@ -1,8 +1,8 @@
 @echo off
 title Sync Fitness Coach from Cloud
-cd /d %~dp0
+cd /d "%~dp0"
 echo ========================================================
-echo   SYNCING LOCAL FITNESS COACH WORKSPACE FROM CLOUD
+echo   SYNCING LOCAL FITNESS COACH WORKSPACE FROM GITHUB
 echo ========================================================
 git pull origin master
 if %errorlevel% neq 0 (
@@ -10,6 +10,8 @@ if %errorlevel% neq 0 (
     git pull origin main
 )
 echo ========================================================
-echo   DONE! Local Excel, CSVs, and logs are now updated.
+echo   SYNC COMPLETED!
+echo   All cloud workouts, CSVs, and logs are now up to date.
 echo ========================================================
-timeout /t 5
+echo.
+pause
