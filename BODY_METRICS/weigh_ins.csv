@@ -1,0 +1,4 @@
+date,weight_kg,rolling_avg_7d,notes
+2026-10-04,72.8,,Initial baseline estimate window start
+2026-10-10,72.5,72.65,Pre-push session self-reported weight
+2026-10-11,72.4,72.57,Current baseline entry

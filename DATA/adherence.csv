@@ -1,0 +1,4 @@
+week_id,start_date,end_date,planned_sessions,completed_sessions,adherence_pct,avg_steps,avg_protein_g,weight_delta_kg,status,notes
+2026-W39,2026-09-21,2026-09-27,5,3,60.0,6000,128.0,,INCONSISTENT,"Historical week: 3 sessions completed (Push, Pull, Pull). Zero leg sessions."
+2026-W40,2026-09-28,2026-10-04,5,3,60.0,6100,127.0,-0.2,INCONSISTENT,"Historical week: 3 sessions completed (Push, Pull, Push). Zero leg sessions."
+2026-W41,2026-10-05,2026-10-11,5,1,20.0,6150,129.0,-0.3,INCONSISTENT,"Historical week: Only 1 session recorded (2026-10-10 Push). Immediate Pull session required."

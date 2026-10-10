@@ -1,0 +1,8 @@
+workout_id,date,session_type,session_name,duration_min,readiness_score,status,notes
+W-20260921-01,2026-09-21,Push,Push Workout,,,"INCOMPLETE_HISTORICAL","Historical session: lateral raises, incline dumbbell press, triceps pushdowns, pec deck. Exact sets/loads unrecorded in source."
+W-20260924-01,2026-09-24,Pull,Pull Workout,,,"INCOMPLETE_HISTORICAL","Historical session: pull-ups, lat pulldown, seated cable row, straight-arm pulldown. Exact sets/loads unrecorded in source."
+W-20260925-01,2026-09-25,Pull,Pull Workout,,,"INCOMPLETE_HISTORICAL","Historical session: pull-ups, lat pulldown, seated cable row, straight-arm pulldown, rear-delt fly, cable curl. Exact sets/loads unrecorded in source."
+W-20260928-01,2026-09-28,Push,Push Workout,,,"INCOMPLETE_HISTORICAL","Historical session: incline dumbbell press and other recorded push exercises. Exact sets/loads unrecorded in source."
+W-20261001-01,2026-10-01,Pull,Pull Workout,,,"INCOMPLETE_HISTORICAL","Historical session: pull-ups, lat pulldown, chest-supported row machine, dumbbell rows. Exact sets/loads unrecorded in source."
+W-20261004-01,2026-10-04,Push,Push Workout,,,"INCOMPLETE_HISTORICAL","Historical session: incline dumbbell press, lateral raises, bench press, overhead triceps extension, pec deck, rope pushdown, front raises. Exact sets/loads unrecorded in source."
+W-20261010-01,2026-10-10,Push,Push Workout,,,"INCOMPLETE_HISTORICAL","Historical session: lateral raises, incline dumbbell press, bench press, overhead triceps extension, pec deck, cable triceps pushdown. Exact sets/loads unrecorded in source."

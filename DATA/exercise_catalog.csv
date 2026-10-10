@@ -1,0 +1,29 @@
+exercise_id,exercise_name,primary_muscle,secondary_muscles,equipment,default_rep_range,default_rest_sec,load_convention,tier_priority
+INCLINE_DB_PRESS,Incline Dumbbell Press,Upper Chest,"Anterior Deltoids, Triceps",Dumbbell,8-12,150,per_hand,Tier 1
+DB_LATERAL_RAISE,Dumbbell Lateral Raise,Lateral Delts,Trapezius,Dumbbell,10-15,90,per_hand,Tier 1
+CABLE_LATERAL_RAISE,Cable Lateral Raise,Lateral Delts,Trapezius,Cable,12-15,90,machine_pin,Tier 1
+FLAT_BB_BENCH,Flat Barbell Bench Press,Chest,"Anterior Deltoids, Triceps",Barbell,6-10,180,combined,Tier 2
+PEC_DECK_FLY,Pec Deck Machine Fly,Chest,Anterior Deltoids,Machine,10-15,90,machine_pin,Tier 2
+OVERHEAD_TRICEPS_EXT,Overhead Cable Triceps Extension,Triceps,Anconeus,Cable,10-12,90,machine_pin,Tier 1
+TRICEPS_PUSHDOWN,Cable Triceps Pushdown,Triceps,Anconeus,Cable,10-15,90,machine_pin,Tier 1
+ROPE_PUSHDOWN,Rope Triceps Pushdown,Triceps,Anconeus,Cable,12-15,60,machine_pin,Tier 1
+DB_FRONT_RAISE,Dumbbell Front Raise,Anterior Delts,Trapezius,Dumbbell,12-15,60,per_hand,Tier 3
+INCLINE_MACHINE_PRESS,Incline Machine Chest Press,Upper Chest,"Anterior Deltoids, Triceps",Machine,8-12,150,machine_pin,Tier 1
+PULL_UP,Pull-Up,Lats,"Upper Back, Biceps",Bodyweight,6-10,180,bw_plus,Tier 1
+LAT_PULLDOWN,Lat Pulldown,Lats,"Upper Back, Biceps",Cable,8-12,150,machine_pin,Tier 1
+SEATED_CABLE_ROW,Seated Cable Row,Upper Back,"Lats, Biceps, Rear Delts",Cable,8-12,120,machine_pin,Tier 2
+CHEST_SUPPORTED_ROW,Chest-Supported Row Machine,Upper Back,"Rear Delts, Rhomboids, Biceps",Machine,8-12,120,machine_pin,Tier 2
+STRAIGHT_ARM_PULLDOWN,Straight-Arm Cable Pulldown,Lats,Teres Major,Cable,12-15,90,machine_pin,Tier 1
+DB_SINGLE_ARM_ROW,One-Arm Dumbbell Row,Lats,"Upper Back, Biceps",Dumbbell,8-12,90,per_hand,Tier 2
+BARBELL_ROW,Barbell Bent-Over Row,Upper Back,"Lats, Biceps, Spinal Erectors",Barbell,8-10,150,combined,Tier 2
+REAR_DELT_FLY,Reverse Pec Deck (Rear Delt Fly),Rear Delts,"Trapezius, Rhomboids",Machine,12-15,90,machine_pin,Tier 2
+FACE_PULL,Cable Face Pull,Rear Delts,"Rotator Cuff, Upper Traps",Cable,12-15,60,machine_pin,Tier 2
+CABLE_CURL,Standing Cable Bicep Curl,Biceps,Brachialis,Cable,10-12,90,machine_pin,Tier 1
+INCLINE_DB_CURL,Incline Dumbbell Curl,Biceps,Brachioradialis,Dumbbell,10-12,90,per_hand,Tier 1
+HAMMER_CURL,Dumbbell Hammer Curl,Biceps,"Brachialis, Brachioradialis",Dumbbell,8-12,90,per_hand,Tier 1
+LEG_PRESS,Leg Press,Quads,Gluteus Maximus,Machine,8-12,180,combined,Tier 3
+RDL,Dumbbell Romanian Deadlift,Hamstrings,"Glutes, Spinal Erectors",Dumbbell,8-12,150,combined,Tier 3
+LEG_CURL,Leg Curl Machine,Hamstrings,Gastrocnemius,Machine,10-12,90,machine_pin,Tier 3
+LEG_EXTENSION,Leg Extension Machine,Quads,,Machine,10-15,90,machine_pin,Tier 3
+CALF_RAISE,Standing Calf Raise,Calves,,Machine,12-15,60,machine_pin,Tier 3
+CABLE_CRUNCH,Kneeling Cable Crunch,Abs,Obliques,Cable,12-15,60,machine_pin,Tier 2

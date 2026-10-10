@@ -1,0 +1,4 @@
+date,calories,protein_g,carbs_g,fat_g,steps,water_liters,adherence_flag,notes
+2026-10-04,2100,128.0,240.0,60.0,6100,2.5,0,"Estimated intake based on reported baseline (125-130g protein, ~6000 steps)"
+2026-10-09,2150,126.0,250.0,62.0,5900,2.8,0,"Estimated baseline intake"
+2026-10-10,2050,130.0,230.0,58.0,6250,3.0,0,"Reported baseline intake around 130g protein"

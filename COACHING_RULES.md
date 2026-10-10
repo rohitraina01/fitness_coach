@@ -1,0 +1,68 @@
+# COACHING & PROGRESSION RULES
+
+## 1. THE DOUBLE PROGRESSION MODEL
+All hypertrophy exercises follow double progression unless explicitly specified otherwise.
+
+### The Mechanics
+1. **Assigned Rep Range**: e.g., 8–12 reps.
+2. **Phase A (Rep Accumulation)**: Keep the working weight static across all working sets until **all prescribed working sets** reach the top of the rep target (e.g., Set 1: 12 reps, Set 2: 12 reps, Set 3: 12 reps) with strict form and $\text{RIR} \le 2$.
+3. **Phase B (Load Increase)**: Increase the working load by the smallest increment possible:
+   - Dumbbells: +2 kg per hand (or +2.5 kg depending on gym increments).
+   - Barbells: +2.5 kg total (+1.25 kg per side).
+   - Cable / Machines: +1 pin or +2.5 / 5 kg increment.
+4. **Phase C (Rep Drop Acceptance)**: After a load increase, reps will naturally decrease into the lower half of the rep window (e.g. 8–9 reps). Never compromise range of motion or tempo to artificially retain the previous rep count.
+
+---
+
+## 2. SET CLASSIFICATION & INTENSITY (RIR) STANDARDS
+
+| Set Type | Code | Criteria & Inclusion | RIR Standard | Purpose |
+| :--- | :--- | :--- | :--- | :--- |
+| **Warm-Up** | `W` | Submaximal prep sets. **Excluded from volume metrics.** | 4+ RIR | Neurological priming, joint synovial fluid distribution, grooving motor pattern. |
+| **Working Set** | `S` | High mechanical tension, strict execution. **Included in volume.** | 1–3 RIR (Compounds), 0–1 RIR (Isolations) | Primary hypertrophy stimulus. High motor-unit recruitment. |
+| **Drop Set** | `D` | Immediate load reduction after a working set with no rest. | 0 RIR | Metabolic stress, recruitment of fatigued fibers. Must be linked to parent set. |
+| **Rest-Pause** | `RP` | Short 15s pause after reaching near-failure, followed by additional reps. | 0 RIR | Density training on high-stability isolations. |
+
+### Failure Management Rules
+- **Multi-Joint Free Weight Lifts** (Bench press, Squats, Barbell rows): Stop at **1–2 RIR**. Technical breakdown under heavy axial/spinal load produces fatigue and injury risk far out of proportion to muscle gain.
+- **Stable Machines & Isolations** (Cable lateral raises, Tricep pushdowns, Leg extensions, Pec deck): Safe to train to **0–1 RIR** or momentary muscular failure (inability to complete another concentric rep with standardized form).
+
+---
+
+## 3. DROP SETS & INTENSITY TECHNIQUES GOVERNANCE
+- **No Junk Drop Sets**: Drop sets are prohibited on primary compound presses and heavy hip/knee flexion movements.
+- **Maximum 1 Drop Set per Muscle Group per Session**: Drop sets generate high central nervous system fatigue. They are reserved for the final set of lateral raises, triceps cable work, or bicep curls.
+- **Data Recording**: A drop set is NEVER recorded as a standalone normal set. It must carry `set_type='D'` and point to its parent `parent_set_id`.
+
+---
+
+## 4. NEXT-SESSION TARGET PRESCRIPTION PROTOCOL
+Every exercise prescribed for the next workout must define three explicit boundaries:
+
+1. **Minimum Acceptable Target (The Floor)**:
+   - Match previous session's reps and load with equal or superior execution tempo. Any drop below this requires investigation into sleep, nutrition, or preceding fatigue.
+2. **Main Target (The Objective)**:
+   - The double-progression step (e.g. add +1 rep to sets 1 and 2, or jump load if top rep ceiling was cleared).
+3. **Stretch Target (High-Recovery Ceiling)**:
+   - The performance target if sleep, intra-workout fuel, and mind-muscle connection are operating at peak capacity.
+4. **Stop / Load-Reduction Criteria**:
+   - If reps drop by more than 25% from Set 1 to Set 2 (e.g., 10 reps down to 6), or if form breaks down (shoulder shrug on lateral raises, arching back on overhead extensions), reduce load immediately or terminate the exercise.
+
+---
+
+## 5. EXERCISE SUBSTITUTIONS & BASELINE RESETS
+- **Exercise Loyalty**: Maintain core exercises for a minimum of 8 to 12 weeks to allow neurological adaptation to peak and genuine hypertrophy to be tracked.
+- **Substitution Triggers**:
+  1. Joint pain or biomechanical discomfort that cannot be resolved with stance/grip tweaks.
+  2. Gym equipment unavailability (e.g., machine occupied or broken).
+- **Baseline Protocol**: When substituting an exercise (e.g., Dumbbell Incline Press $\rightarrow$ Machine Incline Press), mark the session as establishing a **New Baseline**. Never equate the poundages of machines to free weights.
+
+---
+
+## 6. FATIGUE MANAGEMENT & DELOAD PROTOCOLS
+- Do not take deloads arbitrarily every 4 weeks. Deloads are earned and indicated by data.
+- **Deload Indicators**:
+  1. Systematic performance regression across $\ge 2$ consecutive workouts despite adequate sleep and nutrition.
+  2. Joint tenderness or aching tendons (e.g., elbows, patellar, anterior shoulder).
+  3. Persistent lethargy and loss of training motivation.
+- **Deload Prescription**: Reduce volume by 50% (perform only 1–2 working sets per exercise) and maintain intensity at 2–3 RIR for 5 to 7 days.
