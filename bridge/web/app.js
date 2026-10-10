@@ -2,6 +2,8 @@
 
 const QUEUE_STORAGE_KEY = "apex_fitness_queue";
 const CHECKED_SETS_KEY = "apex_checked_sets";
+const PIN_STORAGE_KEY = "apex_security_pin";
+const PIN_UNLOCKED_KEY = "apex_pin_unlocked";
 
 let isOnline = false;
 let dashboardData = null;
@@ -10,9 +12,11 @@ let recognition = null;
 let isRecording = false;
 let isTestMode = false;
 let selectedExerciseId = "INCLINE_DB_PRESS";
+let enteredPin = "";
 
 // 1. Initialization
 document.addEventListener("DOMContentLoaded", () => {
+  initSecurityLock();
   initNavigation();
   initVoice();
   initLogSubmission();
@@ -398,14 +402,95 @@ function initLogSubmission() {
   });
 }
 
+// Security PIN Lock
+function initSecurityLock() {
+  const isUnlocked = localStorage.getItem(PIN_UNLOCKED_KEY) === "true";
+  const lockScreen = document.getElementById("lockScreen");
+  if (lockScreen) {
+    lockScreen.style.display = isUnlocked ? "none" : "flex";
+  }
+}
+
+function updatePinDots() {
+  for (let i = 0; i < 4; i++) {
+    const dot = document.getElementById(`dot${i}`);
+    if (dot) {
+      dot.classList.toggle("filled", i < enteredPin.length);
+    }
+  }
+}
+
+function pressPin(digit) {
+  if (enteredPin.length < 4) {
+    enteredPin += digit;
+    updatePinDots();
+    if (navigator.vibrate) navigator.vibrate(30);
+
+    if (enteredPin.length === 4) {
+      setTimeout(verifyPin, 150);
+    }
+  }
+}
+
+function clearPin() {
+  enteredPin = "";
+  updatePinDots();
+}
+
+function backspacePin() {
+  if (enteredPin.length > 0) {
+    enteredPin = enteredPin.slice(0, -1);
+    updatePinDots();
+  }
+}
+
+function verifyPin() {
+  const correctPin = localStorage.getItem(PIN_STORAGE_KEY) || "1234";
+  if (enteredPin === correctPin) {
+    localStorage.setItem(PIN_UNLOCKED_KEY, "true");
+    const lockScreen = document.getElementById("lockScreen");
+    if (lockScreen) {
+      lockScreen.style.opacity = "0";
+      lockScreen.style.transition = "opacity 0.25s ease";
+      setTimeout(() => {
+        lockScreen.style.display = "none";
+        lockScreen.style.opacity = "1";
+      }, 250);
+    }
+    showToast("🔓 Unlocked. Welcome, Rohit.");
+    enteredPin = "";
+  } else {
+    const keypad = document.querySelector(".pin-keypad");
+    if (keypad) {
+      keypad.classList.add("shake");
+      setTimeout(() => keypad.classList.remove("shake"), 350);
+    }
+    if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+    showToast("❌ Incorrect PIN. Try again.");
+    enteredPin = "";
+    updatePinDots();
+  }
+}
+
+function lockApp() {
+  localStorage.removeItem(PIN_UNLOCKED_KEY);
+  enteredPin = "";
+  updatePinDots();
+  const lockScreen = document.getElementById("lockScreen");
+  if (lockScreen) lockScreen.style.display = "flex";
+  showToast("🔒 System locked.");
+}
+
 // Cloud Settings Modal
 function openSettingsModal() {
   const modal = document.getElementById("settingsModal");
   const repoInput = document.getElementById("ghRepoInput");
   const tokenInput = document.getElementById("ghTokenInput");
+  const pinInput = document.getElementById("appPinInput");
 
   if (repoInput) repoInput.value = localStorage.getItem("apex_gh_repo") || "";
   if (tokenInput) tokenInput.value = localStorage.getItem("apex_gh_token") || "";
+  if (pinInput) pinInput.value = localStorage.getItem(PIN_STORAGE_KEY) || "1234";
   if (modal) modal.style.display = "flex";
 }
 
@@ -417,9 +502,11 @@ function closeSettingsModal() {
 function saveCloudSettings() {
   const repoInput = document.getElementById("ghRepoInput");
   const tokenInput = document.getElementById("ghTokenInput");
+  const pinInput = document.getElementById("appPinInput");
 
   const repo = repoInput ? repoInput.value.trim() : "";
   const token = tokenInput ? tokenInput.value.trim() : "";
+  const pin = pinInput ? pinInput.value.trim() : "";
 
   if (repo) localStorage.setItem("apex_gh_repo", repo);
   else localStorage.removeItem("apex_gh_repo");
@@ -427,8 +514,12 @@ function saveCloudSettings() {
   if (token) localStorage.setItem("apex_gh_token", token);
   else localStorage.removeItem("apex_gh_token");
 
+  if (pin && pin.length === 4) {
+    localStorage.setItem(PIN_STORAGE_KEY, pin);
+  }
+
   closeSettingsModal();
-  showToast("☁️ Cloud settings saved!");
+  showToast("☁️ Settings & PIN saved!");
 }
 
 function showSimulationResults(feedbackText) {

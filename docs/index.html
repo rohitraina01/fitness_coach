@@ -20,6 +20,7 @@
       </div>
     </div>
     <div class="header-right">
+      <button class="btn-cloud-settings" id="btnLockApp" onclick="lockApp()" title="Lock App">🔒</button>
       <button class="btn-cloud-settings" id="btnCloudSettings" onclick="openSettingsModal()" title="Cloud & Sync Settings">⚙️</button>
       <div class="bridge-status" id="bridgeStatusBadge">
         <span class="status-dot pulsing"></span>
@@ -27,6 +28,41 @@
       </div>
     </div>
   </header>
+
+  <!-- PIN Security Lock Screen -->
+  <div class="lock-screen-overlay" id="lockScreen" style="display:none;">
+    <div class="lock-box">
+      <div class="lock-brand">
+        <span class="lock-icon">🔒</span>
+        <h2>APEX COACH</h2>
+        <p>Private System • Enter PIN to Access</p>
+      </div>
+
+      <div class="pin-display" id="pinDisplay">
+        <span class="pin-dot" id="dot0"></span>
+        <span class="pin-dot" id="dot1"></span>
+        <span class="pin-dot" id="dot2"></span>
+        <span class="pin-dot" id="dot3"></span>
+      </div>
+
+      <div class="pin-keypad">
+        <button class="key-btn" onclick="pressPin('1')">1</button>
+        <button class="key-btn" onclick="pressPin('2')">2</button>
+        <button class="key-btn" onclick="pressPin('3')">3</button>
+        <button class="key-btn" onclick="pressPin('4')">4</button>
+        <button class="key-btn" onclick="pressPin('5')">5</button>
+        <button class="key-btn" onclick="pressPin('6')">6</button>
+        <button class="key-btn" onclick="pressPin('7')">7</button>
+        <button class="key-btn" onclick="pressPin('8')">8</button>
+        <button class="key-btn" onclick="pressPin('9')">9</button>
+        <button class="key-btn action" onclick="clearPin()">C</button>
+        <button class="key-btn" onclick="pressPin('0')">0</button>
+        <button class="key-btn action" onclick="backspacePin()">⌫</button>
+      </div>
+
+      <p class="pin-hint">Default PIN: <code>1234</code></p>
+    </div>
+  </div>
 
   <!-- Main View Container -->
   <main class="main-content">
@@ -397,6 +433,12 @@
         <label>GitHub Personal Access Token (PAT)</label>
         <input type="password" id="ghTokenInput" placeholder="ghp_xxxxxxxxxxxx">
         <span class="form-help">Requires 'repo' scope. Stored locally in your phone's browser only.</span>
+      </div>
+
+      <div class="form-group">
+        <label>Security PIN (4 Digits)</label>
+        <input type="password" id="appPinInput" maxlength="4" placeholder="1234">
+        <span class="form-help">Protects your workouts if someone accesses your public GitHub Pages link. Default: 1234</span>
       </div>
 
       <div class="modal-actions">
