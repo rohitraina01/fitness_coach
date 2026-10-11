@@ -13,6 +13,7 @@ import glob
 import json
 import time
 import threading
+import subprocess
 from datetime import datetime
 
 # Windows console encoding safety
@@ -303,14 +304,18 @@ def generate_instant_coach_guidance(prompt):
 
 def handle_action_directive(prompt, task):
     """
-    Parses action directives (e.g. 'add xyz to posture', 'update posture section', 'add note to log')
-    and executes real workspace file updates, committing and pushing to Git.
+    Parses action directives (e.g. 'update next session to legs', 'add xyz to posture', 'update posture section')
+    and executes real workspace file updates, committing and pushing to Git, and opening them in Antigravity IDE.
     Returns (handled: bool, message: str)
     """
     p_lower = prompt.lower()
-    is_action = any(w in p_lower for w in ["add", "append", "update", "record", "insert"]) and \
-                any(w in p_lower for w in ["posture", "rule", "instruction", "log", "note", "section", "program"])
     
+    action_verbs = ["add", "append", "update", "record", "insert", "change", "switch", "swap", "set", "make", "replace", "put", "swaping", "changing"]
+    target_nouns = ["session", "workout", "plan", "next", "posture", "poster", "rule", "instruction", "log", "note", "section", "program", "legs", "pull", "push", "day 3", "day 1", "day 2", "blueprint"]
+    
+    is_action = (any(w in p_lower for w in action_verbs) and any(w in p_lower for w in target_nouns)) or \
+                any(phrase in p_lower for phrase in ["can we update", "update my next", "swap workout", "switch workout", "swap session", "switch session", "next session to be", "next workout to be", "doing legs", "switch to legs", "swap to legs", "to be legs", "legs core and poster", "legs core and posture"])
+
     if not is_action:
         return False, ""
 
@@ -319,52 +324,12 @@ def handle_action_directive(prompt, task):
     target_path = None
     applied_note = ""
 
-    # 1. Posture Section Updates
-    if "posture" in p_lower or "apt" in p_lower:
-        target_path = os.path.join(BASE_DIR, "CURRENT_PROGRAM.md")
-        if os.path.exists(target_path):
-            with open(target_path, "r", encoding="utf-8") as f:
-                content = f.read()
-            
-            # Extract cue
-            cue = prompt
-            for prefix in [
-                "add instruction to posture", "add instruction in posture",
-                "add to posture section", "add to posture", "update posture",
-                "add some more instruction in posture", "add somemore instruction in posture",
-                "add more instruction in posture", "add xyz"
-            ]:
-                idx = p_lower.find(prefix)
-                if idx != -1:
-                    cue = prompt[idx + len(prefix):].lstrip(": ").strip()
-                    break
+    # 1. Next Session Blueprint Updates (e.g. Swapping to Day 3: Legs & Posture, or Pull, or Push)
+    is_session_target = any(w in p_lower for w in ["next session", "next workout", "swap workout", "switch workout", "swap session", "switch session", "update next", "update my next", "next to be", "legs core", "day 3", "legs and posture", "legs core and poster"]) or \
+                        (any(w in p_lower for w in ["session", "workout"]) and any(w in p_lower for w in ["legs", "poster", "posture", "pull", "push", "core", "lower"])) or \
+                        (any(w in p_lower for w in ["tired", "sore", "fatigue"]) and any(w in p_lower for w in ["legs", "poster", "core", "lower"]))
 
-            if not cue:
-                cue = prompt
-
-            new_entry = f"- **Remote Mobile Posture Cue ({now_str})**: {cue}\n"
-            anchor = "## 3. DAILY 5-MINUTE DESK WORKER POSTURE RESET (FOR 9-HR SITTING)"
-            if anchor in content:
-                content = content.replace(anchor, f"{anchor}\n{new_entry}")
-            else:
-                content += f"\n{new_entry}"
-
-            with open(target_path, "w", encoding="utf-8") as f:
-                f.write(content)
-            
-            target_file = "CURRENT_PROGRAM.md"
-            applied_note = cue
-
-    # 2. General Rule or Log Updates
-    elif any(w in p_lower for w in ["rule", "coaching"]):
-        target_path = os.path.join(BASE_DIR, "COACHING_RULES.md")
-        if os.path.exists(target_path):
-            with open(target_path, "a", encoding="utf-8") as f:
-                f.write(f"\n- **Remote Coaching Directives ({now_str})**: {prompt}\n")
-            target_file = "COACHING_RULES.md"
-            applied_note = prompt
-    # 3. Next Session Blueprint Updates (e.g. Swapping to Day 3: Legs & Posture)
-    elif any(w in p_lower for w in ["next session", "next workout", "session", "fumes"]):
+    if is_session_target:
         target_path = os.path.join(BASE_DIR, "CURRENT_NEXT_WORKOUT.md")
         day3_content = (
             "# NEXT WORKOUT: DAY 3 - LEGS & POSTURE (QUAD SWEEP, CALVES & ANTI-APT)\n\n"
@@ -383,7 +348,7 @@ def handle_action_directive(prompt, task):
             "  - **Stretch**: 3 sets x 12 reps.\n"
             "- **Form Cue**: High-foot placement shifts load away from the patellar tendon onto the quad sweep. Keep lumbar glued to seat pad—zero butt tuck or spinal rounding.\n\n"
             "---\n\n"
-            "### 2. Seated Leg Extension\n"
+            "### 2. Seated Leg Extension Machine\n"
             "- **Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: 0–1\n"
             "- **Targets**:\n"
             "  - **Floor**: 3 sets x 12 reps with strict tempo.\n"
@@ -421,6 +386,50 @@ def handle_action_directive(prompt, task):
         except Exception:
             pass
 
+    # 2. Posture Section Updates in CURRENT_PROGRAM.md
+    elif any(w in p_lower for w in ["posture", "poster", "apt", "desk reset"]) and any(w in p_lower for w in ["add", "append", "instruction", "cue", "rule", "section"]):
+        target_path = os.path.join(BASE_DIR, "CURRENT_PROGRAM.md")
+        if os.path.exists(target_path):
+            with open(target_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            
+            cue = prompt
+            for prefix in [
+                "add instruction to posture", "add instruction in posture",
+                "add to posture section", "add to posture", "update posture",
+                "add some more instruction in posture", "add somemore instruction in posture",
+                "add more instruction in posture", "add xyz"
+            ]:
+                idx = p_lower.find(prefix)
+                if idx != -1:
+                    cue = prompt[idx + len(prefix):].lstrip(": ").strip()
+                    break
+
+            if not cue:
+                cue = prompt
+
+            new_entry = f"- **Remote Mobile Posture Cue ({now_str})**: {cue}\n"
+            anchor = "## 3. DAILY 5-MINUTE DESK WORKER POSTURE RESET (FOR 9-HR SITTING)"
+            if anchor in content:
+                content = content.replace(anchor, f"{anchor}\n{new_entry}")
+            else:
+                content += f"\n{new_entry}"
+
+            with open(target_path, "w", encoding="utf-8") as f:
+                f.write(content)
+            
+            target_file = "CURRENT_PROGRAM.md"
+            applied_note = cue
+
+    # 3. General Rule or Log Updates in COACHING_RULES.md
+    elif any(w in p_lower for w in ["rule", "coaching"]):
+        target_path = os.path.join(BASE_DIR, "COACHING_RULES.md")
+        if os.path.exists(target_path):
+            with open(target_path, "a", encoding="utf-8") as f:
+                f.write(f"\n- **Remote Coaching Directives ({now_str})**: {prompt}\n")
+            target_file = "COACHING_RULES.md"
+            applied_note = prompt
+
     if target_file and target_path:
         task["events"].append({
             "time": datetime.now().strftime("%H:%M:%S"),
@@ -442,7 +451,7 @@ def handle_action_directive(prompt, task):
             if push_res.returncode == 0:
                 task["events"].append({
                     "time": datetime.now().strftime("%H:%M:%S"),
-                    "type": "git",
+                    "type": "git_success",
                     "text": "Pushed to GitHub successfully! Remote live on master."
                 })
         except Exception as e:
@@ -452,11 +461,18 @@ def handle_action_directive(prompt, task):
                 "text": f"Git sync note: {str(e)[:60]}"
             })
 
+        # Open modified file in Antigravity IDE on laptop so the user sees it immediately on screen
+        try:
+            subprocess.Popen(["agy.cmd", "-r", target_path], cwd=BASE_DIR, shell=True)
+        except Exception:
+            pass
+
         response_msg = (
             f"✅ **DIRECTIVE EXECUTED & COMMITTED TO SYSTEM**\n\n"
             f"• **Action**: Updated `{target_file}`\n"
             f"• **Details**: {applied_note}\n"
             f"• **Git Sync**: Committed [{git_hash or 'HEAD'}] and pushed to `origin/master`.\n"
+            f"• **IDE Sync**: Active file opened on laptop screen in Antigravity IDE.\n"
             f"• **Live Status**: All files and mobile exports are refreshed and live! View the updated blueprint in the app."
         )
         return True, response_msg
