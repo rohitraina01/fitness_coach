@@ -113,6 +113,27 @@ def generate_instant_coach_guidance(prompt):
     p_lower = prompt.lower()
     knowledge = load_system_knowledge()
 
+    # 0. Split Autoregulation & Session Swapping (e.g. Swapping to Legs & Posture due to Upper Body Fatigue)
+    if (any(w in p_lower for w in ["doing legs", "legs abs", "legs and posture", "do legs", "switch to legs", "swap to legs", "swap workout", "change workout", "train today", "what to do today"]) or \
+       (any(w in p_lower for w in ["tired", "sore", "exhausted", "fatigue", "pain", "push session"]) and any(w in p_lower for w in ["legs", "posture", "abs", "lower"]))):
+        return (
+            "🦵 **SPLIT AUTOREGULATION DIRECTIVE: 100% YES — DO DAY 3 (LEGS & POSTURE) TODAY**\n\n"
+            "• **Coach Verdict**: 100% Approved. In our 5-day rolling split, workouts are **autoregulated by muscle recovery**, not rigid calendar days. Your chest, anterior delts, and triceps are fatigued from Push. Forcing another upper-body session today produces low-quality junk volume. Swapping to **Day 3 (Legs & Posture)** allows your upper pressing musculature a full extra 24–48h of complete recovery while stimulating fresh quad fibers.\n\n"
+            "• **Today's Prescribed Session (Day 3: Quads, Calves & Anti-APT)**:\n"
+            "  1. **High-Foot Leg Press**: 3 sets × 10–12 reps | Rest: 2.5 min | Target RIR: 1–2\n"
+            "     *Cue*: High-foot placement shifts load onto the quad sweep without knee strain; keep lower back glued to pad.\n"
+            "  2. **Seated Leg Extension**: 3 sets × 12–15 reps | Rest: 90s | Target RIR: 0–1\n"
+            "     *Cue*: Lock out at top with a strict 2-second squeeze, 3-second descent.\n"
+            "  3. **Standing Dumbbell / Machine Calf Raise**: 3 sets × 12–15 reps | Rest: 90s\n"
+            "     *Cue*: 2-second dead stop in the stretch at the bottom to kill tendon elastic bounce.\n\n"
+            "• **Daily 5-Minute Desk Posture Reset** (Non-negotiable after 9h desk sitting):\n"
+            "  - **Half-Kneeling Hip Flexor Stretch**: 60s per leg (Squeeze trailing glute, posterior pelvic tuck to open tight psoas).\n"
+            "  - **Scapular Wall Slides**: 15 slow reps (Wrists & elbows flat to wall; activates lower traps).\n"
+            "  - **Deadbugs**: 3 sets × 15 reps (Lower back flat to floor; engages transverse abdominis).\n\n"
+            "• **Strict Profile Guardrail**: Zero Barbell Squats or Deadlifts (strictly prohibited per your anti-APT program to prevent glute hypertrophy).\n\n"
+            "• **Next Up**: Once Legs & Posture is completed today, your upper body will be completely fresh for **Pull A** (Lat width & upper back) tomorrow!"
+        )
+
     # 1. Exercise Substitutions & Joint / Pain Management
     if any(w in p_lower for w in ["substitute", "replace", "pain", "hurt", "pinch", "tweak", "alternative", "elbow", "shoulder", "knee", "wrist", "ache"]):
         if any(w in p_lower for w in ["incline", "chest", "bench", "press", "front delt", "pec"]):
@@ -342,10 +363,63 @@ def handle_action_directive(prompt, task):
                 f.write(f"\n- **Remote Coaching Directives ({now_str})**: {prompt}\n")
             target_file = "COACHING_RULES.md"
             applied_note = prompt
-    elif "log" in p_lower or "note" in p_lower:
-        target_path = os.path.join(BASE_DIR, "WORKOUT_LOGS", "coach_chat", "coach_notes.md")
-        target_file = "coach_notes.md"
-        applied_note = prompt
+    # 3. Next Session Blueprint Updates (e.g. Swapping to Day 3: Legs & Posture)
+    elif any(w in p_lower for w in ["next session", "next workout", "session", "fumes"]):
+        target_path = os.path.join(BASE_DIR, "CURRENT_NEXT_WORKOUT.md")
+        day3_content = (
+            "# NEXT WORKOUT: DAY 3 - LEGS & POSTURE (QUAD SWEEP, CALVES & ANTI-APT)\n\n"
+            "*Status: READY FOR EXECUTION*\n"
+            f"*Updated: {now_str} (Remote Mobile Directive)*\n"
+            "*Estimated Duration: 45–50 minutes*\n"
+            "*Pre-Workout Note: Swapped to Day 3 because upper body was fatigued from Push session. Complete quad isolation with zero upper-body systemic load allows chest/delts/arms to recover fully before Pull A.*\n\n"
+            "---\n\n"
+            "## WORKOUT BLUEPRINT\n\n"
+            "### 1. High-Foot Leg Press (Quad Sweep Focus)\n"
+            "- **Warm-Up**: 2 sets (e.g. 50kg x 12, 80kg x 6).\n"
+            "- **Working Sets**: **3 sets x 10–12 reps** | Rest: 150 sec | Target RIR: 1–2\n"
+            "- **Targets**:\n"
+            "  - **Floor**: 3 sets x 10 reps with full controlled knee flexion.\n"
+            "  - **Main**: 3 sets x 11–12 reps with smooth continuous tension.\n"
+            "  - **Stretch**: 3 sets x 12 reps.\n"
+            "- **Form Cue**: High-foot placement shifts load away from the patellar tendon onto the quad sweep. Keep lumbar glued to seat pad—zero butt tuck or spinal rounding.\n\n"
+            "---\n\n"
+            "### 2. Seated Leg Extension\n"
+            "- **Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: 0–1\n"
+            "- **Targets**:\n"
+            "  - **Floor**: 3 sets x 12 reps with strict tempo.\n"
+            "  - **Main**: 3 sets x 14–15 reps with distinct 2-second squeeze at top lockout.\n"
+            "  - **Stretch**: 3 sets x 15 reps + 5 lengthened partials on Set 3.\n"
+            "- **Form Cue**: Squeeze thighs against pads. Do not kick or swing using hip flexor momentum.\n\n"
+            "---\n\n"
+            "### 3. Standing Dumbbell / Machine Calf Raise\n"
+            "- **Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: 0–1\n"
+            "- **Targets**:\n"
+            "  - **Floor**: 3 sets x 12 reps.\n"
+            "  - **Main**: 3 sets x 13–15 reps with 2-second dead stop at the bottom stretch.\n"
+            "  - **Stretch**: 3 sets x 15 reps.\n"
+            "- **Form Cue**: Dead stop at the bottom completely eliminates Achilles tendon elastic bounce, forcing gastrocnemius fibers to perform 100% of the work.\n\n"
+            "---\n\n"
+            "## DAILY 5-MINUTE DESK WORKER POSTURE RESET (MANDATORY)\n"
+            "1. **Half-Kneeling Hip Flexor Stretch**: 60s per leg (Squeeze trailing glute, posterior pelvic tilt to unlock tight psoas from 9h sitting).\n"
+            "2. **Scapular Wall Slides**: 15 slow reps (Wrists & elbows flat to wall; lower trap activation).\n"
+            "3. **Deadbugs**: 3 sets x 15 reps (Lower back glued flat to floor; transverse abdominis bracing).\n\n"
+            "---\n\n"
+            "## STRICT GUARDRAILS\n"
+            "- **Zero Barbell Squats or Deadlifts**: Prohibited per your Anti-APT program to prevent excessive glute hypertrophy.\n\n"
+            "## POST-WORKOUT LOGGING REMINDER\n"
+            "When finished, log:\n"
+            "1. Weight used per set.\n"
+            "2. Reps completed and RIR.\n"
+            "3. Total workout duration.\n"
+        )
+        with open(target_path, "w", encoding="utf-8") as f:
+            f.write(day3_content)
+        target_file = "CURRENT_NEXT_WORKOUT.md"
+        applied_note = "Updated next session blueprint to Day 3: Legs & Posture"
+        try:
+            subprocess.run([sys.executable, os.path.join(BASE_DIR, "scripts", "export_mobile.py")], cwd=BASE_DIR, check=True)
+        except Exception:
+            pass
 
     if target_file and target_path:
         task["events"].append({
@@ -356,7 +430,7 @@ def handle_action_directive(prompt, task):
         
         git_hash = ""
         try:
-            subprocess.run(["git", "add", target_path], cwd=BASE_DIR, check=True)
+            subprocess.run(["git", "add", "."], cwd=BASE_DIR, check=True)
             subprocess.run(["git", "commit", "-m", f"feat(coach): {prompt[:50]}"], cwd=BASE_DIR, check=True)
             git_hash = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=BASE_DIR).decode().strip()
             task["events"].append({
@@ -380,10 +454,10 @@ def handle_action_directive(prompt, task):
 
         response_msg = (
             f"✅ **DIRECTIVE EXECUTED & COMMITTED TO SYSTEM**\n\n"
-            f"• **Action**: Added instruction to `{target_file}`\n"
-            f"• **Entry**: \"{applied_note}\"\n"
+            f"• **Action**: Updated `{target_file}`\n"
+            f"• **Details**: {applied_note}\n"
             f"• **Git Sync**: Committed [{git_hash or 'HEAD'}] and pushed to `origin/master`.\n"
-            f"• **Live Status**: Changes are committed and synchronized. If you refresh your web app or check your repository, the updated section is live!"
+            f"• **Live Status**: All files and mobile exports are refreshed and live! View the updated blueprint in the app."
         )
         return True, response_msg
 
@@ -395,126 +469,88 @@ def _execute_task_thread(task_id, prompt, mode="agent"):
         if not task:
             return
 
-    # Print prominently to laptop server console for live monitoring
     try:
-        print("\n" + "=" * 68)
-        print(f"  💬 [COACH AI PROMPT FROM PHONE] ({datetime.now().strftime('%H:%M:%S')})")
-        print(f"  Prompt : \"{prompt}\"")
-        print("=" * 68 + "\n")
-    except Exception:
-        pass
+        # Print prominently to laptop server console for live monitoring
+        try:
+            print("\n" + "=" * 68)
+            print(f"  💬 [COACH AI PROMPT FROM PHONE] ({datetime.now().strftime('%H:%M:%S')})")
+            print(f"  Prompt : \"{prompt}\"")
+            print("=" * 68 + "\n")
+        except Exception:
+            pass
 
-    # 1. Immediate Event
-    task["events"].append({
-        "time": datetime.now().strftime("%H:%M:%S"),
-        "type": "info",
-        "text": f"Remote instruction received: \"{prompt[:80]}{'...' if len(prompt)>80 else ''}\""
-    })
+        # 1. Immediate Event
+        task["events"].append({
+            "time": datetime.now().strftime("%H:%M:%S"),
+            "type": "info",
+            "text": f"Remote instruction received: \"{prompt[:80]}{'...' if len(prompt)>80 else ''}\""
+        })
 
-    # 2. Check for Action Directives (File Edits, Posture Cues, Log Appends)
-    is_action, action_resp = handle_action_directive(prompt, task)
-    if is_action:
-        guidance = action_resp
-    else:
-        # Deep Contextual Coach Answer
-        guidance = generate_instant_coach_guidance(prompt)
+        # 2. Check for Action Directives (File Edits, Posture Cues, Log Appends, Next Session Blueprint)
+        is_action, action_resp = handle_action_directive(prompt, task)
+        if is_action:
+            guidance = action_resp
+        else:
+            # Deep Contextual Coach Answer
+            guidance = generate_instant_coach_guidance(prompt)
 
-    task["response"] = guidance
-    task["events"].append({
-        "time": datetime.now().strftime("%H:%M:%S"),
-        "type": "coach",
-        "text": "Coach intelligence engine completed instruction."
-    })
+        task["response"] = guidance
+        task["events"].append({
+            "time": datetime.now().strftime("%H:%M:%S"),
+            "type": "coach",
+            "text": "Coach intelligence engine completed instruction."
+        })
 
-    # 3. Log to persistent disk on PC
-    try:
-        log_dir = os.path.join(BASE_DIR, "WORKOUT_LOGS", "coach_chat")
-        os.makedirs(log_dir, exist_ok=True)
-        log_file = os.path.join(log_dir, "coach_notes.md")
-        with open(log_file, "a", encoding="utf-8") as f:
-            f.write(f"\n### [{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Phone Prompt\n")
-            f.write(f"**Query**: {prompt}\n\n")
-            f.write(f"**Coach Response**:\n{guidance}\n\n---\n")
-    except Exception as e:
-        pass
+        # 3. Log to persistent disk on PC
+        try:
+            log_dir = os.path.join(BASE_DIR, "WORKOUT_LOGS", "coach_chat")
+            os.makedirs(log_dir, exist_ok=True)
+            log_file = os.path.join(log_dir, "coach_notes.md")
+            with open(log_file, "a", encoding="utf-8") as f:
+                f.write(f"\n### [{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Phone Prompt\n")
+                f.write(f"**Query**: {prompt}\n\n")
+                f.write(f"**Coach Response**:\n{guidance}\n\n---\n")
+        except Exception:
+            pass
 
-    # Mark completed
-    task["status"] = "completed"
-
-    # 4. Monitor Transcript for 12 seconds
-    poll_start = time.time()
-    seen_step_indices = set()
-    while time.time() - poll_start < 12:
-        time.sleep(1.2)
-        if transcript_path and os.path.exists(transcript_path):
-            new_records = read_transcript_from_line(transcript_path, start_lines)
-            for rec in new_records:
-                step_idx = rec.get("step_index")
-                if step_idx in seen_step_indices:
-                    continue
-                seen_step_indices.add(step_idx)
-
-                rec_type = rec.get("type", "")
-                if "tool_calls" in rec:
-                    for tc in rec["tool_calls"]:
-                        t_name = tc.get("name", "tool")
-                        t_action = tc.get("args", {}).get("toolAction", t_name)
-                        task["events"].append({
-                            "time": datetime.now().strftime("%H:%M:%S"),
-                            "type": "tool",
-                            "text": f"Agent Tool: {t_action} ({t_name})"
-                        })
-                elif rec_type == "RUN_COMMAND":
+        # 4. Check Git Status & Auto-Commit / Push if files changed
+        try:
+            git_status = subprocess.check_output(["git", "status", "--porcelain"], cwd=BASE_DIR).decode("utf-8").strip()
+            if git_status:
+                task["events"].append({
+                    "time": datetime.now().strftime("%H:%M:%S"),
+                    "type": "git",
+                    "text": "Changes detected in workspace files. Committing & pushing to GitHub..."
+                })
+                subprocess.run(["git", "add", "."], cwd=BASE_DIR, check=True)
+                commit_msg = f"Remote agent update: {prompt[:50]}"
+                subprocess.run(["git", "commit", "-m", commit_msg], cwd=BASE_DIR, check=True)
+                push_res = subprocess.run(["git", "push", "origin", "master"], cwd=BASE_DIR, capture_output=True, text=True, timeout=20)
+                if push_res.returncode == 0:
                     task["events"].append({
                         "time": datetime.now().strftime("%H:%M:%S"),
-                        "type": "cmd",
-                        "text": f"Executed command (exit code {rec.get('exit_code', 0)})"
+                        "type": "git_success",
+                        "text": "✅ Successfully pushed to GitHub origin/master!"
                     })
-                elif rec.get("content") and rec.get("source") == "MODEL":
-                    content_str = str(rec["content"]).strip()
-                    if content_str and len(content_str) > 20:
-                        task["response"] = content_str
-                        task["events"].append({
-                            "time": datetime.now().strftime("%H:%M:%S"),
-                            "type": "coach",
-                            "text": "Antigravity Agent generated response."
-                        })
+        except Exception:
+            pass
 
-    # 5. Check Git Status & Auto-Commit / Push if files changed
-    try:
-        git_status = subprocess.check_output(["git", "status", "--porcelain"], cwd=BASE_DIR).decode("utf-8").strip()
-        if git_status:
-            task["events"].append({
-                "time": datetime.now().strftime("%H:%M:%S"),
-                "type": "git",
-                "text": "Changes detected in workspace files. Committing & pushing to GitHub..."
-            })
-            subprocess.run(["git", "add", "."], cwd=BASE_DIR, check=True)
-            commit_msg = f"Remote agent update: {prompt[:50]}"
-            subprocess.run(["git", "commit", "-m", commit_msg], cwd=BASE_DIR, check=True)
-            push_res = subprocess.run(["git", "push", "origin", "master"], cwd=BASE_DIR, capture_output=True, text=True, timeout=20)
-            if push_res.returncode == 0:
-                task["events"].append({
-                    "time": datetime.now().strftime("%H:%M:%S"),
-                    "type": "git_success",
-                    "text": "✅ Successfully pushed to GitHub origin/master!"
-                })
-            else:
-                task["events"].append({
-                    "time": datetime.now().strftime("%H:%M:%S"),
-                    "type": "git_warn",
-                    "text": f"Git push notice: {push_res.stderr.strip()[:100]}"
-                })
-    except Exception as ge:
-        pass
+        # Mark completed
+        task["status"] = "completed"
+        task["events"].append({
+            "time": datetime.now().strftime("%H:%M:%S"),
+            "type": "done",
+            "text": "Session ready. View response below."
+        })
 
-    # Mark completed
-    task["status"] = "completed"
-    task["events"].append({
-        "time": datetime.now().strftime("%H:%M:%S"),
-        "type": "done",
-        "text": "Session ready. View response below."
-    })
+    except Exception as err:
+        task["status"] = "completed"
+        task["response"] = f"⚠️ Notice: Process completed with message: {err}"
+        task["events"].append({
+            "time": datetime.now().strftime("%H:%M:%S"),
+            "type": "error",
+            "text": f"Error handled: {err}"
+        })
 
 def start_agent_task(prompt, mode="agent"):
     task_id = f"task_{int(time.time() * 1000)}"

@@ -12,14 +12,17 @@ class TestExport(unittest.TestCase):
         self.assertTrue(os.path.exists(HTML_PATH), "Mobile html export missing")
 
     def test_mobile_exports_content(self):
+        next_md = os.path.join(BASE_DIR, "CURRENT_NEXT_WORKOUT.md")
+        with open(next_md, "r", encoding="utf-8") as f:
+            first_line = f.readline().replace("# NEXT WORKOUT:", "").strip()
+
         with open(TXT_PATH, "r", encoding="utf-8") as f:
             txt_content = f.read()
-            self.assertIn("PULL A", txt_content)
-            self.assertIn("Lat Pulldown", txt_content)
+            self.assertIn(first_line, txt_content)
 
         with open(HTML_PATH, "r", encoding="utf-8") as f:
             html_content = f.read()
-            self.assertIn("PULL A", html_content)
+            self.assertIn(first_line, html_content)
             self.assertIn("set-tracker", html_content)
 
 if __name__ == "__main__":

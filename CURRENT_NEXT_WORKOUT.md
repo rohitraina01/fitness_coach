@@ -1,78 +1,59 @@
-# NEXT WORKOUT: PULL A (LAT WIDTH, UPPER BACK & BICEPS)
+# NEXT WORKOUT: DAY 3 - LEGS & POSTURE (QUAD SWEEP, CALVES & ANTI-APT)
 
 *Status: READY FOR EXECUTION*  
 *Target Date: 2026-10-11 or 2026-10-12*  
-*Estimated Duration: 55–60 minutes*  
-*Pre-Workout Note: Last session completed was Push on 2026-10-10. Today is Pull A. Focus on strict elbow drive to hip pockets, not yanking with biceps.*
+*Estimated Duration: 45–50 minutes*  
+*Pre-Workout Note: Swapped to Day 3 because upper body was fatigued from the Push session. Pure quad isolation and calf loading with zero upper body systemic stress allows pecs/delts/arms to recover fully before Pull A.*
 
 ---
 
 ## WORKOUT BLUEPRINT
 
-### 1. Lat Pulldown (Neutral or Moderate Overhand Grip)
-- **Warm-Up**: 2 warm-up sets (e.g. 35 kg x 12, 50 kg x 6).
-- **Working Sets**: **3 sets x 8–10 reps** | Rest: 150 sec | Target RIR: 1–2
+### 1. High-Foot Leg Press (Quad Sweep Focus)
+- **Warm-Up**: 2 sets (e.g. 50 kg x 12, 80 kg x 6).
+- **Working Sets**: **3 sets x 10–12 reps** | Rest: 150 sec | Target RIR: 1–2
 - **Targets**:
-  - **Floor / Minimum**: Establish solid baseline with strict form: 3 sets of 8 reps @ controlled weight.
-  - **Main Target**: 3 sets of 9–10 reps with 2-second negative and full stretch at the top.
-  - **Stretch Target**: Clear 3 sets of 10 reps cleanly $\rightarrow$ earned load progression next session.
-- **Stop Cue**: If torso swings back past 20° to jerk the cable, the set is complete.
+  - **Floor / Minimum**: 3 sets x 10 reps with full controlled knee flexion.
+  - **Main Target**: 3 sets x 11–12 reps with smooth continuous tension.
+  - **Stretch Target**: 3 sets x 12 reps @ earned load jump.
+- **Form Cue**: High-foot placement shifts load away from the patellar tendon onto the quad sweep. Keep lumbar glued to seat pad—zero butt tuck or spinal rounding.
 
 ---
 
-### 2. Chest-Supported Row Machine
-- **Working Sets**: **3 sets x 8–10 reps** | Rest: 120 sec | Target RIR: 1–2
-- **Targets**:
-  - **Floor / Minimum**: 3 sets x 8 reps with chest firmly glued to pad.
-  - **Main Target**: 3 sets x 9–10 reps with a distinct 1-second pause at peak scapular contraction.
-  - **Stretch Target**: 3 sets x 10 reps with full retraction on every rep.
-- **Form Cue**: Flare elbows ~45°. Do not pull with traps/neck; drive through the elbows.
-
----
-
-### 3. Straight-Arm Cable Pulldown
+### 2. Seated Leg Extension
 - **Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: 0–1
 - **Targets**:
-  - **Floor / Minimum**: 3 sets x 12 reps with zero elbow bend alteration.
-  - **Main Target**: 3 sets x 13–15 reps feeling pure lat burn in bottom 30% of range.
-  - **Stretch Target**: 3 sets x 15 reps.
-- **Form Cue**: Hips hinged back. Sweep bar down in a wide arc until it touches quads.
+  - **Floor / Minimum**: 3 sets x 12 reps with strict tempo.
+  - **Main Target**: 3 sets x 14–15 reps with distinct 2-second squeeze at top lockout.
+  - **Stretch Target**: 3 sets x 15 reps + 5 lengthened partials on Set 3.
+- **Form Cue**: Squeeze thighs against pads. Do not kick or swing using hip flexor momentum.
 
 ---
 
-### 4. Reverse Pec Deck (Rear Delt Fly)
+### 3. Standing Dumbbell / Machine Calf Raise
 - **Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: 0–1
 - **Targets**:
   - **Floor / Minimum**: 3 sets x 12 reps.
-  - **Main Target**: 3 sets x 14–15 reps with deliberate horizontal abduction.
-  - **Stretch Target**: 3 sets x 15 reps + 5 partials in lengthened stretch.
-- **Form Cue**: Do not pinch shoulder blades. Keep arms nearly straight; focus on the posterior shoulder.
+  - **Main Target**: 3 sets x 13–15 reps with 2-second dead stop at the bottom stretch.
+  - **Stretch Target**: 3 sets x 15 reps.
+- **Form Cue**: Dead stop at the bottom completely eliminates Achilles tendon elastic bounce, forcing gastrocnemius fibers to perform 100% of the work.
 
 ---
 
-### 5. Standing Cable Bicep Curl
-- **Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: 0–1
-- **Targets**:
-  - **Floor / Minimum**: 3 sets x 10 reps with zero elbow drift forward.
-  - **Main Target**: 3 sets x 11–12 reps with constant tension.
-  - **Stretch Target**: 3 sets x 12 reps + 1 drop set (-30% weight) on Set 3.
-- **Form Cue**: Pin elbows at your sides. Squeeze biceps hard at top of contraction.
+## DAILY 5-MINUTE DESK WORKER POSTURE RESET (MANDATORY)
+1. **Half-Kneeling Hip Flexor Stretch**: 60s per leg (Squeeze trailing glute, posterior pelvic tilt to unlock tight psoas from 9h sitting).
+2. **Scapular Wall Slides**: 15 slow reps (Wrists & elbows flat to wall; lower trap activation).
+3. **Deadbugs**: 3 sets x 15 reps (Lower back glued flat to floor; transverse abdominis bracing).
 
 ---
 
-### 6. Dumbbell Hammer Curl
-- **Working Sets**: **3 sets x 8–10 reps** | Rest: 90 sec | Target RIR: 0–1
-- **Targets**:
-  - **Floor / Minimum**: 3 sets x 8 reps with neutral grip dumbbells (e.g. 10–12 kg).
-  - **Main Target**: 3 sets x 9–10 reps with slow eccentric.
-  - **Stretch Target**: 3 sets x 10 reps.
-- **Form Cue**: Palms face each other throughout. Builds forearm thickness and brachialis to push bicep up.
+## STRICT GUARDRAILS
+- **Zero Barbell Squats or Deadlifts**: Prohibited per your Anti-APT program to prevent excessive glute hypertrophy.
 
 ---
 
 ## POST-WORKOUT LOGGING REMINDER
 When finished, log:
-1. Weight used per set (e.g., "Lat Pulldown: 55kg x 10, 10, 8").
-2. Estimated RIR on each set.
-3. Any machine quirks or grip fatigue.
-4. Total workout duration.
+1. Weight used per set.
+2. Reps completed and RIR.
+3. Total workout duration.
