@@ -219,5 +219,62 @@ def export():
         f.write(html_content)
     print(f"Mobile HTML exported: {HTML_OUTPUT}")
 
+    # 3. JSON Export for Mobile Web App
+    import json
+    json_exercises = []
+    for ex in exercises:
+        target = "3 sets x 8–12 reps"
+        cue = ""
+        sets_count = 3
+        for d in ex["details"]:
+            if "Working Sets" in d:
+                target = d.replace("**Working Sets**:", "").strip()
+            elif "Targets:" in d and target == "3 sets x 8–12 reps":
+                target = d.replace("- Targets:", "").strip()
+            elif "Form Cue" in d:
+                cue = d.replace("**Form Cue**:", "").strip()
+            elif "Stop Cue" in d:
+                cue = d.replace("**Stop Cue**:", "").strip()
+        
+        m_sets = re.search(r"(\d+)\s*sets", target, re.IGNORECASE)
+        if m_sets:
+            try:
+                sets_count = int(m_sets.group(1))
+            except Exception:
+                pass
+                
+        json_exercises.append({
+            "name": ex["name"],
+            "target": target,
+            "cue": cue,
+            "sets": sets_count
+        })
+
+    subtitle = "Evidence-Based Hypertrophy • 5-Day Aesthetic Split"
+    for line in content.splitlines():
+        if "Pre-Workout Note:" in line:
+            subtitle = line.replace("*Pre-Workout Note:", "").rstrip("*").strip()
+            break
+
+    workout_json_data = {
+        "title": title,
+        "subtitle": subtitle,
+        "exercises": json_exercises,
+        "raw_markdown": content
+    }
+
+    for j_path in [
+        os.path.join(OUTPUT_DIR, "next_workout.json"),
+        os.path.join(BASE_DIR, "docs", "next_workout.json"),
+        os.path.join(BASE_DIR, "bridge", "web", "next_workout.json")
+    ]:
+        try:
+            os.makedirs(os.path.dirname(j_path), exist_ok=True)
+            with open(j_path, "w", encoding="utf-8") as jf:
+                json.dump(workout_json_data, jf, indent=2)
+            print(f"Mobile JSON exported: {j_path}")
+        except Exception as je:
+            print(f"Error writing {j_path}: {je}")
+
 if __name__ == "__main__":
     export()

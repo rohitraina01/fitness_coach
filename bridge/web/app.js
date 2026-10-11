@@ -290,30 +290,103 @@ async function fetchDashboardData() {
   }
 }
 
-// 4. Render Next Workout
-const FALLBACK_EXERCISES = [
-  { name: "Lat Pulldown (Neutral Grip)", target: "3 sets x 8–10 reps @ 50kg", cue: "Slight torso lean, drive elbows into hip pockets. Full stretch." },
-  { name: "Chest-Supported Row", target: "3 sets x 8–10 reps @ 25kg", cue: "Chest glued to pad, elbows 45°, 1s squeeze on retraction." },
-  { name: "Straight-Arm Pulldown", target: "3 sets x 12–15 reps @ 15–20kg", cue: "Soft elbows. Arc bar into quads. Lat isolation." },
-  { name: "Reverse Pec Deck (Rear Delt)", target: "3 sets x 12–15 reps @ 15kg", cue: "Horizontal abduction. Zero upper trap shrugging." },
-  { name: "Standing Cable Bicep Curl", target: "3 sets x 10–12 reps @ 20–22.5kg", cue: "Upper arms vertical by sides. Constant cable tension." },
-  { name: "Dumbbell Hammer Curl", target: "3 sets x 8–10 reps @ 7.5kg", cue: "Neutral grip. Builds arm thickness and brachialis." }
-];
+// 4. Render Next Workout (Dynamic from CURRENT_NEXT_WORKOUT.md and next_workout.json)
+function parseWorkoutMarkdown(mdText) {
+  if (!mdText) return null;
+  const lines = mdText.split("\n");
+  let title = "NEXT WORKOUT";
+  let subtitle = "Evidence-Based Hypertrophy • 5-Day Aesthetic Split";
+  const exercises = [];
+  let currentEx = null;
 
-function renderWorkout(data) {
+  for (let line of lines) {
+    line = line.trim();
+    if (line.startsWith("# NEXT WORKOUT:")) {
+      title = line.replace("# NEXT WORKOUT:", "").trim();
+    } else if (line.includes("Pre-Workout Note:")) {
+      subtitle = line.replace(/^[*-]+\s*Pre-Workout Note:\s*/, "").replace(/[*-]+$/, "").trim();
+    } else if (line.startsWith("### ")) {
+      if (currentEx) exercises.push(currentEx);
+      const exName = line.replace("### ", "").trim();
+      currentEx = { name: exName, target: "3 sets x 8–12 reps", cue: "", sets: 3 };
+    } else if (currentEx) {
+      if (line.includes("Working Sets:")) {
+        currentEx.target = line.replace(/^[*-]+\s*\*\*Working Sets\*\*:\s*/, "").replace(/\*\*/g, "").trim();
+      } else if (line.includes("Targets:") && currentEx.target === "3 sets x 8–12 reps") {
+        currentEx.target = line.replace(/^[*-]+\s*Targets:\s*/, "").trim();
+      } else if (line.includes("Form Cue:")) {
+        currentEx.cue = line.replace(/^[*-]+\s*\*\*Form Cue\*\*:\s*/, "").trim();
+      } else if (line.includes("Stop Cue:") && !currentEx.cue) {
+        currentEx.cue = line.replace(/^[*-]+\s*\*\*Stop Cue\*\*:\s*/, "").trim();
+      }
+    }
+  }
+  if (currentEx) exercises.push(currentEx);
+
+  return exercises.length > 0 ? { title, subtitle, exercises } : null;
+}
+
+async function renderWorkout(data) {
+  let workout = null;
+
+  if (data && data.next_workout_markdown) {
+    workout = parseWorkoutMarkdown(data.next_workout_markdown);
+  }
+
+  if (!workout) {
+    try {
+      const res = await fetch("next_workout.json");
+      if (res.ok) {
+        workout = await res.json();
+      }
+    } catch (e) {}
+  }
+
+  if (!workout) {
+    const cached = localStorage.getItem("apex_cached_next_workout");
+    if (cached) {
+      try { workout = JSON.parse(cached); } catch (e) {}
+    }
+  }
+
+  if (!workout || !workout.exercises || workout.exercises.length === 0) {
+    workout = {
+      title: "DAY 3 • LEGS & POSTURE (QUAD SWEEP & ANTI-APT)",
+      subtitle: "Swapped to Day 3 for upper body recovery. Complete quad & calf isolation.",
+      exercises: [
+        { name: "High-Foot Leg Press", target: "3 sets x 10–12 reps @ RIR 1–2", cue: "High-foot placement shifts load onto quad sweep without knee strain; keep lumbar glued to seat." },
+        { name: "Seated Leg Extension", target: "3 sets x 12–15 reps @ RIR 0–1", cue: "Hold a strict 2-second squeeze at peak lockout; slow 3-second descent." },
+        { name: "Standing Calf Raise", target: "3 sets x 12–15 reps", cue: "2-second dead stop in the stretch at the bottom to kill tendon elastic bounce." },
+        { name: "Half-Kneeling Hip Flexor Stretch", target: "60s per leg", cue: "Squeeze trailing glute, posterior pelvic tuck to open tight psoas from 9h sitting." },
+        { name: "Deadbugs (Lower Abs Bracing)", target: "3 sets x 15 reps", cue: "Lower back glued 100% flat to floor. Transverse abdominis bracing." }
+      ]
+    };
+  }
+
+  localStorage.setItem("apex_cached_next_workout", JSON.stringify(workout));
+
+  // Update Header UI
+  const titleEl = document.getElementById("sessionTitle");
+  const subEl = document.getElementById("sessionSubtitle");
+  const badgeEl = document.getElementById("sessionBadge");
+  if (titleEl) titleEl.innerText = workout.title;
+  if (subEl) subEl.innerText = workout.subtitle;
+  if (badgeEl) badgeEl.innerText = "ACTIVE PLAN";
+
+  // Update Exercise Cards UI
   const feed = document.getElementById("exerciseFeed");
   if (!feed) return;
   feed.innerHTML = "";
 
-  const exercises = FALLBACK_EXERCISES;
   const savedChecks = JSON.parse(localStorage.getItem(CHECKED_SETS_KEY) || "{}");
 
-  exercises.forEach((ex, idx) => {
+  workout.exercises.forEach((ex, idx) => {
     const card = document.createElement("div");
     card.className = "ex-card";
 
+    let setsCount = ex.sets || 3;
     let setsHtml = "";
-    for (let s = 1; s <= 3; s++) {
+    for (let s = 1; s <= setsCount; s++) {
       const checkKey = `ex_${idx}_s_${s}`;
       const isChecked = savedChecks[checkKey] ? "completed" : "";
       setsHtml += `
@@ -327,11 +400,11 @@ function renderWorkout(data) {
       <div class="ex-top">
         <div class="ex-title-wrap">
           <span class="ex-num">#${idx + 1}</span>
-          <span class="ex-name">${ex.name}</span>
+          <span class="ex-name">${escapeHtml(ex.name)}</span>
         </div>
-        <span class="ex-target-pill">${ex.target}</span>
+        <span class="ex-target-pill">${escapeHtml(ex.target)}</span>
       </div>
-      <p class="ex-cue">${ex.cue}</p>
+      <p class="ex-cue">${escapeHtml(ex.cue)}</p>
       <div class="set-row">
         ${setsHtml}
       </div>
