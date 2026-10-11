@@ -388,9 +388,80 @@
       </div>
     </section>
 
+    <!-- TAB 6: REMOTE COACH AI AGENT & GYM ASSISTANT -->
+    <section class="tab-pane" id="tab-agent">
+      <div class="section-title">
+        <h2>Live Coach AI</h2>
+        <p>Real-time Antigravity Agent • Gym-floor guidance & instructions.</p>
+      </div>
+
+      <div class="agent-status-card" id="agentStatusCard">
+        <div class="asc-left">
+          <span class="status-pulse-dot" id="agentPulseDot"></span>
+          <div class="asc-text">
+            <strong id="ascTitle">Laptop Agent Connected</strong>
+            <span id="ascSub">Ready for gym queries, program shifts & auto-git push</span>
+          </div>
+        </div>
+        <div class="asc-badge" id="ascBadge">IDLE</div>
+      </div>
+
+      <!-- Quick Gym Prompt Chips -->
+      <div class="quick-chips-scroll">
+        <button class="chip-action" onclick="useQuickPrompt('My left shoulder feels slight pinching on Incline DB Press. What is an evidence-based substitute?')">🛡️ Shoulder Fix</button>
+        <button class="chip-action" onclick="useQuickPrompt('What are my next progressive overload targets for today?')">📈 Next Overload</button>
+        <button class="chip-action" onclick="useQuickPrompt('Give me a quick 3-point cue to fix my Anterior Pelvic Tilt before squatting.')">🧘 Pelvic Tilt Cue</button>
+        <button class="chip-action" onclick="useQuickPrompt('How should I hit 150g protein today on 1850 kcal?')">🥩 Macro Protocol</button>
+      </div>
+
+      <div class="agent-input-container">
+        <textarea id="agentPromptInput" placeholder="Ask a question, request a substitute, or send an instruction to update programs (e.g. 'Change Day 3 arm volume to 10 sets and auto-push to git')..."></textarea>
+        <div class="agent-input-actions">
+          <button class="btn-voice" id="btnAgentVoice" title="Dictate prompt">
+            <span class="icon">🎙️</span> Dictate
+          </button>
+          <button class="btn-agent-send" id="btnSendAgentPrompt">
+            <span id="agentSendLabel">Send to Laptop</span> ➔
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Agent Stream Console -->
+      <div class="agent-console-box" id="agentConsoleBox" style="display:none;">
+        <div class="console-header">
+          <div class="console-title">
+            <span class="console-dot blink"></span>
+            <strong>Live Laptop Agent Stream</strong>
+          </div>
+          <button class="btn-console-clear" onclick="clearAgentConsole()">✕</button>
+        </div>
+        
+        <div class="console-events" id="consoleEvents">
+          <!-- Live events streamed here -->
+        </div>
+
+        <div class="console-response-box" id="consoleResponseBox" style="display:none;">
+          <div class="response-header">
+            <span>⚡ COACH ASSESSMENT & ACTIONS:</span>
+            <button class="btn-copy-response" onclick="copyAgentResponse()">📋 Copy</button>
+          </div>
+          <div class="response-body" id="consoleResponseBody"></div>
+        </div>
+      </div>
+
+      <!-- Offline Queued Prompts Banner -->
+      <div class="queued-prompts-banner" id="queuedPromptsBanner" style="display:none;">
+        <span class="q-icon">⏳</span>
+        <div class="q-text">
+          <strong>Prompts Queued Offline (<span id="queuedPromptsCount">0</span>)</strong>
+          <span>Will automatically dispatch to laptop agent when connection restores.</span>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Bottom Navigation Bar (5 Phone-Optimized Tabs) -->
+  <!-- Bottom Navigation Bar (6 Phone-Optimized Tabs) -->
   <nav class="bottom-nav">
     <button class="nav-item active" data-tab="tab-workout">
       <span class="nav-icon">🏋️</span>
@@ -399,6 +470,10 @@
     <button class="nav-item" data-tab="tab-log">
       <span class="nav-icon">📝</span>
       <span class="nav-text">Log</span>
+    </button>
+    <button class="nav-item" data-tab="tab-agent">
+      <span class="nav-icon">🤖</span>
+      <span class="nav-text">Coach AI</span>
     </button>
     <button class="nav-item" data-tab="tab-posture">
       <span class="nav-icon">🧘</span>

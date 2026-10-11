@@ -1,7 +1,7 @@
 """
 server.py - Lightweight Local HTTP & API Bridge for Fitness Coaching System
-Listens on 0.0.0.0:8080 to serve the mobile web app and process workout ingestion,
-dummy simulations, data synchronization, and Git automation.
+Listens on 0.0.0.0:8080 to serve the mobile web app, process workout ingestion,
+manage remote Antigravity agent interactions, live session streaming, and Git automation.
 """
 
 import os
@@ -9,17 +9,34 @@ import sys
 import json
 import csv
 import re
+import atexit
+import signal
 import subprocess
 from datetime import datetime
 from collections import defaultdict
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import urllib.parse
 
+try:
+    from . import coach_agent
+except ImportError:
+    import coach_agent
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "DATA")
 WEB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web")
+PID_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".server.pid")
 
 PORT = 8080
+
+def clean_pid_file():
+    if os.path.exists(PID_FILE):
+        try:
+            os.remove(PID_FILE)
+        except Exception:
+            pass
+
+atexit.register(clean_pid_file)
 
 def load_catalog():
     catalog = {}
@@ -69,13 +86,11 @@ def simulate_dummy_workout(raw_text, session_type="Pull"):
 
     for line in lines:
         if any(w in line.lower() for w in ["dummy", "test"]):
-            # Filter pure tag lines
             if len(line.split()) <= 3 and any(w in line.lower() for w in ["dummy", "test", "run"]):
                 continue
 
         eid, name = match_exercise(line, catalog)
         if eid:
-            # Parse load and reps
             load_match = re.search(r"(\d+(?:\.\d+)?)\s*(?:kg|lbs|bw)?", line, re.IGNORECASE)
             rep_matches = re.findall(r"(?:x|\*|@|,)\s*(\d+)", line, re.IGNORECASE)
             load = float(load_match.group(1)) if load_match else 0.0
@@ -164,12 +179,31 @@ class FitnessBridgeHandler(SimpleHTTPRequestHandler):
         path = parsed.path
 
         if path == "/api/status":
+            git_hash = ""
+            try:
+                git_hash = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=BASE_DIR).decode().strip()
+            except Exception:
+                pass
             self._send_json({
                 "online": True,
                 "server_time": datetime.now().isoformat(),
-                "machine": "Rohit-PC",
-                "workspace": BASE_DIR
+                "machine": os.environ.get("COMPUTERNAME", "Rohit-PC"),
+                "workspace": BASE_DIR,
+                "pid": os.getpid(),
+                "git_hash": git_hash,
+                "port": PORT
             })
+            return
+
+        elif path == "/api/agent-stream":
+            query = urllib.parse.parse_qs(parsed.query)
+            task_id = query.get("task_id", [""])[0]
+            since_idx = int(query.get("since", [0])[0])
+            task = coach_agent.get_agent_task(task_id, since_index=since_idx)
+            if task:
+                self._send_json({"success": True, **task})
+            else:
+                self._send_json({"success": False, "error": "Task not found"}, status=404)
             return
 
         elif path == "/api/dashboard-data":
@@ -191,6 +225,22 @@ class FitnessBridgeHandler(SimpleHTTPRequestHandler):
                 payload = json.loads(post_body)
                 result = self._process_workout(payload)
                 self._send_json(result)
+            except Exception as e:
+                self._send_json({"success": False, "error": str(e)}, status=500)
+            return
+
+        elif path == "/api/coach-prompt":
+            content_length = int(self.headers.get("Content-Length", 0))
+            post_body = self.rfile.read(content_length).decode("utf-8")
+            try:
+                payload = json.loads(post_body)
+                prompt = payload.get("prompt", "").strip()
+                mode = payload.get("mode", "agent")
+                if not prompt:
+                    self._send_json({"success": False, "error": "Empty prompt provided"}, status=400)
+                    return
+                task = coach_agent.start_agent_task(prompt, mode=mode)
+                self._send_json({"success": True, "task": task})
             except Exception as e:
                 self._send_json({"success": False, "error": str(e)}, status=500)
             return
@@ -377,32 +427,60 @@ class FitnessBridgeHandler(SimpleHTTPRequestHandler):
 
         subprocess.run(cmd, cwd=BASE_DIR, check=True)
 
-        # Trigger git commit
+        # Automated Git commit
         try:
             subprocess.run(["git", "add", "."], cwd=BASE_DIR, check=True)
             subprocess.run(["git", "commit", "-m", f"Automated mobile ingestion: {today_str} {session_type}"], cwd=BASE_DIR)
         except Exception:
             pass
 
+        # Automated Git push to GitHub master
+        git_push_info = "Local commit saved"
+        try:
+            push_res = subprocess.run(["git", "push", "origin", "master"], cwd=BASE_DIR, capture_output=True, text=True, timeout=25)
+            if push_res.returncode == 0:
+                git_push_info = "✅ Pushed to GitHub origin/master"
+            else:
+                git_push_info = f"⚠️ Push notice: {push_res.stderr.strip()[:100]}"
+        except Exception as pe:
+            git_push_info = f"⚠️ Push error: {str(pe)[:100]}"
+
         return {
             "success": True,
             "dummy": False,
-            "message": f"Workout for {today_str} successfully ingested and committed into system records."
+            "git_push": git_push_info,
+            "message": f"Workout for {today_str} ingested, committed, and pushed to GitHub.",
+            "coach_feedback": f"✅ Recorded in database.\n{git_push_info}\nAll progressive overload targets refreshed."
         }
 
 def run_server():
     server_address = ("0.0.0.0", PORT)
     httpd = HTTPServer(server_address, FitnessBridgeHandler)
+
+    # Write PID file for kill_server.bat
+    try:
+        with open(PID_FILE, "w") as f:
+            f.write(str(os.getpid()))
+    except Exception:
+        pass
+
     print(f"=======================================================")
-    print(f"  FITNESS COACHING MOBILE BRIDGE RUNNING ON PORT {PORT} ")
+    print(f"  APEX FITNESS COACH BRIDGE SERVER (PORT {PORT})       ")
     print(f"=======================================================")
+    print(f"  PID             : {os.getpid()}")
     print(f"  Local PC Access : http://localhost:{PORT}")
     print(f"  Phone (Wi-Fi)   : http://<Your-PC-IP>:{PORT}")
+    print(f"  Remote (Anywhere): Tailscale or Cloudflare Tunnel")
+    print(f"=======================================================")
+    print(f"  * Press Ctrl+C or close this window to STOP server.   ")
+    print(f"  * Or run commands\\kill_server.bat from another window.")
     print(f"=======================================================")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
         print("\nBridge server stopped.")
+    finally:
+        clean_pid_file()
 
 if __name__ == "__main__":
     run_server()

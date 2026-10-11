@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Apex Coach • System Instructions & Automation Guide</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .inst-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px 16px 80px;
+    }
+    .inst-hero {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(52, 211, 153, 0.08));
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 16px;
+      padding: 20px 18px;
+      margin-bottom: 24px;
+    }
+    .inst-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 6px;
+    }
+    .inst-hero p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .inst-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .inst-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cmd-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+      margin-top: 10px;
+    }
+    .cmd-table th, .cmd-table td {
+      padding: 8px 10px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .cmd-table th {
+      color: var(--text-dim);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+    }
+    .cmd-table td code {
+      color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .step-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #CBD5E1;
+    }
+    .step-num {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+      font-weight: 800;
+      font-size: 0.76rem;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .back-btn-row {
+      margin-bottom: 16px;
+    }
+    .btn-back-app {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-card);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="inst-container">
+    <div class="back-btn-row">
+      <a href="index.html" class="btn-back-app">➔ Open Apex Coach App</a>
+    </div>
+
+    <div class="inst-hero">
+      <h1>⚡ APEX COACH OPERATING INSTRUCTIONS</h1>
+      <p>Your complete cheatsheet for controlling your fitness coaching system, mobile bridge, and Antigravity agent from your phone and PC.</p>
+    </div>
+
+    <!-- Section 1: Command Center -->
+    <div class="inst-card">
+      <h2>📁 1. The Command Center (commands/ Folder)</h2>
+      <p style="font-size:0.82rem; color:var(--text-muted);">All automation scripts live in the <code>commands/</code> folder (and have root forwarders):</p>
+      
+      <table class="cmd-table">
+        <thead>
+          <tr>
+            <th>Batch Script</th>
+            <th>What It Does</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>start_server.bat</code></td>
+            <td>Launches the bridge server on port 8080. Prints your local IP. <strong>Closing the window terminates the server cleanly.</strong></td>
+          </tr>
+          <tr>
+            <td><code>kill_server.bat</code></td>
+            <td>Immediately frees port 8080 and kills the server process.</td>
+          </tr>
+          <tr>
+            <td><code>open_coach_session.bat</code></td>
+            <td>Pulls latest workouts from GitHub and opens Antigravity IDE agent session on your laptop.</td>
+          </tr>
+          <tr>
+            <td><code>push_to_github.bat</code></td>
+            <td>Stages all records, auto-commits, and pushes to remote GitHub repository.</td>
+          </tr>
+          <tr>
+            <td><code>pull_from_github.bat</code></td>
+            <td>Syncs cloud workouts down to your laptop.</td>
+          </tr>
+          <tr>
+            <td><code>rebuild_dashboard.bat</code></td>
+            <td>Regenerates <code>fitness_dashboard.xlsx</code> and mobile cards.</td>
+          </tr>
+          <tr>
+            <td><code>run_integrity_audit.bat</code></td>
+            <td>Runs automated audit across all CSVs and logs.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 2: Mobile Access -->
+    <div class="inst-card">
+      <h2>📱 2. Accessing from Your Phone</h2>
+      <div class="step-list">
+        <div class="step-item">
+          <span class="step-num">A</span>
+          <div>
+            <strong>Same Home Wi-Fi:</strong> Double-click <code>commands/start_server.bat</code>. Open phone browser and navigate to <code>http://&lt;YOUR-PC-IP&gt;:8080</code>.
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">B</span>
+          <div>
+            <strong>At Gym via Tailscale (Best):</strong> Install Tailscale on PC and phone (100% free). Open <code>http://&lt;PC-Tailscale-IP&gt;:8080</code>. Works 24/7 over cellular data.
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">C</span>
+          <div>
+            <strong>Save as App:</strong> Tap <strong>Share ➔ Add to Home Screen</strong> on iPhone or <strong>Add to Home Screen</strong> on Android.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Logging & Git Push -->
+    <div class="inst-card">
+      <h2>🏋️ 3. Workout Logging & Automated Git Push</h2>
+      <div class="step-list">
+        <div class="step-item">
+          <span class="step-num">1</span>
+          <div>On your phone, tap the <strong>📝 Log</strong> tab. Type or tap <strong>🎙️ Dictate</strong> to enter your sets.</div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">2</span>
+          <div>Tap <strong>Process Workout ➔</strong>.</div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">3</span>
+          <div>The laptop server ingests the workout, updates <code>DATA/workouts.csv</code>, updates Markdown logs, refreshes the Excel dashboard, runs <code>git commit</code> and <strong>pushes directly to GitHub master</strong>!</div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">4</span>
+          <div>Your phone app refreshes automatically without you needing to reload!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Coach AI Live -->
+    <div class="inst-card">
+      <h2>🤖 4. Live Coach AI on the Gym Floor</h2>
+      <div class="step-list">
+        <div class="step-item">
+          <span class="step-num">1</span>
+          <div>Tap the <strong>🤖 Coach AI</strong> tab in the phone app.</div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">2</span>
+          <div>Ask any question (e.g. <em>"Shoulder pinching on Incline press, what substitute?"</em>, <em>"What is my next weight on Lat pulldown?"</em>) or send program change instructions.</div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">3</span>
+          <div>Tap <strong>Send to Laptop ➔</strong>. You get instant evidence-based coach feedback AND see the live activity stream from your laptop agent as it inspects files, runs scripts, and commits changes!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 5: Offline Queue -->
+    <div class="inst-card">
+      <h2>⏳ 5. Smart Offline Queue (PC Turned Off)</h2>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">
+        If your PC is turned off while you are at the gym, both <strong>Workouts</strong> and <strong>Coach Prompts</strong> are safely stored in your phone's browser queue.
+        When you boot up your PC, open the app and tap <strong>Sync to PC ➔</strong> to process all items with zero duplicate records!
+      </p>
+    </div>
+
+    <!-- Section 6: Security -->
+    <div class="inst-card">
+      <h2>🔒 6. Security PIN</h2>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">
+        Default system PIN: <code>123</code>.<br>
+        Change it to your private 4-digit code in <strong>⚙️ Settings</strong> modal. Tap <strong>🔒</strong> in header anytime to lock the app.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>
