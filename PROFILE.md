@@ -10,7 +10,7 @@
 | **Age** | 27 | Verified | — |
 | **Height** | 5 ft 8 in (173 cm) | Self-reported estimate | Calibrate if measured accurately |
 | **Current Scale Weight** | 72.0 – 73.0 kg | Self-reported baseline | Daily morning weigh-ins needed to establish 7-day rolling average |
-| **Estimated Body Fat** | ~20–22% (approx) | Visual / descriptive estimate | Moderate abdominal and chest adiposity, underdeveloped deltoid/arm muscularity |
+| **Estimated Body Fat** | ~22–24% | Verified via Photos (2026-10-12) | Moderate visceral/central adiposity; upper extremities & collarbones are relatively lean (~17–18%). Significant Anterior Pelvic Tilt (APT) exaggerates lower abdominal protrusion. |
 
 ---
 

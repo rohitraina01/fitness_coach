@@ -10,3 +10,5 @@ tools/
 *.exe
 scratch/
 .pytest_cache/
+physic photots/
+BODY_METRICS/photos/
