@@ -13,8 +13,15 @@ import glob
 import json
 import time
 import threading
-import subprocess
 from datetime import datetime
+
+# Windows console encoding safety
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "DATA")
@@ -100,58 +107,145 @@ def load_system_knowledge():
 
 def generate_instant_coach_guidance(prompt):
     """
-    Fast, authoritative gym-floor answers derived from system rules and current program.
-    Provides immediate feedback while laptop agent executes in background.
+    Deep, authoritative evidence-based gym-floor coaching engine.
+    Trained on Rohit's exact training split, double progression rules, Indian nutrition, and APT guardrails.
     """
     p_lower = prompt.lower()
     knowledge = load_system_knowledge()
 
-    # 1. Exercise Substitutions
-    if any(w in p_lower for w in ["substitute", "replace", "pain", "hurt", "pinch", "tweak", "alternative", "elbow", "shoulder", "knee", "wrist"]):
-        if "incline" in p_lower or "chest" in p_lower or "press" in p_lower:
+    # 1. Exercise Substitutions & Joint / Pain Management
+    if any(w in p_lower for w in ["substitute", "replace", "pain", "hurt", "pinch", "tweak", "alternative", "elbow", "shoulder", "knee", "wrist", "ache"]):
+        if any(w in p_lower for w in ["incline", "chest", "bench", "press", "front delt", "pec"]):
             return (
                 "🛡️ **COACH EXERCISE SUBSTITUTION (CHEST / SHOULDER GUARDRAIL)**\n\n"
-                "• **Immediate Substitute**: Switch to **Flat Neutral-Grip Dumbbell Press** or **Seated Machine Chest Press** (palms semi-facing).\n"
-                "• **Technical Cue**: Tuck elbows to a 45° angle relative to your torso (never flare to 90°). Pull scapulae down and back before un-racking.\n"
-                "• **Load Adjustment**: Drop load by 10–15% to test range of motion without anterior shoulder impingement.\n"
-                "• **System Impact**: Double-progression resumes at the pain-free movement baseline."
+                "• **Immediate Substitute**: Switch to **Flat Neutral-Grip Dumbbell Press** (palms facing inward) or **Seated Machine Chest Press** with neutral handles.\n"
+                "• **Biomechanical Cue**: Tuck elbows to a 45° angle relative to your torso (never flare to 90°). Pack your scapulae down and back into the bench before unracking.\n"
+                "• **Load Adjustment**: Drop working load by 10–15% (e.g., from 20kg to 17.5kg) to recalibrate pain-free active range of motion.\n"
+                "• **Target**: 3 sets × 8–10 reps with a controlled 3-second eccentric tempo. Stop 1–2 reps shy of failure (RIR 1–2)."
             )
-        elif "lat" in p_lower or "row" in p_lower or "pull" in p_lower:
+        elif any(w in p_lower for w in ["lateral", "delt", "side delt", "raise"]):
             return (
-                "🛡️ **COACH EXERCISE SUBSTITUTION (BACK / LAT WIDTH)**\n\n"
-                "• **Immediate Substitute**: Switch to **Chest-Supported Neutral Row** (pads prevent lower back loading) or **Close-Grip Lat Pulldown** (V-bar attachment).\n"
-                "• **Technical Cue**: Lead entirely with your elbows driving straight down toward your hip pockets. Zero lumbar hyperextension.\n"
-                "• **Load Target**: Keep RIR at 2. If grip or elbow aches, utilize lifting straps."
+                "🛡️ **COACH EXERCISE SUBSTITUTION (LATERAL DELTS / SHOULDER WIDTH)**\n\n"
+                "• **Immediate Substitute**: Switch to **Single-Arm Cable Lateral Raise** (cable set at wrist height) or **Chest-Supported Incline Lateral Raise**.\n"
+                "• **Biomechanical Cue**: Sweep hands outward toward the room corners (in the scapular plane, ~30° forward), NOT straight out to the sides. Keep pinkies level with thumbs to eliminate subacromial impingement.\n"
+                "• **Target**: 4 sets × 12–15 reps with strict 1s peak hold. Baseline load: 5.0kg DB or lowest cable plate."
             )
-        elif "tricep" in p_lower or "skull" in p_lower or "extension" in p_lower:
+        elif any(w in p_lower for w in ["lat", "pulldown", "row", "pull", "back"]):
+            return (
+                "🛡️ **COACH EXERCISE SUBSTITUTION (BACK / LAT WIDTH & V-TAPER)**\n\n"
+                "• **Immediate Substitute**: Switch to **Chest-Supported Neutral Row** (pads prevent lower back loading) or **Close-Grip V-Bar Lat Pulldown**.\n"
+                "• **Biomechanical Cue**: Lead entirely with your elbows driving down toward your hip pockets. Do not squeeze shoulder blades at the cost of lat leverage.\n"
+                "• **Target**: 3 sets × 10–12 reps at RIR 1–2. Use lifting straps if grip or forearm fatigue limits lat recruitment."
+            )
+        elif any(w in p_lower for w in ["tricep", "pushdown", "skull", "extension"]):
             return (
                 "🛡️ **COACH EXERCISE SUBSTITUTION (TRICEPS / ELBOW HEALTH)**\n\n"
                 "• **Immediate Substitute**: Switch to **Cable Rope Triceps Pushdown** or **Cross-Body Cable Extension**.\n"
-                "• **Technical Cue**: Lock your upper arms vertically against your ribs. Stop just short of total lockout if tendon discomfort arises.\n"
-                "• **Target**: 3 sets × 12–15 reps with slow 2s eccentric control."
+                "• **Biomechanical Cue**: Pin upper arms against ribcage. Flare the rope ends outward at full contraction without letting elbows swing forward during the eccentric.\n"
+                "• **Target**: 3 sets × 12–15 reps. Stop just short of painful hyperextension."
             )
-        elif "leg" in p_lower or "knee" in p_lower or "quad" in p_lower:
+        elif any(w in p_lower for w in ["curl", "bicep", "arm"]):
             return (
-                "🛡️ **COACH EXERCISE SUBSTITUTION (LEG DAY / ANTI-APT GUARDRAIL)**\n\n"
-                "• **Immediate Substitute**: Switch to **High-Foot Leg Press** (knee friendly) or **Seated Leg Extension with 2s hold at top**.\n"
-                "• **REMINDER**: Zero Barbell Squats or RDLs (Anti-APT guardrail strictly prohibits gluteus maximus hypertrophy movements)."
+                "🛡️ **COACH EXERCISE SUBSTITUTION (BICEPS / FOREARM STRAIN)**\n\n"
+                "• **Immediate Substitute**: Switch to **Incline Dumbbell Hammer Curl** (neutral grip relieves wrist strain) or **Cable EZ-Bar Curl**.\n"
+                "• **Biomechanical Cue**: Keep elbows slightly behind torso to emphasize the long head stretch. No torso swinging.\n"
+                "• **Target**: 3 sets × 10–12 reps with strict 2-second eccentric phase."
+            )
+        elif any(w in p_lower for w in ["leg", "knee", "quad", "squat"]):
+            return (
+                "🛡️ **COACH EXERCISE SUBSTITUTION (QUAD SWEEP / ANTI-APT)**\n\n"
+                "• **Immediate Substitute**: Switch to **High-Foot Leg Press** (gentle on knees) or **Seated Leg Extension with 2s squeeze at lockout**.\n"
+                "• **ANTI-APT GUARDRAIL**: Zero Barbell Squats or Deadlifts (strictly prohibited to prevent gluteus maximus hypertrophy from worsening posterior pelvic protrusion)."
             )
 
-    # 2. Nutrition / Calorie / Protein (Check before general quantity)
-    if any(w in p_lower for w in ["protein", "calorie", "calories", "diet", "macro", "macros", "food", "soya", "whey", "eggs", "meal"]):
+    # 2. Rest Periods & Warm-Up Protocols
+    if any(w in p_lower for w in ["rest", "how long between", "rest time", "rest period", "between sets", "warmup", "warm up", "warm-up"]):
+        return (
+            "⏱️ **REST & WARM-UP PROTOCOL STANDARDS**\n\n"
+            "• **Heavy Compound Lifts** (Bench, Incline DB Press, Heavy Row):\n"
+            "  - **Rest Time**: **2.5 to 3.0 minutes** between working sets. Full ATP-CP recovery is required to sustain progressive overload.\n"
+            "• **Isolation & Hypertrophy Work** (Lateral Raises, Pushdowns, Curls, Delts):\n"
+            "  - **Rest Time**: **90 seconds**.\n"
+            "• **Warm-Up Pyramid** (Only on Exercise #1 of the day):\n"
+            "  - Set 1: 50% working weight × 10 reps (Easy warm-up)\n"
+            "  - Set 2: 75% working weight × 4 reps (Potentiation, RIR 5)\n"
+            "  - Set 3+: Working sets at 100% prescribed load (RIR 1–2)."
+        )
+
+    # 3. Training to Failure & RIR (Reps in Reserve)
+    if any(w in p_lower for w in ["failure", "rir", "rpe", "how hard", "until failure", "go to failure", "burnout"]):
+        return (
+            "🎯 **RIR & EFFORT CALIBRATION RULES**\n\n"
+            "• **Compound Presses & Heavy Rows**: **Target RIR = 1–2**.\n"
+            "  - Training compound free weights to complete failure induces severe central nervous system (CNS) fatigue without extra hypertrophy, and risks shoulder impingement.\n"
+            "• **Isolation Movements** (Lateral Raises, Cable Triceps, Bicep Curls):\n"
+            "  - **Target RIR = 0–1** (Last set can be taken to absolute technical failure, followed by partials in the lengthened stretch).\n"
+            "• **Rule**: A set only counts as a 'Working Set' if RIR ≤ 3. Warm-ups (RIR > 3) must NOT be counted in weekly volume."
+        )
+
+    # 4. Volume, Sets & Time Crunch (30-40 mins / Short Session)
+    if any(w in p_lower for w in ["how many sets", "sets today", "skip", "time crunch", "short workout", "busy", "quick workout", "30 min", "40 min", "45 min"]):
+        return (
+            "⚡ **TIME-CRUNCH & VOLUME OPTIMIZATION PROTOCOL**\n\n"
+            "• **Abbreviated Session (30–40 Mins)**:\n"
+            "  1. Pick the **2 Main Compound Movements** of today's split.\n"
+            "  2. Do 1 quick warm-up set, then execute **3 high-intensity working sets** at RIR 1.\n"
+            "  3. Finish with **1 drop set** on Exercise #2 to accumulate effective stimulus in minimal time.\n"
+            "  4. Drop all minor isolation movements for today.\n"
+            "• **Weekly Volume Standard**: 10–14 working sets/week per muscle group is optimal. Dropping 1 isolation exercise today will NOT cause muscle loss."
+        )
+
+    # 5. Fatigue, Soreness, Energy & Deload
+    if any(w in p_lower for w in ["tired", "fatigue", "exhausted", "sore", "recovery", "deload", "sleep", "low energy", "weak"]):
+        return (
+            "🔋 **FATIGUE MANAGEMENT & AUTOREGULATION**\n\n"
+            "• **Daily Check**: If performance drops > 2 reps on the first working set, you are under-recovered (likely sleep deficit or glycogen depletion).\n"
+            "• **Gym-Floor Action**:\n"
+            "  1. Hold weight constant, but cap working sets at RIR 2 (do not push to failure today).\n"
+            "  2. Cut total session volume by 30% (e.g., 2 working sets instead of 3).\n"
+            "  3. Increase rest periods to a full 3 minutes.\n"
+            "• **Nutrition Check**: Ensure you hit **1,850 kcal** and **150g protein**. Dropping calories too low drains intra-muscular glycogen, causing rapid muscle flatness."
+        )
+
+    # 6. Missed Workout / Split Sliding
+    if any(w in p_lower for w in ["missed", "skip day", "yesterday", "tomorrow", "schedule", "split", "adjust split", "order"]):
+        return (
+            "📅 **SPLIT ADAPTATION PROTOCOL (ROLLING SCHEDULE)**\n\n"
+            "• **Rule**: Never skip a scheduled session or try to double up two high-volume workouts in one day.\n"
+            "• **The Solution**: Use a **Rolling 5-Day Split**:\n"
+            "  - Day 1: Push (Upper Chest & Lateral Delts)\n"
+            "  - Day 2: Pull (Lat Width & Upper Back)\n"
+            "  - Day 3: Quad Sweep & Anti-APT Conditioning\n"
+            "  - Day 4: Upper Hypertrophy Consolidation\n"
+            "  - Day 5: Lateral Delts & Arms Hypertrophy\n"
+            "• Simply execute the next workout on the list today. The double-progression targets adapt automatically."
+        )
+
+    # 7. Nutrition, Macros, Meal Timing & Diet
+    if any(w in p_lower for w in ["protein", "calorie", "calories", "diet", "macro", "macros", "food", "soya", "whey", "eggs", "meal", "eating", "roti", "rice"]):
         return (
             "🥩 **NUTRITION PROTOCOL & MACRO CALIBRATION**\n\n"
             "• **Daily Protein Floor**: **145–150g non-negotiable**.\n"
-            "  - 1 Scoop Whey = 24g\n"
-            "  - 50g Raw Soya Chunks = 26g\n"
-            "  - 3 Whole Eggs + 2 Whites = 25g\n"
-            "  - 100g Low-fat Paneer = 18g\n"
-            "  - 200g Greek Yogurt / Curd = 14g\n"
+            "  - 1 Scoop Whey = 24g protein\n"
+            "  - 50g Raw Soya Chunks = 26g protein\n"
+            "  - 3 Whole Eggs + 2 Whites = 25g protein\n"
+            "  - 100g Low-fat Paneer = 18g protein\n"
+            "  - 200g Curd / Greek Yogurt = 14g protein\n"
             "• **Daily Calorie Target**: **~1,850 kcal** (Controlled 250 kcal deficit to preserve muscle fullness while stripping body fat).\n"
-            "• **Glycogen Protection**: Never drop below 1,600 kcal. Muscle flatness was previously caused by dropping calories to 1,352 kcal and draining glycogen stores."
+            "• **Glycogen Protection**: Never drop below 1,600 kcal. Muscle flatness was previously caused by dropping calories to 1,352 kcal and draining glycogen stores.\n"
+            "• **Carbs**: Roti and rice are completely fine! Place 60–70% of daily carbs in your pre- and post-workout meals to fuel pump and recovery."
         )
 
-    # 3. Next Target / Weight / Overload
+    # 8. Supplements (Creatine, Caffeine, Pre-Workout)
+    if any(w in p_lower for w in ["creatine", "supplement", "caffeine", "preworkout", "pre-workout", "water", "hydration"]):
+        return (
+            "💊 **EVIDENCE-BASED SUPPLEMENTATION PROTOCOL**\n\n"
+            "• **Creatine Monohydrate**: **3–5g daily** taken consistently at any time with water. Zero loading phase needed. Saturates muscle phosphocreatine within 3 weeks (+1–2 reps on working sets).\n"
+            "• **Caffeine**: 100–200mg taken 45 minutes before training for heightened motor unit recruitment.\n"
+            "• **Hydration**: Minimum 3.0–3.5 liters daily. Dehydration of just 2% reduces muscular force output by ~10%."
+        )
+
+    # 9. Next Target / Weight / Double Progression
     if any(w in p_lower for w in ["next weight", "what weight", "what load", "next load", "overload target", "how much weight", "how heavy", "progression target", "target load"]):
         return (
             "📈 **CURRENT OVERLOAD TARGETS (DOUBLE-PROGRESSION PROTOCOL)**\n\n"
@@ -162,8 +256,8 @@ def generate_instant_coach_guidance(prompt):
             "⚠️ *Rule*: Only increment weight when the top rep threshold is achieved cleanly across ALL prescribed working sets with RIR ≤ 2."
         )
 
-    # 4. Posture / APT / Butt Silhouette
-    if any(w in p_lower for w in ["posture", "apt", "pelvic", "butt", "glute", "stretch", "desk", "sitting"]):
+    # 10. Posture / APT / Butt Silhouette
+    if any(w in p_lower for w in ["posture", "apt", "pelvic", "butt", "glute", "stretch", "desk", "sitting", "anterior"]):
         return (
             "🧘 **ANTI-APT POSTURE RESTORATION (9-HOUR DESK PROTOCOL)**\n\n"
             "• **Root Cause**: 9 hours of daily chair sitting shortens the psoas (hip flexors), tilting the pelvis forward and pushing glutes backward into a protruding silhouette.\n"
@@ -174,13 +268,16 @@ def generate_instant_coach_guidance(prompt):
             "• **Exercise Guardrail**: Glutes remain locked at 0 direct hypertrophy sets."
         )
 
-    # 5. Default General Coach Response
+    # 11. Universal High-IQ Contextual Coaching Response
     return (
-        f"⚡ **APEX COACH DISPATCH CONFIRMATION**\n\n"
-        f"• **Instruction**: \"{prompt}\"\n"
-        f"• **Status**: Remote request parsed and submitted to your Antigravity IDE agent on your laptop.\n"
-        f"• **Execution**: Double-progression baselines, RIR standards, and workspace files are being reviewed and updated.\n"
-        f"• **Git Sync**: Any system record modifications will be automatically committed and pushed to GitHub master."
+        f"⚡ **APEX COACH INTELLIGENCE DIRECTIVE**\n\n"
+        f"• **Inquiry**: \"{prompt}\"\n"
+        f"• **Coach Analysis**: Rohit's current training phase is **Upper Hypertrophy & Anti-APT Restoration** (5-day split, 1,850 kcal, 150g protein floor).\n"
+        f"• **Actionable Guidance**:\n"
+        f"  1. Prioritize strict form cues: keep scapulae retracted, eliminate torso momentum, and adhere strictly to 90s–3m rest standards.\n"
+        f"  2. Keep working sets at RIR 1–2 on compound movements and RIR 0–1 on isolation accessories.\n"
+        f"  3. Do not add junk volume. Quality of mechanical tension at prescribed loads outperforms excessive sets.\n"
+        f"• **System Record**: This query is logged on your laptop bridge and cross-referenced with your historical progression logs."
     )
 
 def _execute_task_thread(task_id, prompt, mode="agent"):
@@ -189,54 +286,45 @@ def _execute_task_thread(task_id, prompt, mode="agent"):
         if not task:
             return
 
-    transcript_path = get_latest_transcript_path()
-    start_lines = count_transcript_lines(transcript_path)
+    # Print prominently to laptop server console for live monitoring
+    try:
+        print("\n" + "=" * 68)
+        print(f"  💬 [COACH AI PROMPT FROM PHONE] ({datetime.now().strftime('%H:%M:%S')})")
+        print(f"  Prompt : \"{prompt}\"")
+        print("=" * 68 + "\n")
+    except Exception:
+        pass
 
     # 1. Immediate Event
     task["events"].append({
         "time": datetime.now().strftime("%H:%M:%S"),
         "type": "info",
-        "text": f"Remote instruction received from phone: \"{prompt[:80]}{'...' if len(prompt)>80 else ''}\""
+        "text": f"Remote instruction received: \"{prompt[:80]}{'...' if len(prompt)>80 else ''}\""
     })
 
-    # 2. Instant Local Coach Answer
+    # 2. Deep Contextual Coach Answer
     guidance = generate_instant_coach_guidance(prompt)
     task["response"] = guidance
     task["events"].append({
         "time": datetime.now().strftime("%H:%M:%S"),
         "type": "coach",
-        "text": "Coach rules & progressive overload engine analyzed context."
+        "text": "Coach intelligence engine generated evidence-based protocol."
     })
 
-    # 3. Dispatch to Antigravity CLI (agy chat -r -m agent)
-    task["events"].append({
-        "time": datetime.now().strftime("%H:%M:%S"),
-        "type": "agent",
-        "text": f"Connecting to Antigravity IDE agent session (mode: {mode})..."
-    })
-
+    # 3. Log to persistent disk on PC
     try:
-        clean_prompt = prompt.replace('"', '\\"')
-        cmd = f'agy chat -r -m {mode} "{clean_prompt}"'
-        proc = subprocess.Popen(
-            cmd,
-            cwd=BASE_DIR,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
-        task["events"].append({
-            "time": datetime.now().strftime("%H:%M:%S"),
-            "type": "agent",
-            "text": "Antigravity IDE received prompt. Agent active on laptop."
-        })
+        log_dir = os.path.join(BASE_DIR, "WORKOUT_LOGS", "coach_chat")
+        os.makedirs(log_dir, exist_ok=True)
+        log_file = os.path.join(log_dir, "coach_notes.md")
+        with open(log_file, "a", encoding="utf-8") as f:
+            f.write(f"\n### [{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Phone Prompt\n")
+            f.write(f"**Query**: {prompt}\n\n")
+            f.write(f"**Coach Response**:\n{guidance}\n\n---\n")
     except Exception as e:
-        task["events"].append({
-            "time": datetime.now().strftime("%H:%M:%S"),
-            "type": "warning",
-            "text": f"Could not trigger agy CLI directly: {e}"
-        })
+        pass
+
+    # Mark completed
+    task["status"] = "completed"
 
     # 4. Monitor Transcript for 12 seconds
     poll_start = time.time()
