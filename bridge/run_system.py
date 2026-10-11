@@ -83,11 +83,13 @@ def main():
         while True:
             time.sleep(1)
             if server_proc.poll() is not None:
-                print(f"[SYSTEM] Server process exited with code {server_proc.returncode}")
-                break
+                print(f"[SYSTEM] Notice: Server process exited (code {server_proc.returncode}). Auto-recovering...")
+                time.sleep(1)
+                server_proc = subprocess.Popen([sys.executable, SERVER_SCRIPT], cwd=BASE_DIR)
             if tunnel_proc.poll() is not None:
-                print(f"[SYSTEM] Tunnel process exited with code {tunnel_proc.returncode}")
-                break
+                print(f"[SYSTEM] Notice: Tunnel process exited (code {tunnel_proc.returncode}). Auto-recovering...")
+                time.sleep(2)
+                tunnel_proc = subprocess.Popen([sys.executable, TUNNEL_SCRIPT], cwd=BASE_DIR)
     except KeyboardInterrupt:
         shutdown()
 

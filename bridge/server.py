@@ -171,20 +171,44 @@ def simulate_dummy_workout(raw_text, session_type="Pull"):
     }
 
 
+class RobustHTTPServer(HTTPServer):
+    daemon_threads = True
+    allow_reuse_address = True
+
+    def handle_error(self, request, client_address):
+        err_type = sys.exc_info()[0]
+        if err_type in (ConnectionResetError, BrokenPipeError, ConnectionAbortedError):
+            return
+        print(f"[SERVER EXCEPTION from {client_address}]: {sys.exc_info()[1]}")
+
+
 class FitnessBridgeHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=WEB_DIR, **kwargs)
 
+    def log_message(self, format, *args):
+        # Clean logging without crash on unmapped characters
+        try:
+            sys.stdout.write(f"[{datetime.now().strftime('%H:%M:%S')}] {args[0]} {args[1]} -> {args[2]}\n")
+            sys.stdout.flush()
+        except Exception:
+            pass
+
     def _send_json(self, data, status=200):
-        body = json.dumps(data).encode("utf-8")
-        self.send_response(status)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Content-Length", str(len(body)))
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
-        self.end_headers()
-        self.wfile.write(body)
+        try:
+            body = json.dumps(data).encode("utf-8")
+            self.send_response(status)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
+            self.end_headers()
+            self.wfile.write(body)
+        except (ConnectionResetError, BrokenPipeError, ConnectionAbortedError):
+            pass
+        except Exception as e:
+            pass
 
     def do_OPTIONS(self):
         self.send_response(200)
@@ -502,7 +526,7 @@ class FitnessBridgeHandler(SimpleHTTPRequestHandler):
 
 def run_server():
     server_address = ("0.0.0.0", PORT)
-    httpd = HTTPServer(server_address, FitnessBridgeHandler)
+    httpd = RobustHTTPServer(server_address, FitnessBridgeHandler)
 
     # Write PID file for kill_server.bat
     try:
@@ -522,12 +546,20 @@ def run_server():
     print(f"  * Press Ctrl+C or close this window to STOP server.   ")
     print(f"  * Or run commands\\kill_server.bat from another window.")
     print(f"=======================================================")
-    try:
-        httpd.serve_forever()
-    except KeyboardInterrupt:
-        print("\nBridge server stopped.")
-    finally:
-        clean_pid_file()
+
+    while True:
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print("\nBridge server stopped.")
+            break
+        except (ConnectionResetError, BrokenPipeError, ConnectionAbortedError):
+            continue
+        except Exception as e:
+            print(f"[SERVER TRANSIENT] {e}, continuing listener...")
+            time.sleep(0.2)
+
+    clean_pid_file()
 
 if __name__ == "__main__":
     run_server()
