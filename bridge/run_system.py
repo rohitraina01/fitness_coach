@@ -10,6 +10,13 @@ import time
 import subprocess
 import signal
 
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BRIDGE_DIR = os.path.dirname(os.path.abspath(__file__))
 SERVER_SCRIPT = os.path.join(BRIDGE_DIR, "server.py")

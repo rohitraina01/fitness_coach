@@ -16,6 +16,14 @@ import subprocess
 import threading
 from datetime import datetime
 
+# Windows console encoding safety
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BRIDGE_DIR = os.path.dirname(os.path.abspath(__file__))
 DOCS_DIR = os.path.join(BASE_DIR, "docs")
@@ -100,7 +108,7 @@ def push_tunnel_url_to_github():
                     cwd=BASE_DIR, capture_output=True, text=True, timeout=25
                 )
                 if push_res.returncode == 0:
-                    print("[TUNNEL] ✅ Tunnel URL published to GitHub Pages! Phone will auto-connect.")
+                    print("[TUNNEL] [OK] Tunnel URL published to GitHub Pages! Phone will auto-connect.")
                 else:
                     print(f"[TUNNEL] Notice during git push: {push_res.stderr.strip()[:100]}")
             else:
@@ -170,7 +178,7 @@ def start_tunnel():
     if tunnel_url:
         write_tunnel_metadata(tunnel_url, online=True)
         print("\n" + "=" * 72)
-        print("  🚀 CLOUDFLARE SECURE TUNNEL ACTIVE (REMOTE GYM ACCESS)")
+        print("  [ONLINE] CLOUDFLARE SECURE TUNNEL ACTIVE (REMOTE GYM ACCESS)")
         print("=" * 72)
         print(f"  Public Tunnel URL : {tunnel_url}")
         print(f"  GitHub Pages Web  : https://rohitraina01.github.io/fitness_coach/")

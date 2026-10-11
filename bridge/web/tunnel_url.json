@@ -1,7 +1,7 @@
 {
-  "tunnel_url": "",
-  "online": false,
-  "updated_at": "2026-10-11T18:58:49.620418",
+  "tunnel_url": "https://measure-intranet-permalink-project.trycloudflare.com",
+  "online": true,
+  "updated_at": "2026-10-11T19:00:52.510205",
   "machine": "ROHITS-ASUS",
   "local_port": 8080
 }
