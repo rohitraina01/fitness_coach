@@ -62,8 +62,6 @@
 ---
 
 ## 3. DAILY 5-MINUTE DESK WORKER POSTURE RESET (FOR 9-HR SITTING)
-- **Remote Mobile Posture Cue (2026-10-11 20:39:12)**: maintain neutral pelvis while standing
-
 Perform either mid-day at your desk or immediately after work:
 1. **Half-Kneeling Couch / Hip Flexor Stretch**: 60s per leg. Tuck your pelvis under (posterior tilt). You will feel a deep release in the front of your hip.
 2. **Scapular Wall Slides / Doorway Pec Stretch**: 15 slow reps. Reverses rounded shoulders by stretching tight chest muscles and activating lower traps.
