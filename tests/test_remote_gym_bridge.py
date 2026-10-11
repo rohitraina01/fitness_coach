@@ -36,21 +36,31 @@ class TestRemoteGymBridge(unittest.TestCase):
         self.assertTrue(os.path.exists(cf_path))
 
     def test_tunnel_metadata_writing(self):
-        test_url = "https://test-apex-tunnel.trycloudflare.com"
-        tunnel.write_tunnel_metadata(test_url, online=True)
-
         docs_json = os.path.join(BASE_DIR, "docs", "tunnel_url.json")
-        self.assertTrue(os.path.exists(docs_json))
+        orig_data = None
+        if os.path.exists(docs_json):
+            with open(docs_json, "r", encoding="utf-8") as f:
+                orig_data = f.read()
 
-        with open(docs_json, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        try:
+            test_url = "https://test-apex-tunnel.trycloudflare.com"
+            tunnel.write_tunnel_metadata(test_url, online=True)
 
-        self.assertEqual(data["tunnel_url"], test_url)
-        self.assertTrue(data["online"])
-        self.assertEqual(data["local_port"], 8080)
+            self.assertTrue(os.path.exists(docs_json))
+            with open(docs_json, "r", encoding="utf-8") as f:
+                data = json.load(f)
 
-        # Cleanup test metadata
-        tunnel.write_tunnel_metadata("", online=False)
+            self.assertEqual(data["tunnel_url"], test_url)
+            self.assertTrue(data["online"])
+            self.assertEqual(data["local_port"], 8080)
+        finally:
+            if orig_data is not None:
+                with open(docs_json, "w", encoding="utf-8") as f:
+                    f.write(orig_data)
+                web_json = os.path.join(BASE_DIR, "bridge", "web", "tunnel_url.json")
+                if os.path.exists(os.path.dirname(web_json)):
+                    with open(web_json, "w", encoding="utf-8") as f:
+                        f.write(orig_data)
 
     def test_gitignore_protects_env(self):
         gitignore_path = os.path.join(BASE_DIR, ".gitignore")

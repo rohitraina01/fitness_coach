@@ -304,6 +304,11 @@ class FitnessBridgeHandler(SimpleHTTPRequestHandler):
             content_length = int(self.headers.get("Content-Length", 0))
             post_body = self.rfile.read(content_length).decode("utf-8")
             try:
+                import importlib
+                try:
+                    importlib.reload(coach_agent)
+                except Exception:
+                    pass
                 payload = json.loads(post_body)
                 prompt = payload.get("prompt", "").strip()
                 mode = payload.get("mode", "agent")

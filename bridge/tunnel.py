@@ -119,7 +119,12 @@ def push_tunnel_url_to_github():
     t = threading.Thread(target=_do_push, daemon=True)
     t.start()
 
+_TUNNEL_STARTED_BY_ME = False
+
 def clean_tunnel():
+    global _TUNNEL_STARTED_BY_ME
+    if not _TUNNEL_STARTED_BY_ME:
+        return
     if os.path.exists(PID_FILE):
         try:
             os.remove(PID_FILE)
@@ -135,6 +140,7 @@ def clean_tunnel():
 atexit.register(clean_tunnel)
 
 def start_tunnel():
+    global _TUNNEL_STARTED_BY_ME
     cloudflared = find_cloudflared()
     if not cloudflared:
         print("[TUNNEL ERROR] cloudflared.exe was not found. Please verify tools/cloudflared.exe exists.")
@@ -151,6 +157,7 @@ def start_tunnel():
         bufsize=1,
         universal_newlines=True
     )
+    _TUNNEL_STARTED_BY_ME = True
     
     with open(PID_FILE, "w", encoding="utf-8") as f:
         f.write(str(proc.pid))
