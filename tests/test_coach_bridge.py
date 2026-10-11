@@ -55,6 +55,25 @@ class TestCoachBridge(unittest.TestCase):
         self.assertIsNotNone(fetched)
         self.assertEqual(fetched["task_id"], task["task_id"])
 
+    def test_action_directive_posture(self):
+        prog_path = os.path.join(BASE_DIR, "CURRENT_PROGRAM.md")
+        orig_content = None
+        if os.path.exists(prog_path):
+            with open(prog_path, "r", encoding="utf-8") as f:
+                orig_content = f.read()
+
+        try:
+            prompt = "add some more instruction in posture: maintain neutral pelvis while standing"
+            task = {"events": []}
+            handled, msg = coach_agent.handle_action_directive(prompt, task)
+            self.assertTrue(handled)
+            self.assertIn("DIRECTIVE EXECUTED", msg)
+            self.assertIn("CURRENT_PROGRAM.md", msg)
+        finally:
+            if orig_content is not None:
+                with open(prog_path, "w", encoding="utf-8") as f:
+                    f.write(orig_content)
+
     def test_dummy_simulation(self):
         raw = "Lat pulldown 50kg x 10, 10, 8\nIncline DB press 20kg x 10, 10, 10"
         sim = server.simulate_dummy_workout(raw, "Pull")

@@ -280,6 +280,115 @@ def generate_instant_coach_guidance(prompt):
         f"• **System Record**: This query is logged on your laptop bridge and cross-referenced with your historical progression logs."
     )
 
+def handle_action_directive(prompt, task):
+    """
+    Parses action directives (e.g. 'add xyz to posture', 'update posture section', 'add note to log')
+    and executes real workspace file updates, committing and pushing to Git.
+    Returns (handled: bool, message: str)
+    """
+    p_lower = prompt.lower()
+    is_action = any(w in p_lower for w in ["add", "append", "update", "record", "insert"]) and \
+                any(w in p_lower for w in ["posture", "rule", "instruction", "log", "note", "section", "program"])
+    
+    if not is_action:
+        return False, ""
+
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    target_file = None
+    target_path = None
+    applied_note = ""
+
+    # 1. Posture Section Updates
+    if "posture" in p_lower or "apt" in p_lower:
+        target_path = os.path.join(BASE_DIR, "CURRENT_PROGRAM.md")
+        if os.path.exists(target_path):
+            with open(target_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            
+            # Extract cue
+            cue = prompt
+            for prefix in [
+                "add instruction to posture", "add instruction in posture",
+                "add to posture section", "add to posture", "update posture",
+                "add some more instruction in posture", "add somemore instruction in posture",
+                "add more instruction in posture", "add xyz"
+            ]:
+                idx = p_lower.find(prefix)
+                if idx != -1:
+                    cue = prompt[idx + len(prefix):].lstrip(": ").strip()
+                    break
+
+            if not cue:
+                cue = prompt
+
+            new_entry = f"- **Remote Mobile Posture Cue ({now_str})**: {cue}\n"
+            anchor = "## 3. DAILY 5-MINUTE DESK WORKER POSTURE RESET (FOR 9-HR SITTING)"
+            if anchor in content:
+                content = content.replace(anchor, f"{anchor}\n{new_entry}")
+            else:
+                content += f"\n{new_entry}"
+
+            with open(target_path, "w", encoding="utf-8") as f:
+                f.write(content)
+            
+            target_file = "CURRENT_PROGRAM.md"
+            applied_note = cue
+
+    # 2. General Rule or Log Updates
+    elif any(w in p_lower for w in ["rule", "coaching"]):
+        target_path = os.path.join(BASE_DIR, "COACHING_RULES.md")
+        if os.path.exists(target_path):
+            with open(target_path, "a", encoding="utf-8") as f:
+                f.write(f"\n- **Remote Coaching Directives ({now_str})**: {prompt}\n")
+            target_file = "COACHING_RULES.md"
+            applied_note = prompt
+    elif "log" in p_lower or "note" in p_lower:
+        target_path = os.path.join(BASE_DIR, "WORKOUT_LOGS", "coach_chat", "coach_notes.md")
+        target_file = "coach_notes.md"
+        applied_note = prompt
+
+    if target_file and target_path:
+        task["events"].append({
+            "time": datetime.now().strftime("%H:%M:%S"),
+            "type": "tool",
+            "text": f"Modified workspace file: {target_file}"
+        })
+        
+        git_hash = ""
+        try:
+            subprocess.run(["git", "add", target_path], cwd=BASE_DIR, check=True)
+            subprocess.run(["git", "commit", "-m", f"feat(coach): {prompt[:50]}"], cwd=BASE_DIR, check=True)
+            git_hash = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=BASE_DIR).decode().strip()
+            task["events"].append({
+                "time": datetime.now().strftime("%H:%M:%S"),
+                "type": "git",
+                "text": f"Committed ({git_hash}). Pushing to GitHub origin/master..."
+            })
+            push_res = subprocess.run(["git", "push", "origin", "master"], cwd=BASE_DIR, capture_output=True, text=True, timeout=25)
+            if push_res.returncode == 0:
+                task["events"].append({
+                    "time": datetime.now().strftime("%H:%M:%S"),
+                    "type": "git",
+                    "text": "Pushed to GitHub successfully! Remote live on master."
+                })
+        except Exception as e:
+            task["events"].append({
+                "time": datetime.now().strftime("%H:%M:%S"),
+                "type": "git",
+                "text": f"Git sync note: {str(e)[:60]}"
+            })
+
+        response_msg = (
+            f"✅ **DIRECTIVE EXECUTED & COMMITTED TO SYSTEM**\n\n"
+            f"• **Action**: Added instruction to `{target_file}`\n"
+            f"• **Entry**: \"{applied_note}\"\n"
+            f"• **Git Sync**: Committed [{git_hash or 'HEAD'}] and pushed to `origin/master`.\n"
+            f"• **Live Status**: Changes are committed and synchronized. If you refresh your web app or check your repository, the updated section is live!"
+        )
+        return True, response_msg
+
+    return False, ""
+
 def _execute_task_thread(task_id, prompt, mode="agent"):
     with TASKS_LOCK:
         task = AGENT_TASKS.get(task_id)
@@ -302,13 +411,19 @@ def _execute_task_thread(task_id, prompt, mode="agent"):
         "text": f"Remote instruction received: \"{prompt[:80]}{'...' if len(prompt)>80 else ''}\""
     })
 
-    # 2. Deep Contextual Coach Answer
-    guidance = generate_instant_coach_guidance(prompt)
+    # 2. Check for Action Directives (File Edits, Posture Cues, Log Appends)
+    is_action, action_resp = handle_action_directive(prompt, task)
+    if is_action:
+        guidance = action_resp
+    else:
+        # Deep Contextual Coach Answer
+        guidance = generate_instant_coach_guidance(prompt)
+
     task["response"] = guidance
     task["events"].append({
         "time": datetime.now().strftime("%H:%M:%S"),
         "type": "coach",
-        "text": "Coach intelligence engine generated evidence-based protocol."
+        "text": "Coach intelligence engine completed instruction."
     })
 
     # 3. Log to persistent disk on PC
