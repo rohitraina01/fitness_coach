@@ -70,10 +70,12 @@
 
 ---
 
-## DAILY 5-MINUTE DESK WORKER POSTURE RESET (MANDATORY)
-1. **Half-Kneeling Hip Flexor Stretch**: 60s per leg (Squeeze trailing glute, posterior pelvic tilt to unlock tight psoas from 9h sitting).
-2. **Scapular Wall Slides**: 15 slow reps (Wrists & elbows flat to wall; lower trap activation).
-3. **Deadbugs**: 3 sets x 15 reps (Lower back glued flat to floor; transverse abdominis bracing).
+## DAILY 6-MINUTE DESK WORKER POSTURE & TECH-NECK RESET (MANDATORY)
+1. **Wall Double-Chin Tucks**: 15 reps with 3s hold (Back against wall, drive chin straight back, press back of skull into wall. Reverses forward head posture & decompresses cervical discs).
+2. **Suboccipital Base-of-Skull Release**: 60s (Thumbs press gently into skull base to release tight popping neck muscles).
+3. **Thoracic Extension Over Chair**: 10 slow reps (Arch upper back backward over chair backrest to reverse slouch).
+4. **Half-Kneeling Hip Flexor Stretch**: 60s per leg (Squeeze trailing glute, posterior pelvic tilt to unlock tight psoas from 9h sitting).
+5. **Deadbugs**: 3 sets x 15 reps (Lower back glued flat to floor; transverse abdominis bracing).
 
 ---
 

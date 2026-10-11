@@ -61,13 +61,18 @@
 
 ---
 
-## 3. DAILY 5-MINUTE DESK WORKER POSTURE RESET (FOR 9-HR SITTING)
-- **Remote Mobile Posture Cue (2026-10-12 02:41:41)**: maintain neutral pelvis while standing
+## 3. DAILY 6-MINUTE DESK WORKER POSTURE & TECH-NECK PROTOCOL (FOR 9-HR SITTING)
+Perform either mid-day at your desk or immediately after work to reverse neck pain, forward head posture, and Anterior Pelvic Tilt:
 
-Perform either mid-day at your desk or immediately after work:
-1. **Half-Kneeling Couch / Hip Flexor Stretch**: 60s per leg. Tuck your pelvis under (posterior tilt). You will feel a deep release in the front of your hip.
-2. **Scapular Wall Slides / Doorway Pec Stretch**: 15 slow reps. Reverses rounded shoulders by stretching tight chest muscles and activating lower traps.
-3. **Standing Glute & Abdominal Lock**: Stand up, squeeze your abs and glutes together for 10 seconds $\times$ 5 rounds, bringing your pelvis into true neutral. Notice how your stomach and buttocks immediately tuck into an athletic, flat profile!
+### Part A: Cervical Spine (Neck & Upper Traps)
+1. **Suboccipital Base-of-Skull Self-Release**: 60s. Place thumbs at the base of your skull where neck meets head. Press gently in with small circular motions while breathing deeply. Decompresses the tight suboccipital muscles causing clicking and tension headaches.
+2. **Wall Retraction / Double-Chin Tucks**: 15 slow reps with a 3-second hold. Back against wall, look straight ahead, pull chin straight backward into a double chin to press back of head flat against wall. Re-activates dead deep cervical flexors (longus colli) and restores natural cervical lordosis.
+3. **Levator Scapulae "Look-to-Armpit" Stretch**: 30s per side. Turn head 45° right, look down toward armpit, gently rest right hand on back of head for mild traction. Releases the tight cords connecting neck to shoulder blades.
+
+### Part B: Thoracic Spine & Pelvis (APT Reversal)
+4. **Thoracic Extension Over Chair**: 10 slow reps. Sit back, interlock hands behind head, and gently arch your upper back backward over the backrest of your chair. (The neck cannot sit straight if the thoracic spine is hunched).
+5. **Half-Kneeling Hip Flexor Stretch**: 60s per leg. Tuck pelvis under (posterior tilt), squeeze trailing glute to open up tight psoas from 9h sitting.
+6. **Deadbugs or Scapular Wall Slides**: 15 slow reps. Glues lower back to floor or wall, activating transverse abdominis and lower traps.
 
 
 ### DAY 4: REST / ACTIVE RECOVERY
