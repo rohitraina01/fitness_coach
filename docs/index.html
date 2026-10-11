@@ -60,7 +60,7 @@
         <button class="key-btn action unlock" onclick="verifyPin()" title="Unlock">➔</button>
       </div>
 
-      <p class="pin-hint">Default PIN: <code>1234</code> (Change in ⚙️ Settings)</p>
+      <p class="pin-hint">Private System • Protected Access</p>
     </div>
   </div>
 
@@ -511,15 +511,18 @@
       </div>
 
       <div class="form-group">
-        <label>PC Bridge Server URL</label>
-        <input type="text" id="bridgeUrlInput" placeholder="http://192.168.1.5:8080">
-        <span class="form-help">Current Laptop IP: <code>http://192.168.1.5:8080</code> (or use Tailscale / Cloudflare tunnel).</span>
+        <label>Cloud / Bridge Server URL (Gym & Internet)</label>
+        <div style="display:flex;gap:8px;">
+          <input type="text" id="bridgeUrlInput" placeholder="https://....trycloudflare.com" style="flex:1;">
+          <button type="button" class="btn-chip" onclick="testBridgeConnection()" style="white-space:nowrap;padding:0 12px;">Test</button>
+        </div>
+        <span class="form-help" id="tunnelUrlHelp">Encrypted HTTPS tunnel auto-detected from home PC, or enter custom URL.</span>
       </div>
 
       <div class="form-group">
         <label>Security PIN (4 Digits)</label>
-        <input type="password" id="appPinInput" maxlength="8" placeholder="1234">
-        <span class="form-help">Current default is 1234. Enter your secret 4-digit PIN here to protect the app.</span>
+        <input type="password" id="appPinInput" maxlength="8" placeholder="••••">
+        <span class="form-help">Private security PIN (configured in .env). Leave blank to keep current PIN.</span>
       </div>
 
       <div class="modal-actions">

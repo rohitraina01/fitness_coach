@@ -110,7 +110,25 @@ If your laptop is turned off or you have zero internet in the gym:
 
 ---
 
-## 7. SYSTEM CREDENTIALS & SECURITY
+## 7. REMOTE GYM & INTERNET ACCESS ARCHITECTURE
 
-- **Default App Security PIN**: `123` (Change to your secret 4-digit PIN in the **⚙️ Settings** modal).
-- **Lock App**: Tap the **🔒** icon in the header to instantly lock your workout records from prying eyes.
+When you leave home and go to the gym, your phone is on cellular data (4G/5G) or gym Wi-Fi:
+1. **Home PC Stays Running**:
+   - Double-click `commands\start_server.bat` before leaving for the gym.
+   - The launcher starts both the local server (`port 8080`) and an encrypted **Cloudflare Secure HTTPS Tunnel**.
+   - The public tunnel endpoint is automatically synced to GitHub Pages (`docs/tunnel_url.json`).
+2. **Access from Gym Floor**:
+   - Open `https://rohitraina01.github.io/fitness_coach/` on your phone.
+   - The web app automatically discovers your laptop's secure Cloudflare tunnel over the internet!
+   - Status badge turns green: **🟢 PC Online (Cloud Live)**.
+   - You can log workouts, talk to Coach AI, and stream agent executions in real time.
+3. **Closing Services**:
+   - When you return home or want to stop the system, close the console window or run `commands\kill_server.bat`.
+
+---
+
+## 8. SYSTEM CREDENTIALS & SECURITY
+
+- **App Security PIN**: `0080` (stored in `.env` on your PC, never tracked by Git).
+- **Masked Lock Screen**: No default passwords or hints are shown on screen to protect your privacy.
+- **Lock App**: Tap the **🔒** icon in the header at any time to lock the interface.

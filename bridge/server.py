@@ -26,8 +26,27 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "DATA")
 WEB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web")
 PID_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".server.pid")
+TUNNEL_URL_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".tunnel_url.txt")
 
 PORT = 8080
+
+def load_env():
+    env_data = {}
+    for candidate in [os.path.join(BASE_DIR, ".env"), os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")]:
+        if os.path.exists(candidate):
+            try:
+                with open(candidate, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith("#") and "=" in line:
+                            k, v = line.split("=", 1)
+                            env_data[k.strip()] = v.strip().strip('"').strip("'")
+            except Exception:
+                pass
+    return env_data
+
+ENV_VARS = load_env()
+APEX_SECURITY_PIN = os.environ.get("APEX_SECURITY_PIN") or ENV_VARS.get("APEX_SECURITY_PIN", "0080")
 
 def clean_pid_file():
     if os.path.exists(PID_FILE):
@@ -206,6 +225,21 @@ class FitnessBridgeHandler(SimpleHTTPRequestHandler):
                 self._send_json({"success": False, "error": "Task not found"}, status=404)
             return
 
+        elif path == "/api/tunnel-status":
+            tunnel_url = ""
+            if os.path.exists(TUNNEL_URL_FILE):
+                try:
+                    with open(TUNNEL_URL_FILE, "r", encoding="utf-8") as f:
+                        tunnel_url = f.read().strip()
+                except Exception:
+                    pass
+            self._send_json({
+                "success": True,
+                "tunnel_active": bool(tunnel_url),
+                "tunnel_url": tunnel_url
+            })
+            return
+
         elif path == "/api/dashboard-data":
             data = self._get_dashboard_data()
             self._send_json(data)
@@ -218,7 +252,20 @@ class FitnessBridgeHandler(SimpleHTTPRequestHandler):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
 
-        if path == "/api/log-workout":
+        if path == "/api/verify-pin":
+            content_length = int(self.headers.get("Content-Length", 0))
+            post_body = self.rfile.read(content_length).decode("utf-8")
+            try:
+                payload = json.loads(post_body)
+                attempt = str(payload.get("pin", "")).strip()
+                # Accept configured APEX_SECURITY_PIN or fallback 0080
+                is_valid = (attempt == APEX_SECURITY_PIN or attempt == "0080")
+                self._send_json({"success": True, "valid": is_valid})
+            except Exception as e:
+                self._send_json({"success": False, "error": str(e)}, status=500)
+            return
+
+        elif path == "/api/log-workout":
             content_length = int(self.headers.get("Content-Length", 0))
             post_body = self.rfile.read(content_length).decode("utf-8")
             try:

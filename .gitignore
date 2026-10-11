@@ -2,5 +2,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 bridge/.server.pid
+bridge/.tunnel.pid
+bridge/.tunnel_url.txt
+.env
+*.env
+tools/
+*.exe
 scratch/
 .pytest_cache/

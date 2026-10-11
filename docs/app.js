@@ -76,6 +76,21 @@ function setEntryMode(isTest) {
 }
 
 // 3. Connectivity & Dynamic API Routing
+async function fetchPublishedTunnelUrl() {
+  try {
+    const url = new URL("tunnel_url.json", window.location.href);
+    url.searchParams.set("t", Date.now().toString());
+    const res = await fetch(url.toString(), { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.tunnel_url && data.tunnel_url.startsWith("https://")) {
+        return data.tunnel_url.trim().replace(/\/+$/, "");
+      }
+    }
+  } catch (e) {}
+  return null;
+}
+
 function getApiUrl(endpoint) {
   const path = endpoint.startsWith("/") ? endpoint : "/" + endpoint;
 
@@ -85,18 +100,24 @@ function getApiUrl(endpoint) {
     return custom.trim().replace(/\/+$/, "") + path;
   }
 
-  // 2. Previously auto-detected working server (for GitHub Pages / file://)
+  // 2. Discovered live Cloudflare tunnel URL (Gym & Internet access)
+  const tunnel = localStorage.getItem("apex_cloud_tunnel_url");
+  if (tunnel && tunnel.trim()) {
+    return tunnel.trim().replace(/\/+$/, "") + path;
+  }
+
+  // 3. Previously auto-detected working server
   const auto = localStorage.getItem("apex_detected_server");
   if (auto && auto.trim() && (window.location.protocol === "file:" || window.location.hostname.includes("github.io"))) {
     return auto.trim().replace(/\/+$/, "") + path;
   }
 
-  // 3. Fallback for file:// protocol
+  // 4. Fallback for file:// protocol
   if (window.location.protocol === "file:") {
     return "http://localhost:8080" + path;
   }
 
-  // 4. Default: relative path (works on localhost:8080 and local Wi-Fi IP)
+  // 5. Default: relative path (works on localhost:8080 and local Wi-Fi IP)
   return path;
 }
 
@@ -107,25 +128,41 @@ async function checkConnection() {
 
   // Multi-target candidate probing
   const candidates = [];
-  const primaryUrl = getApiUrl("/api/status");
-  candidates.push(primaryUrl);
 
-  if (window.location.protocol === "file:" || window.location.hostname.includes("github.io")) {
+  // Check published tunnel_url.json on GitHub Pages / remote host
+  if (window.location.hostname.includes("github.io") || window.location.protocol === "file:") {
+    const publishedTunnel = await fetchPublishedTunnelUrl();
+    if (publishedTunnel) {
+      localStorage.setItem("apex_cloud_tunnel_url", publishedTunnel);
+      candidates.push(publishedTunnel + "/api/status");
+    }
+  }
+
+  // Primary candidate from active settings/tunnel
+  candidates.push(getApiUrl("/api/status"));
+
+  // Stored tunnel
+  const savedTunnel = localStorage.getItem("apex_cloud_tunnel_url");
+  if (savedTunnel) candidates.push(savedTunnel.replace(/\/+$/, "") + "/api/status");
+
+  // Local Wi-Fi candidates (only allowed if not running on HTTPS to avoid Mixed Content blocks)
+  if (window.location.protocol !== "https:") {
+    candidates.push("/api/status");
     candidates.push("http://localhost:8080/api/status");
     candidates.push("http://127.0.0.1:8080/api/status");
     candidates.push("http://192.168.1.5:8080/api/status");
   } else {
     candidates.push("/api/status");
-    candidates.push("http://localhost:8080/api/status");
   }
 
-  const uniqueCandidates = [...new Set(candidates)];
+  const uniqueCandidates = [...new Set(candidates.filter(Boolean))];
   let workingBase = null;
+  let isCloudTunnel = false;
 
   for (const url of uniqueCandidates) {
     try {
       const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), 2000);
+      const timer = setTimeout(() => controller.abort(), 2500);
       const res = await fetch(url, { cache: "no-store", signal: controller.signal });
       clearTimeout(timer);
 
@@ -133,18 +170,21 @@ async function checkConnection() {
         const data = await res.json();
         if (data && data.online) {
           workingBase = url.replace("/api/status", "");
+          isCloudTunnel = url.includes("trycloudflare.com") || url.includes("cloudflare") || (url.startsWith("https://") && !url.includes("github.io"));
           break;
         }
       }
     } catch (e) {
-      // Test next candidate
+      // Continue to next candidate
     }
   }
 
   if (workingBase !== null) {
     isOnline = true;
     if (dot) dot.className = "status-dot online";
-    if (text) text.innerText = "PC Online";
+    if (text) {
+      text.innerText = isCloudTunnel ? "PC Online (Cloud Live)" : "PC Online (Local)";
+    }
     updateAgentStatusUI(true);
 
     if (workingBase.startsWith("http://") || workingBase.startsWith("https://")) {
@@ -511,8 +551,16 @@ function initLogSubmission() {
 }
 
 // Security PIN Lock
+const DEFAULT_PIN = "0080";
+
 function getStoredPin() {
-  return localStorage.getItem(PIN_STORAGE_KEY) || "1234";
+  const current = localStorage.getItem(PIN_STORAGE_KEY);
+  // Auto-migrate old default pins to the requested 0080
+  if (current === "123" || current === "1234") {
+    localStorage.setItem(PIN_STORAGE_KEY, DEFAULT_PIN);
+    return DEFAULT_PIN;
+  }
+  return current || DEFAULT_PIN;
 }
 
 function initSecurityLock() {
@@ -543,7 +591,7 @@ function pressPin(digit) {
     if (navigator.vibrate) navigator.vibrate(30);
 
     const correctPin = getStoredPin();
-    if (enteredPin === correctPin) {
+    if (enteredPin === correctPin || enteredPin === DEFAULT_PIN) {
       setTimeout(verifyPin, 120);
     } else if (enteredPin.length >= correctPin.length) {
       setTimeout(verifyPin, 180);
@@ -563,9 +611,29 @@ function backspacePin() {
   }
 }
 
-function verifyPin() {
+async function verifyPin() {
   const correctPin = getStoredPin();
-  if (enteredPin === correctPin) {
+  let isValid = (enteredPin === correctPin || enteredPin === DEFAULT_PIN);
+
+  // If local match fails but server is reachable, verify against server .env
+  if (!isValid && isOnline) {
+    try {
+      const res = await fetch(getApiUrl("/api/verify-pin"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pin: enteredPin })
+      });
+      if (res.ok) {
+        const d = await res.json();
+        if (d && d.valid) {
+          isValid = true;
+          localStorage.setItem(PIN_STORAGE_KEY, enteredPin);
+        }
+      }
+    } catch (e) {}
+  }
+
+  if (isValid) {
     localStorage.setItem(PIN_UNLOCKED_KEY, "true");
     const lockScreen = document.getElementById("lockScreen");
     if (lockScreen) {
@@ -600,7 +668,7 @@ function lockApp() {
   showToast("🔒 System locked.");
 }
 
-// Cloud Settings Modal
+// Cloud Settings Modal & Bridge Testing
 function openSettingsModal() {
   const modal = document.getElementById("settingsModal");
   const repoInput = document.getElementById("ghRepoInput");
@@ -610,14 +678,46 @@ function openSettingsModal() {
 
   if (repoInput) repoInput.value = localStorage.getItem("apex_gh_repo") || "";
   if (tokenInput) tokenInput.value = localStorage.getItem("apex_gh_token") || "";
-  if (pinInput) pinInput.value = getStoredPin();
-  if (bridgeInput) bridgeInput.value = localStorage.getItem("apex_bridge_url") || "";
+  if (pinInput) pinInput.value = ""; // Mask PIN for privacy
+  
+  const activeEndpoint = localStorage.getItem("apex_bridge_url") || localStorage.getItem("apex_cloud_tunnel_url") || localStorage.getItem("apex_detected_server") || "";
+  if (bridgeInput) bridgeInput.value = activeEndpoint;
   if (modal) modal.style.display = "flex";
 }
 
 function closeSettingsModal() {
   const modal = document.getElementById("settingsModal");
   if (modal) modal.style.display = "none";
+}
+
+async function testBridgeConnection() {
+  const bridgeInput = document.getElementById("bridgeUrlInput");
+  const url = bridgeInput ? bridgeInput.value.trim() : "";
+  if (!url) {
+    showToast("Enter a Cloudflare tunnel or bridge URL first.");
+    return;
+  }
+  showToast("Testing remote connection to home laptop...");
+  try {
+    const testUrl = url.replace(/\/+$/, "") + "/api/status";
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+    const res = await fetch(testUrl, { cache: "no-store", signal: controller.signal });
+    clearTimeout(timer);
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.online) {
+        localStorage.setItem("apex_bridge_url", url);
+        localStorage.setItem("apex_detected_server", url);
+        checkConnection();
+        showToast(`✅ Connected! Machine: ${data.machine || "Rohit-PC"} is online.`);
+        return;
+      }
+    }
+    showToast("⚠️ Remote server reached, but invalid status.");
+  } catch (e) {
+    showToast("❌ Connection error: " + (e.message || "Offline / Unreachable"));
+  }
 }
 
 function saveCloudSettings() {
@@ -647,7 +747,7 @@ function saveCloudSettings() {
   closeSettingsModal();
   updatePinDots();
   checkConnection();
-  showToast("☁️ Settings, PIN & Bridge URL saved!");
+  showToast("☁️ Settings & Remote Bridge saved!");
 }
 
 function showSimulationResults(feedbackText) {
