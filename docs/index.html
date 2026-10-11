@@ -93,6 +93,15 @@
       <div class="exercise-feed" id="exerciseFeed">
         <!-- Rendered via JS -->
       </div>
+
+      <!-- Mandatory Daily Posture Quick Jump -->
+      <div class="workout-posture-banner" onclick="document.querySelector('[data-tab=\'tab-posture\']').click()" style="margin-top:16px;background:linear-gradient(135deg,rgba(56,189,248,0.12),rgba(239,68,68,0.08));border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+        <div>
+          <strong style="display:block;font-size:0.86rem;color:#FFF;">🧘 6-Min Tech-Neck & Desk Reset</strong>
+          <span style="font-size:0.76rem;color:var(--text-muted);">Decompress neck discs & reverse Anterior Pelvic Tilt</span>
+        </div>
+        <span style="color:var(--accent-cyan);font-weight:700;font-size:0.84rem;">Open ➔</span>
+      </div>
     </section>
 
     <!-- TAB 2: LOGGING & SMART QUEUE (WITH TEST / DUMMY MODE) -->
@@ -163,44 +172,109 @@
     <!-- TAB 3: POSTURE & ANTI-APT HUB -->
     <section class="tab-pane" id="tab-posture">
       <div class="section-title">
-        <h2>9-Hour Desk Posture Reset</h2>
-        <p>Reverse Anterior Pelvic Tilt and rounded shoulders daily.</p>
+        <h2>Tech-Neck & Desk Posture Reset</h2>
+        <p>Evidence-based routine to decompress cervical discs, relieve neck popping, and reverse Anterior Pelvic Tilt.</p>
       </div>
 
+      <!-- Urgent Reality Check Alert -->
+      <div class="posture-alert-box">
+        <strong>⚠️ WHY YOUR NECK HURTS & POPS (TECH-NECK REALITY):</strong>
+        Slouching with a laptop or in a bean bag cranes your neck to 45°–60°, putting <strong>25 kg (55 lbs) of load</strong> on your neck tendons. Your suboccipital muscles spasm to keep your head from falling forward. When you try to straighten it, the compressed joints click and ache.<br>
+        <strong>Rules:</strong> (1) NEVER work in a bean bag. (2) Elevate your laptop screen on books/stand so the top is at eye level.
+      </div>
+
+      <div class="posture-section-divider">Part 1: Cervical Spine & Neck Decompression</div>
+
+      <!-- Neck 1: Suboccipital Release -->
       <div class="posture-card">
         <div class="posture-header">
-          <span class="badge-posture apt">ANTI-PELVIC TILT</span>
-          <h3>Half-Kneeling Hip Flexor Stretch</h3>
+          <span class="badge-posture neck">CERVICAL DECOMPRESSION</span>
+          <h3>1. Suboccipital Base-of-Skull Release</h3>
         </div>
-        <p class="posture-desc">Kneel on one knee. Actively squeeze the rear glute and tuck your pelvis under. Opens chronically tight psoas from 9h chair sitting.</p>
+        <p class="posture-desc">Place thumbs in the soft hollows right below the base of your skull. Lean head back slightly, apply gentle upward-inward circular massage. Decompresses facet joints and releases the tight cords causing popping and tension headaches.</p>
         <div class="posture-action">
-          <button class="btn-hold" onclick="startHoldTimer(45, this)">Start 45s Hold</button>
+          <button class="btn-hold" onclick="startHoldTimer(60, this)">Start 60s Release</button>
           <span class="hold-countdown"></span>
         </div>
       </div>
 
+      <!-- Neck 2: Wall Double-Chin Tucks -->
       <div class="posture-card">
         <div class="posture-header">
-          <span class="badge-posture rounded">ANTI-ROUNDED SHOULDERS</span>
-          <h3>Scapular Wall Slides</h3>
+          <span class="badge-posture retraction">FORWARD HEAD CORRECTION</span>
+          <h3>2. Wall Double-Chin Tucks (Head Retraction)</h3>
         </div>
-        <p class="posture-desc">Back, elbows, and wrists flat against wall. Slide arms overhead into a "Y". Activates lower traps and opens tight chest.</p>
+        <p class="posture-desc">Stand with heels, upper back, and head against wall. Look straight ahead (do NOT look down). Pull chin straight back into an exaggerated double chin, driving the back of your skull flat into the wall. Wakes up the deep cervical flexors (longus colli) to hold head upright naturally.</p>
         <div class="posture-action">
-          <span class="reps-target">Target: 15 Slow Reps</span>
+          <span class="reps-target">Target: 15 Reps (Hold 3s each)</span>
         </div>
       </div>
 
+      <!-- Neck 3: Levator Scapulae Stretch -->
+      <div class="posture-card">
+        <div class="posture-header">
+          <span class="badge-posture trap">NECK CORD RELEASE</span>
+          <h3>3. Levator Scapulae & Upper Trap Stretch</h3>
+        </div>
+        <p class="posture-desc">Turn head 45° to the right, look down toward your right armpit. Gently rest right hand on back of head for light downward traction. You will feel a deep release running down the side of the neck into the shoulder blade. Repeat left side.</p>
+        <div class="posture-action">
+          <button class="btn-hold" onclick="startHoldTimer(30, this)">Start 30s / Side</button>
+          <span class="hold-countdown"></span>
+        </div>
+      </div>
+
+      <!-- Neck 4: Thoracic Extension -->
+      <div class="posture-card">
+        <div class="posture-header">
+          <span class="badge-posture thoracic">UPPER BACK UN-SLOUCH</span>
+          <h3>4. Thoracic Extension Over Chair Rim</h3>
+        </div>
+        <p class="posture-desc">Sit deep in chair, interlock fingers behind head to support neck. Arch your upper back backward over the top rim of your chair backrest while exhaling. (The neck cannot sit straight if the thoracic spine is hunched).</p>
+        <div class="posture-action">
+          <span class="reps-target">Target: 10 Slow Reps</span>
+        </div>
+      </div>
+
+      <div class="posture-section-divider">Part 2: Pelvis & Core (Anti-APT)</div>
+
+      <!-- APT 1: Hip Flexor Stretch -->
+      <div class="posture-card">
+        <div class="posture-header">
+          <span class="badge-posture apt">ANTI-PELVIC TILT</span>
+          <h3>5. Half-Kneeling Hip Flexor Stretch</h3>
+        </div>
+        <p class="posture-desc">Kneel on one knee. Actively squeeze the rear glute and tuck your pelvis under (posterior tilt). Opens chronically tight psoas from 9h chair sitting, allowing pelvis to sit level.</p>
+        <div class="posture-action">
+          <button class="btn-hold" onclick="startHoldTimer(45, this)">Start 45s / Side</button>
+          <span class="hold-countdown"></span>
+        </div>
+      </div>
+
+      <!-- APT 2: Deadbugs -->
       <div class="posture-card">
         <div class="posture-header">
           <span class="badge-posture core">LOWER ABS BRACING</span>
-          <h3>Deadbugs (Posterior Tilt Lock)</h3>
+          <h3>6. Deadbugs (Posterior Tilt Lock)</h3>
         </div>
-        <p class="posture-desc">Lie on back. Lower back MUST stay completely glued to the floor. Alternate arm and leg extensions without arching.</p>
+        <p class="posture-desc">Lie on back. Lower back MUST stay completely glued flat to the floor with zero gap. Alternate arm and leg extensions without allowing lumbar spine to arch.</p>
         <div class="posture-action">
           <span class="reps-target">Target: 3 sets x 15 reps</span>
         </div>
       </div>
+
+      <!-- APT 3: Scapular Wall Slides -->
+      <div class="posture-card">
+        <div class="posture-header">
+          <span class="badge-posture rounded">ANTI-ROUNDED SHOULDERS</span>
+          <h3>7. Scapular Wall Slides</h3>
+        </div>
+        <p class="posture-desc">Back, elbows, and wrists flat against wall. Slide arms overhead into a "Y". Activates lower traps and opens tight chest muscles.</p>
+        <div class="posture-action">
+          <span class="reps-target">Target: 15 Slow Reps</span>
+        </div>
+      </div>
     </section>
+
 
     <!-- TAB 4: PROGRESS & MUSCLE ANALYTICS (REPLACED WEIGHT/PROTEIN) -->
     <section class="tab-pane" id="tab-progress">

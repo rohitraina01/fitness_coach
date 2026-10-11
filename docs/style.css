@@ -606,6 +606,43 @@ body {
 .badge-posture.apt { background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); }
 .badge-posture.rounded { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); }
 .badge-posture.core { background: rgba(167, 139, 250, 0.15); color: var(--accent-purple); }
+.badge-posture.neck { background: rgba(239, 68, 68, 0.15); color: #F87171; }
+.badge-posture.retraction { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); }
+.badge-posture.trap { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+.badge-posture.thoracic { background: rgba(52, 211, 153, 0.15); color: #34D399; }
+
+.posture-alert-box {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #FCA5A5;
+}
+.posture-alert-box strong {
+  color: #FFF;
+  display: block;
+  margin-bottom: 4px;
+}
+.posture-section-divider {
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-cyan);
+  margin: 20px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.posture-section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-card);
+}
 
 .posture-header h3 {
   font-size: 1rem;

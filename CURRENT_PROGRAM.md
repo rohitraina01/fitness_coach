@@ -108,3 +108,5 @@ Perform either mid-day at your desk or immediately after work to reverse neck pa
 
 ### DAY 7: REST / RECOVERY
 - Complete physical recovery. Meal prep for upcoming training week.
+
+- **Remote Mobile Posture Cue (2026-10-12 03:58:16)**: maintain neutral pelvis while standing
