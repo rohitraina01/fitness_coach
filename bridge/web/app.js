@@ -23,10 +23,22 @@ document.addEventListener("DOMContentLoaded", () => {
   initExerciseChips();
   initAgentChat();
   checkConnection();
-  setInterval(checkConnection, 8000); // Poll status every 8s
+  initAdaptivePolling();
   renderQueue();
   loadLocalCheckedSets();
 });
+
+let connectionPollTimer = null;
+function initAdaptivePolling() {
+  function runPoll() {
+    const delay = isOnline ? 8000 : 3500;
+    connectionPollTimer = setTimeout(async () => {
+      await checkConnection();
+      runPoll();
+    }, delay);
+  }
+  runPoll();
+}
 
 // 2. Tab Navigation
 function initNavigation() {
@@ -226,7 +238,8 @@ async function checkConnection() {
         const serverUrl = localStorage.getItem("apex_detected_server") || "localhost:8080";
         showToast(`✅ Connected to PC Server (${serverUrl})`);
       } else {
-        showToast("⚠️ PC Offline. On phone, open http://192.168.1.5:8080 or tap ⚙️ to set Bridge URL.");
+        showToast("🔄 Reconnecting to home PC...");
+        checkConnection();
       }
     });
   }
