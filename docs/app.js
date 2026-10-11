@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initVoice();
   initLogSubmission();
   initExerciseChips();
+  initAgentChat();
   checkConnection();
   setInterval(checkConnection, 8000); // Poll status every 8s
   renderQueue();
@@ -74,34 +75,140 @@ function setEntryMode(isTest) {
   }
 }
 
-// 3. Connectivity & Data Fetching
+// 3. Connectivity & Dynamic API Routing
+function getApiUrl(endpoint) {
+  const path = endpoint.startsWith("/") ? endpoint : "/" + endpoint;
+
+  // 1. Explicit user-configured bridge URL in settings
+  const custom = localStorage.getItem("apex_bridge_url");
+  if (custom && custom.trim()) {
+    return custom.trim().replace(/\/+$/, "") + path;
+  }
+
+  // 2. Previously auto-detected working server (for GitHub Pages / file://)
+  const auto = localStorage.getItem("apex_detected_server");
+  if (auto && auto.trim() && (window.location.protocol === "file:" || window.location.hostname.includes("github.io"))) {
+    return auto.trim().replace(/\/+$/, "") + path;
+  }
+
+  // 3. Fallback for file:// protocol
+  if (window.location.protocol === "file:") {
+    return "http://localhost:8080" + path;
+  }
+
+  // 4. Default: relative path (works on localhost:8080 and local Wi-Fi IP)
+  return path;
+}
+
 async function checkConnection() {
   const statusBadge = document.getElementById("bridgeStatusBadge");
-  const dot = statusBadge.querySelector(".status-dot");
+  const dot = statusBadge ? statusBadge.querySelector(".status-dot") : null;
   const text = document.getElementById("statusText");
 
-  try {
-    const res = await fetch("/api/status", { cache: "no-store" });
-    if (res.ok) {
-      isOnline = true;
-      dot.className = "status-dot online";
-      text.innerText = "PC Online";
-      if (!dashboardData) {
-        fetchDashboardData();
+  // Multi-target candidate probing
+  const candidates = [];
+  const primaryUrl = getApiUrl("/api/status");
+  candidates.push(primaryUrl);
+
+  if (window.location.protocol === "file:" || window.location.hostname.includes("github.io")) {
+    candidates.push("http://localhost:8080/api/status");
+    candidates.push("http://127.0.0.1:8080/api/status");
+    candidates.push("http://192.168.1.5:8080/api/status");
+  } else {
+    candidates.push("/api/status");
+    candidates.push("http://localhost:8080/api/status");
+  }
+
+  const uniqueCandidates = [...new Set(candidates)];
+  let workingBase = null;
+
+  for (const url of uniqueCandidates) {
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 2000);
+      const res = await fetch(url, { cache: "no-store", signal: controller.signal });
+      clearTimeout(timer);
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.online) {
+          workingBase = url.replace("/api/status", "");
+          break;
+        }
       }
-    } else {
-      throw new Error();
+    } catch (e) {
+      // Test next candidate
     }
-  } catch (e) {
+  }
+
+  if (workingBase !== null) {
+    isOnline = true;
+    if (dot) dot.className = "status-dot online";
+    if (text) text.innerText = "PC Online";
+    updateAgentStatusUI(true);
+
+    if (workingBase.startsWith("http://") || workingBase.startsWith("https://")) {
+      localStorage.setItem("apex_detected_server", workingBase);
+    }
+
+    if (!dashboardData) {
+      fetchDashboardData();
+    }
+  } else {
     isOnline = false;
-    dot.className = "status-dot offline";
-    text.innerText = "PC Offline";
+    if (dot) dot.className = "status-dot offline";
+    if (text) text.innerText = "PC Offline";
+    updateAgentStatusUI(false);
+  }
+
+  if (statusBadge && !statusBadge.dataset.hasListener) {
+    statusBadge.dataset.hasListener = "true";
+    statusBadge.style.cursor = "pointer";
+    statusBadge.addEventListener("click", () => {
+      if (isOnline) {
+        const serverUrl = localStorage.getItem("apex_detected_server") || "localhost:8080";
+        showToast(`✅ Connected to PC Server (${serverUrl})`);
+      } else {
+        showToast("⚠️ PC Offline. On phone, open http://192.168.1.5:8080 or tap ⚙️ to set Bridge URL.");
+      }
+    });
+  }
+}
+
+function updateAgentStatusUI(online) {
+  const ascBadge = document.getElementById("ascBadge");
+  const ascTitle = document.getElementById("ascTitle");
+  const ascSub = document.getElementById("ascSub");
+  const pulseDot = document.getElementById("agentPulseDot");
+
+  if (online) {
+    if (ascBadge && !ascBadge.classList.contains("active")) {
+      ascBadge.innerText = "IDLE";
+      ascBadge.style.color = "var(--accent-green)";
+    }
+    if (ascTitle) ascTitle.innerText = "Laptop Agent Connected";
+    if (ascSub) ascSub.innerText = "Ready for gym queries, program shifts & auto-git push";
+    if (pulseDot) {
+      pulseDot.style.background = "var(--accent-green)";
+      pulseDot.style.boxShadow = "0 0 10px var(--accent-green)";
+    }
+  } else {
+    if (ascBadge) {
+      ascBadge.innerText = "OFFLINE";
+      ascBadge.style.color = "var(--accent-orange)";
+    }
+    if (ascTitle) ascTitle.innerText = "Laptop Agent Offline";
+    if (ascSub) ascSub.innerText = "Smart Queue active (Prompts saved locally on phone)";
+    if (pulseDot) {
+      pulseDot.style.background = "var(--accent-orange)";
+      pulseDot.style.boxShadow = "0 0 10px var(--accent-orange)";
+    }
   }
 }
 
 async function fetchDashboardData() {
   try {
-    const res = await fetch("/api/dashboard-data");
+    const res = await fetch(getApiUrl("/api/dashboard-data"));
     const data = await res.json();
     if (data.success) {
       dashboardData = data;
@@ -325,7 +432,7 @@ function initLogSubmission() {
       submitBtn.disabled = true;
       submitBtn.innerText = forceDummy ? "Simulating via Coach..." : "Processing via Antigravity...";
       try {
-        const res = await fetch("/api/log-workout", {
+        const res = await fetch(getApiUrl("/api/log-workout"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
@@ -336,7 +443,8 @@ function initLogSubmission() {
             showSimulationResults(resJson.coach_feedback);
             showToast("🧪 DUMMY RUN VERIFIED! Zero database changes.");
           } else {
-            showToast("✅ Workout processed & committed to PC!");
+            const pushNotice = resJson.git_push ? ` • ${resJson.git_push}` : "";
+            showToast(`✅ Ingested & committed!${pushNotice}`);
             textarea.value = "";
             fetchDashboardData();
           }
@@ -404,7 +512,7 @@ function initLogSubmission() {
 
 // Security PIN Lock
 function getStoredPin() {
-  return localStorage.getItem(PIN_STORAGE_KEY) || "123";
+  return localStorage.getItem(PIN_STORAGE_KEY) || "1234";
 }
 
 function initSecurityLock() {
@@ -419,7 +527,7 @@ function initSecurityLock() {
 function updatePinDots() {
   const display = document.getElementById("pinDisplay");
   if (!display) return;
-  const targetLen = Math.max(3, getStoredPin().length);
+  const targetLen = Math.max(4, getStoredPin().length);
   display.innerHTML = "";
   for (let i = 0; i < targetLen; i++) {
     const dot = document.createElement("span");
@@ -437,7 +545,7 @@ function pressPin(digit) {
     const correctPin = getStoredPin();
     if (enteredPin === correctPin) {
       setTimeout(verifyPin, 120);
-    } else if (enteredPin.length >= correctPin.length && correctPin.length >= 3) {
+    } else if (enteredPin.length >= correctPin.length) {
       setTimeout(verifyPin, 180);
     }
   }
@@ -498,10 +606,12 @@ function openSettingsModal() {
   const repoInput = document.getElementById("ghRepoInput");
   const tokenInput = document.getElementById("ghTokenInput");
   const pinInput = document.getElementById("appPinInput");
+  const bridgeInput = document.getElementById("bridgeUrlInput");
 
   if (repoInput) repoInput.value = localStorage.getItem("apex_gh_repo") || "";
   if (tokenInput) tokenInput.value = localStorage.getItem("apex_gh_token") || "";
   if (pinInput) pinInput.value = getStoredPin();
+  if (bridgeInput) bridgeInput.value = localStorage.getItem("apex_bridge_url") || "";
   if (modal) modal.style.display = "flex";
 }
 
@@ -514,10 +624,12 @@ function saveCloudSettings() {
   const repoInput = document.getElementById("ghRepoInput");
   const tokenInput = document.getElementById("ghTokenInput");
   const pinInput = document.getElementById("appPinInput");
+  const bridgeInput = document.getElementById("bridgeUrlInput");
 
   const repo = repoInput ? repoInput.value.trim() : "";
   const token = tokenInput ? tokenInput.value.trim() : "";
   const pin = pinInput ? pinInput.value.trim() : "";
+  const bridge = bridgeInput ? bridgeInput.value.trim() : "";
 
   if (repo) localStorage.setItem("apex_gh_repo", repo);
   else localStorage.removeItem("apex_gh_repo");
@@ -525,13 +637,17 @@ function saveCloudSettings() {
   if (token) localStorage.setItem("apex_gh_token", token);
   else localStorage.removeItem("apex_gh_token");
 
-  if (pin && pin.length >= 3) {
+  if (bridge) localStorage.setItem("apex_bridge_url", bridge);
+  else localStorage.removeItem("apex_bridge_url");
+
+  if (pin && pin.length >= 4) {
     localStorage.setItem(PIN_STORAGE_KEY, pin);
   }
 
   closeSettingsModal();
   updatePinDots();
-  showToast("☁️ Settings & PIN saved!");
+  checkConnection();
+  showToast("☁️ Settings, PIN & Bridge URL saved!");
 }
 
 function showSimulationResults(feedbackText) {
@@ -561,29 +677,45 @@ function renderQueue() {
   const countSpan = document.getElementById("queueCount");
   const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
 
+  updateQueuedPromptsBanner();
+
   if (!list || !countSpan) return;
   countSpan.innerText = queue.length;
   list.innerHTML = "";
 
   if (queue.length === 0) {
-    list.innerHTML = `<p style="font-size:0.8rem; color:var(--text-dim); text-align:center; padding:12px;">Queue is empty. All workouts synced.</p>`;
+    list.innerHTML = `<p style="font-size:0.8rem; color:var(--text-dim); text-align:center; padding:12px;">Queue is empty. All workouts & instructions synced.</p>`;
     return;
   }
 
   queue.forEach((item, idx) => {
     const el = document.createElement("div");
     el.className = "queue-item";
-    el.innerHTML = `
-      <div class="queue-item-meta">
-        <strong>${item.session_type} Workout</strong>
-        <span>${item.date} • ${item.created_at}</span>
-      </div>
-      <div class="queue-snippet">${escapeHtml(item.raw_text)}</div>
-      <div class="queue-actions">
-        <button class="btn-queue-sync" onclick="syncQueueItem(${idx})">Sync to PC ➔</button>
-        <button class="btn-queue-discard" onclick="discardQueueItem(${idx})">Discard / Delete</button>
-      </div>
-    `;
+    if (item.type === "prompt") {
+      el.innerHTML = `
+        <div class="queue-item-meta">
+          <strong style="color:var(--accent-cyan);">🤖 Coach Instruction</strong>
+          <span>${item.date} • ${item.created_at}</span>
+        </div>
+        <div class="queue-snippet">${escapeHtml(item.prompt)}</div>
+        <div class="queue-actions">
+          <button class="btn-queue-sync" onclick="syncQueueItem(${idx})">Dispatch to Laptop ➔</button>
+          <button class="btn-queue-discard" onclick="discardQueueItem(${idx})">Discard</button>
+        </div>
+      `;
+    } else {
+      el.innerHTML = `
+        <div class="queue-item-meta">
+          <strong>${item.session_type} Workout</strong>
+          <span>${item.date} • ${item.created_at}</span>
+        </div>
+        <div class="queue-snippet">${escapeHtml(item.raw_text)}</div>
+        <div class="queue-actions">
+          <button class="btn-queue-sync" onclick="syncQueueItem(${idx})">Sync to PC ➔</button>
+          <button class="btn-queue-discard" onclick="discardQueueItem(${idx})">Discard / Delete</button>
+        </div>
+      `;
+    }
     list.appendChild(el);
   });
 }
@@ -598,9 +730,38 @@ async function syncQueueItem(index) {
     return;
   }
 
+  if (item.type === "prompt") {
+    showToast("Dispatching prompt to laptop agent...");
+    try {
+      const res = await fetch(getApiUrl("/api/coach-prompt"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: item.prompt, mode: "agent" })
+      });
+      const resJson = await res.json();
+      if (resJson.success) {
+        queue.splice(index, 1);
+        localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue));
+        renderQueue();
+        showToast("✅ Prompt received by laptop agent!");
+        if (resJson.task && resJson.task.task_id) {
+          const agentNavBtn = document.querySelector(`.nav-item[data-tab="tab-agent"]`);
+          if (agentNavBtn) agentNavBtn.click();
+          showAgentConsole();
+          pollAgentTask(resJson.task.task_id);
+        }
+      } else {
+        showToast("Failed to dispatch prompt: " + resJson.error);
+      }
+    } catch (e) {
+      showToast("Dispatch failed: PC bridge disconnected.");
+    }
+    return;
+  }
+
   showToast("Syncing to PC...");
   try {
-    const res = await fetch("/api/log-workout", {
+    const res = await fetch(getApiUrl("/api/log-workout"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(item)
@@ -610,7 +771,8 @@ async function syncQueueItem(index) {
       queue.splice(index, 1);
       localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue));
       renderQueue();
-      showToast("✅ Successfully synced to PC records!");
+      const pushMsg = resJson.git_push ? ` (${resJson.git_push})` : "";
+      showToast(`✅ Successfully synced to PC records!${pushMsg}`);
       fetchDashboardData();
     } else {
       showToast("Error syncing item: " + resJson.error);
@@ -785,5 +947,200 @@ function showToast(msg) {
 }
 
 function escapeHtml(str) {
+  if (!str) return "";
   return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// =========================================================
+// 10. REMOTE COACH AI AGENT & LIVE STREAMING
+// =========================================================
+let activeAgentPollTimer = null;
+let agentStreamEventsCount = 0;
+
+function initAgentChat() {
+  const btnSend = document.getElementById("btnSendAgentPrompt");
+  const textarea = document.getElementById("agentPromptInput");
+  const btnVoice = document.getElementById("btnAgentVoice");
+
+  if (btnSend) {
+    btnSend.addEventListener("click", submitAgentPrompt);
+  }
+
+  if (textarea) {
+    textarea.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        submitAgentPrompt();
+      }
+    });
+  }
+
+  if (btnVoice) {
+    btnVoice.addEventListener("click", () => {
+      toggleVoiceDictation(textarea, btnVoice);
+    });
+  }
+
+  updateQueuedPromptsBanner();
+}
+
+function useQuickPrompt(text) {
+  const textarea = document.getElementById("agentPromptInput");
+  if (!textarea) return;
+  textarea.value = text;
+  submitAgentPrompt();
+}
+
+async function submitAgentPrompt() {
+  const textarea = document.getElementById("agentPromptInput");
+  const btnSend = document.getElementById("btnSendAgentPrompt");
+  const text = textarea ? textarea.value.trim() : "";
+  if (!text) {
+    showToast("Please enter or dictate a question or instruction first.");
+    return;
+  }
+
+  if (!isOnline) {
+    // Offline queueing
+    const promptItem = {
+      id: "prompt_" + Date.now(),
+      type: "prompt",
+      prompt: text,
+      date: new Date().toISOString().split("T")[0],
+      created_at: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+    enqueueWorkout(promptItem);
+    textarea.value = "";
+    updateQueuedPromptsBanner();
+    showToast("⚠️ PC is offline. Instruction saved to Smart Queue!");
+    return;
+  }
+
+  // Online execution
+  btnSend.disabled = true;
+  btnSend.innerText = "Dispatching...";
+  showAgentConsole();
+
+  try {
+    const res = await fetch(getApiUrl("/api/coach-prompt"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: text, mode: "agent" })
+    });
+    const resJson = await res.json();
+    if (resJson.success && resJson.task) {
+      textarea.value = "";
+      pollAgentTask(resJson.task.task_id);
+    } else {
+      throw new Error(resJson.error || "Failed to start agent task");
+    }
+  } catch (e) {
+    showToast("Agent dispatch error: " + e.message);
+    btnSend.disabled = false;
+    btnSend.innerHTML = "<span id='agentSendLabel'>Send to Laptop</span> ➔";
+  }
+}
+
+function showAgentConsole() {
+  const box = document.getElementById("agentConsoleBox");
+  const events = document.getElementById("consoleEvents");
+  const respBox = document.getElementById("consoleResponseBox");
+  const ascBadge = document.getElementById("ascBadge");
+
+  if (box) box.style.display = "block";
+  if (events) {
+    events.innerHTML = `<div class="event-row"><span class="event-time">${new Date().toLocaleTimeString()}</span><span class="event-text">Connecting to Antigravity Agent on laptop...</span></div>`;
+  }
+  if (respBox) respBox.style.display = "none";
+  if (ascBadge) {
+    ascBadge.className = "asc-badge active";
+    ascBadge.innerText = "RUNNING";
+  }
+  agentStreamEventsCount = 0;
+}
+
+function pollAgentTask(taskId) {
+  clearInterval(activeAgentPollTimer);
+  const eventsEl = document.getElementById("consoleEvents");
+  const respBox = document.getElementById("consoleResponseBox");
+  const respBody = document.getElementById("consoleResponseBody");
+  const btnSend = document.getElementById("btnSendAgentPrompt");
+  const ascBadge = document.getElementById("ascBadge");
+
+  let pollCount = 0;
+  activeAgentPollTimer = setInterval(async () => {
+    pollCount++;
+    try {
+      const res = await fetch(getApiUrl(`/api/agent-stream?task_id=${taskId}&since=${agentStreamEventsCount}`));
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data.success) {
+        if (data.events && data.events.length > 0) {
+          data.events.forEach(ev => {
+            const row = document.createElement("div");
+            row.className = `event-row ${ev.type || 'info'}`;
+            row.innerHTML = `<span class="event-time">${ev.time || ''}</span><span class="event-text">${escapeHtml(ev.text)}</span>`;
+            if (eventsEl) {
+              eventsEl.appendChild(row);
+              eventsEl.scrollTop = eventsEl.scrollHeight;
+            }
+          });
+          agentStreamEventsCount += data.events.length;
+        }
+
+        if (data.response) {
+          if (respBox && respBody) {
+            respBox.style.display = "block";
+            respBody.innerText = data.response;
+          }
+        }
+
+        if (data.status === "completed" || pollCount >= 35) {
+          clearInterval(activeAgentPollTimer);
+          if (btnSend) {
+            btnSend.disabled = false;
+            btnSend.innerHTML = "<span id='agentSendLabel'>Send to Laptop</span> ➔";
+          }
+          if (ascBadge) {
+            ascBadge.className = "asc-badge";
+            ascBadge.innerText = "IDLE";
+          }
+          fetchDashboardData();
+        }
+      }
+    } catch (e) {
+      console.warn("Polling agent status error:", e);
+    }
+  }, 1200);
+}
+
+function clearAgentConsole() {
+  const box = document.getElementById("agentConsoleBox");
+  if (box) box.style.display = "none";
+  clearInterval(activeAgentPollTimer);
+  const ascBadge = document.getElementById("ascBadge");
+  if (ascBadge) {
+    ascBadge.className = "asc-badge";
+    ascBadge.innerText = "IDLE";
+  }
+}
+
+function copyAgentResponse() {
+  const respBody = document.getElementById("consoleResponseBody");
+  if (respBody && respBody.innerText) {
+    navigator.clipboard.writeText(respBody.innerText);
+    showToast("📋 Advice copied to clipboard!");
+  }
+}
+
+function updateQueuedPromptsBanner() {
+  const banner = document.getElementById("queuedPromptsBanner");
+  const countEl = document.getElementById("queuedPromptsCount");
+  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
+  const promptCount = queue.filter(q => q.type === "prompt").length;
+
+  if (banner && countEl) {
+    countEl.innerText = promptCount;
+    banner.style.display = promptCount > 0 ? "flex" : "none";
+  }
 }

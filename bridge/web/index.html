@@ -42,6 +42,7 @@
         <span class="pin-dot" id="dot0"></span>
         <span class="pin-dot" id="dot1"></span>
         <span class="pin-dot" id="dot2"></span>
+        <span class="pin-dot" id="dot3"></span>
       </div>
 
       <div class="pin-keypad">
@@ -59,7 +60,7 @@
         <button class="key-btn action unlock" onclick="verifyPin()" title="Unlock">➔</button>
       </div>
 
-      <p class="pin-hint">Default PIN: <code>123</code> (Change to 4 digits in ⚙️ Settings)</p>
+      <p class="pin-hint">Default PIN: <code>1234</code> (Change in ⚙️ Settings)</p>
     </div>
   </div>
 
@@ -510,9 +511,15 @@
       </div>
 
       <div class="form-group">
-        <label>Security PIN (e.g. 4 Digits)</label>
-        <input type="password" id="appPinInput" maxlength="8" placeholder="123">
-        <span class="form-help">Current default is 123. Enter your secret 4-digit PIN here to protect the app.</span>
+        <label>PC Bridge Server URL</label>
+        <input type="text" id="bridgeUrlInput" placeholder="http://192.168.1.5:8080">
+        <span class="form-help">Current Laptop IP: <code>http://192.168.1.5:8080</code> (or use Tailscale / Cloudflare tunnel).</span>
+      </div>
+
+      <div class="form-group">
+        <label>Security PIN (4 Digits)</label>
+        <input type="password" id="appPinInput" maxlength="8" placeholder="1234">
+        <span class="form-help">Current default is 1234. Enter your secret 4-digit PIN here to protect the app.</span>
       </div>
 
       <div class="modal-actions">

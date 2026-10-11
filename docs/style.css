@@ -1250,3 +1250,308 @@ body {
   20%, 60% { transform: translateX(-8px); }
   40%, 80% { transform: translateX(8px); }
 }
+
+/* ========================================================= */
+/* TAB 6: REMOTE COACH AI AGENT & LIVE STREAM CONSOLE        */
+/* ========================================================= */
+.agent-status-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.asc-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 10px var(--accent-green);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+.asc-text strong {
+  display: block;
+  font-size: 0.82rem;
+  color: #FFF;
+}
+
+.asc-text span {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.asc-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(52, 211, 153, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.asc-badge.active {
+  background: rgba(56, 189, 248, 0.2);
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+/* Quick Prompt Chips */
+.quick-chips-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  scrollbar-width: none;
+}
+
+.quick-chips-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.chip-action {
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-card);
+  color: var(--text-main);
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chip-action:active {
+  background: var(--accent-cyan);
+  color: #090D16;
+  border-color: var(--accent-cyan);
+}
+
+/* Agent Input Container */
+.agent-input-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 14px;
+}
+
+.agent-input-container textarea {
+  width: 100%;
+  height: 90px;
+  background: transparent;
+  border: none;
+  color: #FFF;
+  font-family: inherit;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  outline: none;
+  resize: none;
+}
+
+.agent-input-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.btn-agent-send {
+  background: linear-gradient(135deg, var(--accent-cyan), #0284C7);
+  color: #FFF;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-agent-send:active {
+  transform: scale(0.97);
+}
+
+.btn-agent-send:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Live Agent Console */
+.agent-console-box {
+  background: #0B1120;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.console-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.console-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+}
+
+.console-dot.blink {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  animation: blinkDot 1s infinite alternate;
+}
+
+@keyframes blinkDot {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+.btn-console-clear {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.console-events {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+  padding-right: 4px;
+}
+
+.event-row {
+  display: flex;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  line-height: 1.4;
+}
+
+.event-time {
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.event-text {
+  color: #CBD5E1;
+}
+
+.event-row.tool .event-text { color: var(--accent-cyan); }
+.event-row.git_success .event-text { color: var(--accent-green); font-weight: 700; }
+.event-row.coach .event-text { color: #FDE047; }
+.event-row.done .event-text { color: var(--accent-green); }
+
+/* Response Box */
+.console-response-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.response-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  letter-spacing: 0.5px;
+}
+
+.btn-copy-response {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-card);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.68rem;
+  cursor: pointer;
+}
+
+.response-body {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #F1F5F9;
+  white-space: pre-wrap;
+}
+
+/* Queued Prompts Banner */
+.queued-prompts-banner {
+  background: rgba(251, 146, 60, 0.12);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.q-icon { font-size: 1.1rem; }
+.q-text strong { display: block; font-size: 0.78rem; color: #FED7AA; }
+.q-text span { font-size: 0.68rem; color: #FDBA74; }
+
+/* 6-Tab Navigation Compact Responsiveness */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 6px 2px 14px;
+}
+
+.nav-item {
+  min-width: 50px;
+  padding: 4px 2px;
+  flex: 1;
+}
+
+.nav-icon {
+  font-size: 1.15rem;
+}
+
+.nav-text {
+  font-size: 0.64rem;
+  letter-spacing: -0.2px;
+}
+

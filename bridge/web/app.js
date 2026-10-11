@@ -75,30 +75,103 @@ function setEntryMode(isTest) {
   }
 }
 
-// 3. Connectivity & Data Fetching
+// 3. Connectivity & Dynamic API Routing
+function getApiUrl(endpoint) {
+  const path = endpoint.startsWith("/") ? endpoint : "/" + endpoint;
+
+  // 1. Explicit user-configured bridge URL in settings
+  const custom = localStorage.getItem("apex_bridge_url");
+  if (custom && custom.trim()) {
+    return custom.trim().replace(/\/+$/, "") + path;
+  }
+
+  // 2. Previously auto-detected working server (for GitHub Pages / file://)
+  const auto = localStorage.getItem("apex_detected_server");
+  if (auto && auto.trim() && (window.location.protocol === "file:" || window.location.hostname.includes("github.io"))) {
+    return auto.trim().replace(/\/+$/, "") + path;
+  }
+
+  // 3. Fallback for file:// protocol
+  if (window.location.protocol === "file:") {
+    return "http://localhost:8080" + path;
+  }
+
+  // 4. Default: relative path (works on localhost:8080 and local Wi-Fi IP)
+  return path;
+}
+
 async function checkConnection() {
   const statusBadge = document.getElementById("bridgeStatusBadge");
-  const dot = statusBadge.querySelector(".status-dot");
+  const dot = statusBadge ? statusBadge.querySelector(".status-dot") : null;
   const text = document.getElementById("statusText");
 
-  try {
-    const res = await fetch("/api/status", { cache: "no-store" });
-    if (res.ok) {
-      isOnline = true;
-      dot.className = "status-dot online";
-      text.innerText = "PC Online";
-      updateAgentStatusUI(true);
-      if (!dashboardData) {
-        fetchDashboardData();
+  // Multi-target candidate probing
+  const candidates = [];
+  const primaryUrl = getApiUrl("/api/status");
+  candidates.push(primaryUrl);
+
+  if (window.location.protocol === "file:" || window.location.hostname.includes("github.io")) {
+    candidates.push("http://localhost:8080/api/status");
+    candidates.push("http://127.0.0.1:8080/api/status");
+    candidates.push("http://192.168.1.5:8080/api/status");
+  } else {
+    candidates.push("/api/status");
+    candidates.push("http://localhost:8080/api/status");
+  }
+
+  const uniqueCandidates = [...new Set(candidates)];
+  let workingBase = null;
+
+  for (const url of uniqueCandidates) {
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 2000);
+      const res = await fetch(url, { cache: "no-store", signal: controller.signal });
+      clearTimeout(timer);
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.online) {
+          workingBase = url.replace("/api/status", "");
+          break;
+        }
       }
-    } else {
-      throw new Error();
+    } catch (e) {
+      // Test next candidate
     }
-  } catch (e) {
+  }
+
+  if (workingBase !== null) {
+    isOnline = true;
+    if (dot) dot.className = "status-dot online";
+    if (text) text.innerText = "PC Online";
+    updateAgentStatusUI(true);
+
+    if (workingBase.startsWith("http://") || workingBase.startsWith("https://")) {
+      localStorage.setItem("apex_detected_server", workingBase);
+    }
+
+    if (!dashboardData) {
+      fetchDashboardData();
+    }
+  } else {
     isOnline = false;
-    dot.className = "status-dot offline";
-    text.innerText = "PC Offline";
+    if (dot) dot.className = "status-dot offline";
+    if (text) text.innerText = "PC Offline";
     updateAgentStatusUI(false);
+  }
+
+  if (statusBadge && !statusBadge.dataset.hasListener) {
+    statusBadge.dataset.hasListener = "true";
+    statusBadge.style.cursor = "pointer";
+    statusBadge.addEventListener("click", () => {
+      if (isOnline) {
+        const serverUrl = localStorage.getItem("apex_detected_server") || "localhost:8080";
+        showToast(`✅ Connected to PC Server (${serverUrl})`);
+      } else {
+        showToast("⚠️ PC Offline. On phone, open http://192.168.1.5:8080 or tap ⚙️ to set Bridge URL.");
+      }
+    });
   }
 }
 
@@ -135,7 +208,7 @@ function updateAgentStatusUI(online) {
 
 async function fetchDashboardData() {
   try {
-    const res = await fetch("/api/dashboard-data");
+    const res = await fetch(getApiUrl("/api/dashboard-data"));
     const data = await res.json();
     if (data.success) {
       dashboardData = data;
@@ -359,7 +432,7 @@ function initLogSubmission() {
       submitBtn.disabled = true;
       submitBtn.innerText = forceDummy ? "Simulating via Coach..." : "Processing via Antigravity...";
       try {
-        const res = await fetch("/api/log-workout", {
+        const res = await fetch(getApiUrl("/api/log-workout"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
@@ -439,7 +512,7 @@ function initLogSubmission() {
 
 // Security PIN Lock
 function getStoredPin() {
-  return localStorage.getItem(PIN_STORAGE_KEY) || "123";
+  return localStorage.getItem(PIN_STORAGE_KEY) || "1234";
 }
 
 function initSecurityLock() {
@@ -454,7 +527,7 @@ function initSecurityLock() {
 function updatePinDots() {
   const display = document.getElementById("pinDisplay");
   if (!display) return;
-  const targetLen = Math.max(3, getStoredPin().length);
+  const targetLen = Math.max(4, getStoredPin().length);
   display.innerHTML = "";
   for (let i = 0; i < targetLen; i++) {
     const dot = document.createElement("span");
@@ -472,7 +545,7 @@ function pressPin(digit) {
     const correctPin = getStoredPin();
     if (enteredPin === correctPin) {
       setTimeout(verifyPin, 120);
-    } else if (enteredPin.length >= correctPin.length && correctPin.length >= 3) {
+    } else if (enteredPin.length >= correctPin.length) {
       setTimeout(verifyPin, 180);
     }
   }
@@ -533,10 +606,12 @@ function openSettingsModal() {
   const repoInput = document.getElementById("ghRepoInput");
   const tokenInput = document.getElementById("ghTokenInput");
   const pinInput = document.getElementById("appPinInput");
+  const bridgeInput = document.getElementById("bridgeUrlInput");
 
   if (repoInput) repoInput.value = localStorage.getItem("apex_gh_repo") || "";
   if (tokenInput) tokenInput.value = localStorage.getItem("apex_gh_token") || "";
   if (pinInput) pinInput.value = getStoredPin();
+  if (bridgeInput) bridgeInput.value = localStorage.getItem("apex_bridge_url") || "";
   if (modal) modal.style.display = "flex";
 }
 
@@ -549,10 +624,12 @@ function saveCloudSettings() {
   const repoInput = document.getElementById("ghRepoInput");
   const tokenInput = document.getElementById("ghTokenInput");
   const pinInput = document.getElementById("appPinInput");
+  const bridgeInput = document.getElementById("bridgeUrlInput");
 
   const repo = repoInput ? repoInput.value.trim() : "";
   const token = tokenInput ? tokenInput.value.trim() : "";
   const pin = pinInput ? pinInput.value.trim() : "";
+  const bridge = bridgeInput ? bridgeInput.value.trim() : "";
 
   if (repo) localStorage.setItem("apex_gh_repo", repo);
   else localStorage.removeItem("apex_gh_repo");
@@ -560,13 +637,17 @@ function saveCloudSettings() {
   if (token) localStorage.setItem("apex_gh_token", token);
   else localStorage.removeItem("apex_gh_token");
 
-  if (pin && pin.length >= 3) {
+  if (bridge) localStorage.setItem("apex_bridge_url", bridge);
+  else localStorage.removeItem("apex_bridge_url");
+
+  if (pin && pin.length >= 4) {
     localStorage.setItem(PIN_STORAGE_KEY, pin);
   }
 
   closeSettingsModal();
   updatePinDots();
-  showToast("☁️ Settings & PIN saved!");
+  checkConnection();
+  showToast("☁️ Settings, PIN & Bridge URL saved!");
 }
 
 function showSimulationResults(feedbackText) {
@@ -652,7 +733,7 @@ async function syncQueueItem(index) {
   if (item.type === "prompt") {
     showToast("Dispatching prompt to laptop agent...");
     try {
-      const res = await fetch("/api/coach-prompt", {
+      const res = await fetch(getApiUrl("/api/coach-prompt"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: item.prompt, mode: "agent" })
@@ -680,7 +761,7 @@ async function syncQueueItem(index) {
 
   showToast("Syncing to PC...");
   try {
-    const res = await fetch("/api/log-workout", {
+    const res = await fetch(getApiUrl("/api/log-workout"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(item)
@@ -941,7 +1022,7 @@ async function submitAgentPrompt() {
   showAgentConsole();
 
   try {
-    const res = await fetch("/api/coach-prompt", {
+    const res = await fetch(getApiUrl("/api/coach-prompt"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt: text, mode: "agent" })
@@ -990,7 +1071,7 @@ function pollAgentTask(taskId) {
   activeAgentPollTimer = setInterval(async () => {
     pollCount++;
     try {
-      const res = await fetch(`/api/agent-stream?task_id=${taskId}&since=${agentStreamEventsCount}`);
+      const res = await fetch(getApiUrl(`/api/agent-stream?task_id=${taskId}&since=${agentStreamEventsCount}`));
       if (!res.ok) return;
       const data = await res.json();
       if (data.success) {
