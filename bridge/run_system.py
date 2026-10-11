@@ -10,6 +10,7 @@ import time
 import subprocess
 import signal
 
+# Windows console encoding safety
 if hasattr(sys.stdout, "reconfigure"):
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -45,7 +46,7 @@ def main():
     print(f"  Workspace: {BASE_DIR}")
     print()
 
-    # Pre-clean port 8080 and old tunnels
+    # Pre-clean port 8080 and old tunnels to avoid collisions
     kill_existing_instances()
     time.sleep(0.5)
 
@@ -63,12 +64,12 @@ def main():
     def shutdown(signum=None, frame=None):
         print("\n[SYSTEM] Terminating Bridge Server and Cloudflare Tunnel...")
         try:
-            if tunnel_proc.poll() is None:
+            if tunnel_proc and tunnel_proc.poll() is None:
                 tunnel_proc.terminate()
         except Exception:
             pass
         try:
-            if server_proc.poll() is None:
+            if server_proc and server_proc.poll() is None:
                 server_proc.terminate()
         except Exception:
             pass
@@ -79,7 +80,7 @@ def main():
     signal.signal(signal.SIGTERM, shutdown)
 
     try:
-        # Keep main thread alive monitoring children
+        # Keep main thread alive monitoring children with auto-restart resilience
         while True:
             time.sleep(1)
             if server_proc.poll() is not None:

@@ -77,17 +77,29 @@ function setEntryMode(isTest) {
 
 // 3. Connectivity & Dynamic API Routing
 async function fetchPublishedTunnelUrl() {
-  try {
-    const url = new URL("tunnel_url.json", window.location.href);
-    url.searchParams.set("t", Date.now().toString());
-    const res = await fetch(url.toString(), { cache: "no-store" });
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.tunnel_url && data.tunnel_url.startsWith("https://")) {
-        return data.tunnel_url.trim().replace(/\/+$/, "");
+  const sources = [
+    // 1. Raw GitHub (zero deployment delay; updates in <2 seconds after git push)
+    "https://raw.githubusercontent.com/rohitraina01/fitness_coach/master/docs/tunnel_url.json",
+    // 2. Local relative file on hosting origin
+    new URL("tunnel_url.json", window.location.href).toString()
+  ];
+
+  for (const src of sources) {
+    try {
+      const u = new URL(src);
+      u.searchParams.set("t", Date.now().toString());
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 2000);
+      const res = await fetch(u.toString(), { cache: "no-store", signal: controller.signal });
+      clearTimeout(timer);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.tunnel_url && data.tunnel_url.startsWith("https://")) {
+          return data.tunnel_url.trim().replace(/\/+$/, "");
+        }
       }
-    }
-  } catch (e) {}
+    } catch (e) {}
+  }
   return null;
 }
 
@@ -129,11 +141,10 @@ async function checkConnection() {
   // Multi-target candidate probing
   const candidates = [];
 
-  // Check published tunnel_url.json on GitHub Pages / remote host
-  if (window.location.hostname.includes("github.io") || window.location.protocol === "file:") {
+  // Check published tunnel_url.json on raw GitHub / remote host
+  if (window.location.hostname.includes("github.io") || window.location.protocol === "file:" || window.location.protocol === "https:") {
     const publishedTunnel = await fetchPublishedTunnelUrl();
     if (publishedTunnel) {
-      localStorage.setItem("apex_cloud_tunnel_url", publishedTunnel);
       candidates.push(publishedTunnel + "/api/status");
     }
   }
@@ -189,6 +200,9 @@ async function checkConnection() {
 
     if (workingBase.startsWith("http://") || workingBase.startsWith("https://")) {
       localStorage.setItem("apex_detected_server", workingBase);
+      if (isCloudTunnel) {
+        localStorage.setItem("apex_cloud_tunnel_url", workingBase);
+      }
     }
 
     if (!dashboardData) {
@@ -199,6 +213,9 @@ async function checkConnection() {
     if (dot) dot.className = "status-dot offline";
     if (text) text.innerText = "PC Offline";
     updateAgentStatusUI(false);
+    // Clear dead cached tunnel to ensure fresh lookup on next try
+    localStorage.removeItem("apex_detected_server");
+    localStorage.removeItem("apex_cloud_tunnel_url");
   }
 
   if (statusBadge && !statusBadge.dataset.hasListener) {
