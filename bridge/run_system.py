@@ -22,12 +22,32 @@ BRIDGE_DIR = os.path.dirname(os.path.abspath(__file__))
 SERVER_SCRIPT = os.path.join(BRIDGE_DIR, "server.py")
 TUNNEL_SCRIPT = os.path.join(BRIDGE_DIR, "tunnel.py")
 
+def kill_existing_instances():
+    """Ensure port 8080 and cloudflared are free before launching."""
+    try:
+        out = subprocess.check_output('netstat -aon | findstr ":8080" | findstr "LISTENING"', shell=True).decode()
+        for line in out.splitlines():
+            parts = line.strip().split()
+            if len(parts) >= 5:
+                pid = parts[-1]
+                subprocess.run(["taskkill", "/F", "/PID", pid], capture_output=True)
+    except Exception:
+        pass
+    try:
+        subprocess.run(["taskkill", "/F", "/IM", "cloudflared.exe"], capture_output=True)
+    except Exception:
+        pass
+
 def main():
     print("=" * 72)
     print("  STARTING APEX FITNESS COACH SYSTEM (SERVER + CLOUD TUNNEL)")
     print("=" * 72)
     print(f"  Workspace: {BASE_DIR}")
     print()
+
+    # Pre-clean port 8080 and old tunnels
+    kill_existing_instances()
+    time.sleep(0.5)
 
     # 1. Start Server Process
     print("[1/2] Starting HTTP Bridge Server on port 8080...")
