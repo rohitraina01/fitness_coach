@@ -1222,6 +1222,7 @@ function pollAgentTask(taskId) {
           if (respBox && respBody) {
             respBox.style.display = "block";
             respBody.innerText = data.response;
+            respBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
           }
         }
 

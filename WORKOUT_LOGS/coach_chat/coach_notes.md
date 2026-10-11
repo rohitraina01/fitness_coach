@@ -186,3 +186,50 @@
 • **System Record**: This query is logged on your laptop bridge and cross-referenced with your historical progression logs.
 
 ---
+
+### [2026-10-11 20:01:21] Phone Prompt
+**Query**: Update all files and all to show what next session should look like now
+
+**Coach Response**:
+⚡ **APEX COACH INTELLIGENCE DIRECTIVE**
+
+• **Inquiry**: "Update all files and all to show what next session should look like now"
+• **Coach Analysis**: Rohit's current training phase is **Upper Hypertrophy & Anti-APT Restoration** (5-day split, 1,850 kcal, 150g protein floor).
+• **Actionable Guidance**:
+  1. Prioritize strict form cues: keep scapulae retracted, eliminate torso momentum, and adhere strictly to 90s–3m rest standards.
+  2. Keep working sets at RIR 1–2 on compound movements and RIR 0–1 on isolation accessories.
+  3. Do not add junk volume. Quality of mechanical tension at prescribed loads outperforms excessive sets.
+• **System Record**: This query is logged on your laptop bridge and cross-referenced with your historical progression logs.
+
+---
+
+### [2026-10-11 20:05:30] Phone Prompt
+**Query**: The body to show from the last workout in upper body so I am thinking in this workout today I like to lower body abs and poster exercise so instead of my next session being tools can it be the legs core and the posture
+
+**Coach Response**:
+🧘 **ANTI-APT POSTURE RESTORATION (9-HOUR DESK PROTOCOL)**
+
+• **Root Cause**: 9 hours of daily chair sitting shortens the psoas (hip flexors), tilting the pelvis forward and pushing glutes backward into a protruding silhouette.
+• **Daily Required Triad**:
+  1. Half-Kneeling Hip Flexor Stretch (45s/side with rear glute squeezed hard)
+  2. Scapular Wall Slides (15 slow reps against wall with wrists flat)
+  3. Deadbugs (3 sets × 15 reps with lower back completely locked to floor)
+• **Exercise Guardrail**: Glutes remain locked at 0 direct hypertrophy sets.
+
+---
+
+### [2026-10-11 20:11:44] Phone Prompt
+**Query**: Unit test prompt for agent task
+
+**Coach Response**:
+⚡ **APEX COACH INTELLIGENCE DIRECTIVE**
+
+• **Inquiry**: "Unit test prompt for agent task"
+• **Coach Analysis**: Rohit's current training phase is **Upper Hypertrophy & Anti-APT Restoration** (5-day split, 1,850 kcal, 150g protein floor).
+• **Actionable Guidance**:
+  1. Prioritize strict form cues: keep scapulae retracted, eliminate torso momentum, and adhere strictly to 90s–3m rest standards.
+  2. Keep working sets at RIR 1–2 on compound movements and RIR 0–1 on isolation accessories.
+  3. Do not add junk volume. Quality of mechanical tension at prescribed loads outperforms excessive sets.
+• **System Record**: This query is logged on your laptop bridge and cross-referenced with your historical progression logs.
+
+---
