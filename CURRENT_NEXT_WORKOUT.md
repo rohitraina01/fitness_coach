@@ -1,7 +1,7 @@
 # NEXT WORKOUT: DAY 3 - LEGS, SIX-PACK CORE & POSTURE
 
 *Status: READY FOR EXECUTION (1-YEAR RETURN CALIBRATION)*
-*Updated: 2026-10-13 21:42:00*
+*Updated: 2026-10-13 21:50:00*
 *Estimated Duration: 55–60 minutes*
 *Pre-Workout Note: First leg session after a 1-year layoff. Strict "Zero-Glute" biomechanics applied. Acclimatization protocol: stop all sets at 2–3 RIR to prevent crippling DOMS while establishing clean baseline numbers.*
 
@@ -9,22 +9,32 @@
 
 ## COACHING BRIEFING & PROTOCOLS
 
-### 1. Dynamic Warm-Up Protocol (5–7 Mins)
+### 1. Recommended Session Flow & Sequencing Rationale
+Follow this 1 $\rightarrow$ 7 order if machines are free. If a machine is taken, feel free to swap (e.g. Leg Curl or Extension first as pre-exhaustion) and just mention the swap when you log:
+1. **Leg Press**: Primary heavy compound. Needs maximum fresh CNS energy and knee stability.
+2. **Leg Extension**: Pure quad pump. Knees are hot and lubricated from pressing.
+3. **Leg Curl**: Antagonist hamstring balance. Normalizes patellar tendon pressure after quad volume.
+4. **Calf Raise**: Peripheral isolation. Gives systemic breathing recovery before abdominal work.
+5. **Cable Crunch**: Heavy mechanical tension for six-pack hypertrophy while core is fresh.
+6. **Deadbugs / Knee Raise**: Deep transverse abdominis & posterior pelvic tilt bracing.
+7. **Hip Flexor Stretch**: Post-workout psoas release. Stretching warm muscles produces lasting postural change.
+
+### 2. Dynamic Warm-Up Protocol (5–7 Mins)
 - **Step 1: Light Cardio**: 3–5 minutes on treadmill (incline walk) or stationary bike to circulate synovial fluid in knees.
 - **Step 2: Leg Swings**: 15 reps front-to-back & 15 reps side-to-side per leg (loosens tight hip capsules).
 - **Step 3: Ankle Mobility**: 15 rocks per ankle against wall (primes dorsiflexion so knees track forward smoothly over toes).
 - **Step 4: Specific Sets**: Empty sled $\times$ 12, Sled + 20kg $\times$ 8 directly on Leg Press before loading working weight.
 
-### 2. 1-Year Layoff Safety Ceiling: 2–3 RIR
+### 3. 1-Year Layoff Safety Ceiling: 2–3 RIR
 - **Do NOT train to muscular failure (0 RIR) today.** Eccentric muscle trauma on deconditioned legs causes extreme DOMS that can cripple you for 5 days.
 - Leave **2 to 3 clean reps in reserve (2–3 RIR)** on every working set today. Treat this as an Acclimatization & Baseline Calibration session.
 
-### 3. The "Zero-Glutes" Biomechanical Guardrail
+### 4. The "Zero-Glutes" Biomechanical Guardrail
 - 9 hours of daily desk sitting causes shortened hip flexors (psoas) and Anterior Pelvic Tilt (APT), pushing glutes outward and protruding the lower belly.
 - Standard leg exercises (squats, RDLs, hip thrusts, lunges) hyper-develop the gluteus maximus, widening the hips and worsening the feminine pear shape.
 - Today's session uses 0 squats, 0 RDLs, 0 hip thrusts. We load pure quad sweep and knee flexion only.
 
-### 4. Six-Pack & Core Execution Protocol
+### 5. Six-Pack & Core Execution Protocol
 - For six-pack bricks: Kneeling cable crunches require curling the ribcage toward the pelvis, NOT hip hinging.
 - For flat lower belly & APT reversal: Deadbugs require keeping the lower back glued 100% flat to the floor to brace the transverse abdominis.
 
@@ -33,6 +43,8 @@
 ## WORKOUT BLUEPRINT & EXERCISE CUES
 
 ### 1. Leg Press (Narrow / Mid-Low Platform Stance)
+- **Order Rationale**: **#1 Heavy Compound First.** Demands peak CNS recruitment and knee stability. Must be executed when fresh before quad or core fatigue sets in.
+- **Gym Floor Swap Option**: If busy, start with Leg Extension or Leg Curl to pre-exhaust the legs.
 - **Working Sets**: **3 sets x 10–12 reps** | Rest: 150 sec | Target RIR: **2–3 (Safety Ceiling)**
 - **Calibration Target**: **Sled + 40 to 50 kg total** (20–25 kg plate per side). Warm-up: Sled x 12, Sled + 20kg x 8.
 - **Form Cue**: Narrow, hip-width stance on lower half of platform. Lower until knees hit 90°. Never allow lower back to peel off pad.
@@ -41,6 +53,8 @@
 ---
 
 ### 2. Leg Extension Machine
+- **Order Rationale**: **#2 Warm-Joint Quad Isolation.** Knees and patellar tendons are primed and lubricated from Leg Press. Safely takes quads close to failure without lower back compression.
+- **Gym Floor Swap Option**: If Leg Press was taken, do this first as a pre-exhaustion movement.
 - **Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **1–2**
 - **Calibration Target**: **25 to 35 kg** (Pin 4 to 6 on standard stack).
 - **Form Cue**: Pure quad isolation (0.0% glute recruitment). 1s pause at peak extension, 3s controlled descent.
@@ -49,6 +63,8 @@
 ---
 
 ### 3. Seated or Lying Leg Curl
+- **Order Rationale**: **#3 Antagonist Joint Balancer.** After 6 heavy working sets of knee extension (quads), loading knee flexion (hamstrings) balances patellar tendon tension and protects ACL health.
+- **Gym Floor Swap Option**: Can be performed either before or after Leg Extension.
 - **Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **1–2**
 - **Calibration Target**: **20 to 30 kg** (Pin 3 to 5).
 - **Form Cue**: Pure knee flexion (0% hip extension / zero glutes). Slow 3s eccentric return.
@@ -57,6 +73,8 @@
 ---
 
 ### 4. Standing Calf Raise
+- **Order Rationale**: **#4 Peripheral Breather.** Calves require zero core or hip drive. Provides a systemic cardiovascular breather between heavy leg work and high-effort core training.
+- **Gym Floor Swap Option**: Can be done anytime a machine is open or between leg sets.
 - **Working Sets**: **4 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **1**
 - **Calibration Target**: **30 to 40 kg** on machine (or holding 15–20 kg DB standing on an elevated block).
 - **Form Cue**: Full range of motion with 2-second dead pause at the bottom stretch on every single rep.
@@ -65,6 +83,8 @@
 ---
 
 ### 5. Kneeling Cable Crunch (Six-Pack Hypertrophy)
+- **Order Rationale**: **#5 Heavy Loaded Six-Pack Hypertrophy.** Hypertrophy of the abdominal bricks requires mechanical tension under weight. Hit this while abdominal motor units can generate peak force before endurance work.
+- **Gym Floor Swap Option**: If the cable station is taken, perform Deadbugs or Hanging Knee Raises first.
 - **Working Sets**: **3 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **1–2**
 - **Calibration Target**: **25 to 35 kg** on cable stack.
 - **Form Cue**: Lock hips fixed at 90°. Roll spine into a ball, curling ribs down into pelvis. Squeeze abs for 1s.
@@ -73,6 +93,8 @@
 ---
 
 ### 6. Deadbugs or Hanging Knee Raise (Anti-APT Lower Core)
+- **Order Rationale**: **#6 Neurological Pelvic Bracing.** Transitions from loaded spinal curling to deep transverse abdominis bracing, teaching the pelvis to lock into neutral under fatigue.
+- **Gym Floor Swap Option**: Can be done on any open floor mat.
 - **Working Sets**: **3 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **1**
 - **Calibration Target**: Bodyweight.
 - **Form Cue**: Mandatory Anti-APT movement. Glue lower back 100% flat against floor/pad with zero gap.
@@ -81,6 +103,8 @@
 ---
 
 ### 7. Half-Kneeling Hip Flexor Stretch (Desk Posture Reset)
+- **Order Rationale**: **#7 Post-Workout Lengthening.** Never stretch hip flexors cold before heavy quad pressing (stretching the psoas pre-workout reduces force output). Now that hips and quads are hot and engorged with blood, the tight 9h sitting psoas can be lengthened permanently.
+- **Gym Floor Swap Option**: Always perform as the final movement before leaving the gym.
 - **Working Sets**: **2 sets x 45–60 sec per leg** | Rest: 30 sec | Target RIR: —
 - **Calibration Target**: Bodyweight.
 - **Form Cue**: Drop rear knee to mat, tuck pelvis into posterior tilt, squeeze rear glute forward.

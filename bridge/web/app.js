@@ -363,6 +363,10 @@ function parseWorkoutMarkdown(mdText) {
         currentEx.target = stripped.replace(/^[*-]+\s*\*\*Working Sets\*\*:\s*/, "").replace(/\*\*/g, "").trim();
       } else if (stripped.includes("Calibration Target:")) {
         currentEx.calibration = stripped.replace(/^[*-]+\s*\*\*Calibration Target\*\*:\s*/, "").trim();
+      } else if (stripped.includes("Order Rationale:") || stripped.includes("Flow Rationale:")) {
+        currentEx.flow_reason = stripped.replace(/^[*-]+\s*\*\*Order Rationale\*\*:\s*/, "").replace(/^[*-]+\s*\*\*Flow Rationale\*\*:\s*/, "").trim();
+      } else if (stripped.includes("Gym Floor Swap Option:") || stripped.includes("Swap Option:")) {
+        currentEx.swap_option = stripped.replace(/^[*-]+\s*\*\*Gym Floor Swap Option\*\*:\s*/, "").replace(/^[*-]+\s*\*\*Swap Option\*\*:\s*/, "").trim();
       } else if (stripped.includes("Form Cue:")) {
         currentEx.cue = stripped.replace(/^[*-]+\s*\*\*Form Cue\*\*:\s*/, "").trim();
       } else if (stripped.includes("Mind-Muscle Cue:")) {
@@ -392,7 +396,7 @@ async function renderWorkout(data) {
 
   if (!workout) {
     try {
-      const res = await fetch("next_workout.json");
+      const res = await fetch(`next_workout.json?t=${Date.now()}`, { cache: "no-store" });
       if (res.ok) {
         workout = await res.json();
       }
@@ -417,13 +421,13 @@ async function renderWorkout(data) {
         }
       ],
       exercises: [
-        { name: "Leg Press (Narrow / Mid-Low Stance)", target: "3 sets x 10–12 reps @ RIR 2–3", cue: "Lower to 90° knee bend. Never allow lower back to peel off pad.", mmc: "Push through mid-foot and knees out. Quads do 100% of the work while glutes stay relaxed.", calibration: "Sled + 40 to 50 kg", sets: 3 },
-        { name: "Leg Extension Machine", target: "3 sets x 12–15 reps @ RIR 1–2", cue: "Hold a strict 1-second squeeze at peak extension; slow 3-second descent.", mmc: "Pure quad isolation. Lock knees at top, flex teardrop, 3s negative.", calibration: "25 to 35 kg", sets: 3 },
-        { name: "Seated or Lying Leg Curl", target: "3 sets x 10–12 reps @ RIR 1–2", cue: "Dorsiflex feet (pull toes to shins). Zero hip extension.", mmc: "Removes calves, pure hamstring tension.", calibration: "20 to 30 kg", sets: 3 },
-        { name: "Standing Calf Raise", target: "4 sets x 12–15 reps", cue: "2-second dead stop in the stretch at the bottom to kill tendon elastic bounce.", mmc: "Push straight up through ball of big toe.", calibration: "30 to 40 kg", sets: 4 },
-        { name: "Kneeling Cable Crunch", target: "3 sets x 12–15 reps", cue: "Lock hips at 90°. Roll ribcage down to pelvis. Squeeze abs for 1s.", mmc: "Spinal flexion, not hip hinging. Blow air out at bottom.", calibration: "25 to 35 kg", sets: 3 },
-        { name: "Deadbugs", target: "3 sets x 15 reps", cue: "Lower back glued 100% flat to floor. Transverse abdominis bracing.", mmc: "Lock ₹500 note under lumbar.", sets: 3 },
-        { name: "Half-Kneeling Hip Flexor Stretch", target: "2 sets x 60s per leg", cue: "Squeeze trailing glute, posterior pelvic tuck to open tight psoas from 9h sitting.", mmc: "Tuck pelvis like a dog tucking its tail, squeeze glute to push hip forward.", sets: 2 }
+        { name: "Leg Press (Narrow / Mid-Low Stance)", target: "3 sets x 10–12 reps @ RIR 2–3", cue: "Lower to 90° knee bend. Never allow lower back to peel off pad.", flow_reason: "#1 Heavy Compound First. Peak CNS output before fatigue.", swap_option: "If busy, start with Leg Extension or Leg Curl.", mmc: "Push through mid-foot and knees out. Quads do 100% of the work while glutes stay relaxed.", calibration: "Sled + 40 to 50 kg", sets: 3 },
+        { name: "Leg Extension Machine", target: "3 sets x 12–15 reps @ RIR 1–2", cue: "Hold a strict 1-second squeeze at peak extension; slow 3-second descent.", flow_reason: "#2 Warm-Joint Isolation. Knees lubricated from press.", swap_option: "Can be done first as pre-exhaustion.", mmc: "Pure quad isolation. Lock knees at top, flex teardrop, 3s negative.", calibration: "25 to 35 kg", sets: 3 },
+        { name: "Seated or Lying Leg Curl", target: "3 sets x 10–12 reps @ RIR 1–2", cue: "Dorsiflex feet (pull toes to shins). Zero hip extension.", flow_reason: "#3 Antagonist Balancer. Balances patellar tendon tension.", swap_option: "Can do before or after Leg Extension.", mmc: "Removes calves, pure hamstring tension.", calibration: "20 to 30 kg", sets: 3 },
+        { name: "Standing Calf Raise", target: "4 sets x 12–15 reps", cue: "2-second dead stop in the stretch at the bottom to kill tendon elastic bounce.", flow_reason: "#4 Peripheral Breather. Cardio recovery before core.", swap_option: "Anytime machine is open.", mmc: "Push straight up through ball of big toe.", calibration: "30 to 40 kg", sets: 4 },
+        { name: "Kneeling Cable Crunch", target: "3 sets x 12–15 reps", cue: "Lock hips at 90°. Roll ribcage down to pelvis. Squeeze abs for 1s.", flow_reason: "#5 Heavy Loaded Core. Hit six-pack while fresh.", swap_option: "If busy, do Deadbugs first.", mmc: "Spinal flexion, not hip hinging. Blow air out at bottom.", calibration: "25 to 35 kg", sets: 3 },
+        { name: "Deadbugs", target: "3 sets x 15 reps", cue: "Lower back glued 100% flat to floor. Transverse abdominis bracing.", flow_reason: "#6 Pelvic Bracing. Locks pelvis in neutral.", swap_option: "Any open floor mat.", mmc: "Lock ₹500 note under lumbar.", sets: 3 },
+        { name: "Half-Kneeling Hip Flexor Stretch", target: "2 sets x 60s per leg", cue: "Squeeze trailing glute, posterior pelvic tuck to open tight psoas from 9h sitting.", flow_reason: "#7 Post-Workout Lengthening. Muscles warm for permanent release.", swap_option: "Always do last before leaving gym.", mmc: "Tuck pelvis like a dog tucking its tail, squeeze glute to push hip forward.", sets: 2 }
       ]
     };
   }
@@ -483,14 +487,16 @@ async function renderWorkout(data) {
       `;
     }
 
-    const hasMmc = !!(ex.mmc || ex.calibration);
+    const hasMmc = !!(ex.mmc || ex.calibration || ex.flow_reason || ex.swap_option);
     const mmcHtml = hasMmc ? `
       <div class="ex-mmc-box">
         <button type="button" class="mmc-toggle-btn" onclick="toggleMmcDrawer(this)">
-          <span class="mmc-label">💡 Mind-Muscle Cue & Execution</span>
+          <span class="mmc-label">💡 Mind-Muscle & Flow Guide</span>
           <span class="mmc-arrow">▼</span>
         </button>
         <div class="mmc-drawer" style="display:none;">
+          ${ex.flow_reason ? `<div class="mmc-flow"><span class="flow-tag">🔄 ORDER RATIONALE:</span> ${escapeHtml(ex.flow_reason).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>` : ''}
+          ${ex.swap_option ? `<div class="mmc-swap"><span class="swap-tag">⚡ IF MACHINE TAKEN:</span> ${escapeHtml(ex.swap_option).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>` : ''}
           ${ex.mmc ? `<div class="mmc-content"><span class="mmc-tag">🎯 MIND-MUSCLE CONNECTION:</span> ${escapeHtml(ex.mmc)}</div>` : ''}
           ${ex.calibration ? `<div class="mmc-calibration"><span class="calib-tag">⚖️ STARTING LOAD:</span> ${escapeHtml(ex.calibration).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>` : ''}
         </div>

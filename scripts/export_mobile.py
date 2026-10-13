@@ -130,6 +130,8 @@ def export():
         cue = ""
         mmc = ""
         calibration = ""
+        flow_reason = ""
+        swap_option = ""
         sets_count = 3
 
         for d in ex["details"]:
@@ -137,6 +139,10 @@ def export():
                 target = d.replace("**Working Sets**:", "").strip()
             elif "Targets:" in d and target == "3 sets x 8–12 reps":
                 target = d.replace("- Targets:", "").strip()
+            elif "Order Rationale" in d or "Flow Rationale" in d:
+                flow_reason = d.replace("**Order Rationale**:", "").replace("**Flow Rationale**:", "").strip()
+            elif "Gym Floor Swap Option" in d or "Swap Option" in d:
+                swap_option = d.replace("**Gym Floor Swap Option**:", "").replace("**Swap Option**:", "").strip()
             elif "Form Cue" in d:
                 cue = d.replace("**Form Cue**:", "").strip()
             elif "Mind-Muscle Cue" in d:
@@ -159,6 +165,8 @@ def export():
             "cue": cue,
             "mmc": mmc,
             "calibration": calibration,
+            "flow_reason": flow_reason,
+            "swap_option": swap_option,
             "sets": sets_count
         })
 
@@ -175,13 +183,18 @@ def export():
 
     html_cards = []
     for idx, jex in enumerate(json_exercises, 1):
+        flow_part = f'<p class="flow-text">🔄 <strong>Order Rationale:</strong> {jex["flow_reason"]}</p>' if jex['flow_reason'] else ''
+        swap_part = f'<p class="swap-text">⚡ <strong>If Machine Taken:</strong> {jex["swap_option"]}</p>' if jex['swap_option'] else ''
+        
         mmc_html = f"""
         <details class="mmc-details">
             <summary>💡 Mind-Muscle Cue & Execution</summary>
+            {flow_part}
+            {swap_part}
             <p class="mmc-text">{jex['mmc']}</p>
             {f'<p class="calib-text">⚖️ <strong>Starting Load Target:</strong> {jex["calibration"]}</p>' if jex['calibration'] else ''}
         </details>
-        """ if (jex['mmc'] or jex['calibration']) else ""
+        """ if (jex['mmc'] or jex['calibration'] or jex['flow_reason']) else ""
 
         sets_buttons = "".join([f'<label><input type="checkbox"> Set {s}</label>' for s in range(1, jex['sets'] + 1)])
 
