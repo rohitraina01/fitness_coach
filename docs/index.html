@@ -191,15 +191,20 @@
         </div>
       </details>
 
-      <!-- Saved / Pending Logs History -->
-      <div class="queue-container">
-        <div class="queue-header">
-          <h3>Log History & Past Records (<span id="queueCount">0</span>)</h3>
-          <span class="queue-sub">Saved locally in phone storage</span>
+      <!-- Date-Wise Collapsible Past 7 Days Workout Logs (Cross-Platform) -->
+      <div class="past-logs-section">
+        <div class="past-logs-header">
+          <div class="past-logs-title-wrap">
+            <span class="past-logs-icon">📅</span>
+            <div>
+              <h3>Past 7 Days Workout Logs</h3>
+              <span class="past-logs-sub">Cross-platform repository records • Expand any day to view, copy, or reuse</span>
+            </div>
+          </div>
         </div>
         
-        <div class="queue-list" id="queueList">
-          <!-- Rendered via JS -->
+        <div class="past-logs-list" id="recentLogsContainer">
+          <!-- Rendered dynamically from recent_logs.json -->
         </div>
       </div>
     </section>

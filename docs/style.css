@@ -852,84 +852,209 @@ body {
   margin-top: 6px;
 }
 
-/* Queue */
-.queue-container {
+/* Past 7 Days Logs Section */
+.past-logs-section {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: 14px;
   padding: 14px;
 }
 
-.queue-header {
+.past-logs-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   margin-bottom: 12px;
 }
 
-.queue-header h3 {
-  font-size: 0.9rem;
-  font-weight: 700;
+.past-logs-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.queue-sub {
+.past-logs-icon {
+  font-size: 1.25rem;
+}
+
+.past-logs-header h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #FFF;
+  margin: 0;
+}
+
+.past-logs-sub {
   font-size: 0.72rem;
   color: var(--text-dim);
+  display: block;
+  margin-top: 2px;
 }
 
-.queue-list {
+.past-logs-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.queue-item {
+.past-log-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-card);
   border-radius: 10px;
-  padding: 10px 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
 }
 
-.queue-item-meta {
+.past-log-card[open] {
+  border-color: rgba(56, 189, 248, 0.35);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.past-log-summary {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 11px 13px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.82rem;
+}
+
+.past-log-summary::-webkit-details-marker {
+  display: none;
+}
+
+.past-log-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.past-log-date {
+  font-weight: 700;
+  color: #F8FAFC;
+  font-size: 0.82rem;
+}
+
+.past-log-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.4px;
+}
+
+.past-log-pill.push {
+  background: rgba(239, 68, 68, 0.15);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.past-log-pill.pull {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.past-log-pill.legs {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.past-log-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+}
+
+.past-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+}
+
+.past-log-card[open] .past-arrow {
+  transform: rotate(180deg);
+}
+
+.past-log-body {
+  padding: 10px 13px 13px 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.past-log-exercises {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.past-log-exercises li {
   font-size: 0.78rem;
-  margin-bottom: 6px;
+  line-height: 1.4;
+  color: #CBD5E1;
+  padding: 5px 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  font-family: 'Plus Jakarta Sans', monospace;
 }
 
-.queue-snippet {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  white-space: pre-wrap;
-  margin-bottom: 8px;
+.past-log-exercises li strong {
+  color: #FFF;
 }
 
-.queue-actions {
+.past-log-actions {
   display: flex;
   gap: 8px;
 }
 
-.btn-queue-sync {
+.btn-past-copy {
   flex: 1;
-  background: var(--accent-cyan);
-  color: #090D16;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 0.76rem;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: var(--accent-cyan);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
 }
 
-.btn-queue-discard {
-  background: rgba(248, 113, 113, 0.12);
-  color: var(--accent-red);
-  border: 1px solid rgba(248, 113, 113, 0.3);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 0.76rem;
+.btn-past-copy:active {
+  transform: scale(0.97);
+  background: rgba(56, 189, 248, 0.25);
+}
+
+.btn-past-template {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-card);
+  color: #E2E8F0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-past-template:active {
+  transform: scale(0.97);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* TAB 3: POSTURE */

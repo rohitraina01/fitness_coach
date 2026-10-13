@@ -25,11 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initVoice();
   initLogSubmission();
   initExerciseChips();
-  renderBufferCard();
-  renderQueue();
-  loadLocalCheckedSets();
   initInlineGitHubSync();
+  loadLocalCheckedSets();
   fetchStaticData();
+  fetchRecentLogs();
+  checkRemoteBuffer();
 });
 
 // 2. Tab Navigation
@@ -466,9 +466,9 @@ function initLogSubmission() {
       synced_to_repo: false
     };
 
-    // 1. Immediately cache in phone storage
+    // 1. Immediately cache in local storage as backup
     localStorage.setItem(BUFFER_KEY, JSON.stringify(bufferEntry));
-    enqueueWorkout(bufferEntry);
+    renderBufferCardWithData(bufferEntry);
 
     // 2. Attempt direct push to GitHub repo if token configured
     const token = localStorage.getItem(GH_TOKEN_KEY);
@@ -484,6 +484,7 @@ function initLogSubmission() {
         bufferEntry.synced_to_repo = true;
         bufferEntry.status = "synced";
         localStorage.setItem(BUFFER_KEY, JSON.stringify(bufferEntry));
+        renderBufferCardWithData(bufferEntry);
         showToast("✅ Committed to Repo! (WORKOUT_LOGS/incoming_raw_log.txt updated)");
       } else {
         showToast(`⚠️ GitHub push failed (${pushRes.reason}). Saved in phone buffer.`);
@@ -493,9 +494,6 @@ function initLogSubmission() {
       copyLogAsPrompt();
       showToast("💾 Saved in phone buffer! Also copied /log prompt to clipboard.");
     }
-
-    renderBufferCard();
-    renderQueue();
   });
 }
 
@@ -541,8 +539,24 @@ function copyLogAsPrompt() {
   });
 }
 
-// 10. Buffer Card UI Rendering
+// 10. Buffer Card UI Rendering & Cross-Platform Remote Buffer
 function renderBufferCard() {
+  const raw = localStorage.getItem(BUFFER_KEY);
+  if (!raw) {
+    const card = document.getElementById("bufferCard");
+    if (card) card.style.display = "none";
+    return;
+  }
+  try {
+    const item = JSON.parse(raw);
+    renderBufferCardWithData(item);
+  } catch (e) {
+    const card = document.getElementById("bufferCard");
+    if (card) card.style.display = "none";
+  }
+}
+
+function renderBufferCardWithData(item) {
   const card = document.getElementById("bufferCard");
   const badge = document.getElementById("bufferSessionBadge");
   const tag = document.getElementById("bufferStatusTag");
@@ -550,93 +564,175 @@ function renderBufferCard() {
   const content = document.getElementById("bufferContent");
   const pushBtn = document.getElementById("btnBufferPush");
 
-  if (!card) return;
+  if (!card || !item || !item.raw_text) return;
 
-  const raw = localStorage.getItem(BUFFER_KEY);
-  if (!raw) {
-    card.style.display = "none";
-    return;
+  card.style.display = "block";
+  if (badge) badge.innerText = (item.session_type || "WORKOUT").toUpperCase();
+  if (time) time.innerText = `${item.date || ""} ${item.time || ""}`.trim();
+  if (content) content.innerText = item.raw_text;
+
+  if (tag) {
+    if (item.synced_to_repo) {
+      tag.className = "buffer-status-tag synced";
+      tag.innerText = "🟢 Synced to Repo Buffer";
+      if (pushBtn) pushBtn.style.display = "none";
+    } else {
+      tag.className = "buffer-status-tag cached";
+      tag.innerText = "🟡 Cached on Device";
+      if (pushBtn) pushBtn.style.display = "inline-flex";
+    }
   }
+}
+
+async function checkRemoteBuffer() {
+  const repo = localStorage.getItem(GH_REPO_KEY) || DEFAULT_REPO;
+  const rawUrl = `https://raw.githubusercontent.com/${repo}/master/WORKOUT_LOGS/incoming_raw_log.txt?t=${Date.now()}`;
 
   try {
-    const item = JSON.parse(raw);
-    if (!item.raw_text) {
-      card.style.display = "none";
-      return;
-    }
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 3500);
+    const res = await fetch(rawUrl, { cache: "no-store", signal: controller.signal });
+    clearTimeout(timer);
 
-    card.style.display = "block";
-    if (badge) badge.innerText = (item.session_type || "WORKOUT").toUpperCase();
-    if (time) time.innerText = `${item.date || ""} ${item.time || ""}`.trim();
-    if (content) content.innerText = item.raw_text;
+    if (res.ok) {
+      const text = await res.text();
+      const clean = text.trim();
+      if (clean && !clean.includes("(No pending unprocessed logs)")) {
+        const lines = clean.split("\n");
+        let sessionType = "LEGS";
+        let dateInfo = "From GitHub Master";
+        const contentLines = [];
+        for (let l of lines) {
+          if (l.startsWith("# Session:")) {
+            sessionType = l.replace("# Session:", "").trim();
+          } else if (l.startsWith("# Date:")) {
+            dateInfo = l.replace("# Date:", "").trim();
+          } else if (!l.startsWith("#")) {
+            if (l.trim()) contentLines.push(l.trim());
+          }
+        }
 
-    if (tag) {
-      if (item.synced_to_repo) {
-        tag.className = "buffer-status-tag synced";
-        tag.innerText = "🟢 Synced to Repo";
-        if (pushBtn) pushBtn.style.display = "none";
-      } else {
-        tag.className = "buffer-status-tag cached";
-        tag.innerText = "🟡 Cached on Phone";
-        if (pushBtn) pushBtn.style.display = "inline-flex";
+        const rawContent = contentLines.join("\n");
+        if (rawContent) {
+          renderBufferCardWithData({
+            session_type: sessionType,
+            raw_text: rawContent,
+            synced_to_repo: true,
+            status: "synced",
+            date: dateInfo,
+            time: "Ready for /log"
+          });
+          return;
+        }
       }
     }
   } catch (e) {
-    card.style.display = "none";
+    console.warn("Could not check remote buffer:", e);
   }
+
+  renderBufferCard();
 }
 
 function copyBufferedLog() {
-  const raw = localStorage.getItem(BUFFER_KEY);
-  if (!raw) return;
-  try {
-    const item = JSON.parse(raw);
-    const formattedPrompt = `/log\n# Session: ${item.session_type || 'Legs'}\n${item.raw_text}`;
-    copyTextToClipboard(formattedPrompt).then(() => {
-      showToast("📋 Copied buffered log as /log prompt!");
-    });
-  } catch (e) {}
+  const content = document.getElementById("bufferContent");
+  const badge = document.getElementById("bufferSessionBadge");
+  const rawText = content ? content.innerText.trim() : "";
+  const sessionType = badge ? badge.innerText : "Legs";
+
+  if (!rawText) return;
+  const formattedPrompt = `/log\n# Session: ${sessionType}\n${rawText}`;
+  copyTextToClipboard(formattedPrompt).then(() => {
+    showToast("📋 Copied buffered log as /log prompt!");
+  });
 }
 
 async function pushBufferedLogToRepo() {
-  const raw = localStorage.getItem(BUFFER_KEY);
-  if (!raw) return;
-  try {
-    const item = JSON.parse(raw);
-    showToast("Pushing buffer to GitHub repo...");
-    const res = await pushLogToGitHub(item.raw_text, item.session_type || "Legs");
-    if (res.success) {
-      item.synced_to_repo = true;
-      item.status = "synced";
-      localStorage.setItem(BUFFER_KEY, JSON.stringify(item));
-      renderBufferCard();
-      showToast("✅ Committed to Repo! (WORKOUT_LOGS/incoming_raw_log.txt updated)");
-    } else {
-      showToast(`⚠️ Push failed: ${res.reason}. Check token in ⚙️.`);
-    }
-  } catch (e) {}
+  const content = document.getElementById("bufferContent");
+  const badge = document.getElementById("bufferSessionBadge");
+  const text = content ? content.innerText.trim() : "";
+  const sessionType = badge ? badge.innerText : "Legs";
+
+  if (!text) return;
+  showToast("Pushing buffer to GitHub repo...");
+  const res = await pushLogToGitHub(text, sessionType);
+  if (res.success) {
+    renderBufferCardWithData({
+      session_type: sessionType,
+      raw_text: text,
+      synced_to_repo: true,
+      status: "synced",
+      date: new Date().toISOString().split("T")[0],
+      time: "Committed"
+    });
+    showToast("✅ Committed to Repo! (WORKOUT_LOGS/incoming_raw_log.txt updated)");
+  } else {
+    showToast(`⚠️ Push failed: ${res.reason}. Check token in ⚙️.`);
+  }
 }
 
 function loadBufferedLogIntoEditor() {
-  const raw = localStorage.getItem(BUFFER_KEY);
-  if (!raw) return;
-  try {
-    const item = JSON.parse(raw);
-    const textarea = document.getElementById("rawLogInput");
-    if (textarea) {
-      textarea.value = item.raw_text;
-      textarea.focus();
-      showToast("✏️ Loaded buffered log into editor.");
-    }
-  } catch (e) {}
+  const content = document.getElementById("bufferContent");
+  const text = content ? content.innerText.trim() : "";
+  if (!text) return;
+
+  const textarea = document.getElementById("rawLogInput");
+  if (textarea) {
+    textarea.value = text;
+    textarea.focus();
+    textarea.scrollIntoView({ behavior: "smooth", block: "center" });
+    showToast("✏️ Loaded buffered log into editor.");
+  }
 }
 
-function clearBufferedLog() {
-  if (confirm("Clear this buffered log from your phone screen?")) {
-    localStorage.removeItem(BUFFER_KEY);
-    renderBufferCard();
-    showToast("🗑️ Active buffer cleared.");
+async function clearBufferedLog() {
+  if (!confirm("Clear this buffered log from the repository?")) return;
+
+  const token = localStorage.getItem(GH_TOKEN_KEY);
+  const repo = localStorage.getItem(GH_REPO_KEY) || DEFAULT_REPO;
+
+  if (token) {
+    showToast("Resetting buffer in GitHub repository...");
+    try {
+      const resetContent = `# INCOMING WORKOUT LOG BUFFER\n# This file receives raw logs submitted from the mobile web app.\n# When you return to your laptop, tell the coach "/log" or "process my incoming log", and it will read this file automatically.\n\n(No pending unprocessed logs)\n`;
+      const apiUrl = `https://api.github.com/repos/${repo}/contents/WORKOUT_LOGS/incoming_raw_log.txt`;
+
+      let sha = null;
+      const getRes = await fetch(apiUrl, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/vnd.github.v3+json"
+        }
+      });
+      if (getRes.ok) {
+        const fileData = await getRes.json();
+        sha = fileData.sha;
+      }
+
+      const payload = {
+        message: "chore(log): reset buffer to empty [skip ci]",
+        content: toBase64Utf8(resetContent),
+        branch: "master"
+      };
+      if (sha) payload.sha = sha;
+
+      await fetch(apiUrl, {
+        method: "PUT",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/vnd.github.v3+json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+    } catch (e) {
+      console.warn("Could not reset remote buffer:", e);
+    }
   }
+
+  localStorage.removeItem(BUFFER_KEY);
+  const card = document.getElementById("bufferCard");
+  if (card) card.style.display = "none";
+  showToast("🗑️ Buffer cleared successfully.");
 }
 
 // 11. Inline GitHub Direct Sync (1-Time Setup)
@@ -681,67 +777,104 @@ function saveInlineGitHubToken() {
   showToast("⚡ GitHub Token saved! Now you can push directly to repo.");
 }
 
-// 12. Queue History
-function enqueueWorkout(item) {
-  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
-  queue.unshift(item);
-  // Keep last 15 entries
-  if (queue.length > 15) queue.pop();
-  localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue));
-}
+// 12. Cross-Platform Date-Wise Recent Logs (Last 7 Sessions)
+async function fetchRecentLogs() {
+  const container = document.getElementById("recentLogsContainer");
+  if (!container) return;
 
-function renderQueue() {
-  const list = document.getElementById("queueList");
-  const countSpan = document.getElementById("queueCount");
-  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
-
-  if (!list || !countSpan) return;
-  countSpan.innerText = queue.length;
-  list.innerHTML = "";
-
-  if (queue.length === 0) {
-    list.innerHTML = `<p style="font-size:0.8rem; color:var(--text-dim); text-align:center; padding:12px;">No logged sessions in local history yet.</p>`;
-    return;
+  try {
+    const res = await fetch(`recent_logs.json?t=${Date.now()}`, { cache: "no-store" });
+    if (res.ok) {
+      const logs = await res.json();
+      if (Array.isArray(logs) && logs.length > 0) {
+        window.recentLogsData = logs;
+        renderRecentLogs(logs);
+        return;
+      }
+    }
+  } catch (e) {
+    console.warn("Could not fetch recent_logs.json:", e);
   }
 
-  queue.forEach((item, idx) => {
-    const el = document.createElement("div");
-    el.className = "queue-item";
-    const statusTag = item.synced_to_repo ? `<span style="color:#10B981;font-weight:700;">🟢 In Repo</span>` : `<span style="color:#F59E0B;font-weight:700;">🟡 Cached</span>`;
-    
-    el.innerHTML = `
-      <div class="queue-item-meta">
-        <strong>${escapeHtml(item.session_type || 'Workout')}</strong>
-        <span>${item.date || ''} • ${statusTag}</span>
-      </div>
-      <div class="queue-snippet">${escapeHtml(item.raw_text)}</div>
-      <div class="queue-actions">
-        <button class="btn-queue-sync" onclick="copyQueueItemPrompt(${idx})">📋 Copy /log</button>
-        <button class="btn-queue-discard" onclick="discardQueueItem(${idx})">Delete</button>
+  if (!window.recentLogsData || window.recentLogsData.length === 0) {
+    container.innerHTML = `<p style="font-size:0.8rem; color:var(--text-dim); text-align:center; padding:12px;">No past logs loaded yet.</p>`;
+  }
+}
+
+function renderRecentLogs(logs) {
+  const container = document.getElementById("recentLogsContainer");
+  if (!container || !Array.isArray(logs)) return;
+
+  container.innerHTML = "";
+
+  logs.forEach((item, idx) => {
+    const card = document.createElement("details");
+    card.className = "past-log-card";
+    if (idx === 0) card.open = true;
+
+    const sessionTypeLower = (item.session_type || "").toLowerCase();
+    let pillClass = "push";
+    if (sessionTypeLower.includes("pull")) pillClass = "pull";
+    else if (sessionTypeLower.includes("leg")) pillClass = "legs";
+
+    const exListHtml = (item.exercises || []).map(ex => {
+      const parts = ex.summary.split(":");
+      const name = parts[0];
+      const details = parts.slice(1).join(":");
+      return `<li><strong>${escapeHtml(name)}</strong>:${escapeHtml(details)}</li>`;
+    }).join("");
+
+    card.innerHTML = `
+      <summary class="past-log-summary">
+        <div class="past-log-badge-wrap">
+          <span class="past-log-date">${escapeHtml(item.date)}</span>
+          <span class="past-log-pill ${pillClass}">${escapeHtml((item.session_type || "Workout").toUpperCase())}</span>
+        </div>
+        <div class="past-log-meta">
+          <span>${escapeHtml(item.duration || "")}${item.exercises ? ` • ${item.exercises.length} ex` : ""}</span>
+          <span class="past-arrow">▼</span>
+        </div>
+      </summary>
+      <div class="past-log-body">
+        <ul class="past-log-exercises">
+          ${exListHtml || `<li>${escapeHtml(item.raw_text || "No details")}</li>`}
+        </ul>
+        <div class="past-log-actions">
+          <button type="button" class="btn-past-copy" onclick="copyPastLog(${idx})">
+            📋 Copy /log Prompt
+          </button>
+          <button type="button" class="btn-past-template" onclick="loadPastLogAsTemplate(${idx})">
+            ✏️ Use as Template
+          </button>
+        </div>
       </div>
     `;
-    list.appendChild(el);
+
+    container.appendChild(card);
   });
 }
 
-function copyQueueItemPrompt(index) {
-  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
-  const item = queue[index];
-  if (!item) return;
+function copyPastLog(index) {
+  if (!window.recentLogsData || !window.recentLogsData[index]) return;
+  const item = window.recentLogsData[index];
+  const promptText = item.copy_prompt || `/log\n# Session: ${item.session_type} (${item.date})\n${item.raw_text || ""}`;
 
-  const formattedPrompt = `/log\n# Session: ${item.session_type || 'Legs'}\n${item.raw_text}`;
-  copyTextToClipboard(formattedPrompt).then(() => {
-    showToast("📋 Copied past log as /log prompt!");
+  copyTextToClipboard(promptText).then(() => {
+    showToast(`📋 Copied ${item.date} log as /log prompt! Ready to paste.`);
   });
 }
 
-function discardQueueItem(index) {
-  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
-  if (confirm("Delete this log record from local history?")) {
-    queue.splice(index, 1);
-    localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue));
-    renderQueue();
-    showToast("Deleted from local history.");
+function loadPastLogAsTemplate(index) {
+  if (!window.recentLogsData || !window.recentLogsData[index]) return;
+  const item = window.recentLogsData[index];
+  const templateText = item.template_text || item.raw_text || "";
+  const textarea = document.getElementById("rawLogInput");
+
+  if (textarea) {
+    textarea.value = templateText;
+    textarea.focus();
+    textarea.scrollIntoView({ behavior: "smooth", block: "center" });
+    showToast(`✏️ Loaded ${item.date} (${item.session_type}) as template! Adjust reps/weights.`);
   }
 }
 

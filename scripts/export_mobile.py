@@ -6,6 +6,7 @@ from CURRENT_NEXT_WORKOUT.md for gym-floor execution with collapsible mind-muscl
 import os
 import re
 import json
+import glob
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NEXT_WORKOUT_MD = os.path.join(BASE_DIR, "CURRENT_NEXT_WORKOUT.md")
@@ -538,6 +539,107 @@ def export():
             print(f"Mobile Dashboard Data exported: {d_path}")
         except Exception as de:
             print(f"Error writing {d_path}: {de}")
+
+    # 5. Cross-Platform Date-Wise Recent Logs Export (Last 7 Sessions)
+    export_recent_logs()
+
+def export_recent_logs():
+    logs_pattern = os.path.join(BASE_DIR, "WORKOUT_LOGS", "**", "*.md")
+    all_files = glob.glob(logs_pattern, recursive=True)
+    workout_files = [f for f in all_files if "coach_chat" not in f and not os.path.basename(f).startswith(".")]
+    workout_files.sort(reverse=True)
+
+    recent = []
+    for file_path in workout_files[:7]:
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+
+            date_m = re.search(r"\*\*Date\*\*:\s*([0-9]{4}-[0-9]{2}-[0-9]{2})", content)
+            type_m = re.search(r"\*\*Session Type\*\*:\s*([^\n]+)", content)
+            dur_m = re.search(r"\*\*Duration\*\*:\s*([^\n]+)", content)
+            wid_m = re.search(r"\*\*Workout ID\*\*:\s*`([^`]+)`", content)
+
+            date_str = date_m.group(1) if date_m else os.path.basename(file_path)[:10]
+            session_type = type_m.group(1).strip() if type_m else "Workout"
+            duration_str = dur_m.group(1).strip() if dur_m else ""
+            wid = wid_m.group(1).strip() if wid_m else ""
+
+            # Extract Raw Report
+            raw_m = re.search(r"## 1\. RAW WORKOUT REPORT\s*```\s*(.*?)\s*```", content, re.DOTALL)
+            if not raw_m:
+                raw_m = re.search(r"## 1\. RAW WORKOUT REPORT\s*> (.*?)(?=\n---|\n##)", content, re.DOTALL)
+            raw_text = raw_m.group(1).strip() if raw_m else ""
+
+            # Extract Exercises Table
+            lines = content.splitlines()
+            in_table = False
+            cur_ex = {}
+            for l in lines:
+                if "| Order |" in l:
+                    in_table = True
+                    continue
+                if in_table and l.startswith("|"):
+                    parts = [p.strip() for p in l.split("|")[1:-1]]
+                    if len(parts) >= 6 and parts[0].isdigit():
+                        name = parts[1]
+                        load = parts[4]
+                        reps = parts[5]
+                        if name not in cur_ex:
+                            cur_ex[name] = []
+                        cur_ex[name].append(f"{load}kg x {reps}")
+                elif in_table and not l.startswith("|") and l.strip():
+                    in_table = False
+
+            exercise_items = []
+            for name, sets in cur_ex.items():
+                exercise_items.append({
+                    "name": name,
+                    "summary": f"{name}: {', '.join(sets)}"
+                })
+
+            # Build ready-to-copy /log prompt
+            prompt_lines = [f"/log", f"# Session: {session_type} ({date_str})"]
+            if exercise_items:
+                for item in exercise_items:
+                    prompt_lines.append(item["summary"])
+            elif raw_text:
+                prompt_lines.append(raw_text)
+            copy_prompt = "\n".join(prompt_lines)
+
+            # Template text for editor
+            template_lines = []
+            if exercise_items:
+                for item in exercise_items:
+                    template_lines.append(item["summary"])
+            elif raw_text:
+                template_lines.append(raw_text)
+            template_text = "\n".join(template_lines)
+
+            recent.append({
+                "workout_id": wid,
+                "date": date_str,
+                "session_type": session_type,
+                "duration": duration_str,
+                "exercises": exercise_items,
+                "raw_text": raw_text,
+                "template_text": template_text,
+                "copy_prompt": copy_prompt
+            })
+        except Exception as e:
+            print(f"Error parsing log {file_path}: {e}")
+
+    for r_path in [
+        os.path.join(OUTPUT_DIR, "recent_logs.json"),
+        os.path.join(BASE_DIR, "docs", "recent_logs.json"),
+        os.path.join(BASE_DIR, "bridge", "web", "recent_logs.json")
+    ]:
+        try:
+            with open(r_path, "w", encoding="utf-8") as rf:
+                json.dump(recent, rf, indent=2)
+            print(f"Mobile Recent Logs exported ({len(recent)} days): {r_path}")
+        except Exception as err:
+            print(f"Error writing {r_path}: {err}")
 
 if __name__ == "__main__":
     export()
