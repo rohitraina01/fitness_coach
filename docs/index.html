@@ -24,11 +24,7 @@
     </div>
     <div class="header-right">
       <button class="btn-cloud-settings" id="btnLockApp" onclick="lockApp()" title="Lock App">🔒</button>
-      <button class="btn-cloud-settings" id="btnCloudSettings" onclick="openSettingsModal()" title="Cloud & Sync Settings">⚙️</button>
-      <div class="bridge-status" id="bridgeStatusBadge">
-        <span class="status-dot pulsing"></span>
-        <span class="status-text" id="statusText">Checking...</span>
-      </div>
+      <button class="btn-cloud-settings" id="btnCloudSettings" onclick="openSettingsModal()" title="Sync & Settings">⚙️</button>
     </div>
   </header>
 
@@ -124,63 +120,82 @@
       </div>
     </section>
 
-    <!-- TAB 2: LOGGING & SMART QUEUE (WITH TEST / DUMMY MODE) -->
+    <!-- TAB 2: LOGGING & REPO BUFFER -->
     <section class="tab-pane" id="tab-log">
       <div class="section-title">
-        <h2>Ingest Workout</h2>
-        <p>Log a real gym session or run a test simulation.</p>
-      </div>
-
-      <!-- Mode Selector: Live vs Dummy Run -->
-      <div class="mode-switch-bar">
-        <button class="mode-toggle active" id="modeLive" onclick="setEntryMode(false)">
-          <span class="dot live"></span> Live Production
-        </button>
-        <button class="mode-toggle" id="modeDummy" onclick="setEntryMode(true)">
-          <span class="dot test"></span> 🧪 Test / Dummy Run
-        </button>
-      </div>
-
-      <div class="test-banner" id="testBanner" style="display:none;">
-        <span class="test-badge">TEST MODE ACTIVE</span>
-        <p>Submitting now will test the parser & double-progression coach feedback without modifying your actual database.</p>
+        <h2>Log Workout</h2>
+        <p>Type or dictate your sets. Tapping <strong>Send to Repo</strong> writes directly to <code>WORKOUT_LOGS/incoming_raw_log.txt</code>.</p>
       </div>
 
       <!-- Quick Session Selector -->
       <div class="type-selector">
-        <button class="btn-chip active" data-type="Pull">Pull A</button>
-        <button class="btn-chip" data-type="Legs">Legs & Posture</button>
+        <button class="btn-chip active" data-type="Legs">Legs & Posture</button>
+        <button class="btn-chip" data-type="Pull">Pull A</button>
         <button class="btn-chip" data-type="Push">Push B</button>
         <button class="btn-chip" data-type="Rest">Rest Day</button>
       </div>
 
       <div class="log-input-box">
-        <textarea id="rawLogInput" placeholder="Lat pulldown 50kg x 10, 10, 8 (1 RIR)&#10;Chest supported row 25kg x 10, 10&#10;Cable curls 20kg x 12, 10&#10;Hammer curls 7.5kg x 10, 10..."></textarea>
+        <textarea id="rawLogInput" placeholder="Leg press 40kg x 12, 12, 10 (2 RIR)&#10;Leg extension 25kg x 15, 14, 12&#10;Leg curl 20kg x 12, 11, 10&#10;Calf raise 30kg x 15, 15, 14&#10;Cable crunch 25kg x 15, 15&#10;Deadbugs 15, 15, 15..."></textarea>
         
         <div class="input-actions">
           <button class="btn-voice" id="btnVoice" title="Voice Dictation">
             <span class="icon">🎙️</span> Dictate
           </button>
+          <button type="button" class="btn-copy-prompt" id="btnCopyPrompt" onclick="copyLogAsPrompt()" title="Copy formatted as /log prompt">
+            📋 Copy /log
+          </button>
           <button class="btn-submit" id="btnSubmitLog">
-            <span id="submitLabel">Process Workout</span> ➔
+            <span id="submitLabel">Send to Repo</span> ➔
           </button>
         </div>
       </div>
 
-      <!-- Simulation Result Card (Shown after Dummy Run) -->
-      <div class="simulation-card" id="simulationCard" style="display:none;">
-        <div class="sim-header">
-          <span class="sim-badge">🧪 SIMULATION RESULTS</span>
-          <button class="sim-close" onclick="closeSimulation()">✕</button>
+      <!-- Active Log Buffer Card (Cached on phone & in repo) -->
+      <div class="buffer-card" id="bufferCard" style="display:none;">
+        <div class="buffer-header">
+          <div class="buffer-title-wrap">
+            <span class="buffer-badge" id="bufferSessionBadge">LEGS & POSTURE</span>
+            <span class="buffer-status-tag" id="bufferStatusTag">🟢 Synced to Repo</span>
+          </div>
+          <span class="buffer-time" id="bufferTime">Just now</span>
         </div>
-        <div class="sim-body" id="simBody"></div>
+        <div class="buffer-content" id="bufferContent">
+          <!-- Rendered via JS -->
+        </div>
+        <div class="buffer-actions">
+          <button class="btn-buffer-action copy" onclick="copyBufferedLog()">📋 Copy /log</button>
+          <button class="btn-buffer-action push" id="btnBufferPush" onclick="pushBufferedLogToRepo()">📤 Push to Repo</button>
+          <button class="btn-buffer-action edit" onclick="loadBufferedLogIntoEditor()">✏️ Edit</button>
+          <button class="btn-buffer-action clear" onclick="clearBufferedLog()">🗑️ Clear</button>
+        </div>
       </div>
 
-      <!-- Smart Queue Section (Offline / Sync / Discard) -->
+      <!-- GitHub Direct Sync (1-Time Setup) Accordion -->
+      <details class="gh-sync-setup-box" id="ghSyncBox">
+        <summary class="gh-sync-summary">
+          <span>⚡ Direct GitHub Sync Setup</span>
+          <span class="gh-status-indicator" id="ghStatusIndicator">Not Connected</span>
+        </summary>
+        <div class="gh-sync-body">
+          <p>To commit workout logs directly from your phone into <code>WORKOUT_LOGS/incoming_raw_log.txt</code> without keeping your laptop on:</p>
+          <ol>
+            <li>Create a GitHub Personal Access Token (PAT) with <strong>Contents: Read and write</strong> for <code>rohitraina01/fitness_coach</code>.</li>
+            <li>Paste it below and tap <strong>Save Token</strong> (saved in phone browser only).</li>
+          </ol>
+          <div class="gh-input-row">
+            <input type="password" id="ghInlineToken" placeholder="ghp_... or github_pat_..." autocomplete="off">
+            <button class="btn-save-token" onclick="saveInlineGitHubToken()">Save Token</button>
+          </div>
+          <p class="gh-help-hint">Once saved, hitting <strong>Send to Repo</strong> commits instantly to GitHub master!</p>
+        </div>
+      </details>
+
+      <!-- Saved / Pending Logs History -->
       <div class="queue-container">
         <div class="queue-header">
-          <h3>Pending Offline Queue (<span id="queueCount">0</span>)</h3>
-          <span class="queue-sub">Saved locally if PC is offline</span>
+          <h3>Log History & Past Records (<span id="queueCount">0</span>)</h3>
+          <span class="queue-sub">Saved locally in phone storage</span>
         </div>
         
         <div class="queue-list" id="queueList">
@@ -483,80 +498,9 @@
       </div>
     </section>
 
-    <!-- TAB 6: REMOTE COACH AI AGENT & GYM ASSISTANT -->
-    <section class="tab-pane" id="tab-agent">
-      <div class="section-title">
-        <h2>Live Coach AI</h2>
-        <p>Real-time Antigravity Agent • Gym-floor guidance & instructions.</p>
-      </div>
-
-      <div class="agent-status-card" id="agentStatusCard">
-        <div class="asc-left">
-          <span class="status-pulse-dot" id="agentPulseDot"></span>
-          <div class="asc-text">
-            <strong id="ascTitle">Laptop Agent Connected</strong>
-            <span id="ascSub">Ready for gym queries, program shifts & auto-git push</span>
-          </div>
-        </div>
-        <div class="asc-badge" id="ascBadge">IDLE</div>
-      </div>
-
-      <!-- Quick Gym Prompt Chips -->
-      <div class="quick-chips-scroll">
-        <button class="chip-action" onclick="useQuickPrompt('My left shoulder feels slight pinching on Incline DB Press. What is an evidence-based substitute?')">🛡️ Shoulder Fix</button>
-        <button class="chip-action" onclick="useQuickPrompt('What are my next progressive overload targets for today?')">📈 Next Overload</button>
-        <button class="chip-action" onclick="useQuickPrompt('Give me a quick 3-point cue to fix my Anterior Pelvic Tilt before squatting.')">🧘 Pelvic Tilt Cue</button>
-        <button class="chip-action" onclick="useQuickPrompt('How should I hit 150g protein today on 1850 kcal?')">🥩 Macro Protocol</button>
-      </div>
-
-      <div class="agent-input-container">
-        <textarea id="agentPromptInput" placeholder="Ask a question, request a substitute, or send an instruction to update programs (e.g. 'Change Day 3 arm volume to 10 sets and auto-push to git')..."></textarea>
-        <div class="agent-input-actions">
-          <button class="btn-voice" id="btnAgentVoice" title="Dictate prompt">
-            <span class="icon">🎙️</span> Dictate
-          </button>
-          <button class="btn-agent-send" id="btnSendAgentPrompt">
-            <span id="agentSendLabel">Send to Laptop</span> ➔
-          </button>
-        </div>
-      </div>
-
-      <!-- Live Agent Stream Console -->
-      <div class="agent-console-box" id="agentConsoleBox" style="display:none;">
-        <div class="console-header">
-          <div class="console-title">
-            <span class="console-dot blink"></span>
-            <strong>Live Laptop Agent Stream</strong>
-          </div>
-          <button class="btn-console-clear" onclick="clearAgentConsole()">✕</button>
-        </div>
-        
-        <div class="console-events" id="consoleEvents">
-          <!-- Live events streamed here -->
-        </div>
-
-        <div class="console-response-box" id="consoleResponseBox" style="display:none;">
-          <div class="response-header">
-            <span>⚡ COACH ASSESSMENT & ACTIONS:</span>
-            <button class="btn-copy-response" onclick="copyAgentResponse()">📋 Copy</button>
-          </div>
-          <div class="response-body" id="consoleResponseBody"></div>
-        </div>
-      </div>
-
-      <!-- Offline Queued Prompts Banner -->
-      <div class="queued-prompts-banner" id="queuedPromptsBanner" style="display:none;">
-        <span class="q-icon">⏳</span>
-        <div class="q-text">
-          <strong>Prompts Queued Offline (<span id="queuedPromptsCount">0</span>)</strong>
-          <span>Will automatically dispatch to laptop agent when connection restores.</span>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <!-- Bottom Navigation Bar (6 Phone-Optimized Tabs) -->
+  <!-- Bottom Navigation Bar (Phone-Optimized 5 Tabs) -->
   <nav class="bottom-nav">
     <button class="nav-item active" data-tab="tab-workout">
       <span class="nav-icon">🏋️</span>
@@ -565,10 +509,6 @@
     <button class="nav-item" data-tab="tab-log">
       <span class="nav-icon">📝</span>
       <span class="nav-text">Log</span>
-    </button>
-    <button class="nav-item" data-tab="tab-agent">
-      <span class="nav-icon">🤖</span>
-      <span class="nav-text">Coach AI</span>
     </button>
     <button class="nav-item" data-tab="tab-posture">
       <span class="nav-icon">🧘</span>
@@ -584,39 +524,30 @@
     </button>
   </nav>
 
-  <!-- Cloud Sync Settings Modal -->
+  <!-- Settings Modal (GitHub Sync & PIN) -->
   <div class="modal-backdrop" id="settingsModal" style="display:none;">
     <div class="modal-sheet">
       <div class="modal-header">
-        <h3>☁️ Cloud Sync (PC-Free)</h3>
+        <h3>⚙️ Sync & Security Settings</h3>
         <button class="modal-close" onclick="closeSettingsModal()">✕</button>
       </div>
-      <p class="modal-desc">Configure GitHub Actions so you can log workouts from the web even when your PC is completely turned off.</p>
+      <p class="modal-desc">Connect directly to your GitHub repo so sending a log from your phone writes straight to <code>WORKOUT_LOGS/incoming_raw_log.txt</code> without needing your PC on.</p>
       
       <div class="form-group">
         <label>GitHub Repository</label>
-        <input type="text" id="ghRepoInput" placeholder="username/fitness_coach">
+        <input type="text" id="ghRepoInput" placeholder="rohitraina01/fitness_coach">
       </div>
 
       <div class="form-group">
         <label>GitHub Personal Access Token (PAT)</label>
-        <input type="password" id="ghTokenInput" placeholder="ghp_xxxxxxxxxxxx">
-        <span class="form-help">Requires 'repo' scope. Stored locally in your phone's browser only.</span>
-      </div>
-
-      <div class="form-group">
-        <label>Cloud / Bridge Server URL (Gym & Internet)</label>
-        <div style="display:flex;gap:8px;">
-          <input type="text" id="bridgeUrlInput" placeholder="https://....trycloudflare.com" style="flex:1;">
-          <button type="button" class="btn-chip" onclick="testBridgeConnection()" style="white-space:nowrap;padding:0 12px;">Test</button>
-        </div>
-        <span class="form-help" id="tunnelUrlHelp">Encrypted HTTPS tunnel auto-detected from home PC, or enter custom URL.</span>
+        <input type="password" id="ghTokenInput" placeholder="github_pat_... or ghp_...">
+        <span class="form-help">Requires 'Contents' read & write scope. Stored locally in your phone's browser only.</span>
       </div>
 
       <div class="form-group">
         <label>Security PIN (4 Digits)</label>
         <input type="password" id="appPinInput" maxlength="8" placeholder="••••">
-        <span class="form-help">Private security PIN (configured in .env). Leave blank to keep current PIN.</span>
+        <span class="form-help">Private security PIN (default: 0080). Leave blank to keep current PIN.</span>
       </div>
 
       <div class="modal-actions">

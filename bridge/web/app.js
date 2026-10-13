@@ -1,16 +1,20 @@
 // Apex Coach Mobile Web Application
+// Autonomous Fitness Coaching System • Phone-Floor Interface
 
+const BUFFER_KEY = "apex_current_log";
 const QUEUE_STORAGE_KEY = "apex_fitness_queue";
 const CHECKED_SETS_KEY = "apex_checked_sets";
 const PIN_STORAGE_KEY = "apex_security_pin";
 const PIN_UNLOCKED_KEY = "apex_pin_unlocked";
+const GH_TOKEN_KEY = "apex_gh_token";
+const GH_REPO_KEY = "apex_gh_repo";
+const DEFAULT_REPO = "rohitraina01/fitness_coach";
+const DEFAULT_PIN = "0080";
 
-let isOnline = false;
 let dashboardData = null;
 let currentRestTimer = null;
 let recognition = null;
 let isRecording = false;
-let isTestMode = false;
 let selectedExerciseId = "INCLINE_DB_PRESS";
 let enteredPin = "";
 
@@ -21,24 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
   initVoice();
   initLogSubmission();
   initExerciseChips();
-  initAgentChat();
-  checkConnection();
-  initAdaptivePolling();
+  renderBufferCard();
   renderQueue();
   loadLocalCheckedSets();
+  initInlineGitHubSync();
+  fetchStaticData();
 });
-
-let connectionPollTimer = null;
-function initAdaptivePolling() {
-  function runPoll() {
-    const delay = isOnline ? 8000 : 3500;
-    connectionPollTimer = setTimeout(async () => {
-      await checkConnection();
-      runPoll();
-    }, delay);
-  }
-  runPoll();
-}
 
 // 2. Tab Navigation
 function initNavigation() {
@@ -71,226 +63,37 @@ function initNavigation() {
   });
 }
 
-// Mode toggle for Live vs Test/Dummy Run
-function setEntryMode(isTest) {
-  isTestMode = isTest;
-  document.getElementById("modeLive").classList.toggle("active", !isTest);
-  document.getElementById("modeDummy").classList.toggle("active", isTest);
-  
-  const banner = document.getElementById("testBanner");
-  const submitLabel = document.getElementById("submitLabel");
-  if (banner) banner.style.display = isTest ? "block" : "none";
-  if (submitLabel) submitLabel.innerText = isTest ? "Simulate Dummy Run" : "Process Workout";
-  
-  if (isTest) {
-    showToast("🧪 Test Mode: Zero database changes will be made.");
-  }
-}
-
-// 3. Connectivity & Dynamic API Routing
-async function fetchPublishedTunnelUrl() {
-  const sources = [
-    // 1. Raw GitHub (zero deployment delay; updates in <2 seconds after git push)
-    "https://raw.githubusercontent.com/rohitraina01/fitness_coach/master/docs/tunnel_url.json",
-    // 2. Local relative file on hosting origin
-    new URL("tunnel_url.json", window.location.href).toString()
-  ];
-
-  for (const src of sources) {
-    try {
-      const u = new URL(src);
-      u.searchParams.set("t", Date.now().toString());
-      const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), 2000);
-      const res = await fetch(u.toString(), { cache: "no-store", signal: controller.signal });
-      clearTimeout(timer);
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.tunnel_url && data.tunnel_url.startsWith("https://")) {
-          return data.tunnel_url.trim().replace(/\/+$/, "");
-        }
-      }
-    } catch (e) {}
-  }
-  return null;
-}
-
-function getApiUrl(endpoint) {
-  const path = endpoint.startsWith("/") ? endpoint : "/" + endpoint;
-
-  // 1. Explicit user-configured bridge URL in settings
-  const custom = localStorage.getItem("apex_bridge_url");
-  if (custom && custom.trim()) {
-    return custom.trim().replace(/\/+$/, "") + path;
-  }
-
-  // 2. Discovered live Cloudflare tunnel URL (Gym & Internet access)
-  const tunnel = localStorage.getItem("apex_cloud_tunnel_url");
-  if (tunnel && tunnel.trim()) {
-    return tunnel.trim().replace(/\/+$/, "") + path;
-  }
-
-  // 3. Previously auto-detected working server
-  const auto = localStorage.getItem("apex_detected_server");
-  if (auto && auto.trim() && (window.location.protocol === "file:" || window.location.hostname.includes("github.io"))) {
-    return auto.trim().replace(/\/+$/, "") + path;
-  }
-
-  // 4. Fallback for file:// protocol
-  if (window.location.protocol === "file:") {
-    return "http://localhost:8080" + path;
-  }
-
-  // 5. Default: relative path (works on localhost:8080 and local Wi-Fi IP)
-  return path;
-}
-
-async function checkConnection() {
-  const statusBadge = document.getElementById("bridgeStatusBadge");
-  const dot = statusBadge ? statusBadge.querySelector(".status-dot") : null;
-  const text = document.getElementById("statusText");
-
-  // Multi-target candidate probing
-  const candidates = [];
-
-  // Check published tunnel_url.json on raw GitHub / remote host
-  if (window.location.hostname.includes("github.io") || window.location.protocol === "file:" || window.location.protocol === "https:") {
-    const publishedTunnel = await fetchPublishedTunnelUrl();
-    if (publishedTunnel) {
-      candidates.push(publishedTunnel + "/api/status");
-    }
-  }
-
-  // Primary candidate from active settings/tunnel
-  candidates.push(getApiUrl("/api/status"));
-
-  // Stored tunnel
-  const savedTunnel = localStorage.getItem("apex_cloud_tunnel_url");
-  if (savedTunnel) candidates.push(savedTunnel.replace(/\/+$/, "") + "/api/status");
-
-  // Local Wi-Fi candidates (only allowed if not running on HTTPS to avoid Mixed Content blocks)
-  if (window.location.protocol !== "https:") {
-    candidates.push("/api/status");
-    candidates.push("http://localhost:8080/api/status");
-    candidates.push("http://127.0.0.1:8080/api/status");
-    candidates.push("http://192.168.1.5:8080/api/status");
-  } else {
-    candidates.push("/api/status");
-  }
-
-  const uniqueCandidates = [...new Set(candidates.filter(Boolean))];
-  let workingBase = null;
-  let isCloudTunnel = false;
-
-  for (const url of uniqueCandidates) {
-    try {
-      const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), 2500);
-      const res = await fetch(url, { cache: "no-store", signal: controller.signal });
-      clearTimeout(timer);
-
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.online) {
-          workingBase = url.replace("/api/status", "");
-          isCloudTunnel = url.includes("trycloudflare.com") || url.includes("cloudflare") || (url.startsWith("https://") && !url.includes("github.io"));
-          break;
-        }
-      }
-    } catch (e) {
-      // Continue to next candidate
-    }
-  }
-
-  if (workingBase !== null) {
-    isOnline = true;
-    if (dot) dot.className = "status-dot online";
-    if (text) {
-      text.innerText = isCloudTunnel ? "PC Online (Cloud Live)" : "PC Online (Local)";
-    }
-    updateAgentStatusUI(true);
-
-    if (workingBase.startsWith("http://") || workingBase.startsWith("https://")) {
-      localStorage.setItem("apex_detected_server", workingBase);
-      if (isCloudTunnel) {
-        localStorage.setItem("apex_cloud_tunnel_url", workingBase);
-      }
-    }
-
-    if (!dashboardData) {
-      fetchDashboardData();
-    }
-  } else {
-    isOnline = false;
-    if (dot) dot.className = "status-dot offline";
-    if (text) text.innerText = "PC Offline";
-    updateAgentStatusUI(false);
-    // Clear dead cached tunnel to ensure fresh lookup on next try
-    localStorage.removeItem("apex_detected_server");
-    localStorage.removeItem("apex_cloud_tunnel_url");
-  }
-
-  if (statusBadge && !statusBadge.dataset.hasListener) {
-    statusBadge.dataset.hasListener = "true";
-    statusBadge.style.cursor = "pointer";
-    statusBadge.addEventListener("click", () => {
-      if (isOnline) {
-        const serverUrl = localStorage.getItem("apex_detected_server") || "localhost:8080";
-        showToast(`✅ Connected to PC Server (${serverUrl})`);
-      } else {
-        showToast("🔄 Reconnecting to home PC...");
-        checkConnection();
-      }
-    });
-  }
-}
-
-function updateAgentStatusUI(online) {
-  const ascBadge = document.getElementById("ascBadge");
-  const ascTitle = document.getElementById("ascTitle");
-  const ascSub = document.getElementById("ascSub");
-  const pulseDot = document.getElementById("agentPulseDot");
-
-  if (online) {
-    if (ascBadge && !ascBadge.classList.contains("active")) {
-      ascBadge.innerText = "IDLE";
-      ascBadge.style.color = "var(--accent-green)";
-    }
-    if (ascTitle) ascTitle.innerText = "Laptop Agent Connected";
-    if (ascSub) ascSub.innerText = "Ready for gym queries, program shifts & auto-git push";
-    if (pulseDot) {
-      pulseDot.style.background = "var(--accent-green)";
-      pulseDot.style.boxShadow = "0 0 10px var(--accent-green)";
-    }
-  } else {
-    if (ascBadge) {
-      ascBadge.innerText = "OFFLINE";
-      ascBadge.style.color = "var(--accent-orange)";
-    }
-    if (ascTitle) ascTitle.innerText = "Laptop Agent Offline";
-    if (ascSub) ascSub.innerText = "Smart Queue active (Prompts saved locally on phone)";
-    if (pulseDot) {
-      pulseDot.style.background = "var(--accent-orange)";
-      pulseDot.style.boxShadow = "0 0 10px var(--accent-orange)";
-    }
-  }
-}
-
-async function fetchDashboardData() {
+// 3. Static Data Fetching (GitHub Pages & Local Mirror)
+async function fetchStaticData() {
+  // 1. Fetch Next Workout
   try {
-    const res = await fetch(getApiUrl("/api/dashboard-data"));
-    const data = await res.json();
-    if (data.success) {
-      dashboardData = data;
-      renderWorkout(data);
-      renderProgressTab(data);
+    const res = await fetch(`next_workout.json?t=${Date.now()}`, { cache: "no-store" });
+    if (res.ok) {
+      const workoutData = await res.json();
+      if (workoutData) {
+        renderWorkout(workoutData);
+      }
     }
   } catch (e) {
-    console.warn("Could not fetch remote dashboard data:", e);
+    console.warn("Could not fetch next_workout.json:", e);
+  }
+
+  // 2. Fetch Static Dashboard Analytics for Progress Tab
+  try {
+    const resDash = await fetch(`dashboard_data.json?t=${Date.now()}`, { cache: "no-store" });
+    if (resDash.ok) {
+      const dData = await resDash.json();
+      if (dData && dData.success) {
+        dashboardData = dData;
+        renderProgressTab(dashboardData);
+      }
+    }
+  } catch (e) {
+    console.warn("Could not fetch dashboard_data.json:", e);
   }
 }
 
-// 4. Render Next Workout (Dynamic from CURRENT_NEXT_WORKOUT.md and next_workout.json)
+// 4. Render Next Workout (Dynamic from next_workout.json)
 function toggleCoachBriefing() {
   const content = document.getElementById("coachBriefingContent");
   const arrow = document.getElementById("briefingArrow");
@@ -311,99 +114,8 @@ function toggleMmcDrawer(btn) {
   if (arrow) arrow.innerText = isHidden ? "▲" : "▼";
 }
 
-function parseWorkoutMarkdown(mdText) {
-  if (!mdText) return null;
-  const lines = mdText.split("\n");
-  let title = "NEXT WORKOUT";
-  let subtitle = "Evidence-Based Hypertrophy • 5-Day Aesthetic Split";
-  const instructions = [];
-  const exercises = [];
-  let currentEx = null;
-  let currentInst = null;
-  let inBriefing = false;
-  let inBlueprint = false;
-
-  for (let line of lines) {
-    const stripped = line.trim();
-    if (stripped.startsWith("# NEXT WORKOUT:")) {
-      title = stripped.replace("# NEXT WORKOUT:", "").trim();
-    } else if (stripped.includes("Pre-Workout Note:")) {
-      subtitle = stripped.replace(/^[*-]+\s*Pre-Workout Note:\s*/, "").replace(/[*-]+$/, "").trim();
-    } else if (stripped.startsWith("## COACHING BRIEFING") || stripped.startsWith("## 1. PRE-WORKOUT") || stripped.startsWith("## BRIEFING")) {
-      inBriefing = true;
-      inBlueprint = false;
-      if (currentEx) { exercises.push(currentEx); currentEx = null; }
-    } else if (stripped.startsWith("## WORKOUT BLUEPRINT") || stripped.startsWith("## 2. WORKOUT BLUEPRINT") || stripped.startsWith("## BLUEPRINT")) {
-      inBriefing = false;
-      inBlueprint = true;
-      if (currentInst) { instructions.push(currentInst); currentInst = null; }
-    } else if (stripped.startsWith("## ")) {
-      inBriefing = false;
-      inBlueprint = false;
-      if (currentEx) { exercises.push(currentEx); currentEx = null; }
-      if (currentInst) { instructions.push(currentInst); currentInst = null; }
-    } else if (stripped.startsWith("### ")) {
-      const headerText = stripped.replace("### ", "").trim();
-      if (inBriefing) {
-        if (currentInst) instructions.push(currentInst);
-        currentInst = { title: headerText, items: [] };
-      } else if (inBlueprint || !inBriefing) {
-        if (currentEx) exercises.push(currentEx);
-        currentEx = { name: headerText, target: "3 sets x 8–12 reps", cue: "", mmc: "", calibration: "", sets: 3 };
-      }
-    } else if (inBriefing && currentInst) {
-      if (stripped.startsWith("- ") || stripped.startsWith("• ")) {
-        const clean = stripped.substring(2).trim();
-        if (clean) currentInst.items.push(clean);
-      } else if (stripped && !stripped.startsWith("#") && !stripped.startsWith("---")) {
-        currentInst.items.push(stripped);
-      }
-    } else if (currentEx) {
-      if (stripped.includes("Working Sets:")) {
-        currentEx.target = stripped.replace(/^[*-]+\s*\*\*Working Sets\*\*:\s*/, "").replace(/\*\*/g, "").trim();
-      } else if (stripped.includes("Calibration Target:")) {
-        currentEx.calibration = stripped.replace(/^[*-]+\s*\*\*Calibration Target\*\*:\s*/, "").trim();
-      } else if (stripped.includes("Order Rationale:") || stripped.includes("Flow Rationale:")) {
-        currentEx.flow_reason = stripped.replace(/^[*-]+\s*\*\*Order Rationale\*\*:\s*/, "").replace(/^[*-]+\s*\*\*Flow Rationale\*\*:\s*/, "").trim();
-      } else if (stripped.includes("Gym Floor Swap Option:") || stripped.includes("Swap Option:")) {
-        currentEx.swap_option = stripped.replace(/^[*-]+\s*\*\*Gym Floor Swap Option\*\*:\s*/, "").replace(/^[*-]+\s*\*\*Swap Option\*\*:\s*/, "").trim();
-      } else if (stripped.includes("Form Cue:")) {
-        currentEx.cue = stripped.replace(/^[*-]+\s*\*\*Form Cue\*\*:\s*/, "").trim();
-      } else if (stripped.includes("Mind-Muscle Cue:")) {
-        currentEx.mmc = stripped.replace(/^[*-]+\s*\*\*Mind-Muscle Cue\*\*:\s*/, "").trim();
-      } else if (stripped.includes("Targets:") && currentEx.target === "3 sets x 8–12 reps") {
-        currentEx.target = stripped.replace(/^[*-]+\s*Targets:\s*/, "").trim();
-      }
-    }
-  }
-  if (currentEx) exercises.push(currentEx);
-  if (currentInst) instructions.push(currentInst);
-
-  exercises.forEach(ex => {
-    const m = ex.target.match(/(\d+)\s*sets/i);
-    if (m) ex.sets = parseInt(m[1], 10);
-  });
-
-  return exercises.length > 0 ? { title, subtitle, instructions, exercises } : null;
-}
-
-async function renderWorkout(data) {
-  let workout = null;
-
-  if (data && data.next_workout_markdown) {
-    workout = parseWorkoutMarkdown(data.next_workout_markdown);
-  }
-
-  if (!workout) {
-    try {
-      const res = await fetch(`next_workout.json?t=${Date.now()}`, { cache: "no-store" });
-      if (res.ok) {
-        workout = await res.json();
-      }
-    } catch (e) {}
-  }
-
-  if (!workout) {
+function renderWorkout(workout) {
+  if (!workout || !workout.exercises || workout.exercises.length === 0) {
     const cached = localStorage.getItem("apex_cached_next_workout");
     if (cached) {
       try { workout = JSON.parse(cached); } catch (e) {}
@@ -413,7 +125,7 @@ async function renderWorkout(data) {
   if (!workout || !workout.exercises || workout.exercises.length === 0) {
     workout = {
       title: "DAY 3 • LEGS & POSTURE (QUAD SWEEP & ANTI-APT)",
-      subtitle: "Swapped to Day 3 for upper body recovery. Complete quad & calf isolation.",
+      subtitle: "First leg day after 1-year layoff. Strict Zero-Glutes guardrail applied.",
       instructions: [
         {
           title: "1-Year Layoff Safety Ceiling: 2–3 RIR",
@@ -421,13 +133,13 @@ async function renderWorkout(data) {
         }
       ],
       exercises: [
-        { name: "Leg Press (Narrow / Mid-Low Stance)", target: "3 sets x 10–12 reps @ RIR 2–3", cue: "Lower to 90° knee bend. Never allow lower back to peel off pad.", flow_reason: "#1 Heavy Compound First. Peak CNS output before fatigue.", swap_option: "If busy, start with Leg Extension or Leg Curl.", mmc: "Push through mid-foot and knees out. Quads do 100% of the work while glutes stay relaxed.", calibration: "Sled + 40 to 50 kg", sets: 3 },
-        { name: "Leg Extension Machine", target: "3 sets x 12–15 reps @ RIR 1–2", cue: "Hold a strict 1-second squeeze at peak extension; slow 3-second descent.", flow_reason: "#2 Warm-Joint Isolation. Knees lubricated from press.", swap_option: "Can be done first as pre-exhaustion.", mmc: "Pure quad isolation. Lock knees at top, flex teardrop, 3s negative.", calibration: "25 to 35 kg", sets: 3 },
-        { name: "Seated or Lying Leg Curl", target: "3 sets x 10–12 reps @ RIR 1–2", cue: "Dorsiflex feet (pull toes to shins). Zero hip extension.", flow_reason: "#3 Antagonist Balancer. Balances patellar tendon tension.", swap_option: "Can do before or after Leg Extension.", mmc: "Removes calves, pure hamstring tension.", calibration: "20 to 30 kg", sets: 3 },
-        { name: "Standing Calf Raise", target: "4 sets x 12–15 reps", cue: "2-second dead stop in the stretch at the bottom to kill tendon elastic bounce.", flow_reason: "#4 Peripheral Breather. Cardio recovery before core.", swap_option: "Anytime machine is open.", mmc: "Push straight up through ball of big toe.", calibration: "30 to 40 kg", sets: 4 },
-        { name: "Kneeling Cable Crunch", target: "3 sets x 12–15 reps", cue: "Lock hips at 90°. Roll ribcage down to pelvis. Squeeze abs for 1s.", flow_reason: "#5 Heavy Loaded Core. Hit six-pack while fresh.", swap_option: "If busy, do Deadbugs first.", mmc: "Spinal flexion, not hip hinging. Blow air out at bottom.", calibration: "25 to 35 kg", sets: 3 },
-        { name: "Deadbugs", target: "3 sets x 15 reps", cue: "Lower back glued 100% flat to floor. Transverse abdominis bracing.", flow_reason: "#6 Pelvic Bracing. Locks pelvis in neutral.", swap_option: "Any open floor mat.", mmc: "Lock ₹500 note under lumbar.", sets: 3 },
-        { name: "Half-Kneeling Hip Flexor Stretch", target: "2 sets x 60s per leg", cue: "Squeeze trailing glute, posterior pelvic tuck to open tight psoas from 9h sitting.", flow_reason: "#7 Post-Workout Lengthening. Muscles warm for permanent release.", swap_option: "Always do last before leaving gym.", mmc: "Tuck pelvis like a dog tucking its tail, squeeze glute to push hip forward.", sets: 2 }
+        { name: "1. Leg Press (Narrow / Mid-Low Stance)", target: "3 sets x 10–12 reps @ RIR 2–3", cue: "Lower to 90° knee bend. Never allow lower back to peel off pad.", flow_reason: "#1 Heavy Compound First. Peak CNS output before fatigue.", swap_option: "If busy, start with Leg Extension or Leg Curl.", mmc: "Push through mid-foot and knees out. Quads do 100% of the work while glutes stay relaxed.", calibration: "Sled + 40 to 50 kg", sets: 3 },
+        { name: "2. Leg Extension Machine", target: "3 sets x 12–15 reps @ RIR 1–2", cue: "Hold a strict 1-second squeeze at peak extension; slow 3-second descent.", flow_reason: "#2 Warm-Joint Isolation. Knees lubricated from press.", swap_option: "Can be done first as pre-exhaustion.", mmc: "Pure quad isolation. Lock knees at top, flex teardrop, 3s negative.", calibration: "25 to 35 kg", sets: 3 },
+        { name: "3. Seated or Lying Leg Curl", target: "3 sets x 10–12 reps @ RIR 1–2", cue: "Dorsiflex feet (pull toes to shins). Zero hip extension.", flow_reason: "#3 Antagonist Balancer. Balances patellar tendon tension.", swap_option: "Can do before or after Leg Extension.", mmc: "Removes calves, pure hamstring tension.", calibration: "20 to 30 kg", sets: 3 },
+        { name: "4. Standing Calf Raise", target: "4 sets x 12–15 reps", cue: "2-second dead stop in the stretch at the bottom to kill tendon elastic bounce.", flow_reason: "#4 Peripheral Breather. Cardio recovery before core.", swap_option: "Anytime machine is open.", mmc: "Push straight up through ball of big toe.", calibration: "30 to 40 kg", sets: 4 },
+        { name: "5. Kneeling Cable Crunch", target: "3 sets x 12–15 reps", cue: "Lock hips at 90°. Roll ribcage down to pelvis. Squeeze abs for 1s.", flow_reason: "#5 Heavy Loaded Core. Hit six-pack while fresh.", swap_option: "If busy, do Deadbugs first.", mmc: "Spinal flexion, not hip hinging. Blow air out at bottom.", calibration: "25 to 35 kg", sets: 3 },
+        { name: "6. Deadbugs", target: "3 sets x 15 reps", cue: "Lower back glued 100% flat to floor. Transverse abdominis bracing.", flow_reason: "#6 Pelvic Bracing. Locks pelvis in neutral.", swap_option: "Any open floor mat.", mmc: "Lock ₹500 note under lumbar.", sets: 3 },
+        { name: "7. Half-Kneeling Hip Flexor Stretch", target: "2 sets x 60s per leg", cue: "Squeeze trailing glute, posterior pelvic tuck to open tight psoas from 9h sitting.", flow_reason: "#7 Post-Workout Lengthening. Muscles warm for permanent release.", swap_option: "Always do last before leaving gym.", mmc: "Tuck pelvis like a dog tucking its tail, squeeze glute to push hip forward.", sets: 2 }
       ]
     };
   }
@@ -509,7 +221,7 @@ async function renderWorkout(data) {
           <span class="ex-num">#${idx + 1}</span>
           <span class="ex-name">${escapeHtml(ex.name)}</span>
         </div>
-        <span class="ex-target-pill">${escapeHtml(ex.target)}</span>
+        <span class="ex-target-pill">${escapeHtml(ex.target).replace(/\*\*(.*?)\*\*/g, '$1')}</span>
       </div>
       <p class="ex-cue">${escapeHtml(ex.cue)}</p>
       ${mmcHtml}
@@ -537,9 +249,7 @@ function toggleSetCheck(el) {
 }
 
 function loadLocalCheckedSets() {
-  if (!dashboardData) {
-    renderWorkout({});
-  }
+  renderWorkout({});
 }
 
 // 5. Rest Timer with Audio & Vibration
@@ -640,23 +350,99 @@ function initVoice() {
 
   btnVoice.addEventListener("click", () => {
     if (!isRecording) {
-      recognition.start();
-      btnVoice.classList.add("recording");
-      isRecording = true;
-      showToast("🎙️ Listening... Speak your workout");
+      try {
+        recognition.start();
+        btnVoice.classList.add("recording");
+        isRecording = true;
+        showToast("🎙️ Listening... Speak your sets");
+      } catch (e) {
+        showToast("Speech recognition error");
+      }
     } else {
       recognition.stop();
       btnVoice.classList.remove("recording");
       isRecording = false;
-      showToast("Speech recognized");
+      showToast("Speech recorded");
     }
   });
 }
 
-// 8. Log Submission & Smart Queue Management (With Dummy Mode Support)
+// 8. Direct GitHub API Push & Buffer Management
+function toBase64Utf8(str) {
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => {
+    return String.fromCharCode('0x' + p1);
+  }));
+}
+
+async function pushLogToGitHub(rawText, sessionType) {
+  const token = localStorage.getItem(GH_TOKEN_KEY);
+  const repo = localStorage.getItem(GH_REPO_KEY) || DEFAULT_REPO;
+
+  if (!token) {
+    return { success: false, reason: "no_token" };
+  }
+
+  const filePath = "WORKOUT_LOGS/incoming_raw_log.txt";
+  const apiUrl = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+
+  // 1. Get existing file SHA
+  let sha = null;
+  try {
+    const getRes = await fetch(apiUrl, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Accept": "application/vnd.github.v3+json"
+      }
+    });
+    if (getRes.ok) {
+      const fileData = await getRes.json();
+      sha = fileData.sha;
+    }
+  } catch (e) {
+    console.warn("Could not check existing SHA:", e);
+  }
+
+  // 2. Prepare formatted file content
+  const now = new Date();
+  const dateStr = now.toISOString().split("T")[0];
+  const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const fileContent = `# INCOMING WORKOUT LOG BUFFER\n# Date: ${dateStr} ${timeStr}\n# Session: ${sessionType}\n\n${rawText}\n`;
+
+  const payload = {
+    message: `chore(log): incoming ${sessionType} workout from mobile buffer [skip ci]`,
+    content: toBase64Utf8(fileContent),
+    branch: "master"
+  };
+  if (sha) payload.sha = sha;
+
+  try {
+    const putRes = await fetch(apiUrl, {
+      method: "PUT",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (putRes.ok || putRes.status === 201 || putRes.status === 200) {
+      return { success: true };
+    } else {
+      const errData = await putRes.json().catch(() => ({}));
+      return { success: false, reason: errData.message || `HTTP ${putRes.status}` };
+    }
+  } catch (err) {
+    return { success: false, reason: err.message || "Network Error" };
+  }
+}
+
+// 9. Log Submission Workflow
 function initLogSubmission() {
   const submitBtn = document.getElementById("btnSubmitLog");
   const textarea = document.getElementById("rawLogInput");
+
+  if (!submitBtn || !textarea) return;
 
   submitBtn.addEventListener("click", async () => {
     const text = textarea.value.trim();
@@ -666,112 +452,302 @@ function initLogSubmission() {
     }
 
     const activeChip = document.querySelector(".type-selector .btn-chip.active");
-    const sessionType = activeChip ? activeChip.getAttribute("data-type") : "Pull";
-    const forceDummy = isTestMode || text.toLowerCase().includes("dummy") || text.toLowerCase().includes("test");
+    const sessionType = activeChip ? activeChip.getAttribute("data-type") : "Legs";
+    const dateStr = new Date().toISOString().split("T")[0];
+    const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-    const payload = {
-      id: "entry_" + Date.now(),
-      created_at: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      date: new Date().toISOString().split("T")[0],
+    const bufferEntry = {
+      id: "log_" + Date.now(),
+      date: dateStr,
+      time: timeStr,
       session_type: sessionType,
       raw_text: text,
-      duration: 60,
-      is_dummy: forceDummy
+      status: "cached",
+      synced_to_repo: false
     };
 
-    if (isOnline) {
+    // 1. Immediately cache in phone storage
+    localStorage.setItem(BUFFER_KEY, JSON.stringify(bufferEntry));
+    enqueueWorkout(bufferEntry);
+
+    // 2. Attempt direct push to GitHub repo if token configured
+    const token = localStorage.getItem(GH_TOKEN_KEY);
+    if (token) {
       submitBtn.disabled = true;
-      submitBtn.innerText = forceDummy ? "Simulating via Coach..." : "Processing via Antigravity...";
-      try {
-        const res = await fetch(getApiUrl("/api/log-workout"), {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        const resJson = await res.json();
-        if (resJson.success) {
-          if (resJson.dummy) {
-            showSimulationResults(resJson.coach_feedback);
-            showToast("🧪 DUMMY RUN VERIFIED! Zero database changes.");
-          } else {
-            const pushNotice = resJson.git_push ? ` • ${resJson.git_push}` : "";
-            showToast(`✅ Ingested & committed!${pushNotice}`);
-            textarea.value = "";
-            fetchDashboardData();
-          }
-        } else {
-          throw new Error(resJson.error);
-        }
-      } catch (e) {
-        if (!forceDummy) {
-          enqueueWorkout(payload);
-          showToast("⚠️ Could not reach PC. Saved to local queue.");
-        } else {
-          showToast("Error running simulation: " + e.message);
-        }
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = forceDummy ? "<span id='submitLabel'>Simulate Dummy Run</span> ➔" : "<span id='submitLabel'>Process Workout</span> ➔";
+      submitBtn.innerText = "Syncing to Repo...";
+
+      const pushRes = await pushLogToGitHub(text, sessionType);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "<span id='submitLabel'>Send to Repo</span> ➔";
+
+      if (pushRes.success) {
+        bufferEntry.synced_to_repo = true;
+        bufferEntry.status = "synced";
+        localStorage.setItem(BUFFER_KEY, JSON.stringify(bufferEntry));
+        showToast("✅ Committed to Repo! (WORKOUT_LOGS/incoming_raw_log.txt updated)");
+      } else {
+        showToast(`⚠️ GitHub push failed (${pushRes.reason}). Saved in phone buffer.`);
       }
     } else {
-      // PC LOCALHOST IS DEAD / OFF -> DISPATCH TO GITHUB CLOUD
-      const ghRepo = localStorage.getItem("apex_gh_repo");
-      const ghToken = localStorage.getItem("apex_gh_token");
-
-      if (ghRepo && ghToken && !forceDummy) {
-        submitBtn.disabled = true;
-        submitBtn.innerText = "Dispatching to Cloud Runner...";
-        try {
-          const ghRes = await fetch(`https://api.github.com/repos/${ghRepo}/dispatches`, {
-            method: "POST",
-            headers: {
-              "Authorization": `Bearer ${ghToken}`,
-              "Accept": "application/vnd.github.v3+json",
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              event_type: "log_workout",
-              client_payload: payload
-            })
-          });
-
-          if (ghRes.ok || ghRes.status === 204) {
-            showToast("⚡ SENT TO GITHUB CLOUD! Cloud runner is executing.");
-            textarea.value = "";
-          } else {
-            throw new Error(`GitHub returned status ${ghRes.status}`);
-          }
-        } catch (err) {
-          enqueueWorkout(payload);
-          showToast("⚠️ Cloud dispatch failed. Saved in queue: " + err.message);
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = "<span id='submitLabel'>Process Workout</span> ➔";
-        }
-      } else {
-        if (!forceDummy) {
-          enqueueWorkout(payload);
-          textarea.value = "";
-          showToast("⚠️ PC is Offline. Saved to queue. (Tap ⚙️ to configure 24/7 Cloud Sync)");
-        } else {
-          showToast("⚠️ PC is offline; dummy simulations require PC bridge connection.");
-        }
-      }
+      // No token configured: copy /log prompt to clipboard for user convenience
+      copyLogAsPrompt();
+      showToast("💾 Saved in phone buffer! Also copied /log prompt to clipboard.");
     }
+
+    renderBufferCard();
+    renderQueue();
   });
 }
 
-// Security PIN Lock
-const DEFAULT_PIN = "0080";
-
-function getStoredPin() {
-  const current = localStorage.getItem(PIN_STORAGE_KEY);
-  // Auto-migrate old default pins to the requested 0080
-  if (current === "123" || current === "1234") {
-    localStorage.setItem(PIN_STORAGE_KEY, DEFAULT_PIN);
-    return DEFAULT_PIN;
+// Copy prompt directly to clipboard
+function copyTextToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text);
   }
-  return current || DEFAULT_PIN;
+  const t = document.createElement("textarea");
+  t.value = text;
+  document.body.appendChild(t);
+  t.select();
+  document.execCommand("copy");
+  document.body.removeChild(t);
+  return Promise.resolve();
+}
+
+function copyLogAsPrompt() {
+  const textarea = document.getElementById("rawLogInput");
+  let text = textarea ? textarea.value.trim() : "";
+
+  if (!text) {
+    const cached = localStorage.getItem(BUFFER_KEY);
+    if (cached) {
+      try {
+        const parsed = JSON.parse(cached);
+        text = parsed.raw_text || "";
+      } catch (e) {}
+    }
+  }
+
+  if (!text) {
+    showToast("Type or dictate workout notes first.");
+    return;
+  }
+
+  const activeChip = document.querySelector(".type-selector .btn-chip.active");
+  const sessionType = activeChip ? activeChip.getAttribute("data-type") : "Legs";
+  const formattedPrompt = `/log\n# Session: ${sessionType}\n${text}`;
+
+  copyTextToClipboard(formattedPrompt).then(() => {
+    showToast("📋 Copied /log prompt! Paste into chat with coach.");
+  });
+}
+
+// 10. Buffer Card UI Rendering
+function renderBufferCard() {
+  const card = document.getElementById("bufferCard");
+  const badge = document.getElementById("bufferSessionBadge");
+  const tag = document.getElementById("bufferStatusTag");
+  const time = document.getElementById("bufferTime");
+  const content = document.getElementById("bufferContent");
+  const pushBtn = document.getElementById("btnBufferPush");
+
+  if (!card) return;
+
+  const raw = localStorage.getItem(BUFFER_KEY);
+  if (!raw) {
+    card.style.display = "none";
+    return;
+  }
+
+  try {
+    const item = JSON.parse(raw);
+    if (!item.raw_text) {
+      card.style.display = "none";
+      return;
+    }
+
+    card.style.display = "block";
+    if (badge) badge.innerText = (item.session_type || "WORKOUT").toUpperCase();
+    if (time) time.innerText = `${item.date || ""} ${item.time || ""}`.trim();
+    if (content) content.innerText = item.raw_text;
+
+    if (tag) {
+      if (item.synced_to_repo) {
+        tag.className = "buffer-status-tag synced";
+        tag.innerText = "🟢 Synced to Repo";
+        if (pushBtn) pushBtn.style.display = "none";
+      } else {
+        tag.className = "buffer-status-tag cached";
+        tag.innerText = "🟡 Cached on Phone";
+        if (pushBtn) pushBtn.style.display = "inline-flex";
+      }
+    }
+  } catch (e) {
+    card.style.display = "none";
+  }
+}
+
+function copyBufferedLog() {
+  const raw = localStorage.getItem(BUFFER_KEY);
+  if (!raw) return;
+  try {
+    const item = JSON.parse(raw);
+    const formattedPrompt = `/log\n# Session: ${item.session_type || 'Legs'}\n${item.raw_text}`;
+    copyTextToClipboard(formattedPrompt).then(() => {
+      showToast("📋 Copied buffered log as /log prompt!");
+    });
+  } catch (e) {}
+}
+
+async function pushBufferedLogToRepo() {
+  const raw = localStorage.getItem(BUFFER_KEY);
+  if (!raw) return;
+  try {
+    const item = JSON.parse(raw);
+    showToast("Pushing buffer to GitHub repo...");
+    const res = await pushLogToGitHub(item.raw_text, item.session_type || "Legs");
+    if (res.success) {
+      item.synced_to_repo = true;
+      item.status = "synced";
+      localStorage.setItem(BUFFER_KEY, JSON.stringify(item));
+      renderBufferCard();
+      showToast("✅ Committed to Repo! (WORKOUT_LOGS/incoming_raw_log.txt updated)");
+    } else {
+      showToast(`⚠️ Push failed: ${res.reason}. Check token in ⚙️.`);
+    }
+  } catch (e) {}
+}
+
+function loadBufferedLogIntoEditor() {
+  const raw = localStorage.getItem(BUFFER_KEY);
+  if (!raw) return;
+  try {
+    const item = JSON.parse(raw);
+    const textarea = document.getElementById("rawLogInput");
+    if (textarea) {
+      textarea.value = item.raw_text;
+      textarea.focus();
+      showToast("✏️ Loaded buffered log into editor.");
+    }
+  } catch (e) {}
+}
+
+function clearBufferedLog() {
+  if (confirm("Clear this buffered log from your phone screen?")) {
+    localStorage.removeItem(BUFFER_KEY);
+    renderBufferCard();
+    showToast("🗑️ Active buffer cleared.");
+  }
+}
+
+// 11. Inline GitHub Direct Sync (1-Time Setup)
+function initInlineGitHubSync() {
+  const indicator = document.getElementById("ghStatusIndicator");
+  const input = document.getElementById("ghInlineToken");
+  const token = localStorage.getItem(GH_TOKEN_KEY);
+  const repo = localStorage.getItem(GH_REPO_KEY) || DEFAULT_REPO;
+
+  if (indicator) {
+    if (token) {
+      indicator.className = "gh-status-indicator connected";
+      indicator.innerText = `Connected: ${repo.split("/")[1] || repo}`;
+    } else {
+      indicator.className = "gh-status-indicator";
+      indicator.innerText = "Not Connected";
+    }
+  }
+
+  if (input && token) {
+    input.placeholder = "•••••••••••••••• (Token saved)";
+  }
+}
+
+function saveInlineGitHubToken() {
+  const input = document.getElementById("ghInlineToken");
+  const token = input ? input.value.trim() : "";
+
+  if (!token) {
+    showToast("Please enter a GitHub PAT token.");
+    return;
+  }
+
+  localStorage.setItem(GH_TOKEN_KEY, token);
+  if (!localStorage.getItem(GH_REPO_KEY)) {
+    localStorage.setItem(GH_REPO_KEY, DEFAULT_REPO);
+  }
+
+  input.value = "";
+  input.placeholder = "•••••••••••••••• (Token saved)";
+  initInlineGitHubSync();
+  showToast("⚡ GitHub Token saved! Now you can push directly to repo.");
+}
+
+// 12. Queue History
+function enqueueWorkout(item) {
+  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
+  queue.unshift(item);
+  // Keep last 15 entries
+  if (queue.length > 15) queue.pop();
+  localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue));
+}
+
+function renderQueue() {
+  const list = document.getElementById("queueList");
+  const countSpan = document.getElementById("queueCount");
+  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
+
+  if (!list || !countSpan) return;
+  countSpan.innerText = queue.length;
+  list.innerHTML = "";
+
+  if (queue.length === 0) {
+    list.innerHTML = `<p style="font-size:0.8rem; color:var(--text-dim); text-align:center; padding:12px;">No logged sessions in local history yet.</p>`;
+    return;
+  }
+
+  queue.forEach((item, idx) => {
+    const el = document.createElement("div");
+    el.className = "queue-item";
+    const statusTag = item.synced_to_repo ? `<span style="color:#10B981;font-weight:700;">🟢 In Repo</span>` : `<span style="color:#F59E0B;font-weight:700;">🟡 Cached</span>`;
+    
+    el.innerHTML = `
+      <div class="queue-item-meta">
+        <strong>${escapeHtml(item.session_type || 'Workout')}</strong>
+        <span>${item.date || ''} • ${statusTag}</span>
+      </div>
+      <div class="queue-snippet">${escapeHtml(item.raw_text)}</div>
+      <div class="queue-actions">
+        <button class="btn-queue-sync" onclick="copyQueueItemPrompt(${idx})">📋 Copy /log</button>
+        <button class="btn-queue-discard" onclick="discardQueueItem(${idx})">Delete</button>
+      </div>
+    `;
+    list.appendChild(el);
+  });
+}
+
+function copyQueueItemPrompt(index) {
+  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
+  const item = queue[index];
+  if (!item) return;
+
+  const formattedPrompt = `/log\n# Session: ${item.session_type || 'Legs'}\n${item.raw_text}`;
+  copyTextToClipboard(formattedPrompt).then(() => {
+    showToast("📋 Copied past log as /log prompt!");
+  });
+}
+
+function discardQueueItem(index) {
+  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
+  if (confirm("Delete this log record from local history?")) {
+    queue.splice(index, 1);
+    localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue));
+    renderQueue();
+    showToast("Deleted from local history.");
+  }
+}
+
+// 13. Security PIN Lock
+function getStoredPin() {
+  return localStorage.getItem(PIN_STORAGE_KEY) || DEFAULT_PIN;
 }
 
 function initSecurityLock() {
@@ -822,27 +798,9 @@ function backspacePin() {
   }
 }
 
-async function verifyPin() {
+function verifyPin() {
   const correctPin = getStoredPin();
-  let isValid = (enteredPin === correctPin || enteredPin === DEFAULT_PIN);
-
-  // If local match fails but server is reachable, verify against server .env
-  if (!isValid && isOnline) {
-    try {
-      const res = await fetch(getApiUrl("/api/verify-pin"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pin: enteredPin })
-      });
-      if (res.ok) {
-        const d = await res.json();
-        if (d && d.valid) {
-          isValid = true;
-          localStorage.setItem(PIN_STORAGE_KEY, enteredPin);
-        }
-      }
-    } catch (e) {}
-  }
+  const isValid = (enteredPin === correctPin || enteredPin === DEFAULT_PIN);
 
   if (isValid) {
     localStorage.setItem(PIN_UNLOCKED_KEY, "true");
@@ -879,20 +837,16 @@ function lockApp() {
   showToast("🔒 System locked.");
 }
 
-// Cloud Settings Modal & Bridge Testing
+// 14. Settings Modal
 function openSettingsModal() {
   const modal = document.getElementById("settingsModal");
   const repoInput = document.getElementById("ghRepoInput");
   const tokenInput = document.getElementById("ghTokenInput");
   const pinInput = document.getElementById("appPinInput");
-  const bridgeInput = document.getElementById("bridgeUrlInput");
 
-  if (repoInput) repoInput.value = localStorage.getItem("apex_gh_repo") || "";
-  if (tokenInput) tokenInput.value = localStorage.getItem("apex_gh_token") || "";
-  if (pinInput) pinInput.value = ""; // Mask PIN for privacy
-  
-  const activeEndpoint = localStorage.getItem("apex_bridge_url") || localStorage.getItem("apex_cloud_tunnel_url") || localStorage.getItem("apex_detected_server") || "";
-  if (bridgeInput) bridgeInput.value = activeEndpoint;
+  if (repoInput) repoInput.value = localStorage.getItem(GH_REPO_KEY) || DEFAULT_REPO;
+  if (tokenInput) tokenInput.value = localStorage.getItem(GH_TOKEN_KEY) || "";
+  if (pinInput) pinInput.value = "";
   if (modal) modal.style.display = "flex";
 }
 
@@ -901,55 +855,20 @@ function closeSettingsModal() {
   if (modal) modal.style.display = "none";
 }
 
-async function testBridgeConnection() {
-  const bridgeInput = document.getElementById("bridgeUrlInput");
-  const url = bridgeInput ? bridgeInput.value.trim() : "";
-  if (!url) {
-    showToast("Enter a Cloudflare tunnel or bridge URL first.");
-    return;
-  }
-  showToast("Testing remote connection to home laptop...");
-  try {
-    const testUrl = url.replace(/\/+$/, "") + "/api/status";
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 4000);
-    const res = await fetch(testUrl, { cache: "no-store", signal: controller.signal });
-    clearTimeout(timer);
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.online) {
-        localStorage.setItem("apex_bridge_url", url);
-        localStorage.setItem("apex_detected_server", url);
-        checkConnection();
-        showToast(`✅ Connected! Machine: ${data.machine || "Rohit-PC"} is online.`);
-        return;
-      }
-    }
-    showToast("⚠️ Remote server reached, but invalid status.");
-  } catch (e) {
-    showToast("❌ Connection error: " + (e.message || "Offline / Unreachable"));
-  }
-}
-
 function saveCloudSettings() {
   const repoInput = document.getElementById("ghRepoInput");
   const tokenInput = document.getElementById("ghTokenInput");
   const pinInput = document.getElementById("appPinInput");
-  const bridgeInput = document.getElementById("bridgeUrlInput");
 
   const repo = repoInput ? repoInput.value.trim() : "";
   const token = tokenInput ? tokenInput.value.trim() : "";
   const pin = pinInput ? pinInput.value.trim() : "";
-  const bridge = bridgeInput ? bridgeInput.value.trim() : "";
 
-  if (repo) localStorage.setItem("apex_gh_repo", repo);
-  else localStorage.removeItem("apex_gh_repo");
+  if (repo) localStorage.setItem(GH_REPO_KEY, repo);
+  else localStorage.setItem(GH_REPO_KEY, DEFAULT_REPO);
 
-  if (token) localStorage.setItem("apex_gh_token", token);
-  else localStorage.removeItem("apex_gh_token");
-
-  if (bridge) localStorage.setItem("apex_bridge_url", bridge);
-  else localStorage.removeItem("apex_bridge_url");
+  if (token) localStorage.setItem(GH_TOKEN_KEY, token);
+  else localStorage.removeItem(GH_TOKEN_KEY);
 
   if (pin && pin.length >= 4) {
     localStorage.setItem(PIN_STORAGE_KEY, pin);
@@ -957,153 +876,12 @@ function saveCloudSettings() {
 
   closeSettingsModal();
   updatePinDots();
-  checkConnection();
-  showToast("☁️ Settings & Remote Bridge saved!");
+  initInlineGitHubSync();
+  renderBufferCard();
+  showToast("⚙️ Settings saved!");
 }
 
-function showSimulationResults(feedbackText) {
-  const card = document.getElementById("simulationCard");
-  const body = document.getElementById("simBody");
-  if (card && body) {
-    body.innerText = feedbackText;
-    card.style.display = "block";
-    card.scrollIntoView({ behavior: "smooth" });
-  }
-}
-
-function closeSimulation() {
-  const card = document.getElementById("simulationCard");
-  if (card) card.style.display = "none";
-}
-
-function enqueueWorkout(item) {
-  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
-  queue.unshift(item);
-  localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue));
-  renderQueue();
-}
-
-function renderQueue() {
-  const list = document.getElementById("queueList");
-  const countSpan = document.getElementById("queueCount");
-  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
-
-  updateQueuedPromptsBanner();
-
-  if (!list || !countSpan) return;
-  countSpan.innerText = queue.length;
-  list.innerHTML = "";
-
-  if (queue.length === 0) {
-    list.innerHTML = `<p style="font-size:0.8rem; color:var(--text-dim); text-align:center; padding:12px;">Queue is empty. All workouts & instructions synced.</p>`;
-    return;
-  }
-
-  queue.forEach((item, idx) => {
-    const el = document.createElement("div");
-    el.className = "queue-item";
-    if (item.type === "prompt") {
-      el.innerHTML = `
-        <div class="queue-item-meta">
-          <strong style="color:var(--accent-cyan);">🤖 Coach Instruction</strong>
-          <span>${item.date} • ${item.created_at}</span>
-        </div>
-        <div class="queue-snippet">${escapeHtml(item.prompt)}</div>
-        <div class="queue-actions">
-          <button class="btn-queue-sync" onclick="syncQueueItem(${idx})">Dispatch to Laptop ➔</button>
-          <button class="btn-queue-discard" onclick="discardQueueItem(${idx})">Discard</button>
-        </div>
-      `;
-    } else {
-      el.innerHTML = `
-        <div class="queue-item-meta">
-          <strong>${item.session_type} Workout</strong>
-          <span>${item.date} • ${item.created_at}</span>
-        </div>
-        <div class="queue-snippet">${escapeHtml(item.raw_text)}</div>
-        <div class="queue-actions">
-          <button class="btn-queue-sync" onclick="syncQueueItem(${idx})">Sync to PC ➔</button>
-          <button class="btn-queue-discard" onclick="discardQueueItem(${idx})">Discard / Delete</button>
-        </div>
-      `;
-    }
-    list.appendChild(el);
-  });
-}
-
-async function syncQueueItem(index) {
-  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
-  const item = queue[index];
-  if (!item) return;
-
-  if (!isOnline) {
-    showToast("⚠️ PC is still offline. Please check connection.");
-    return;
-  }
-
-  if (item.type === "prompt") {
-    showToast("Dispatching prompt to laptop agent...");
-    try {
-      const res = await fetch(getApiUrl("/api/coach-prompt"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: item.prompt, mode: "agent" })
-      });
-      const resJson = await res.json();
-      if (resJson.success) {
-        queue.splice(index, 1);
-        localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue));
-        renderQueue();
-        showToast("✅ Prompt received by laptop agent!");
-        if (resJson.task && resJson.task.task_id) {
-          const agentNavBtn = document.querySelector(`.nav-item[data-tab="tab-agent"]`);
-          if (agentNavBtn) agentNavBtn.click();
-          showAgentConsole();
-          pollAgentTask(resJson.task.task_id);
-        }
-      } else {
-        showToast("Failed to dispatch prompt: " + resJson.error);
-      }
-    } catch (e) {
-      showToast("Dispatch failed: PC bridge disconnected.");
-    }
-    return;
-  }
-
-  showToast("Syncing to PC...");
-  try {
-    const res = await fetch(getApiUrl("/api/log-workout"), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(item)
-    });
-    const resJson = await res.json();
-    if (resJson.success) {
-      queue.splice(index, 1);
-      localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue));
-      renderQueue();
-      const pushMsg = resJson.git_push ? ` (${resJson.git_push})` : "";
-      showToast(`✅ Successfully synced to PC records!${pushMsg}`);
-      fetchDashboardData();
-    } else {
-      showToast("Error syncing item: " + resJson.error);
-    }
-  } catch (e) {
-    showToast("Sync failed: PC bridge disconnected.");
-  }
-}
-
-function discardQueueItem(index) {
-  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
-  if (confirm("Discard this queued workout? (Use this if you already entered it on your PC to avoid duplicate records).")) {
-    queue.splice(index, 1);
-    localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue));
-    renderQueue();
-    showToast("Item discarded.");
-  }
-}
-
-// 9. PROGRESS TAB: Muscle Volume & Exercise Trajectories
+// 15. Progress Tab: Muscle Volume & Exercise Trajectories
 function initExerciseChips() {
   const chips = document.querySelectorAll(".ex-chip");
   chips.forEach(c => {
@@ -1119,6 +897,8 @@ function initExerciseChips() {
 }
 
 function renderProgressTab(data) {
+  if (!data) return;
+
   // 1. Trend Summary Cards
   if (data.trend_summary) {
     const rateEl = document.getElementById("trendOverloadRate");
@@ -1243,12 +1023,12 @@ function drawExerciseChart(traj) {
     // Date label at bottom
     ctx.fillStyle = "#94A3B8";
     ctx.font = "9px sans-serif";
-    const dateLabel = d.date.slice(5); // e.g. '09-28'
+    const dateLabel = d.date.slice(5);
     ctx.fillText(dateLabel, x, h - 12);
   });
 }
 
-// Helpers
+// 16. Utility Helpers
 function showToast(msg) {
   const t = document.getElementById("toast");
   if (!t) return;
@@ -1260,199 +1040,4 @@ function showToast(msg) {
 function escapeHtml(str) {
   if (!str) return "";
   return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-// =========================================================
-// 10. REMOTE COACH AI AGENT & LIVE STREAMING
-// =========================================================
-let activeAgentPollTimer = null;
-let agentStreamEventsCount = 0;
-
-function initAgentChat() {
-  const btnSend = document.getElementById("btnSendAgentPrompt");
-  const textarea = document.getElementById("agentPromptInput");
-  const btnVoice = document.getElementById("btnAgentVoice");
-
-  if (btnSend) {
-    btnSend.addEventListener("click", submitAgentPrompt);
-  }
-
-  if (textarea) {
-    textarea.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        submitAgentPrompt();
-      }
-    });
-  }
-
-  if (btnVoice) {
-    btnVoice.addEventListener("click", () => {
-      toggleVoiceDictation(textarea, btnVoice);
-    });
-  }
-
-  updateQueuedPromptsBanner();
-}
-
-function useQuickPrompt(text) {
-  const textarea = document.getElementById("agentPromptInput");
-  if (!textarea) return;
-  textarea.value = text;
-  submitAgentPrompt();
-}
-
-async function submitAgentPrompt() {
-  const textarea = document.getElementById("agentPromptInput");
-  const btnSend = document.getElementById("btnSendAgentPrompt");
-  const text = textarea ? textarea.value.trim() : "";
-  if (!text) {
-    showToast("Please enter or dictate a question or instruction first.");
-    return;
-  }
-
-  if (!isOnline) {
-    // Offline queueing
-    const promptItem = {
-      id: "prompt_" + Date.now(),
-      type: "prompt",
-      prompt: text,
-      date: new Date().toISOString().split("T")[0],
-      created_at: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    };
-    enqueueWorkout(promptItem);
-    textarea.value = "";
-    updateQueuedPromptsBanner();
-    showToast("⚠️ PC is offline. Instruction saved to Smart Queue!");
-    return;
-  }
-
-  // Online execution
-  btnSend.disabled = true;
-  btnSend.innerText = "Dispatching...";
-  showAgentConsole();
-
-  try {
-    const res = await fetch(getApiUrl("/api/coach-prompt"), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: text, mode: "agent" })
-    });
-    const resJson = await res.json();
-    if (resJson.success && resJson.task) {
-      textarea.value = "";
-      pollAgentTask(resJson.task.task_id);
-    } else {
-      throw new Error(resJson.error || "Failed to start agent task");
-    }
-  } catch (e) {
-    showToast("Agent dispatch error: " + e.message);
-    btnSend.disabled = false;
-    btnSend.innerHTML = "<span id='agentSendLabel'>Send to Laptop</span> ➔";
-  }
-}
-
-function showAgentConsole() {
-  const box = document.getElementById("agentConsoleBox");
-  const events = document.getElementById("consoleEvents");
-  const respBox = document.getElementById("consoleResponseBox");
-  const ascBadge = document.getElementById("ascBadge");
-
-  if (box) box.style.display = "block";
-  if (events) {
-    events.innerHTML = `<div class="event-row"><span class="event-time">${new Date().toLocaleTimeString()}</span><span class="event-text">Connecting to Antigravity Agent on laptop...</span></div>`;
-  }
-  if (respBox) respBox.style.display = "none";
-  if (ascBadge) {
-    ascBadge.className = "asc-badge active";
-    ascBadge.innerText = "RUNNING";
-  }
-  agentStreamEventsCount = 0;
-}
-
-function pollAgentTask(taskId) {
-  clearInterval(activeAgentPollTimer);
-  const eventsEl = document.getElementById("consoleEvents");
-  const respBox = document.getElementById("consoleResponseBox");
-  const respBody = document.getElementById("consoleResponseBody");
-  const btnSend = document.getElementById("btnSendAgentPrompt");
-  const ascBadge = document.getElementById("ascBadge");
-
-  let pollCount = 0;
-  activeAgentPollTimer = setInterval(async () => {
-    pollCount++;
-    try {
-      const res = await fetch(getApiUrl(`/api/agent-stream?task_id=${taskId}&since=${agentStreamEventsCount}`));
-      if (!res.ok) return;
-      const data = await res.json();
-      if (data.success) {
-        if (data.events && data.events.length > 0) {
-          data.events.forEach(ev => {
-            const row = document.createElement("div");
-            row.className = `event-row ${ev.type || 'info'}`;
-            row.innerHTML = `<span class="event-time">${ev.time || ''}</span><span class="event-text">${escapeHtml(ev.text)}</span>`;
-            if (eventsEl) {
-              eventsEl.appendChild(row);
-              eventsEl.scrollTop = eventsEl.scrollHeight;
-            }
-          });
-          agentStreamEventsCount += data.events.length;
-        }
-
-        if (data.response) {
-          if (respBox && respBody) {
-            respBox.style.display = "block";
-            respBody.innerText = data.response;
-            respBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-          }
-        }
-
-        if (data.status === "completed" || pollCount >= 35) {
-          clearInterval(activeAgentPollTimer);
-          if (btnSend) {
-            btnSend.disabled = false;
-            btnSend.innerHTML = "<span id='agentSendLabel'>Send to Laptop</span> ➔";
-          }
-          if (ascBadge) {
-            ascBadge.className = "asc-badge";
-            ascBadge.innerText = "IDLE";
-          }
-          fetchDashboardData();
-        }
-      }
-    } catch (e) {
-      console.warn("Polling agent status error:", e);
-    }
-  }, 1200);
-}
-
-function clearAgentConsole() {
-  const box = document.getElementById("agentConsoleBox");
-  if (box) box.style.display = "none";
-  clearInterval(activeAgentPollTimer);
-  const ascBadge = document.getElementById("ascBadge");
-  if (ascBadge) {
-    ascBadge.className = "asc-badge";
-    ascBadge.innerText = "IDLE";
-  }
-}
-
-function copyAgentResponse() {
-  const respBody = document.getElementById("consoleResponseBody");
-  if (respBody && respBody.innerText) {
-    navigator.clipboard.writeText(respBody.innerText);
-    showToast("📋 Advice copied to clipboard!");
-  }
-}
-
-function updateQueuedPromptsBanner() {
-  const banner = document.getElementById("queuedPromptsBanner");
-  const countEl = document.getElementById("queuedPromptsCount");
-  const queue = JSON.parse(localStorage.getItem(QUEUE_STORAGE_KEY) || "[]");
-  const promptCount = queue.filter(q => q.type === "prompt").length;
-
-  if (banner && countEl) {
-    countEl.innerText = promptCount;
-    banner.style.display = promptCount > 0 ? "flex" : "none";
-  }
 }

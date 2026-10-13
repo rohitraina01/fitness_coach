@@ -1,0 +1,5 @@
+# INCOMING WORKOUT LOG BUFFER
+# This file receives raw logs submitted from the mobile web app.
+# When you return to your laptop, tell the coach "/log" or "process my incoming log", and it will read this file automatically.
+
+(No pending unprocessed logs)

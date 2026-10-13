@@ -194,8 +194,53 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
 
     print(f"\nWorkout {wid} successfully ingested and verified!")
 
+def ingest_from_buffer():
+    buffer_path = os.path.join(LOGS_DIR, "incoming_raw_log.txt")
+    if not os.path.exists(buffer_path):
+        print(f"Buffer file not found: {buffer_path}")
+        return False
+
+    with open(buffer_path, "r", encoding="utf-8") as f:
+        content = f.read().strip()
+
+    clean_lines = []
+    session_type = "Legs"
+    session_name = ""
+    for line in content.splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("(No pending"):
+            continue
+        if stripped.startswith("# Session:"):
+            session_type = stripped.replace("# Session:", "").strip()
+            continue
+        if stripped.startswith("#"):
+            continue
+        clean_lines.append(stripped)
+
+    if not clean_lines:
+        print("No pending unprocessed workout found in WORKOUT_LOGS/incoming_raw_log.txt.")
+        return False
+
+    raw_notes = "\n".join(clean_lines)
+    catalog = load_catalog()
+    sets = parse_notes_to_sets(raw_notes, catalog)
+
+    if not sets:
+        print("Warning: Could not match any sets from incoming buffer text.")
+        return False
+
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    ingest(date_str, session_type, session_name or f"{session_type} Session", 60, raw_notes, sets)
+
+    # Clear buffer after successful ingestion
+    with open(buffer_path, "w", encoding="utf-8") as f:
+        f.write("# INCOMING WORKOUT LOG BUFFER\n# This file receives raw logs submitted from the mobile web app.\n# When you return to your laptop, tell the coach \"/log\" or \"process my incoming log\", and it will read this file automatically.\n\n(No pending unprocessed logs)\n")
+    print("Buffer cleared successfully (reset to 'No pending unprocessed logs').")
+    return True
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ingest workout into personal coaching system")
+    parser.add_argument("--from-buffer", action="store_true", help="Ingest pending raw text from WORKOUT_LOGS/incoming_raw_log.txt")
     parser.add_argument("--date", help="YYYY-MM-DD", default=datetime.now().strftime("%Y-%m-%d"))
     parser.add_argument("--type", help="Session Type (Push/Pull/Legs)", default="Pull")
     parser.add_argument("--name", help="Session Name (e.g. Pull A)", default="")
@@ -204,14 +249,18 @@ if __name__ == "__main__":
     parser.add_argument("--json-sets", help="JSON string representing array of set objects")
     args = parser.parse_args()
 
-    sets = []
-    if args.json_sets:
-        sets = json.loads(args.json_sets)
-    elif args.notes:
-        catalog = load_catalog()
-        sets = parse_notes_to_sets(args.notes, catalog)
-
-    if sets:
-        ingest(args.date, args.type, args.name, args.duration, args.notes, sets)
+    if args.from_buffer:
+        ingest_from_buffer()
     else:
-        print("Warning: No sets provided or parsed from notes.")
+        sets = []
+        if args.json_sets:
+            sets = json.loads(args.json_sets)
+        elif args.notes:
+            catalog = load_catalog()
+            sets = parse_notes_to_sets(args.notes, catalog)
+
+        if sets:
+            ingest(args.date, args.type, args.name, args.duration, args.notes, sets)
+        else:
+            print("Warning: No sets provided or parsed from notes.")
+

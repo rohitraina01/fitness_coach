@@ -627,44 +627,229 @@ body {
   gap: 6px;
 }
 
-/* Simulation Results Card */
-.simulation-card {
-  background: rgba(30, 27, 75, 0.9);
-  border: 1px solid var(--accent-purple);
+.btn-copy-prompt {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: var(--accent-cyan);
+  padding: 9px 13px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.btn-copy-prompt:active {
+  transform: scale(0.96);
+  background: rgba(56, 189, 248, 0.25);
+}
+
+/* Active Log Buffer Card */
+.buffer-card {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.85));
+  border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: 14px;
   padding: 14px;
   margin-bottom: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.sim-header {
+.buffer-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.sim-badge {
+.buffer-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.buffer-badge {
   font-size: 0.72rem;
   font-weight: 800;
-  color: var(--accent-purple);
-  background: rgba(167, 139, 250, 0.15);
-  padding: 4px 8px;
+  color: #FFF;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.buffer-status-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
   border-radius: 6px;
 }
 
-.sim-close {
-  background: transparent;
-  border: none;
-  color: var(--text-dim);
-  font-size: 1rem;
-  cursor: pointer;
+.buffer-status-tag.synced {
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
-.sim-body {
+.buffer-status-tag.cached {
+  color: #F59E0B;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.buffer-time {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.buffer-content {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: 'Plus Jakarta Sans', monospace;
   font-size: 0.82rem;
-  color: #E2E8F0;
   line-height: 1.5;
+  color: #E2E8F0;
   white-space: pre-wrap;
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+
+.buffer-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-buffer-action {
+  flex: 1;
+  min-width: 70px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-card);
+  color: var(--text-main);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.btn-buffer-action.copy {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.btn-buffer-action.push {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34D399;
+}
+
+.btn-buffer-action.clear {
+  color: var(--accent-red);
+}
+
+.btn-buffer-action:active {
+  transform: scale(0.96);
+}
+
+/* GitHub Direct Sync Accordion */
+.gh-sync-setup-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.gh-sync-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  list-style: none;
+}
+
+.gh-sync-summary::-webkit-details-marker {
+  display: none;
+}
+
+.gh-status-indicator {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-dim);
+}
+
+.gh-status-indicator.connected {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+}
+
+.gh-sync-body {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.gh-sync-body ol {
+  padding-left: 18px;
+  margin: 6px 0;
+}
+
+.gh-input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.gh-input-row input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #FFF;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.btn-save-token {
+  background: var(--accent-cyan);
+  border: none;
+  color: #090D16;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.gh-help-hint {
+  font-size: 0.72rem;
+  color: var(--accent-green);
+  margin-top: 6px;
 }
 
 /* Queue */

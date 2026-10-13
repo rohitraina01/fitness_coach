@@ -447,5 +447,97 @@ def export():
         except Exception as je:
             print(f"Error writing {j_path}: {je}")
 
+    # 4. Static Dashboard Data Export (for Progress Tab & Analytics)
+    dashboard_data = {
+        "success": True,
+        "next_workout_markdown": content,
+        "trend_summary": {
+            "overload_rate": "85.7%",
+            "overload_summary": "6 of 7 recorded sessions achieved verifiable progressive overload",
+            "current_phase": "Upper Hypertrophy & Anti-APT Restoration",
+            "weekly_volume": "50 Working Sets / Week across 5-Day Split"
+        },
+        "muscle_progress": [
+            {"muscle": "Chest", "weekly_sets": 12, "target_range": "10–14 sets", "status": "Optimal Volume", "priority": "High (Upper Chest Focus)"},
+            {"muscle": "Back", "weekly_sets": 14, "target_range": "12–16 sets", "status": "Optimal Volume", "priority": "High (V-Taper Width)"},
+            {"muscle": "Lateral Delts", "weekly_sets": 10, "target_range": "10–14 sets", "status": "Optimal Volume", "priority": "High (Shoulder Width)"},
+            {"muscle": "Triceps", "weekly_sets": 8, "target_range": "8–12 sets", "status": "Optimal Volume", "priority": "Medium (Arm Thickness)"},
+            {"muscle": "Biceps", "weekly_sets": 8, "target_range": "8–12 sets", "status": "Optimal Volume", "priority": "Medium (Peak & Width)"},
+            {"muscle": "Quads & Calves", "weekly_sets": 8, "target_range": "8–12 sets", "status": "Prescribed Day 3", "priority": "Quad Sweep Isolation"},
+            {"muscle": "Glutes", "weekly_sets": 0, "target_range": "0 sets", "status": "Intentionally Deprioritized", "priority": "Locked (Anti-APT Guardrail)"}
+        ],
+        "exercise_trajectories": {
+            "INCLINE_DB_PRESS": {
+                "name": "Incline Dumbbell Press",
+                "unit": "kg/hand",
+                "history": [
+                    {"date": "2026-09-21", "top_load": 20.0, "top_reps": 8, "all_sets": "17.5kg×12, 20kg×8, 20kg×6"},
+                    {"date": "2026-09-28", "top_load": 20.0, "top_reps": 9, "all_sets": "20kg×9, 20kg×8, 20kg×7"},
+                    {"date": "2026-10-04", "top_load": 20.0, "top_reps": 10, "all_sets": "20kg×10, 20kg×10, 20kg×6"},
+                    {"date": "2026-10-10", "top_load": 20.0, "top_reps": 10, "all_sets": "20kg×9, 20kg×10, 20kg×10"}
+                ],
+                "next_target": "22.5 kg × 8 reps (Load Overload Jump)",
+                "progression_verdict": "CEILING HIT (3x10) • READY FOR 22.5kg"
+            },
+            "LAT_PULLDOWN": {
+                "name": "Lat Pulldown (Neutral)",
+                "unit": "kg",
+                "history": [
+                    {"date": "2026-09-24", "top_load": 50.0, "top_reps": 8, "all_sets": "50kg×8, 50kg×6, 45kg×7"},
+                    {"date": "2026-09-25", "top_load": 50.0, "top_reps": 8, "all_sets": "50kg×8, 50kg×8, 50kg×8"},
+                    {"date": "2026-10-01", "top_load": 50.0, "top_reps": 9, "all_sets": "50kg×9, 50kg×6, 45kg×7"}
+                ],
+                "next_target": "50.0 kg × 10, 10, 8 (Drive rep overload)",
+                "progression_verdict": "REP OVERLOAD IN PROGRESS"
+            },
+            "FLAT_BB_BENCH": {
+                "name": "Flat Barbell Bench Press",
+                "unit": "kg",
+                "history": [
+                    {"date": "2026-09-28", "top_load": 42.5, "top_reps": 6, "all_sets": "37.5kg×10, 42.5kg×6, 42.5kg×5"},
+                    {"date": "2026-10-04", "top_load": 42.5, "top_reps": 5, "all_sets": "42.5kg×5, 37.5kg×9, 37.5kg×6"},
+                    {"date": "2026-10-10", "top_load": 42.5, "top_reps": 10, "all_sets": "37.5kg×10, 42.5kg×10, 42.5kg×7"}
+                ],
+                "next_target": "42.5 kg × 10, 10, 8 (Consolidate PR sets)",
+                "progression_verdict": "PR HIT • +4 REPS OVERLOAD"
+            },
+            "TRICEPS_PUSHDOWN": {
+                "name": "Cable Triceps Pushdown",
+                "unit": "kg",
+                "history": [
+                    {"date": "2026-09-21", "top_load": 30.0, "top_reps": 12, "all_sets": "30kg×12, 25kg×12, 25kg×9"},
+                    {"date": "2026-09-28", "top_load": 25.0, "top_reps": 10, "all_sets": "25kg×10"},
+                    {"date": "2026-10-10", "top_load": 20.0, "top_reps": 12, "all_sets": "20kg×12, 20kg×12, 20kg×12 (Drop set)"}
+                ],
+                "next_target": "25.0–30.0 kg × 12–15 reps with strict elbow lock",
+                "progression_verdict": "STABLE VOLUME"
+            },
+            "DB_LATERAL_RAISE": {
+                "name": "Dumbbell Lateral Raise",
+                "unit": "kg/hand",
+                "history": [
+                    {"date": "2026-09-21", "top_load": 5.0, "top_reps": 18, "all_sets": "5kg×18, 5kg×13, 5kg×11, 5kg×10"},
+                    {"date": "2026-09-28", "top_load": 5.0, "top_reps": 14, "all_sets": "5kg×14, 5kg×13, 5kg×15, 5kg×5"},
+                    {"date": "2026-10-04", "top_load": 5.0, "top_reps": 15, "all_sets": "5kg×15, 5kg×15, 5kg×15"},
+                    {"date": "2026-10-10", "top_load": 5.0, "top_reps": 15, "all_sets": "5kg×15, 5kg×15, 5kg×15, 5kg×15"}
+                ],
+                "next_target": "6.0 kg × 10–12 reps OR 2s eccentric pause",
+                "progression_verdict": "4x15 LOCKED • READY FOR 6KG"
+            }
+        }
+    }
+
+    for d_path in [
+        os.path.join(OUTPUT_DIR, "dashboard_data.json"),
+        os.path.join(BASE_DIR, "docs", "dashboard_data.json"),
+        os.path.join(BASE_DIR, "bridge", "web", "dashboard_data.json")
+    ]:
+        try:
+            with open(d_path, "w", encoding="utf-8") as df:
+                json.dump(dashboard_data, df, indent=2)
+            print(f"Mobile Dashboard Data exported: {d_path}")
+        except Exception as de:
+            print(f"Error writing {d_path}: {de}")
+
 if __name__ == "__main__":
     export()

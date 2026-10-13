@@ -6,15 +6,15 @@ description: Ingests raw or narrative workout text, extracts exercises, sets, re
 # SKILL: WORKOUT INGESTION
 
 ## 1. PURPOSE & INVOCATION TRIGGER
-Triggered automatically when the trainee submits a completed workout report, raw notes, or gym app export.
+Triggered automatically when the trainee submits a completed workout report, raw notes, gym app export, or runs `/log` / "process my incoming log".
 
 ## 2. INPUTS & PREREQUISITES
-- Raw workout report text from trainee (e.g., exercises, weights, reps, subjective feedback).
+- Raw workout report text from trainee (in chat or buffered in `WORKOUT_LOGS/incoming_raw_log.txt`).
 - Current date and session context (or inferred from timestamp).
 - Reference catalog: `DATA/exercise_catalog.csv` and `EXERCISE_CATALOG.md`.
 
 ## 3. STEP-BY-STEP PROCEDURE
-1. **Raw Preservation**: Capture the trainee's raw text verbatim.
+1. **Raw Preservation**: Capture the trainee's raw text verbatim. If triggered via `/log` without inline text, check `WORKOUT_LOGS/incoming_raw_log.txt`.
 2. **Entity Extraction**:
    - Map each logged exercise to a canonical `exercise_id` in `DATA/exercise_catalog.csv`.
    - Parse sets: determine if each set is a Warm-up (`W`), normal Working Set (`S`), Drop Set (`D`), or Rest-Pause (`RP`).
@@ -26,7 +26,10 @@ Triggered automatically when the trainee submits a completed workout report, raw
    - Generate `workout_id`: `W-YYYYMMDD-01`.
    - Generate `set_id`s: `S-YYYYMMDD-01-01`, `S-YYYYMMDD-01-02`, etc.
 5. **Execution of Automation**:
-   - Execute `python scripts/ingest_workout.py --raw "<path_to_raw>"`.
+   - If buffer has content: execute `python scripts/ingest_workout.py --from-buffer`.
+   - Or execute `python scripts/ingest_workout.py --notes "<raw_text>"` with appropriate `--type`.
+   - Clear `WORKOUT_LOGS/incoming_raw_log.txt` back to `(No pending unprocessed logs)`.
+   - Execute `python scripts/export_mobile.py` and commit/push to git.
 
 ## 4. OUTPUTS
 - Appended row in `DATA/workouts.csv`.

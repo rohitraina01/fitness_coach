@@ -93,3 +93,14 @@ Whenever the trainee submits a workout report (or raw gym log), execute the **7-
 - **Automatic App Sync**: Whenever a workout is created, modified, or updated, immediately execute `python scripts/export_mobile.py` and commit/push to GitHub `origin/master` so the mobile web app reflects the change instantly.
 - **Collapsible Coaching Cues**: The mobile app must always feature a top collapsible briefing (Warm-up, RIR rules, architectural guardrails) and per-exercise expandable Mind-Muscle Connection (MMC) drawers.
 - **Visceral Biomechanical Guidance**: Never prescribe raw exercises without visceral execution cues (e.g., how to eliminate traps on lateral raises, how to shut off calves on leg curls, how to prevent butt wink on leg press).
+
+---
+
+## 6. INCOMING LOG BUFFER & /log WORKFLOW PROTOCOL
+- **Buffer Location**: `WORKOUT_LOGS/incoming_raw_log.txt` receives raw workout notes committed from the mobile web app.
+- **Trigger**: When the trainee submits `/log` in chat (or says "process my incoming log"):
+  1. Check `WORKOUT_LOGS/incoming_raw_log.txt`.
+  2. If text is present, combine it with any additional notes in chat and execute the **7-Stage Workflow** automatically (or via `python scripts/ingest_workout.py --from-buffer`).
+  3. Reset `WORKOUT_LOGS/incoming_raw_log.txt` to `(No pending unprocessed logs)`.
+  4. Run `python scripts/export_mobile.py` and commit/push to `origin/master` so the trainee's phone immediately shows the next prescribed session.
+- **Direct Chat Paste**: If the trainee pastes workout text directly into chat as `/log <workout notes>`, process that text immediately under the same workflow.
