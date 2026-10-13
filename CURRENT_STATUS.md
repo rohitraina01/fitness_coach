@@ -35,15 +35,16 @@ All 7 historical workouts (125 total sets) are now fully imported and verified:
 ---
 
 ## 4. IMMEDIATE NEXT SESSION
-- **Scheduled Session**: **PULL A (Lat Width, Upper Back & Biceps)**
-- **Target Date**: 2026-10-11 / 2026-10-12
+- **Scheduled Session**: **DAY 3: LEGS & POSTURE (Quad Sweep, Calves & Anti-Pelvic Tilt)**
+- **Target Date**: 2026-10-13 / 2026-10-14
+- **Sequence Note**: Tactically swapped with Pull A to afford triceps 100% recovery from Push Day.
 - **Focus Movements**:
-  1. Lat Pulldown: Target 3 sets $\times$ 8–10 reps @ 50kg (aim for 50kg $\times$ 10 clean).
-  2. Chest-Supported Row Machine: 3 sets $\times$ 8–10 reps.
-  3. Straight-Arm Cable Pulldown: 3 sets $\times$ 12–15 reps @ 15–20kg.
-  4. Reverse Pec Deck: 3 sets $\times$ 12–15 reps @ 15kg.
-  5. Standing Cable Bicep Curl: 3 sets $\times$ 10–12 reps @ 20kg.
-  6. Dumbbell Hammer Curl: 3 sets $\times$ 8–10 reps @ 7.5kg per hand (up from 5kg).
+  1. Leg Press (Narrow / Mid-Low Stance): 3 sets $\times$ 10–12 reps (Establish baseline).
+  2. Leg Extension Machine: 3 sets $\times$ 12–15 reps (Pure quad isolation, 1s peak contraction).
+  3. Seated / Lying Leg Curl: 3 sets $\times$ 10–12 reps (Hamstrings, 0% glute recruitment).
+  4. Standing Calf Raise: 4 sets $\times$ 12–15 reps (2s dead pause in bottom stretch).
+  5. Deadbugs or Hanging Knee Raise: 3 sets $\times$ 12–15 reps (Mandatory Anti-APT core bracing).
+  6. Half-Kneeling Hip Flexor Stretch: 2 sets $\times$ 45–60s/side (Psoas release for desk posture).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---
