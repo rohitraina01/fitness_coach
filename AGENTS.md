@@ -18,6 +18,7 @@ fitness_coach/
 ├── AGENTS.md                   # Core repository instructions (this file)
 ├── README.md                   # Quickstart, usage manual, and recovery guides
 ├── MASTER_COACH_PROMPT.md      # Persona definition, philosophy, and response schemas
+├── COACH_MEMORY.md             # Continuous trainee context, recovery map, patterns & queue memory
 ├── PROFILE.md                  # Trainee profile, equipment constraints, diet baseline
 ├── GOALS.md                    # Target physique attributes, priority muscle groups, phases
 ├── COACHING_RULES.md           # Progression models, RIR standards, set classification
@@ -58,8 +59,9 @@ Whenever the trainee submits a workout report (or raw gym log), execute the **7-
    - Detect ambiguities (e.g. dumbbell load per hand vs combined; machine weight differences).
    - Prompt for clarification only when decision-critical; otherwise document assumptions explicitly.
 2. **STAGE 2: RETRIEVE**
-   - Read `CURRENT_STATUS.md`, `CURRENT_PROGRAM.md`, and historical sets from `DATA/workout_sets.csv`.
+   - Read `COACH_MEMORY.md`, `CURRENT_STATUS.md`, `CURRENT_PROGRAM.md`, and historical sets from `DATA/workout_sets.csv`.
    - Retrieve the most recent session for each exercise to establish exact performance baselines.
+   - Consult the active autoregulation queue and current muscle recovery status before prescribing any subsequent workout.
 3. **STAGE 3: ANALYZE**
    - Compare performance under strict double-progression rules.
    - Categorize each exercise as Progression, Maintenance, Regression, or Deload/Testing.
@@ -70,7 +72,7 @@ Whenever the trainee submits a workout report (or raw gym log), execute the **7-
 5. **STAGE 5: PERSIST**
    - Create dated Markdown log in `WORKOUT_LOGS/YYYY/YYYY-MM/YYYY-MM-DD_<type>.md`.
    - Append normalized rows to `DATA/workouts.csv` and `DATA/workout_sets.csv`.
-   - Update `CURRENT_STATUS.md` and generate `CURRENT_NEXT_WORKOUT.md`.
+   - Update `COACH_MEMORY.md`, `CURRENT_STATUS.md`, and generate `CURRENT_NEXT_WORKOUT.md`.
    - Run `python scripts/build_dashboard.py` to refresh `DASHBOARD/fitness_dashboard.xlsx`.
    - Run `python scripts/export_mobile.py` to update phone exports in `OUTPUTS/mobile/`.
 6. **STAGE 6: VERIFY**
