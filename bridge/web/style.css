@@ -852,6 +852,23 @@ body {
   margin-top: 6px;
 }
 
+.btn-reset-token {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--text-dim);
+  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-reset-token:active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFF;
+}
+
 /* Past 7 Days Logs Section */
 .past-logs-section {
   background: var(--bg-card);

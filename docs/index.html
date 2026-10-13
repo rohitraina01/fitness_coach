@@ -183,6 +183,9 @@
             <input type="password" id="ghInlineToken" placeholder="Custom token override (optional)" autocomplete="off">
             <button class="btn-save-token" onclick="saveInlineGitHubToken()">Save Custom Token</button>
           </div>
+          <div style="margin-top: 8px; display: flex; justify-content: flex-end;">
+            <button class="btn-reset-token" type="button" onclick="clearCustomGitHubToken()">🔄 Reset to Default App Token</button>
+          </div>
           <p class="gh-help-hint">Hitting <strong>Send to Repo</strong> commits instantly to GitHub master so you can run <code>/log</code> anytime on your laptop!</p>
         </div>
       </details>

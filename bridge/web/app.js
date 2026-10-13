@@ -400,7 +400,7 @@ function toBase64Utf8(str) {
 }
 
 async function pushLogToGitHub(rawText, sessionType) {
-  const token = getActiveGitHubToken();
+  let token = getActiveGitHubToken();
   const repo = localStorage.getItem(GH_REPO_KEY) || DEFAULT_REPO;
 
   if (!token) {
@@ -410,56 +410,72 @@ async function pushLogToGitHub(rawText, sessionType) {
   const filePath = "WORKOUT_LOGS/incoming_raw_log.txt";
   const apiUrl = `https://api.github.com/repos/${repo}/contents/${filePath}`;
 
-  // 1. Get existing file SHA
-  let sha = null;
-  try {
-    const getRes = await fetch(apiUrl, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Accept": "application/vnd.github.v3+json"
+  async function tryCommit(authToken) {
+    let sha = null;
+    try {
+      const getRes = await fetch(apiUrl, {
+        headers: {
+          "Authorization": `Bearer ${authToken}`,
+          "Accept": "application/vnd.github.v3+json"
+        }
+      });
+      if (getRes.ok) {
+        const fileData = await getRes.json();
+        sha = fileData.sha;
       }
-    });
-    if (getRes.ok) {
-      const fileData = await getRes.json();
-      sha = fileData.sha;
+    } catch (e) {
+      console.warn("Could not check existing SHA:", e);
     }
-  } catch (e) {
-    console.warn("Could not check existing SHA:", e);
+
+    const now = new Date();
+    const dateStr = now.toISOString().split("T")[0];
+    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const fileContent = `# INCOMING WORKOUT LOG BUFFER\n# Date: ${dateStr} ${timeStr}\n# Session: ${sessionType}\n\n${rawText}\n`;
+
+    const payload = {
+      message: `chore(log): incoming ${sessionType} workout from mobile buffer [skip ci]`,
+      content: toBase64Utf8(fileContent),
+      branch: "master"
+    };
+    if (sha) payload.sha = sha;
+
+    try {
+      const putRes = await fetch(apiUrl, {
+        method: "PUT",
+        headers: {
+          "Authorization": `Bearer ${authToken}`,
+          "Accept": "application/vnd.github.v3+json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (putRes.ok || putRes.status === 201 || putRes.status === 200) {
+        return { success: true };
+      } else {
+        const errData = await putRes.json().catch(() => ({}));
+        return { success: false, status: putRes.status, reason: errData.message || `HTTP ${putRes.status}` };
+      }
+    } catch (err) {
+      return { success: false, reason: err.message || "Network Error" };
+    }
   }
 
-  // 2. Prepare formatted file content
-  const now = new Date();
-  const dateStr = now.toISOString().split("T")[0];
-  const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  const fileContent = `# INCOMING WORKOUT LOG BUFFER\n# Date: ${dateStr} ${timeStr}\n# Session: ${sessionType}\n\n${rawText}\n`;
+  let res = await tryCommit(token);
 
-  const payload = {
-    message: `chore(log): incoming ${sessionType} workout from mobile buffer [skip ci]`,
-    content: toBase64Utf8(fileContent),
-    branch: "master"
-  };
-  if (sha) payload.sha = sha;
-
-  try {
-    const putRes = await fetch(apiUrl, {
-      method: "PUT",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Accept": "application/vnd.github.v3+json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-
-    if (putRes.ok || putRes.status === 201 || putRes.status === 200) {
-      return { success: true };
-    } else {
-      const errData = await putRes.json().catch(() => ({}));
-      return { success: false, reason: errData.message || `HTTP ${putRes.status}` };
+  // Self-healing fallback: if custom token failed with 401/403, retry with embedded write token
+  const embedded = getEmbeddedWriteToken();
+  if (!res.success && (res.status === 403 || res.status === 401) && token !== embedded) {
+    console.warn("Custom token failed with", res.status, "- retrying with default write token...");
+    const retryRes = await tryCommit(embedded);
+    if (retryRes.success) {
+      localStorage.removeItem(GH_TOKEN_KEY);
+      initInlineGitHubSync();
+      return retryRes;
     }
-  } catch (err) {
-    return { success: false, reason: err.message || "Network Error" };
   }
+
+  return res;
 }
 
 // 9. Log Submission Workflow
@@ -801,6 +817,12 @@ function saveInlineGitHubToken() {
   input.placeholder = "•••••••••••••••• (Token saved)";
   initInlineGitHubSync();
   showToast("⚡ GitHub Token saved! Now you can push directly to repo.");
+}
+
+function clearCustomGitHubToken() {
+  localStorage.removeItem(GH_TOKEN_KEY);
+  initInlineGitHubSync();
+  showToast("🔄 Switched to Default App Write Token.");
 }
 
 // 12. Cross-Platform Date-Wise Recent Logs (Last 7 Sessions)
