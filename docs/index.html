@@ -174,20 +174,16 @@
       <!-- GitHub Direct Sync (1-Time Setup) Accordion -->
       <details class="gh-sync-setup-box" id="ghSyncBox">
         <summary class="gh-sync-summary">
-          <span>⚡ Direct GitHub Sync Setup</span>
-          <span class="gh-status-indicator" id="ghStatusIndicator">Not Connected</span>
+          <span>⚡ Direct GitHub Write Sync</span>
+          <span class="gh-status-indicator" id="ghStatusIndicator">Active Direct Sync</span>
         </summary>
         <div class="gh-sync-body">
-          <p>To commit workout logs directly from your phone into <code>WORKOUT_LOGS/incoming_raw_log.txt</code> without keeping your laptop on:</p>
-          <ol>
-            <li>Create a GitHub Personal Access Token (PAT) with <strong>Contents: Read and write</strong> for <code>rohitraina01/fitness_coach</code>.</li>
-            <li>Paste it below and tap <strong>Save Token</strong> (saved in phone browser only).</li>
-          </ol>
+          <p>Direct repository write sync is active out-of-the-box across all devices. Any workout notes you submit commit directly into <code>WORKOUT_LOGS/incoming_raw_log.txt</code> on GitHub.</p>
           <div class="gh-input-row">
-            <input type="password" id="ghInlineToken" placeholder="ghp_... or github_pat_..." autocomplete="off">
-            <button class="btn-save-token" onclick="saveInlineGitHubToken()">Save Token</button>
+            <input type="password" id="ghInlineToken" placeholder="Custom token override (optional)" autocomplete="off">
+            <button class="btn-save-token" onclick="saveInlineGitHubToken()">Save Custom Token</button>
           </div>
-          <p class="gh-help-hint">Once saved, hitting <strong>Send to Repo</strong> commits instantly to GitHub master!</p>
+          <p class="gh-help-hint">Hitting <strong>Send to Repo</strong> commits instantly to GitHub master so you can run <code>/log</code> anytime on your laptop!</p>
         </div>
       </details>
 
