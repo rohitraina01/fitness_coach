@@ -36,16 +36,16 @@ All 8 historical workouts (146 total sets) are now fully imported and verified:
 ---
 
 ## 4. IMMEDIATE NEXT SESSION
-- **Scheduled Session**: **DAY 5: PUSH B (Lateral Delt Specialization & Triceps)**
-- **Target Date**: 2026-10-14 (or Day 4 Rest / Active Recovery first)
-- **Primary Focus**: Upper Chest, High-Volume Cable Lateral Delts, Long-Head Triceps
+- **Scheduled Session**: **DAY 2: PULL A (Lat Width, Upper Back & Biceps)**
+- **Target Date**: 2026-10-14 / 2026-10-15
+- **Sequence Note**: Tactically deferred while triceps recovered on Leg Day. Triceps and pressing muscles are now fully recovered; pulling musculature and biceps are fresh!
 - **Focus Movements**:
-  1. Incline Machine Press or Incline DB Press: 3 sets $\times$ 8–10 reps (Rest: 150s, Target RIR: 1–2).
-  2. Cable Lateral Raise: 4 sets $\times$ 12–15 reps (Pulley at wrist height, lead with elbows).
-  3. Pec Deck Machine Fly: 3 sets $\times$ 12–15 reps (1s peak squeeze, 3s eccentric).
-  4. DB Lateral Raise (Drop Set on final set): 3 sets $\times$ 12–15 reps (Burnout).
-  5. Overhead Cable Triceps Ext: 3 sets $\times$ 10–12 reps (Long head priority, deep stretch behind neck).
-  6. Rope Triceps Pushdown: 3 sets $\times$ 12–15 reps (Spread rope at bottom).
+  1. Lat Pulldown (Neutral or Moderate Grip): 3 sets $\times$ 8–10 reps @ 50.0 kg (Target RIR: 1–2).
+  2. Chest-Supported Row Machine: 3 sets $\times$ 8–10 reps @ 40.0–45.0 kg (1s scapular retraction).
+  3. Straight-Arm Cable Pulldown: 3 sets $\times$ 12–15 reps @ 17.5–22.5 kg (Pure lat isolation).
+  4. Reverse Pec Deck (Rear Delt Fly): 3 sets $\times$ 12–15 reps @ 25.0–30.0 kg (Posterior delt balance).
+  5. Standing Cable Bicep Curl: 3 sets $\times$ 10–12 reps @ 15.0–20.0 kg (Pin elbows to ribs).
+  6. Dumbbell Hammer Curl: 3 sets $\times$ 8–10 reps @ 10.0–12.5 kg DBs (Brachialis & forearm thickness).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---

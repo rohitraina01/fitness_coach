@@ -1,100 +1,100 @@
 {
-  "title": "DAY 5 - PUSH B (LATERAL DELT SPECIALIZATION & TRICEPS)",
+  "title": "PULL A (LAT WIDTH, UPPER BACK & BICEPS)",
   "subtitle": "Evidence-Based Hypertrophy \u2022 5-Day Aesthetic Split",
   "instructions": [
     {
       "title": "1. Recommended Session Flow & Sequencing Rationale",
       "items": [
-        "Follow this 1 $\\rightarrow$ 6 flow if stations are free. If machines are occupied, you can swap (e.g. Pec Deck Fly before Incline Press as pre-exhaustion) and note the swap when logging:",
-        "1. **Incline Press (Machine or DB)**: Heavy mechanical tension compound. Must be performed when front delts and triceps are completely fresh.",
-        "2. **Cable Lateral Raise**: Priority hypertrophy driver for capped shoulders. Constant tension profile across the entire range.",
-        "3. **Pec Deck Fly**: Pure sternal chest metabolic stress. Takes chest close to failure with zero triceps involvement.",
-        "4. **DB Lateral Raise (Drop Set on final set)**: High-rep pump and burn out to recruit high-threshold motor units.",
-        "5. **Overhead Cable Triceps Ext**: Long head isolation. Places triceps under extreme mechanical tension at full shoulder flexion.",
-        "6. **Rope Triceps Pushdown**: Lateral and medial head finisher with hard peak contraction."
+        "Follow this 1 $\\rightarrow$ 6 order if gym equipment is free. If a machine is taken, swap within vertical/horizontal categories:",
+        "1. **Lat Pulldown (Neutral or Moderate Grip)**: Primary vertical pulling compound. Demands peak grip and lat recruitment before forearms or biceps fatigue.",
+        "2. **Chest-Supported Row Machine**: Primary horizontal pulling compound. Chest pad eliminates lower back loading (protecting desk posture) while allowing scapular retraction.",
+        "3. **Straight-Arm Cable Pulldown**: Pure lat isolation. Biceps and elbows are taken out of the movement; lats work through full active extension.",
+        "4. **Reverse Pec Deck (Rear Delt Fly)**: Scapular plane posterior delt builder to balance front delt volume from pressing.",
+        "5. **Standing Cable Bicep Curl**: Constant tension throughout the entire strength curve for bicep peak.",
+        "6. **Dumbbell Hammer Curl**: Heavy neutral grip driver for the brachialis and brachioradialis (adds sheer arm thickness and forearm size)."
       ]
     },
     {
       "title": "2. Dynamic Warm-Up Protocol (5\u20137 Mins)",
       "items": [
-        "**Step 1: Scapular Wall Slides**: 15 slow reps (wrists and elbows flat against wall; activates lower traps and stabilizes serratus).",
-        "**Step 2: Band Pull-Aparts / Light DB Warmup**: 20 reps in the scapular plane with thumbs pointed up.",
-        "**Step 3: Rotator Cuff External Rotations**: 15 reps per side with light cable or 2.5kg dumbbell (primes infraspinatus and teres minor).",
-        "**Step 4: Exercise-Specific Warm-Up**: Incline DB 12.5kg $\\times$ 10, 15kg $\\times$ 6 before loading working weight."
+        "**Step 1: Dead Hang**: 2 \u00d7 20\u201330 seconds from pull-up bar (decompresses spine, opens lat fascia, activates grip).",
+        "**Step 2: Scapular Pull-Downs**: 12 slow reps on lat pulldown with light pin (shrug shoulders down to pockets without bending elbows; primes lat engagement).",
+        "**Step 3: Band Pull-Aparts**: 15 reps with underhand grip to warm up rotator cuff and rhomboids.",
+        "**Step 4: Specific Sets**: Lat Pulldown @ 30kg \u00d7 10, 40kg \u00d7 6 before loading working weight."
       ]
     },
     {
       "title": "3. Mind-Muscle Connection (MMC) Master Cues",
       "items": [
-        "**The \"Pouring Water / Pulling Apart\" Cue**: Never think about lifting the dumbbells *up*. Think about **reaching your knuckles toward the far walls and pulling your elbows apart**.",
-        "**Scapular Plane Angle**: Keep dumbbells angled ~15\u201330\u00b0 forward (in the scapular plane), not pure lateral. This prevents the supraspinatus from impinging against the acromion.",
-        "**Trap Elimination**: Push your shoulder blades *down into your back pockets* before starting each rep. Stop the rep at collarbone height\u2014going higher engages 100% upper traps.",
-        "**Deep Stretch Cue**: Let the rope/bar drop deep behind your head until your forearms touch your biceps for a full 1-second stretch under load.",
-        "**Elbow Flare**: Allow elbows to flare naturally ~30\u00b0 outward; forcing elbows tight to your ears strains the ulnar nerve. Pin upper arms in space and hinge purely from the elbow."
+        "**The \"Drive Elbows into Hip Pockets\" Cue**: Never pull the bar down with your hands. Treat your hands as passive hooks (use a thumbless grip or straps). Think only about **driving your elbow tips straight down toward your side pockets**.",
+        "**Torso Angle**: Lean back slightly ~10\u201315\u00b0 with proud chest. Do NOT swing your lower back backward. Stop the bar at collarbone height and squeeze your lats down hard for 1 second.",
+        "**Full Stretch Control**: On the way up, let the cable pull your shoulder blades all the way up for a full 2-second stretch under tension.",
+        "**Standing Cable Curl**: Keep upper arms pinned vertically against your ribs. Do NOT let your elbows drift forward (which shifts load onto front delts). Squeeze pinkies upward at the top.",
+        "**Hammer Curl**: Keep thumbs pointed up (neutral grip). Control the 3-second descent\u2014eccentric overload on the brachialis is what pushes the biceps peak upward."
       ]
     }
   ],
   "exercises": [
     {
-      "name": "1. Incline Machine Press or Incline DB Press",
+      "name": "1. Lat Pulldown (Neutral or Moderate Grip)",
       "target": "**3 sets x 8\u201310 reps** | Rest: 150 sec | Target RIR: **1\u20132**",
-      "cue": "Bench set strictly at 30\u00b0 (higher shifts load to front delts). Retract scapulae, 45\u00b0 elbow tuck. Deep chest stretch at bottom.",
+      "cue": "Moderate grip just outside shoulder width. Drive elbows down to ribcage. 2-second negative stretch at top.",
       "mmc": "",
       "calibration": "",
-      "flow_reason": "**#1 Heavy Compound First.** Demands peak motor unit recruitment.",
-      "swap_option": "If the incline press machine is taken, use the 30\u00b0 Incline Dumbbell Bench.",
+      "flow_reason": "**#1 Vertical Pulling Compound.** Highest motor unit recruitment for lat width.",
+      "swap_option": "If pulldown is busy, use Pull-Ups (assisted or bodyweight) or Close-Grip V-Bar Pulldown.",
       "sets": 3
     },
     {
-      "name": "2. Cable Lateral Raise",
-      "target": "**4 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**",
-      "cue": "Set pulley at wrist/hip height. Stand tall, lead with elbow, hold peak contraction for 1 full second.",
+      "name": "2. Chest-Supported Row Machine",
+      "target": "**3 sets x 8\u201310 reps** | Rest: 120 sec | Target RIR: **1\u20132**",
+      "cue": "Chest glued to pad. Flare elbows ~45\u00b0. Pull through elbows and squeeze shoulder blades together for 1 full second at peak contraction.",
       "mmc": "",
       "calibration": "",
-      "flow_reason": "**#2 Priority Delt Hypertrophy.** Takes lateral delts to near failure while central nervous energy is high.",
-      "swap_option": "",
-      "sets": 4
+      "flow_reason": "**#2 Upper Back & Rhomboids.** Chest pad completely unloads lumbar spine.",
+      "swap_option": "Seated Cable Row (Neutral V-Bar) or One-Arm Dumbbell Row.",
+      "sets": 3
     },
     {
-      "name": "3. Pec Deck Machine Fly",
+      "name": "3. Straight-Arm Cable Pulldown",
       "target": "**3 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**",
-      "cue": "Seat adjusted so handles line up mid-sternum. 3-second slow eccentric. 1-second chest crush at contraction.",
+      "cue": "Slight hip hinge, soft bend in knees and elbows. Sweep straight bar down in an arc until it touches your upper thighs. Squeeze lats hard.",
       "mmc": "",
       "calibration": "",
-      "flow_reason": "**#3 Chest Isolation.** Pumps chest full of blood without fatiguing triceps.",
+      "flow_reason": "**#3 Lat Isolation.** Isolates lats without bicep/elbow fatigue.",
       "swap_option": "",
       "sets": 3
     },
     {
-      "name": "4. DB Lateral Raise (Drop Set on Final Set)",
-      "target": "**3 sets x 12\u201315 reps (Final set is a Drop Set)** | Rest: 90 sec | Target RIR: **0**",
-      "cue": "Slight 15\u00b0 forward torso lean. Sweep outward toward room corners. Drop 30\u201340% weight on Set 3 and immediately crank out reps to true failure.",
+      "name": "4. Reverse Pec Deck (Rear Delt Fly)",
+      "target": "**3 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**",
+      "cue": "Seat adjusted so handles are level with shoulders. Drive outward with the back of your wrists. Keep shoulder blades relatively stable to prevent mid-traps from stealing load.",
       "mmc": "",
       "calibration": "",
-      "flow_reason": "**#4 Metabolic Delt Finisher.** Creates extreme metabolic stress.",
+      "flow_reason": "**#4 Rear Delt Specialization.** Builds 3D shoulder roundness from behind.",
       "swap_option": "",
       "sets": 3
     },
     {
-      "name": "5. Overhead Cable Triceps Extension",
+      "name": "5. Standing Cable Bicep Curl",
       "target": "**3 sets x 10\u201312 reps** | Rest: 90 sec | Target RIR: **0\u20131**",
-      "cue": "Cable pulley set head-height. Step forward into lunge. Keep upper arms locked in place; extend forearms until elbows lock out.",
+      "cue": "Straight bar or EZ-attachment. Pin elbows to sides. Curl up, hold 1s peak contraction, lower under 3-second control.",
       "mmc": "",
       "calibration": "",
-      "flow_reason": "**#5 Long-Head Triceps Builder.** The long head accounts for 60% of total arm mass and requires full shoulder flexion for maximal stretch.",
+      "flow_reason": "**#5 Direct Arm Hypertrophy.** Constant mechanical tension from stretch to contraction.",
       "swap_option": "",
       "sets": 3
     },
     {
-      "name": "6. Rope Triceps Pushdown",
-      "target": "**3 sets x 12\u201315 reps** | Rest: 60 sec | Target RIR: **0**",
-      "cue": "Pin elbows firmly against ribcage. At full extension, pull the rope ends apart toward the outside of your thighs for maximum contraction.",
+      "name": "6. Dumbbell Hammer Curl",
+      "target": "**3 sets x 8\u201310 reps** | Rest: 90 sec | Target RIR: **0\u20131**",
+      "cue": "Strict neutral grip (palms facing each other). Alternating or bilateral. Zero torso swinging.",
       "mmc": "",
       "calibration": "",
-      "flow_reason": "**#6 Arm Hypertrophy Finisher.** Pure lockout mechanical pump.",
+      "flow_reason": "**#6 Arm Hypertrophy Finisher.** Brachialis and forearm thickness.",
       "swap_option": "",
       "sets": 3
     }
   ],
-  "raw_markdown": "# NEXT WORKOUT: DAY 5 - PUSH B (LATERAL DELT SPECIALIZATION & TRICEPS)\n\n*Status: READY FOR EXECUTION*  \n*Updated: 2026-10-14 02:35:00*  \n*Estimated Duration: 55\u201360 minutes*  \n*Primary Focus: Lateral Delt Hypertrophy (V-Taper Broadness), Upper Chest Clavicular Head, Triceps Long-Head & Lateral Head*  \n\n---\n\n## COACHING BRIEFING & PROTOCOLS\n\n### 1. Recommended Session Flow & Sequencing Rationale\nFollow this 1 $\\rightarrow$ 6 flow if stations are free. If machines are occupied, you can swap (e.g. Pec Deck Fly before Incline Press as pre-exhaustion) and note the swap when logging:\n1. **Incline Press (Machine or DB)**: Heavy mechanical tension compound. Must be performed when front delts and triceps are completely fresh.\n2. **Cable Lateral Raise**: Priority hypertrophy driver for capped shoulders. Constant tension profile across the entire range.\n3. **Pec Deck Fly**: Pure sternal chest metabolic stress. Takes chest close to failure with zero triceps involvement.\n4. **DB Lateral Raise (Drop Set on final set)**: High-rep pump and burn out to recruit high-threshold motor units.\n5. **Overhead Cable Triceps Ext**: Long head isolation. Places triceps under extreme mechanical tension at full shoulder flexion.\n6. **Rope Triceps Pushdown**: Lateral and medial head finisher with hard peak contraction.\n\n### 2. Dynamic Warm-Up Protocol (5\u20137 Mins)\n- **Step 1: Scapular Wall Slides**: 15 slow reps (wrists and elbows flat against wall; activates lower traps and stabilizes serratus).\n- **Step 2: Band Pull-Aparts / Light DB Warmup**: 20 reps in the scapular plane with thumbs pointed up.\n- **Step 3: Rotator Cuff External Rotations**: 15 reps per side with light cable or 2.5kg dumbbell (primes infraspinatus and teres minor).\n- **Step 4: Exercise-Specific Warm-Up**: Incline DB 12.5kg $\\times$ 10, 15kg $\\times$ 6 before loading working weight.\n\n### 3. Mind-Muscle Connection (MMC) Master Cues\n\n#### A. Lateral Delts (Zero Traps Protocol)\n- **The \"Pouring Water / Pulling Apart\" Cue**: Never think about lifting the dumbbells *up*. Think about **reaching your knuckles toward the far walls and pulling your elbows apart**.\n- **Scapular Plane Angle**: Keep dumbbells angled ~15\u201330\u00b0 forward (in the scapular plane), not pure lateral. This prevents the supraspinatus from impinging against the acromion.\n- **Trap Elimination**: Push your shoulder blades *down into your back pockets* before starting each rep. Stop the rep at collarbone height\u2014going higher engages 100% upper traps.\n\n#### B. Triceps Long Head (Behind Neck Overhead Extension)\n- **Deep Stretch Cue**: Let the rope/bar drop deep behind your head until your forearms touch your biceps for a full 1-second stretch under load.\n- **Elbow Flare**: Allow elbows to flare naturally ~30\u00b0 outward; forcing elbows tight to your ears strains the ulnar nerve. Pin upper arms in space and hinge purely from the elbow.\n\n---\n\n## WORKOUT BLUEPRINT & EXERCISE CUES\n\n### 1. Incline Machine Press or Incline DB Press\n- **Order Rationale**: **#1 Heavy Compound First.** Demands peak motor unit recruitment.\n- **Gym Floor Swap Option**: If the incline press machine is taken, use the 30\u00b0 Incline Dumbbell Bench.\n- **Working Sets**: **3 sets x 8\u201310 reps** | Rest: 150 sec | Target RIR: **1\u20132**\n- **Target Load**: **20.0 kg DBs** (or equivalent machine pin).\n- **Form Cue**: Bench set strictly at 30\u00b0 (higher shifts load to front delts). Retract scapulae, 45\u00b0 elbow tuck. Deep chest stretch at bottom.\n\n---\n\n### 2. Cable Lateral Raise\n- **Order Rationale**: **#2 Priority Delt Hypertrophy.** Takes lateral delts to near failure while central nervous energy is high.\n- **Working Sets**: **4 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Load**: Lowest pin or 2.5\u20135.0 kg stack.\n- **Form Cue**: Set pulley at wrist/hip height. Stand tall, lead with elbow, hold peak contraction for 1 full second.\n\n---\n\n### 3. Pec Deck Machine Fly\n- **Order Rationale**: **#3 Chest Isolation.** Pumps chest full of blood without fatiguing triceps.\n- **Working Sets**: **3 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Load**: 35\u201345 kg pin.\n- **Form Cue**: Seat adjusted so handles line up mid-sternum. 3-second slow eccentric. 1-second chest crush at contraction.\n\n---\n\n### 4. DB Lateral Raise (Drop Set on Final Set)\n- **Order Rationale**: **#4 Metabolic Delt Finisher.** Creates extreme metabolic stress.\n- **Working Sets**: **3 sets x 12\u201315 reps (Final set is a Drop Set)** | Rest: 90 sec | Target RIR: **0**\n- **Target Load**: **5.0 kg DBs** (Drop to 3.0 kg or 2.5 kg on Set 3).\n- **Form Cue**: Slight 15\u00b0 forward torso lean. Sweep outward toward room corners. Drop 30\u201340% weight on Set 3 and immediately crank out reps to true failure.\n\n---\n\n### 5. Overhead Cable Triceps Extension\n- **Order Rationale**: **#5 Long-Head Triceps Builder.** The long head accounts for 60% of total arm mass and requires full shoulder flexion for maximal stretch.\n- **Working Sets**: **3 sets x 10\u201312 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Load**: 15\u201320 kg on cable stack.\n- **Form Cue**: Cable pulley set head-height. Step forward into lunge. Keep upper arms locked in place; extend forearms until elbows lock out.\n\n---\n\n### 6. Rope Triceps Pushdown\n- **Order Rationale**: **#6 Arm Hypertrophy Finisher.** Pure lockout mechanical pump.\n- **Working Sets**: **3 sets x 12\u201315 reps** | Rest: 60 sec | Target RIR: **0**\n- **Target Load**: 15\u201322.5 kg on cable stack.\n- **Form Cue**: Pin elbows firmly against ribcage. At full extension, pull the rope ends apart toward the outside of your thighs for maximum contraction.\n"
+  "raw_markdown": "# NEXT WORKOUT: PULL A (LAT WIDTH, UPPER BACK & BICEPS)\n\n*Status: READY FOR EXECUTION (AUTOREGULATION SEQUENCE)*  \n*Updated: 2026-10-14 02:42:00*  \n*Estimated Duration: 55\u201360 minutes*  \n*Sequence Context: Tactically deferred while triceps recovered on Leg Day. Triceps and pressing muscles are now completely fresh; lats, upper back, and biceps are primed for progressive overload.*\n\n---\n\n## COACHING BRIEFING & PROTOCOLS\n\n### 1. Recommended Session Flow & Sequencing Rationale\nFollow this 1 $\\rightarrow$ 6 order if gym equipment is free. If a machine is taken, swap within vertical/horizontal categories:\n1. **Lat Pulldown (Neutral or Moderate Grip)**: Primary vertical pulling compound. Demands peak grip and lat recruitment before forearms or biceps fatigue.\n2. **Chest-Supported Row Machine**: Primary horizontal pulling compound. Chest pad eliminates lower back loading (protecting desk posture) while allowing scapular retraction.\n3. **Straight-Arm Cable Pulldown**: Pure lat isolation. Biceps and elbows are taken out of the movement; lats work through full active extension.\n4. **Reverse Pec Deck (Rear Delt Fly)**: Scapular plane posterior delt builder to balance front delt volume from pressing.\n5. **Standing Cable Bicep Curl**: Constant tension throughout the entire strength curve for bicep peak.\n6. **Dumbbell Hammer Curl**: Heavy neutral grip driver for the brachialis and brachioradialis (adds sheer arm thickness and forearm size).\n\n### 2. Dynamic Warm-Up Protocol (5\u20137 Mins)\n- **Step 1: Dead Hang**: 2 \u00d7 20\u201330 seconds from pull-up bar (decompresses spine, opens lat fascia, activates grip).\n- **Step 2: Scapular Pull-Downs**: 12 slow reps on lat pulldown with light pin (shrug shoulders down to pockets without bending elbows; primes lat engagement).\n- **Step 3: Band Pull-Aparts**: 15 reps with underhand grip to warm up rotator cuff and rhomboids.\n- **Step 4: Specific Sets**: Lat Pulldown @ 30kg \u00d7 10, 40kg \u00d7 6 before loading working weight.\n\n### 3. Mind-Muscle Connection (MMC) Master Cues\n\n#### A. Lat Width (Lat Pulldown & Straight-Arm Pulldown)\n- **The \"Drive Elbows into Hip Pockets\" Cue**: Never pull the bar down with your hands. Treat your hands as passive hooks (use a thumbless grip or straps). Think only about **driving your elbow tips straight down toward your side pockets**.\n- **Torso Angle**: Lean back slightly ~10\u201315\u00b0 with proud chest. Do NOT swing your lower back backward. Stop the bar at collarbone height and squeeze your lats down hard for 1 second.\n- **Full Stretch Control**: On the way up, let the cable pull your shoulder blades all the way up for a full 2-second stretch under tension.\n\n#### B. Arm Thickness (Biceps & Hammer Curls)\n- **Standing Cable Curl**: Keep upper arms pinned vertically against your ribs. Do NOT let your elbows drift forward (which shifts load onto front delts). Squeeze pinkies upward at the top.\n- **Hammer Curl**: Keep thumbs pointed up (neutral grip). Control the 3-second descent\u2014eccentric overload on the brachialis is what pushes the biceps peak upward.\n\n---\n\n## WORKOUT BLUEPRINT & EXERCISE CUES\n\n### 1. Lat Pulldown (Neutral or Moderate Grip)\n- **Order Rationale**: **#1 Vertical Pulling Compound.** Highest motor unit recruitment for lat width.\n- **Gym Floor Swap Option**: If pulldown is busy, use Pull-Ups (assisted or bodyweight) or Close-Grip V-Bar Pulldown.\n- **Working Sets**: **3 sets x 8\u201310 reps** | Rest: 150 sec | Target RIR: **1\u20132**\n- **Target Load**: **50.0 kg** (Baseline PR: 50kg \u00d7 9). Target: 50kg \u00d7 8\u201310 reps across all 3 sets.\n- **Form Cue**: Moderate grip just outside shoulder width. Drive elbows down to ribcage. 2-second negative stretch at top.\n\n---\n\n### 2. Chest-Supported Row Machine\n- **Order Rationale**: **#2 Upper Back & Rhomboids.** Chest pad completely unloads lumbar spine.\n- **Gym Floor Swap Option**: Seated Cable Row (Neutral V-Bar) or One-Arm Dumbbell Row.\n- **Working Sets**: **3 sets x 8\u201310 reps** | Rest: 120 sec | Target RIR: **1\u20132**\n- **Target Load**: **40.0\u201345.0 kg** stack.\n- **Form Cue**: Chest glued to pad. Flare elbows ~45\u00b0. Pull through elbows and squeeze shoulder blades together for 1 full second at peak contraction.\n\n---\n\n### 3. Straight-Arm Cable Pulldown\n- **Order Rationale**: **#3 Lat Isolation.** Isolates lats without bicep/elbow fatigue.\n- **Working Sets**: **3 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Load**: **17.5\u201322.5 kg** on cable stack.\n- **Form Cue**: Slight hip hinge, soft bend in knees and elbows. Sweep straight bar down in an arc until it touches your upper thighs. Squeeze lats hard.\n\n---\n\n### 4. Reverse Pec Deck (Rear Delt Fly)\n- **Order Rationale**: **#4 Rear Delt Specialization.** Builds 3D shoulder roundness from behind.\n- **Working Sets**: **3 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Load**: **25.0\u201330.0 kg**.\n- **Form Cue**: Seat adjusted so handles are level with shoulders. Drive outward with the back of your wrists. Keep shoulder blades relatively stable to prevent mid-traps from stealing load.\n\n---\n\n### 5. Standing Cable Bicep Curl\n- **Order Rationale**: **#5 Direct Arm Hypertrophy.** Constant mechanical tension from stretch to contraction.\n- **Working Sets**: **3 sets x 10\u201312 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Load**: **15.0\u201320.0 kg** on low cable pulley.\n- **Form Cue**: Straight bar or EZ-attachment. Pin elbows to sides. Curl up, hold 1s peak contraction, lower under 3-second control.\n\n---\n\n### 6. Dumbbell Hammer Curl\n- **Order Rationale**: **#6 Arm Hypertrophy Finisher.** Brachialis and forearm thickness.\n- **Working Sets**: **3 sets x 8\u201310 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Load**: **10.0 kg or 12.5 kg DBs** per hand.\n- **Form Cue**: Strict neutral grip (palms facing each other). Alternating or bilateral. Zero torso swinging.\n"
 }
