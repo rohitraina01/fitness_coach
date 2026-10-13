@@ -1,5 +1,44 @@
 [
   {
+    "workout_id": "W-20261013-01",
+    "date": "2026-10-13",
+    "session_type": "LEGS (Day 3: Legs & Core)",
+    "duration": "37 min",
+    "exercises": [
+      {
+        "name": "Leg Press",
+        "summary": "Leg Press: 18.0kg x 12, 45.0kg x 12, 45.0kg x 12, 45.0kg x 12"
+      },
+      {
+        "name": "Leg Extension Machine",
+        "summary": "Leg Extension Machine: 5.0kg x 12, 10.0kg x 12, 7.5kg x 12, 7.5kg x 12"
+      },
+      {
+        "name": "Leg Curl Machine",
+        "summary": "Leg Curl Machine: 5.0kg x 12, 5.0kg x 10, 5.0kg x 8"
+      },
+      {
+        "name": "Standing Calf Raise",
+        "summary": "Standing Calf Raise: 80.0kg x 12, 80.0kg x 12, 80.0kg x 12"
+      },
+      {
+        "name": "Bodyweight Floor Crunch",
+        "summary": "Bodyweight Floor Crunch: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12"
+      },
+      {
+        "name": "Deadbug Anti-APT Core",
+        "summary": "Deadbug Anti-APT Core: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12"
+      },
+      {
+        "name": "Lying Leg Raise",
+        "summary": "Lying Leg Raise: 0.0kg x 12"
+      }
+    ],
+    "raw_text": "Workout\n2026-10-13 22:26\nDuration: 37m 42s\nLeg Press\nSet 1: 12 reps x 18.0 kg\nSet 2: 12 reps x 45.0 kg\nSet 3: 12 reps x 45.0 kg\nSet 4: 12 reps x 45.0 kg\nLeg Extension\nSet 1: 12 reps x 5.0 kg\nSet 2: 12 reps x 10.0 kg\nSet 3: 12 reps x 7.5 kg\nSet 4: 12 reps x 7.5 kg\nLying Leg Curl\nSet 1: 12 reps x 5.0 kg\nSet 2: 10 reps x 5.0 kg\nSet 3: 8 reps x 5.0 kg\nStanding Calf Raise\nSet 1: 12 reps x 80.0 kg\nSet 2: 12 reps x 80.0 kg\nSet 3: 12 reps x 80.0 kg\nCrunch\nSet 1: 12 reps\nSet 2: 12 reps\nSet 3: 12 reps\nDead Bug\nSet 1: 12 reps\nSet 2: 12 reps\nSet 3: 12 reps\nLying Leg Raises\nSet 1: 12 reps x 0.0 kg",
+    "template_text": "Leg Press: 18.0kg x 12, 45.0kg x 12, 45.0kg x 12, 45.0kg x 12\nLeg Extension Machine: 5.0kg x 12, 10.0kg x 12, 7.5kg x 12, 7.5kg x 12\nLeg Curl Machine: 5.0kg x 12, 5.0kg x 10, 5.0kg x 8\nStanding Calf Raise: 80.0kg x 12, 80.0kg x 12, 80.0kg x 12\nBodyweight Floor Crunch: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nDeadbug Anti-APT Core: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nLying Leg Raise: 0.0kg x 12",
+    "copy_prompt": "/log\n# Session: LEGS (Day 3: Legs & Core) (2026-10-13)\nLeg Press: 18.0kg x 12, 45.0kg x 12, 45.0kg x 12, 45.0kg x 12\nLeg Extension Machine: 5.0kg x 12, 10.0kg x 12, 7.5kg x 12, 7.5kg x 12\nLeg Curl Machine: 5.0kg x 12, 5.0kg x 10, 5.0kg x 8\nStanding Calf Raise: 80.0kg x 12, 80.0kg x 12, 80.0kg x 12\nBodyweight Floor Crunch: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nDeadbug Anti-APT Core: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nLying Leg Raise: 0.0kg x 12"
+  },
+  {
     "workout_id": "W-20261010-01",
     "date": "2026-10-10",
     "session_type": "Push Workout",
@@ -212,36 +251,5 @@
     "raw_text": "2026-09-24 \u2014 Pull Day: Aesthetic Back\nReported duration: 12m 36s (unreliable)\nReported volume: 4,820 kg, 19 sets\nPull-Up: BW \u00d7 3\nLat Pulldown: 50 kg \u00d7 8, 50 kg \u00d7 6, 45 kg \u00d7 7\nSeated Cable Row: 60 kg \u00d7 10, 60 kg \u00d7 10, 60 kg \u00d7 10\nStraight-Arm Pulldown: 20 kg \u00d7 8, 15 kg \u00d7 12, 15 kg \u00d7 12\nRear-Delt Fly: 15 kg \u00d7 15, 15 kg \u00d7 12, 15 kg \u00d7 12\nCable Curl: 20 kg \u00d7 12, 20 kg \u00d7 12, 20 kg \u00d7 12\nHammer Curl: 5 kg \u00d7 12, 5 kg \u00d7 12, 5 kg \u00d7 12",
     "template_text": "Pull-Up: 0.0kg x 3\nLat Pulldown: 50.0kg x 8, 50.0kg x 6, 45.0kg x 7\nSeated Cable Row: 60.0kg x 10, 60.0kg x 10, 60.0kg x 10\nStraight-Arm Pulldown: 20.0kg x 8, 15.0kg x 12, 15.0kg x 12\nRear-Delt Fly: 15.0kg x 15, 15.0kg x 12, 15.0kg x 12\nCable Bicep Curl: 20.0kg x 12, 20.0kg x 12, 20.0kg x 12\nDumbbell Hammer Curl: 5.0kg x 12, 5.0kg x 12, 5.0kg x 12",
     "copy_prompt": "/log\n# Session: Pull Workout (Pull Day: Aesthetic Back) (2026-09-24)\nPull-Up: 0.0kg x 3\nLat Pulldown: 50.0kg x 8, 50.0kg x 6, 45.0kg x 7\nSeated Cable Row: 60.0kg x 10, 60.0kg x 10, 60.0kg x 10\nStraight-Arm Pulldown: 20.0kg x 8, 15.0kg x 12, 15.0kg x 12\nRear-Delt Fly: 15.0kg x 15, 15.0kg x 12, 15.0kg x 12\nCable Bicep Curl: 20.0kg x 12, 20.0kg x 12, 20.0kg x 12\nDumbbell Hammer Curl: 5.0kg x 12, 5.0kg x 12, 5.0kg x 12"
-  },
-  {
-    "workout_id": "W-20260921-01",
-    "date": "2026-09-21",
-    "session_type": "Push Workout",
-    "duration": "85 min 19 sec",
-    "exercises": [
-      {
-        "name": "DB Lateral Raise",
-        "summary": "DB Lateral Raise: 5.0kg x 18, 5.0kg x 13, 5.0kg x 11, 5.0kg x 10"
-      },
-      {
-        "name": "Incline DB Press",
-        "summary": "Incline DB Press: 17.5kg x 12, 20.0kg x 8, 20.0kg x 6"
-      },
-      {
-        "name": "Cable Triceps Pushdown",
-        "summary": "Cable Triceps Pushdown: 30.0kg x 12, 25.0kg x 12, 25.0kg x 9"
-      },
-      {
-        "name": "Pec Deck Machine Fly",
-        "summary": "Pec Deck Machine Fly: 20.0kg x 13, 30.0kg x 12, 30.0kg x 10"
-      },
-      {
-        "name": "Overhead Rope Ext",
-        "summary": "Overhead Rope Ext: 10.0kg x 12, 15.0kg x 12, 20.0kg x 11, 20.0kg x 10"
-      }
-    ],
-    "raw_text": "2026-09-21 \u2014 Push Workout\nDuration: 85m 19s\nStatus: Set details recovered\n\nDumbbell Lateral Raise: 5 kg \u00d7 18, 5 kg \u00d7 13, 5 kg \u00d7 11, 5 kg \u00d7 10\nIncline Dumbbell Press: 17.5 kg \u00d7 12, 20 kg \u00d7 8, 20 kg \u00d7 6\nCable Triceps Pushdown: 30 kg \u00d7 12, 25 kg \u00d7 12, 25 kg \u00d7 9\nPec Deck Machine: 20 kg \u00d7 13, 30 kg \u00d7 12, 30 kg \u00d7 10\nOverhead Rope Extension: 10 kg \u00d7 12, 15 kg \u00d7 12, 20 kg \u00d7 11, 20 kg \u00d7 10",
-    "template_text": "DB Lateral Raise: 5.0kg x 18, 5.0kg x 13, 5.0kg x 11, 5.0kg x 10\nIncline DB Press: 17.5kg x 12, 20.0kg x 8, 20.0kg x 6\nCable Triceps Pushdown: 30.0kg x 12, 25.0kg x 12, 25.0kg x 9\nPec Deck Machine Fly: 20.0kg x 13, 30.0kg x 12, 30.0kg x 10\nOverhead Rope Ext: 10.0kg x 12, 15.0kg x 12, 20.0kg x 11, 20.0kg x 10",
-    "copy_prompt": "/log\n# Session: Push Workout (2026-09-21)\nDB Lateral Raise: 5.0kg x 18, 5.0kg x 13, 5.0kg x 11, 5.0kg x 10\nIncline DB Press: 17.5kg x 12, 20.0kg x 8, 20.0kg x 6\nCable Triceps Pushdown: 30.0kg x 12, 25.0kg x 12, 25.0kg x 9\nPec Deck Machine Fly: 20.0kg x 13, 30.0kg x 12, 30.0kg x 10\nOverhead Rope Ext: 10.0kg x 12, 15.0kg x 12, 20.0kg x 11, 20.0kg x 10"
   }
 ]

@@ -1,42 +1,5 @@
 # INCOMING WORKOUT LOG BUFFER
-# Date: 2026-10-13 02:27 AM
-# Session: LEGS
+# This file receives raw logs submitted from the mobile web app.
+# When you return to your laptop, tell the coach "/log" or "process my incoming log", and it will read this file automatically.
 
-Workout
-2026-10-13 22:26
-Duration: 37m 42s
-
-Leg Press
-Set 1: 12 reps x 18.0 kg
-Set 2: 12 reps x 45.0 kg
-Set 3: 12 reps x 45.0 kg
-Set 4: 12 reps x 45.0 kg
-
-Leg Extension
-Set 1: 12 reps x 5.0 kg
-Set 2: 12 reps x 10.0 kg
-Set 3: 12 reps x 7.5 kg
-Set 4: 12 reps x 7.5 kg
-
-Lying Leg Curl
-Set 1: 12 reps x 5.0 kg
-Set 2: 10 reps x 5.0 kg
-Set 3: 8 reps x 5.0 kg
-
-Standing Calf Raise
-Set 1: 12 reps x 80.0 kg
-Set 2: 12 reps x 80.0 kg
-Set 3: 12 reps x 80.0 kg
-
-Crunch
-Set 1: 12 reps
-Set 2: 12 reps
-Set 3: 12 reps
-
-Dead Bug
-Set 1: 12 reps
-Set 2: 12 reps
-Set 3: 12 reps
-
-Lying Leg Raises
-Set 1: 12 reps x 0.0 kg
+(No pending unprocessed logs)

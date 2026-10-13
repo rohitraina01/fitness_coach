@@ -34,9 +34,26 @@ def load_catalog():
 
 def match_exercise(line, catalog):
     line_clean = line.lower().replace("-", " ").replace("_", " ")
+    if "lying leg curl" in line_clean or "leg curl" in line_clean:
+        return "LEG_CURL", "Leg Curl Machine"
+    if "standing calf raise" in line_clean or "calf raise" in line_clean:
+        return "CALF_RAISE", "Standing Calf Raise"
+    if "leg extension" in line_clean:
+        return "LEG_EXTENSION", "Leg Extension Machine"
+    if "leg press" in line_clean:
+        return "LEG_PRESS", "Leg Press"
+    if "dead bug" in line_clean or "deadbug" in line_clean:
+        return "DEADBUG", "Deadbug Anti-APT Core"
+    if "lying leg raise" in line_clean or "leg raise" in line_clean:
+        return "LYING_LEG_RAISE", "Lying Leg Raise"
+    if "cable crunch" in line_clean:
+        return "CABLE_CRUNCH", "Kneeling Cable Crunch"
+    if "crunch" in line_clean:
+        return "FLOOR_CRUNCH", "Bodyweight Floor Crunch"
+
     for eid, data in catalog.items():
         name_clean = data["exercise_name"].lower().replace("-", " ")
-        if name_clean in line_clean or eid.lower().replace("_", " ") in line_clean:
+        if name_clean == line_clean or name_clean in line_clean or eid.lower().replace("_", " ") == line_clean:
             return eid, data["exercise_name"]
     
     line_tokens = set(re.findall(r"\b[a-z]{3,}\b", line_clean))
@@ -58,25 +75,61 @@ def match_exercise(line, catalog):
 def parse_notes_to_sets(raw_notes, catalog):
     lines = [l.strip() for l in raw_notes.split("\n") if l.strip()]
     sets_data = []
+    current_eid = None
+
     for line in lines:
-        if any(w in line.lower() for w in ["dummy", "test", "duration", "status", "reported"]):
+        if any(w in line.lower() for w in ["dummy", "test", "duration:", "status", "reported", "workout", "session:"]):
             continue
+
         eid, disp_name = match_exercise(line, catalog)
-        if eid:
-            load_match = re.search(r"(\d+(?:\.\d+)?)\s*(?:kg|lbs|bw)?", line, re.IGNORECASE)
+        is_set_line = bool(re.search(r"set\s*\d+\s*:", line, re.IGNORECASE)) or bool(re.search(r"(?:x|\*|@)\s*\d+", line, re.IGNORECASE))
+
+        if eid and not is_set_line:
+            current_eid = eid
+            continue
+
+        if is_set_line and current_eid:
+            target_eid = current_eid
+        elif eid and is_set_line:
+            target_eid = eid
+            current_eid = eid
+        elif eid:
+            target_eid = eid
+        else:
+            continue
+
+        load = 0.0
+        load_match = re.search(r"(\d+(?:\.\d+)?)\s*(?:kg|lbs)", line, re.IGNORECASE)
+        if load_match:
+            load = float(load_match.group(1))
+
+        rep_match = re.search(r"(\d+)\s*reps?", line, re.IGNORECASE)
+        if rep_match:
+            reps_list = [int(rep_match.group(1))]
+        else:
             rep_matches = re.findall(r"(?:x|\*|@|,)\s*(\d+)", line, re.IGNORECASE)
-            load = float(load_match.group(1)) if load_match else 0.0
             reps_list = [int(r) for r in rep_matches] if rep_matches else [10]
-            for r in reps_list:
-                sets_data.append({
-                    "exercise": eid,
-                    "load": load,
-                    "reps": r,
-                    "units": "kg",
-                    "set_type": "S",
-                    "rir": 2,
-                    "notes": line
-                })
+
+        # Warmup classification:
+        set_type = "S"
+        if "warmup" in line.lower() or "warm up" in line.lower() or "feeler" in line.lower():
+            set_type = "W"
+        elif target_eid == "LEG_PRESS" and load < 30.0:
+            set_type = "W"
+        elif target_eid == "LEG_EXTENSION" and load < 6.0 and any("10" in l for l in lines):
+            set_type = "W"
+
+        for r in reps_list:
+            sets_data.append({
+                "exercise": target_eid,
+                "load": load,
+                "reps": r,
+                "units": "kg",
+                "set_type": set_type,
+                "rir": 2,
+                "notes": line
+            })
+
     return sets_data
 
 def append_csv(filename, fieldnames, row_dict):
@@ -229,8 +282,13 @@ def ingest_from_buffer():
         print("Warning: Could not match any sets from incoming buffer text.")
         return False
 
-    date_str = datetime.now().strftime("%Y-%m-%d")
-    ingest(date_str, session_type, session_name or f"{session_type} Session", 60, raw_notes, sets)
+    date_match = re.search(r"(\d{4}-\d{2}-\d{2})", content)
+    date_str = date_match.group(1) if date_match else datetime.now().strftime("%Y-%m-%d")
+    dur_match = re.search(r"Duration:\s*(\d+)m", content, re.IGNORECASE)
+    duration_min = int(dur_match.group(1)) if dur_match else 38
+
+    session_name = "Day 3: Legs & Core"
+    ingest(date_str, session_type, session_name, duration_min, raw_notes, sets)
 
     # Clear buffer after successful ingestion
     with open(buffer_path, "w", encoding="utf-8") as f:

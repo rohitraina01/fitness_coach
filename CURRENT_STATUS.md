@@ -25,32 +25,33 @@
 ---
 
 ## 3. TRAINING PERFORMANCE & OVERLOAD TRAJECTORY
-All 7 historical workouts (125 total sets) are now fully imported and verified:
+All 8 historical workouts (146 total sets) are now fully imported and verified:
+- **Leg Day Baseline Established (Oct 13)**: First leg session in 1 year completed! 21 sets in 37m. Zero glute volume. Leg Press: 45kg $\times$ 12, 12, 12; Leg Ext: 10kg $\times$ 12, 7.5kg $\times$ 12, 12; Leg Curl: 5kg $\times$ 12, 10, 8; Calf Raise: 80kg $\times$ 12, 12, 12; Floor Crunch 3 $\times$ 12; Deadbug 3 $\times$ 12.
 - **Incline DB Press**: Progressed from 17.5kg $\times$ 12, 20kg $\times$ 8, 6 (Sep 21) to **20kg $\times$ 9, 10, 10 (Oct 10)**. Solid double-progression accomplishment.
 - **Flat Barbell Bench Press**: Progressed from 42.5kg $\times$ 6 (Sep 28) to **42.5kg $\times$ 10 (Oct 10 PR)**!
 - **Dumbbell Lateral Raise**: Cleared 4 sets $\times$ 15 reps @ 5kg. Ready to test 7.5kg or switch to Cable Lateral Raises.
 - **Lat Pulldown**: 50kg $\times$ 8 (Sep 24) $\rightarrow$ 50kg $\times$ 8, 8, 8 (Sep 25) $\rightarrow$ **50kg $\times$ 9 PR (Oct 01)**.
-- **Workout Duration**: Fixed! Slashed marathon 128m push session (Oct 04) down to **63m (Oct 10)** with zero junk volume.
+- **Workout Duration**: Fixed! Slashed marathon push session (Oct 04) down to **63m (Oct 10)** and **37m on Legs (Oct 13)** with zero junk volume.
 
 ---
 
 ## 4. IMMEDIATE NEXT SESSION
-- **Scheduled Session**: **DAY 3: LEGS & POSTURE (Quad Sweep, Calves & Anti-Pelvic Tilt)**
-- **Target Date**: 2026-10-13 / 2026-10-14
-- **Sequence Note**: Tactically swapped with Pull A to afford triceps 100% recovery from Push Day.
+- **Scheduled Session**: **DAY 5: PUSH B (Lateral Delt Specialization & Triceps)**
+- **Target Date**: 2026-10-14 (or Day 4 Rest / Active Recovery first)
+- **Primary Focus**: Upper Chest, High-Volume Cable Lateral Delts, Long-Head Triceps
 - **Focus Movements**:
-  1. Leg Press (Narrow / Mid-Low Stance): 3 sets $\times$ 10–12 reps (Establish baseline).
-  2. Leg Extension Machine: 3 sets $\times$ 12–15 reps (Pure quad isolation, 1s peak contraction).
-  3. Seated / Lying Leg Curl: 3 sets $\times$ 10–12 reps (Hamstrings, 0% glute recruitment).
-  4. Standing Calf Raise: 4 sets $\times$ 12–15 reps (2s dead pause in bottom stretch).
-  5. Deadbugs or Hanging Knee Raise: 3 sets $\times$ 12–15 reps (Mandatory Anti-APT core bracing).
-  6. Half-Kneeling Hip Flexor Stretch: 2 sets $\times$ 45–60s/side (Psoas release for desk posture).
+  1. Incline Machine Press or Incline DB Press: 3 sets $\times$ 8–10 reps (Rest: 150s, Target RIR: 1–2).
+  2. Cable Lateral Raise: 4 sets $\times$ 12–15 reps (Pulley at wrist height, lead with elbows).
+  3. Pec Deck Machine Fly: 3 sets $\times$ 12–15 reps (1s peak squeeze, 3s eccentric).
+  4. DB Lateral Raise (Drop Set on final set): 3 sets $\times$ 12–15 reps (Burnout).
+  5. Overhead Cable Triceps Ext: 3 sets $\times$ 10–12 reps (Long head priority, deep stretch behind neck).
+  6. Rope Triceps Pushdown: 3 sets $\times$ 12–15 reps (Spread rope at bottom).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---
 
 ## 5. RESOLVED VS REMAINING BOTTLENECKS
 - **Resolved**: All historical set data recovered and relational tables synchronized.
-- **Resolved**: Push session duration trimmed from 128m to 63m.
-- **Critical Action Required**: Leg Day (Day 3) has zero sessions logged in 30 days. Must schedule Legs & Core.
+- **Resolved**: Leg Day bottleneck eliminated! Clean 1-year baseline established with zero glute hypertrophy.
+- **Resolved**: Push session duration trimmed from 128m to 63m; Leg session executed in 37m.
 - **Critical Action Required**: Elevate daily protein floor from 108g average to 145g minimum.
