@@ -275,7 +275,169 @@ body {
   font-size: 0.8rem;
   color: var(--text-muted);
   line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+/* Master Coach Collapsible Briefing Banner */
+.coach-briefing-collapsible {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(16, 185, 129, 0.06));
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 14px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.coach-briefing-toggle {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+}
+
+.briefing-toggle-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.briefing-icon {
+  font-size: 1.35rem;
+}
+
+.briefing-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.briefing-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 0.3px;
+}
+
+.briefing-sub {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.briefing-arrow {
+  color: var(--accent-cyan);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.coach-briefing-content {
+  padding: 0 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.briefing-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.briefing-card h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-green);
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
+}
+
+.briefing-card ul {
+  list-style: disc;
+  padding-left: 18px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.briefing-card li {
+  margin-bottom: 4px;
+}
+
+.briefing-card li strong {
+  color: #FFF;
+}
+
+/* Exercise Card Mind-Muscle Box */
+.ex-mmc-box {
+  margin-top: 4px;
   margin-bottom: 12px;
+}
+
+.mmc-toggle-btn {
+  width: 100%;
+  background: rgba(251, 146, 60, 0.08);
+  border: 1px solid rgba(251, 146, 60, 0.25);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  color: var(--accent-orange);
+  font-size: 0.76rem;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.mmc-toggle-btn:hover {
+  background: rgba(251, 146, 60, 0.15);
+}
+
+.mmc-arrow {
+  font-size: 0.75rem;
+}
+
+.mmc-drawer {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(251, 146, 60, 0.2);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 10px 12px;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.mmc-content {
+  font-size: 0.8rem;
+  color: #FED7AA;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.mmc-tag {
+  color: var(--accent-orange);
+  font-weight: 800;
+  font-size: 0.74rem;
+  letter-spacing: 0.4px;
+}
+
+.mmc-calibration {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  padding-top: 6px;
+  border-top: 1px dashed rgba(251, 146, 60, 0.2);
+}
+
+.calib-tag {
+  color: var(--accent-green);
+  font-weight: 700;
 }
 
 .set-row {

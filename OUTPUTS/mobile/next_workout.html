@@ -12,6 +12,7 @@
             --text-muted: #94A3B8;
             --accent: #38BDF8;
             --accent-green: #34D399;
+            --accent-orange: #FB923C;
             --border: #334155;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,67 +27,133 @@
         }
         header {
             text-align: center;
-            padding: 16px 0 24px;
+            padding: 16px 0 20px;
             border-bottom: 1px solid var(--border);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         h1 {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             color: var(--accent);
             margin-bottom: 6px;
             letter-spacing: -0.5px;
         }
         .subtitle {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        .coach-accordion {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        .coach-accordion summary {
+            padding: 12px 14px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--accent);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .coach-accordion summary::-webkit-details-marker { display: none; }
+        .coach-accordion-content {
+            padding: 0 14px 14px;
+        }
+        .briefing-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-top: 8px;
+        }
+        .briefing-box h4 {
+            font-size: 0.82rem;
+            color: var(--accent-green);
+            margin-bottom: 6px;
+        }
+        .briefing-box ul {
+            list-style: disc;
+            padding-left: 18px;
+            font-size: 0.78rem;
             color: var(--text-muted);
         }
+        .briefing-box li { margin-bottom: 4px; }
         .exercise-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 14px;
         }
         .exercise-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
+            gap: 8px;
+            margin-bottom: 6px;
         }
         .badge {
             background-color: var(--accent);
             color: #0F172A;
-            font-weight: 700;
-            font-size: 0.75rem;
-            padding: 2px 8px;
+            font-weight: 800;
+            font-size: 0.72rem;
+            padding: 2px 7px;
             border-radius: 6px;
         }
         .ex-name {
-            font-size: 1.05rem;
-            font-weight: 600;
+            font-size: 0.98rem;
+            font-weight: 700;
             color: #FFF;
         }
-        .details-list {
-            list-style: none;
-            font-size: 0.88rem;
+        .target-tag {
+            display: inline-block;
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            background: rgba(52, 211, 153, 0.1);
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        .quick-cue {
+            font-size: 0.82rem;
             color: var(--text-muted);
-            margin-bottom: 14px;
+            line-height: 1.4;
+            margin-bottom: 10px;
         }
-        .details-list li {
-            margin-bottom: 6px;
-            padding-left: 12px;
-            position: relative;
+        .mmc-details {
+            background: rgba(251, 146, 60, 0.08);
+            border: 1px solid rgba(251, 146, 60, 0.25);
+            border-radius: 8px;
+            padding: 8px 10px;
+            margin-bottom: 10px;
         }
-        .details-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
+        .mmc-details summary {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            cursor: pointer;
+        }
+        .mmc-text {
+            font-size: 0.78rem;
+            color: #FED7AA;
+            line-height: 1.45;
+            margin-top: 6px;
+        }
+        .calib-text {
+            font-size: 0.76rem;
+            color: var(--accent-green);
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px dashed rgba(251, 146, 60, 0.2);
         }
         .set-tracker {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             padding-top: 10px;
             border-top: 1px dashed var(--border);
         }
@@ -94,7 +161,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text);
             cursor: pointer;
         }
@@ -105,9 +172,9 @@
         }
         footer {
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
-            margin-top: 30px;
+            margin-top: 24px;
             padding-bottom: 20px;
         }
     </style>
@@ -115,8 +182,37 @@
 <body>
     <header>
         <h1>DAY 3 - LEGS, SIX-PACK CORE & POSTURE</h1>
-        <div class="subtitle">Evidence-Based Hypertrophy • 5-Day Aesthetic Split</div>
+        <div class="subtitle">First leg session after a 1-year layoff. Strict "Zero-Glute" biomechanics applied. Acclimatization protocol: stop all sets at 2–3 RIR to prevent crippling DOMS while establishing clean baseline numbers.</div>
     </header>
+
+    
+    <details class="coach-accordion" open>
+        <summary>🧠 Coach Protocols & Warm-Up <span>▼</span></summary>
+        <div class="coach-accordion-content">
+            
+        <div class="briefing-box">
+            <h4>1. Dynamic Warm-Up Protocol (5–7 Mins)</h4>
+            <ul><li>**Step 1: Light Cardio**: 3–5 minutes on treadmill (incline walk) or stationary bike to circulate synovial fluid in knees.</li><li>**Step 2: Leg Swings**: 15 reps front-to-back & 15 reps side-to-side per leg (loosens tight hip capsules).</li><li>**Step 3: Ankle Mobility**: 15 rocks per ankle against wall (primes dorsiflexion so knees track forward smoothly over toes).</li><li>**Step 4: Specific Sets**: Empty sled $\times$ 12, Sled + 20kg $\times$ 8 directly on Leg Press before loading working weight.</li></ul>
+        </div>
+        
+        <div class="briefing-box">
+            <h4>2. 1-Year Layoff Safety Ceiling: 2–3 RIR</h4>
+            <ul><li>**Do NOT train to muscular failure (0 RIR) today.** Eccentric muscle trauma on deconditioned legs causes extreme DOMS that can cripple you for 5 days.</li><li>Leave **2 to 3 clean reps in reserve (2–3 RIR)** on every working set today. Treat this as an Acclimatization & Baseline Calibration session.</li></ul>
+        </div>
+        
+        <div class="briefing-box">
+            <h4>3. The "Zero-Glutes" Biomechanical Guardrail</h4>
+            <ul><li>9 hours of daily desk sitting causes shortened hip flexors (psoas) and Anterior Pelvic Tilt (APT), pushing glutes outward and protruding the lower belly.</li><li>Standard leg exercises (squats, RDLs, hip thrusts, lunges) hyper-develop the gluteus maximus, widening the hips and worsening the feminine pear shape.</li><li>Today's session uses 0 squats, 0 RDLs, 0 hip thrusts. We load pure quad sweep and knee flexion only.</li></ul>
+        </div>
+        
+        <div class="briefing-box">
+            <h4>4. Six-Pack & Core Execution Protocol</h4>
+            <ul><li>For six-pack bricks: Kneeling cable crunches require curling the ribcage toward the pelvis, NOT hip hinging.</li><li>For flat lower belly & APT reversal: Deadbugs require keeping the lower back glued 100% flat to the floor to brace the transverse abdominis.</li></ul>
+        </div>
+        
+        </div>
+    </details>
+    
 
     <main>
         
@@ -125,13 +221,17 @@
                 <span class="badge">#1</span>
                 <span class="ex-name">1. Leg Press (Narrow / Mid-Low Platform Stance)</span>
             </div>
-            <ul class="details-list">
-                <li>**Zero-Glute Rule**: Feet placed low-to-mid platform, hip-width apart. Pure knee flexion/extension. Zero wide or high stance (which biases glutes).</li><li>**Warm-Up Sets**:</li><li>Warm-up 1: Empty sled $\times$ 12 reps (groove the track, test depth).</li><li>Warm-up 2: Sled + 20 kg (+10kg per side) $\times$ 8 reps.</li><li>**Working Sets**: **3 sets x 10–12 reps** | Rest: 150 sec | Target RIR: **2–3 (Strict Safety Ceiling)**</li><li>**Estimated Calibration Load**:</li><li>**Starting Target**: **Sled + 40 kg to 60 kg total** (e.g., 20 kg to 30 kg plate per side).</li><li>*If 40 kg feels effortless at rep 12, move to 50 kg for Set 2. Do not exceed what you can control with a 3-second descent.*</li><li>**Form Cue**: Lower until knees hit 90°. Never let lower back peel off the back pad. Push through the mid-foot/quads.</li>
-            </ul>
+            <div class="target-tag">**3 sets x 10–12 reps** | Rest: 150 sec | Target RIR: **2–3 (Safety Ceiling)**</div>
+            <p class="quick-cue">Narrow, hip-width stance on lower half of platform. Lower until knees hit 90°. Never allow lower back to peel off pad.</p>
+            
+        <details class="mmc-details">
+            <summary>💡 Mind-Muscle Cue & Execution</summary>
+            <p class="mmc-text">Don't just push the platform up with your hips. Think about *pushing the floor away with your mid-foot while driving your knees outward over your second toe*. Stop strictly when knees hit 90°—if you go deeper, your pelvis tucks under ('butt wink'), turning off your quads and overloading your lower spine. Keep hips glued flat. Your quads will do 100% of the work while your glutes remain completely quiet.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **Sled + 40 to 50 kg total** (20–25 kg plate per side). Warm-up: Sled x 12, Sled + 20kg x 8.</p>
+        </details>
+        
             <div class="set-tracker">
-                <label><input type="checkbox"> Set 1</label>
-                <label><input type="checkbox"> Set 2</label>
-                <label><input type="checkbox"> Set 3</label>
+                <label><input type="checkbox"> Set 1</label><label><input type="checkbox"> Set 2</label><label><input type="checkbox"> Set 3</label>
             </div>
         </div>
         
@@ -140,13 +240,17 @@
                 <span class="badge">#2</span>
                 <span class="ex-name">2. Leg Extension Machine</span>
             </div>
-            <ul class="details-list">
-                <li>**Zero-Glute Rule**: Pure rectus femoris and vastus quad isolation. 0.0% glute recruitment.</li><li>**Warm-Up Set**: 1 set $\times$ 10 reps @ 15–20 kg.</li><li>**Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **1–2**</li><li>**Estimated Calibration Load**:</li><li>**Starting Target**: **25 kg – 35 kg** (approx pin 4 to 6 on commercial machine stacks).</li><li>**Form Cue**: 1-second deliberate squeeze at full extension at the top. 3-second controlled descent. Zero kicking or hip lifting.</li>
-            </ul>
+            <div class="target-tag">**3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **1–2**</div>
+            <p class="quick-cue">Pure quad isolation (0.0% glute recruitment). 1s pause at peak extension, 3s controlled descent.</p>
+            
+        <details class="mmc-details">
+            <summary>💡 Mind-Muscle Cue & Execution</summary>
+            <p class="mmc-text">Pull back against handles to lock your hips flat into the seat so your butt doesn't lift. Do not fling the weight with momentum. Kick your shins upward towards the ceiling. At peak extension, squeeze and lock your teardrop (vastus medialis) and upper quad like you're flexing hard for a photo for 1 full second. Then resist the weight down for a slow 3-second negative. 0.0% glute recruitment.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **25 to 35 kg** (Pin 4 to 6 on standard stack).</p>
+        </details>
+        
             <div class="set-tracker">
-                <label><input type="checkbox"> Set 1</label>
-                <label><input type="checkbox"> Set 2</label>
-                <label><input type="checkbox"> Set 3</label>
+                <label><input type="checkbox"> Set 1</label><label><input type="checkbox"> Set 2</label><label><input type="checkbox"> Set 3</label>
             </div>
         </div>
         
@@ -155,13 +259,17 @@
                 <span class="badge">#3</span>
                 <span class="ex-name">3. Seated or Lying Leg Curl</span>
             </div>
-            <ul class="details-list">
-                <li>**Zero-Glute Rule**: Isolates knee flexion. Zero hip extension (which would recruit glutes). Balances the quads and pulls pelvis down from Anterior Pelvic Tilt.</li><li>**Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **1–2**</li><li>**Estimated Calibration Load**:</li><li>**Starting Target**: **20 kg – 30 kg** (approx pin 3 to 5).</li><li>**Form Cue**: Point toes toward shins (dorsiflexion) to maximize hamstring tension. Squeeze heels to glutes, pause, slow 3s return.</li>
-            </ul>
+            <div class="target-tag">**3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **1–2**</div>
+            <p class="quick-cue">Pure knee flexion (0% hip extension / zero glutes). Slow 3s eccentric return.</p>
+            
+        <details class="mmc-details">
+            <summary>💡 Mind-Muscle Cue & Execution</summary>
+            <p class="mmc-text">**Dorsiflex your feet** (pull your toes up toward your shins throughout the entire set). If your toes point down, your calves assist the lift; dorsiflexing completely removes the calves and isolates the hamstrings. Drag your heels directly into the back of your thighs and squeeze. Never arch your lower back to yank the pad down.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **20 to 30 kg** (Pin 3 to 5).</p>
+        </details>
+        
             <div class="set-tracker">
-                <label><input type="checkbox"> Set 1</label>
-                <label><input type="checkbox"> Set 2</label>
-                <label><input type="checkbox"> Set 3</label>
+                <label><input type="checkbox"> Set 1</label><label><input type="checkbox"> Set 2</label><label><input type="checkbox"> Set 3</label>
             </div>
         </div>
         
@@ -170,13 +278,17 @@
                 <span class="badge">#4</span>
                 <span class="ex-name">4. Standing Calf Raise</span>
             </div>
-            <ul class="details-list">
-                <li>**Aesthetic Goal**: Lower-leg athletic taper to complement the V-taper physique.</li><li>**Working Sets**: **4 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **1**</li><li>**Estimated Calibration Load**:</li><li>**Starting Target**: **30 kg – 40 kg** on machine (or holding 15–20 kg DB standing on an elevated ledge).</li><li>**Form Cue**: **2-second dead pause at the bottom stretch on every rep.** Eliminates Achilles tendon bounce to force the gastrocnemius to work.</li>
-            </ul>
+            <div class="target-tag">**4 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **1**</div>
+            <p class="quick-cue">Full range of motion with 2-second dead pause at the bottom stretch on every single rep.</p>
+            
+        <details class="mmc-details">
+            <summary>💡 Mind-Muscle Cue & Execution</summary>
+            <p class="mmc-text">The Achilles tendon acts like a giant rubber band designed to bounce weight up effortlessly. To actually force calf muscle hypertrophy, sink into the deepest stretch possible and **count 'one-one-thousand, two-one-thousand' at a dead stop**. Then drive straight up by pushing hard through the ball of your **big toe**, not the outside edge of your foot. Squeeze the calves at the top for 1 second.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **30 to 40 kg** on machine (or holding 15–20 kg DB standing on an elevated block).</p>
+        </details>
+        
             <div class="set-tracker">
-                <label><input type="checkbox"> Set 1</label>
-                <label><input type="checkbox"> Set 2</label>
-                <label><input type="checkbox"> Set 3</label>
+                <label><input type="checkbox"> Set 1</label><label><input type="checkbox"> Set 2</label><label><input type="checkbox"> Set 3</label><label><input type="checkbox"> Set 4</label>
             </div>
         </div>
         
@@ -185,50 +297,62 @@
                 <span class="badge">#5</span>
                 <span class="ex-name">5. Kneeling Cable Crunch (Six-Pack Hypertrophy)</span>
             </div>
-            <ul class="details-list">
-                <li>**Six-Pack Driver**: Progressive overload on the rectus abdominis to build deep, visible abdominal "bricks."</li><li>**Working Sets**: **3 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **1–2**</li><li>**Estimated Calibration Load**:</li><li>**Starting Target**: **25 kg – 35 kg** on cable stack with rope attachment.</li><li>**Form Cue**: Kneel facing or away from the cable stack with rope by your ears. **Do NOT hinge at the hips.** Lock hips in place and forcefully curl your ribcage down toward your pelvis like rolling into a ball. Squeeze abs hard for 1 second at the bottom.</li>
-            </ul>
+            <div class="target-tag">**3 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **1–2**</div>
+            <p class="quick-cue">Lock hips fixed at 90°. Roll spine into a ball, curling ribs down into pelvis. Squeeze abs for 1s.</p>
+            
+        <details class="mmc-details">
+            <summary>💡 Mind-Muscle Cue & Execution</summary>
+            <p class="mmc-text">**The #1 mistake is sitting back onto your heels or bending at the hips.** Lock your hips and thighs completely motionless at a 90° angle. Hold the rope beside your ears. Imagine your pelvis is an anchor: actively curl your ribcage down and roll your spine into a tight ball toward your belly button. Exhale all your oxygen at the bottom and crush your abs like you are bracing for a punch.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **25 to 35 kg** on cable stack.</p>
+        </details>
+        
             <div class="set-tracker">
-                <label><input type="checkbox"> Set 1</label>
-                <label><input type="checkbox"> Set 2</label>
-                <label><input type="checkbox"> Set 3</label>
+                <label><input type="checkbox"> Set 1</label><label><input type="checkbox"> Set 2</label><label><input type="checkbox"> Set 3</label>
             </div>
         </div>
         
         <div class="exercise-card">
             <div class="exercise-header">
                 <span class="badge">#6</span>
-                <span class="ex-name">6. Deadbugs or Hanging Knee Raise (Anti-APT Lower Abdominal Bracing)</span>
+                <span class="ex-name">6. Deadbugs or Hanging Knee Raise (Anti-APT Lower Core)</span>
             </div>
-            <ul class="details-list">
-                <li>**Anti-APT Core Driver**: Strengthens the transverse abdominis to suck in lower abdominal protrusion caused by 9h desk sitting.</li><li>**Working Sets**: **3 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **1**</li><li>**Estimated Calibration Load**: Bodyweight.</li><li>**Form Cue**: If doing Deadbugs, lower back must remain 100% glued to the floor with zero gap. If doing Hanging Knee Raises, roll the pelvis upward toward the chest at the top.</li>
-            </ul>
+            <div class="target-tag">**3 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **1**</div>
+            <p class="quick-cue">Mandatory Anti-APT movement. Glue lower back 100% flat against floor/pad with zero gap.</p>
+            
+        <details class="mmc-details">
+            <summary>💡 Mind-Muscle Cue & Execution</summary>
+            <p class="mmc-text">Imagine someone trying to pull a ₹500 note from under your lower spine—press down so hard into the floor that nobody can slide it out. Slowly extend opposite arm and leg while pulling your tailbone slightly up into a posterior pelvic tilt. If your lower back arches even 1 millimeter, stop the rep immediately. If doing Hanging Knee Raises: do not swing; tuck knees up and curl your pelvis up toward your sternum to activate lower abs.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> Bodyweight.</p>
+        </details>
+        
             <div class="set-tracker">
-                <label><input type="checkbox"> Set 1</label>
-                <label><input type="checkbox"> Set 2</label>
-                <label><input type="checkbox"> Set 3</label>
+                <label><input type="checkbox"> Set 1</label><label><input type="checkbox"> Set 2</label><label><input type="checkbox"> Set 3</label>
             </div>
         </div>
         
         <div class="exercise-card">
             <div class="exercise-header">
                 <span class="badge">#7</span>
-                <span class="ex-name">7. Half-Kneeling Hip Flexor Stretch (Psoas Posture Reset)</span>
+                <span class="ex-name">7. Half-Kneeling Hip Flexor Stretch (Desk Posture Reset)</span>
             </div>
-            <ul class="details-list">
-                <li>**Working Sets**: **2 sets x 45–60 sec per leg** | Rest: 30 sec | Target RIR: —</li><li>**Targets**:</li><li>**Main**: 2 sets x 45–60 seconds per leg.</li><li>**Form Cue**: Mandatory desk-worker posture reset. Kneel on one knee. Tuck your tailbone under into a posterior pelvic tilt and actively squeeze the trailing glute forward to release the tight psoas from 9 hours of sitting.</li><li>Exact load used (kg) and reps completed per set.</li><li>Note whether the weight felt too light, just right, or too heavy.</li><li>Paste it here or submit through the app, and I will establish your permanent baseline records.</li>
-            </ul>
+            <div class="target-tag">**2 sets x 45–60 sec per leg** | Rest: 30 sec | Target RIR: —</div>
+            <p class="quick-cue">Drop rear knee to mat, tuck pelvis into posterior tilt, squeeze rear glute forward.</p>
+            
+        <details class="mmc-details">
+            <summary>💡 Mind-Muscle Cue & Execution</summary>
+            <p class="mmc-text">Do not just lunge forward and arch your lower back—that bypasses the psoas completely. In the half-kneeling position, tuck your tailbone under like a dog tucking its tail, and **actively squeeze the glute of the trailing back leg as hard as possible**. You will instantly feel a sharp, targeted release in the front crease of your hip pocket. Hold and breathe deeply into your belly for 60 seconds per leg.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> Bodyweight.</p>
+        </details>
+        
             <div class="set-tracker">
-                <label><input type="checkbox"> Set 1</label>
-                <label><input type="checkbox"> Set 2</label>
-                <label><input type="checkbox"> Set 3</label>
+                <label><input type="checkbox"> Set 1</label><label><input type="checkbox"> Set 2</label>
             </div>
         </div>
         
     </main>
 
     <footer>
-        <p>Personal Fitness Coaching System • Ready for Gym Floor Execution</p>
+        <p>Apex Fitness Coaching System • 100% Evidence-Based Hypertrophy</p>
     </footer>
 </body>
 </html>

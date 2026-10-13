@@ -291,39 +291,96 @@ async function fetchDashboardData() {
 }
 
 // 4. Render Next Workout (Dynamic from CURRENT_NEXT_WORKOUT.md and next_workout.json)
+function toggleCoachBriefing() {
+  const content = document.getElementById("coachBriefingContent");
+  const arrow = document.getElementById("briefingArrow");
+  if (!content) return;
+  const isHidden = content.style.display === "none" || !content.style.display;
+  content.style.display = isHidden ? "flex" : "none";
+  if (arrow) arrow.innerText = isHidden ? "▲" : "▼";
+}
+
+function toggleMmcDrawer(btn) {
+  const box = btn.closest(".ex-mmc-box");
+  if (!box) return;
+  const drawer = box.querySelector(".mmc-drawer");
+  const arrow = box.querySelector(".mmc-arrow");
+  if (!drawer) return;
+  const isHidden = drawer.style.display === "none" || !drawer.style.display;
+  drawer.style.display = isHidden ? "block" : "none";
+  if (arrow) arrow.innerText = isHidden ? "▲" : "▼";
+}
+
 function parseWorkoutMarkdown(mdText) {
   if (!mdText) return null;
   const lines = mdText.split("\n");
   let title = "NEXT WORKOUT";
   let subtitle = "Evidence-Based Hypertrophy • 5-Day Aesthetic Split";
+  const instructions = [];
   const exercises = [];
   let currentEx = null;
+  let currentInst = null;
+  let inBriefing = false;
+  let inBlueprint = false;
 
   for (let line of lines) {
-    line = line.trim();
-    if (line.startsWith("# NEXT WORKOUT:")) {
-      title = line.replace("# NEXT WORKOUT:", "").trim();
-    } else if (line.includes("Pre-Workout Note:")) {
-      subtitle = line.replace(/^[*-]+\s*Pre-Workout Note:\s*/, "").replace(/[*-]+$/, "").trim();
-    } else if (line.startsWith("### ")) {
-      if (currentEx) exercises.push(currentEx);
-      const exName = line.replace("### ", "").trim();
-      currentEx = { name: exName, target: "3 sets x 8–12 reps", cue: "", sets: 3 };
+    const stripped = line.trim();
+    if (stripped.startsWith("# NEXT WORKOUT:")) {
+      title = stripped.replace("# NEXT WORKOUT:", "").trim();
+    } else if (stripped.includes("Pre-Workout Note:")) {
+      subtitle = stripped.replace(/^[*-]+\s*Pre-Workout Note:\s*/, "").replace(/[*-]+$/, "").trim();
+    } else if (stripped.startsWith("## COACHING BRIEFING") || stripped.startsWith("## 1. PRE-WORKOUT") || stripped.startsWith("## BRIEFING")) {
+      inBriefing = true;
+      inBlueprint = false;
+      if (currentEx) { exercises.push(currentEx); currentEx = null; }
+    } else if (stripped.startsWith("## WORKOUT BLUEPRINT") || stripped.startsWith("## 2. WORKOUT BLUEPRINT") || stripped.startsWith("## BLUEPRINT")) {
+      inBriefing = false;
+      inBlueprint = true;
+      if (currentInst) { instructions.push(currentInst); currentInst = null; }
+    } else if (stripped.startsWith("## ")) {
+      inBriefing = false;
+      inBlueprint = false;
+      if (currentEx) { exercises.push(currentEx); currentEx = null; }
+      if (currentInst) { instructions.push(currentInst); currentInst = null; }
+    } else if (stripped.startsWith("### ")) {
+      const headerText = stripped.replace("### ", "").trim();
+      if (inBriefing) {
+        if (currentInst) instructions.push(currentInst);
+        currentInst = { title: headerText, items: [] };
+      } else if (inBlueprint || !inBriefing) {
+        if (currentEx) exercises.push(currentEx);
+        currentEx = { name: headerText, target: "3 sets x 8–12 reps", cue: "", mmc: "", calibration: "", sets: 3 };
+      }
+    } else if (inBriefing && currentInst) {
+      if (stripped.startsWith("- ") || stripped.startsWith("• ")) {
+        const clean = stripped.substring(2).trim();
+        if (clean) currentInst.items.push(clean);
+      } else if (stripped && !stripped.startsWith("#") && !stripped.startsWith("---")) {
+        currentInst.items.push(stripped);
+      }
     } else if (currentEx) {
-      if (line.includes("Working Sets:")) {
-        currentEx.target = line.replace(/^[*-]+\s*\*\*Working Sets\*\*:\s*/, "").replace(/\*\*/g, "").trim();
-      } else if (line.includes("Targets:") && currentEx.target === "3 sets x 8–12 reps") {
-        currentEx.target = line.replace(/^[*-]+\s*Targets:\s*/, "").trim();
-      } else if (line.includes("Form Cue:")) {
-        currentEx.cue = line.replace(/^[*-]+\s*\*\*Form Cue\*\*:\s*/, "").trim();
-      } else if (line.includes("Stop Cue:") && !currentEx.cue) {
-        currentEx.cue = line.replace(/^[*-]+\s*\*\*Stop Cue\*\*:\s*/, "").trim();
+      if (stripped.includes("Working Sets:")) {
+        currentEx.target = stripped.replace(/^[*-]+\s*\*\*Working Sets\*\*:\s*/, "").replace(/\*\*/g, "").trim();
+      } else if (stripped.includes("Calibration Target:")) {
+        currentEx.calibration = stripped.replace(/^[*-]+\s*\*\*Calibration Target\*\*:\s*/, "").trim();
+      } else if (stripped.includes("Form Cue:")) {
+        currentEx.cue = stripped.replace(/^[*-]+\s*\*\*Form Cue\*\*:\s*/, "").trim();
+      } else if (stripped.includes("Mind-Muscle Cue:")) {
+        currentEx.mmc = stripped.replace(/^[*-]+\s*\*\*Mind-Muscle Cue\*\*:\s*/, "").trim();
+      } else if (stripped.includes("Targets:") && currentEx.target === "3 sets x 8–12 reps") {
+        currentEx.target = stripped.replace(/^[*-]+\s*Targets:\s*/, "").trim();
       }
     }
   }
   if (currentEx) exercises.push(currentEx);
+  if (currentInst) instructions.push(currentInst);
 
-  return exercises.length > 0 ? { title, subtitle, exercises } : null;
+  exercises.forEach(ex => {
+    const m = ex.target.match(/(\d+)\s*sets/i);
+    if (m) ex.sets = parseInt(m[1], 10);
+  });
+
+  return exercises.length > 0 ? { title, subtitle, instructions, exercises } : null;
 }
 
 async function renderWorkout(data) {
@@ -353,12 +410,20 @@ async function renderWorkout(data) {
     workout = {
       title: "DAY 3 • LEGS & POSTURE (QUAD SWEEP & ANTI-APT)",
       subtitle: "Swapped to Day 3 for upper body recovery. Complete quad & calf isolation.",
+      instructions: [
+        {
+          title: "1-Year Layoff Safety Ceiling: 2–3 RIR",
+          items: ["Stop all sets at 2–3 RIR today. Eccentric trauma on deconditioned legs causes extreme DOMS."]
+        }
+      ],
       exercises: [
-        { name: "High-Foot Leg Press", target: "3 sets x 10–12 reps @ RIR 1–2", cue: "High-foot placement shifts load onto quad sweep without knee strain; keep lumbar glued to seat." },
-        { name: "Seated Leg Extension", target: "3 sets x 12–15 reps @ RIR 0–1", cue: "Hold a strict 2-second squeeze at peak lockout; slow 3-second descent." },
-        { name: "Standing Calf Raise", target: "3 sets x 12–15 reps", cue: "2-second dead stop in the stretch at the bottom to kill tendon elastic bounce." },
-        { name: "Half-Kneeling Hip Flexor Stretch", target: "60s per leg", cue: "Squeeze trailing glute, posterior pelvic tuck to open tight psoas from 9h sitting." },
-        { name: "Deadbugs (Lower Abs Bracing)", target: "3 sets x 15 reps", cue: "Lower back glued 100% flat to floor. Transverse abdominis bracing." }
+        { name: "Leg Press (Narrow / Mid-Low Stance)", target: "3 sets x 10–12 reps @ RIR 2–3", cue: "Lower to 90° knee bend. Never allow lower back to peel off pad.", mmc: "Push through mid-foot and knees out. Quads do 100% of the work while glutes stay relaxed.", calibration: "Sled + 40 to 50 kg", sets: 3 },
+        { name: "Leg Extension Machine", target: "3 sets x 12–15 reps @ RIR 1–2", cue: "Hold a strict 1-second squeeze at peak extension; slow 3-second descent.", mmc: "Pure quad isolation. Lock knees at top, flex teardrop, 3s negative.", calibration: "25 to 35 kg", sets: 3 },
+        { name: "Seated or Lying Leg Curl", target: "3 sets x 10–12 reps @ RIR 1–2", cue: "Dorsiflex feet (pull toes to shins). Zero hip extension.", mmc: "Removes calves, pure hamstring tension.", calibration: "20 to 30 kg", sets: 3 },
+        { name: "Standing Calf Raise", target: "4 sets x 12–15 reps", cue: "2-second dead stop in the stretch at the bottom to kill tendon elastic bounce.", mmc: "Push straight up through ball of big toe.", calibration: "30 to 40 kg", sets: 4 },
+        { name: "Kneeling Cable Crunch", target: "3 sets x 12–15 reps", cue: "Lock hips at 90°. Roll ribcage down to pelvis. Squeeze abs for 1s.", mmc: "Spinal flexion, not hip hinging. Blow air out at bottom.", calibration: "25 to 35 kg", sets: 3 },
+        { name: "Deadbugs", target: "3 sets x 15 reps", cue: "Lower back glued 100% flat to floor. Transverse abdominis bracing.", mmc: "Lock ₹500 note under lumbar.", sets: 3 },
+        { name: "Half-Kneeling Hip Flexor Stretch", target: "2 sets x 60s per leg", cue: "Squeeze trailing glute, posterior pelvic tuck to open tight psoas from 9h sitting.", mmc: "Tuck pelvis like a dog tucking its tail, squeeze glute to push hip forward.", sets: 2 }
       ]
     };
   }
@@ -372,6 +437,28 @@ async function renderWorkout(data) {
   if (titleEl) titleEl.innerText = workout.title;
   if (subEl) subEl.innerText = workout.subtitle;
   if (badgeEl) badgeEl.innerText = "ACTIVE PLAN";
+
+  // Render Coach Briefing Box
+  const briefingBox = document.getElementById("coachBriefingBox");
+  const briefingContent = document.getElementById("coachBriefingContent");
+  if (briefingBox && briefingContent) {
+    if (workout.instructions && workout.instructions.length > 0) {
+      briefingBox.style.display = "block";
+      let briefingHtml = "";
+      workout.instructions.forEach(inst => {
+        const itemsLi = (inst.items || []).map(it => `<li>${escapeHtml(it).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li>`).join("");
+        briefingHtml += `
+          <div class="briefing-card">
+            <h4>${escapeHtml(inst.title)}</h4>
+            <ul>${itemsLi}</ul>
+          </div>
+        `;
+      });
+      briefingContent.innerHTML = briefingHtml;
+    } else {
+      briefingBox.style.display = "none";
+    }
+  }
 
   // Update Exercise Cards UI
   const feed = document.getElementById("exerciseFeed");
@@ -396,6 +483,20 @@ async function renderWorkout(data) {
       `;
     }
 
+    const hasMmc = !!(ex.mmc || ex.calibration);
+    const mmcHtml = hasMmc ? `
+      <div class="ex-mmc-box">
+        <button type="button" class="mmc-toggle-btn" onclick="toggleMmcDrawer(this)">
+          <span class="mmc-label">💡 Mind-Muscle Cue & Execution</span>
+          <span class="mmc-arrow">▼</span>
+        </button>
+        <div class="mmc-drawer" style="display:none;">
+          ${ex.mmc ? `<div class="mmc-content"><span class="mmc-tag">🎯 MIND-MUSCLE CONNECTION:</span> ${escapeHtml(ex.mmc)}</div>` : ''}
+          ${ex.calibration ? `<div class="mmc-calibration"><span class="calib-tag">⚖️ STARTING LOAD:</span> ${escapeHtml(ex.calibration).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>` : ''}
+        </div>
+      </div>
+    ` : '';
+
     card.innerHTML = `
       <div class="ex-top">
         <div class="ex-title-wrap">
@@ -405,6 +506,7 @@ async function renderWorkout(data) {
         <span class="ex-target-pill">${escapeHtml(ex.target)}</span>
       </div>
       <p class="ex-cue">${escapeHtml(ex.cue)}</p>
+      ${mmcHtml}
       <div class="set-row">
         ${setsHtml}
       </div>

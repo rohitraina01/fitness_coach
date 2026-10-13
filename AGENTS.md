@@ -86,3 +86,10 @@ Whenever the trainee submits a workout report (or raw gym log), execute the **7-
 - **Warm-Up vs. Working Sets**: Only sets with RIR $\le 3$ and intended intensity qualify as working sets. Warm-ups are recorded with `set_type='W'` and excluded from volume calculations.
 - **Drop Sets**: Drop sets are recorded with `set_type='D'` and linked to their parent set via `parent_set_id`.
 - **Atomic Persistence**: Always ensure CSV, Markdown, and Excel records remain synchronized. If any step fails, report the error immediately.
+
+---
+
+## 5. APP DEPLOYMENT & COACHING CUEING STANDARDS
+- **Automatic App Sync**: Whenever a workout is created, modified, or updated, immediately execute `python scripts/export_mobile.py` and commit/push to GitHub `origin/master` so the mobile web app reflects the change instantly.
+- **Collapsible Coaching Cues**: The mobile app must always feature a top collapsible briefing (Warm-up, RIR rules, architectural guardrails) and per-exercise expandable Mind-Muscle Connection (MMC) drawers.
+- **Visceral Biomechanical Guidance**: Never prescribe raw exercises without visceral execution cues (e.g., how to eliminate traps on lateral raises, how to shut off calves on leg curls, how to prevent butt wink on leg press).

@@ -66,3 +66,22 @@ Every exercise prescribed for the next workout must define three explicit bounda
   2. Joint tenderness or aching tendons (e.g., elbows, patellar, anterior shoulder).
   3. Persistent lethargy and loss of training motivation.
 - **Deload Prescription**: Reduce volume by 50% (perform only 1–2 working sets per exercise) and maintain intensity at 2–3 RIR for 5 to 7 days.
+
+---
+
+## 7. MANDATORY MIND-MUSCLE CONNECTION (MMC) & VISCERAL FORM CUES
+Every exercise prescribed in any session blueprint MUST include a visceral, anatomically precise Mind-Muscle Connection cue explaining exactly how to feel the target muscle and eliminate compensatory muscles:
+- **Lateral Deltoids**: Depress shoulder blades down first (kill upper traps). Lead with elbows in the scapular plane (15° forward of torso). Imagine pushing knuckles *out toward the walls* rather than lifting up, or pouring water with elbows high. Zero swinging.
+- **Lats & Rows**: Drive elbows down toward hip pockets. Avoid shrugging into ears. Full stretch at the top without spinal flexion.
+- **Quads (Leg Press / Extensions)**: Narrow/low platform stance. Stop at 90° knee bend so pelvis stays glued and glutes stay asleep. On extensions, hold 1s peak lockout flexing vastus medialis, 3s negative.
+- **Hamstrings (Leg Curls)**: Always dorsiflex feet (pull toes to shins) to shut off the gastrocnemius/calves and force 100% hamstring loading. Zero lower back arch.
+- **Calves (Calf Raises)**: 2-second dead stop in deep stretch to kill Achilles elastic bounce. Push through big toe ball.
+- **Six-Pack (Cable Crunch)**: Lock hips completely motionless at 90°. Roll spine into a tight ball, curling ribcage down to pelvic bowl. Exhale all oxygen at peak squeeze. Zero hip hinging.
+
+---
+
+## 8. AUTOMATIC APP SYNCHRONIZATION & COLLAPSIBLE COACH BRIEFING STANDARD
+Any workout plan or instruction given to the trainee must automatically update the live mobile web app:
+1. **Top Collapsible Briefing**: Every workout card on the app must feature a collapsible **Master Coach Protocols & Warm-Up** briefing accordion (dynamic warm-up, intensity/RIR rules, architectural guardrails).
+2. **Per-Exercise MMC Drawers**: Every exercise card must feature an expandable **💡 Mind-Muscle Cue & Execution** drawer with visceral execution cues and starting load guidance.
+3. **Instant Mobile Export & GitHub Deployment**: Whenever workout instructions change, automatically run `python scripts/export_mobile.py`, synchronize `docs/` and `bridge/web/`, and push to GitHub `origin/master`.
