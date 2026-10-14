@@ -1,39 +1,5 @@
 # INCOMING WORKOUT LOG BUFFER
-# Date: 2026-10-14 23:07
-# Session: Legs
+# This file receives raw logs submitted from the mobile web app.
+# When you return to your laptop, tell the coach "/log" or "process my incoming log", and it will read this file automatically.
 
-Workout
-2026-10-14 21:51
-Duration: 68m 4s
-
-Pull-up
-Set 1: 4 reps
-Set 2: 3 reps
-
-Lat Pulldown
-Set 1: 12 reps x 40.0 kg
-Set 2: 8 reps x 50.0 kg
-Set 3: 6 reps x 50.0 kg
-
-Machine Rear Delt Fly
-Set 1: 12 reps x 15.0 kg
-Set 2: 12 reps x 15.0 kg
-Set 3: 9 reps x 15.0 kg
-
-EZ Bar Curl
-Set 1: 15 reps x 20.0 kg
-Set 2: 12 reps x 20.0 kg
-Set 3: 11 reps x 20.0 kg
-
-Seated Row (Wide Grip)
-Set 1: 12 reps x 55.0 kg
-Set 2: 12 reps x 55.0 kg
-Set 3: 12 reps x 55.0 kg
-
-Hammer Curl
-Set 1: 12 reps x 5.0 kg
-Set 2: 10 reps x 7.5 kg
-
-Single Arm Lat Pulldown
-Set 1: 12 reps x 12.5 kg
-Set 2: 12 reps x 12.5 kg
+(No pending unprocessed logs)
