@@ -14,15 +14,16 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | :---: | :--- | :--- | :---: | :--- |
 | 1 | **Push A** | Upper Chest Focus, Heavy Delts, Triceps | **COMPLETED** | 2026-10-10 (`W-20261010-01`) |
 | 2 | **Legs & Core** | Quads, Hamstrings, Calves, Anti-APT Core | **COMPLETED** | 2026-10-13 (`W-20261013-01`) |
-| 3 | **Pull A** | Lat Width, Upper Back Retraction, Biceps | **IMMEDIATE NEXT** | **2026-10-14 / 2026-10-15** |
-| 4 | **Rest / Active Recovery** | 8,000–10,000 Steps, Posture Reset, Mobility | QUEUED | Following Pull A |
-| 5 | **Push B** | Sternal Chest, Cable Lateral Delts, Long-Head Triceps | QUEUED | Day 5 |
+| 3 | **Pull A** | Lat Width, Upper Back Retraction, Biceps | **COMPLETED** | 2026-10-14 (`W-20261014-01`) |
+| 4 | **Rest / Active Recovery** | 8,000–10,000 Steps, Posture Reset, Mobility | **TODAY** | **2026-10-15** |
+| 5 | **Push B** | Sternal Chest, Cable Lateral Delts, Long-Head Triceps | **NEXT GYM** | **2026-10-15 / 2026-10-16** |
 | 6 | **Pull B** | Back Density, Rear Delts, Biceps Peak/Brachialis | QUEUED | Day 6 |
 | 7 | **Rest** | Complete Recovery & Meal Prep | QUEUED | Day 7 |
 
 ### Active Autoregulation History & Tactical Swaps
-- **2026-10-13 Swap**: Trainee reported acute triceps soreness from previous workout. Instead of forcing Pull A (which requires triceps stabilizer tension) or Push B, the coach tactically bumped **Day 3 (Legs & Core)** forward.
-- **Current Queue Status**: Legs completed on Oct 13. Triceps and pressing muscles are now 100% recovered. **Pull A** is the active deferred session waiting at the front of the queue.
+- **2026-10-13 Swap**: Trainee reported acute triceps soreness from previous workout. Successfully bumped Legs forward, allowing triceps complete recovery.
+- **2026-10-14 Pull A Executed**: Completed with new lifting wrist straps. High motor unit recruitment on lats (50kg pulldown, 55kg row PR) and biceps (20kg EZ bar).
+- **Current Queue Status**: Pull A completed. Trainee can take **Rest / Active Recovery today (Oct 15)**, followed by **Push B** (pressing muscles are 100% fresh and primed).
 
 ---
 
@@ -30,13 +31,13 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 
 | Muscle Group | Soreness / Recovery Status | Freshness (1–10) | Tactical Directive for Next Session |
 | :--- | :---: | :---: | :--- |
-| **Lats & Upper Back** | **100% Fresh** (Last trained Oct 01) | **10/10** | Prime target for maximum mechanical tension on Lat Pulldown (50kg baseline). |
-| **Biceps & Forearms** | **100% Fresh** | **10/10** | High energy for Cable Curls & DB Hammer Curls. |
-| **Chest & Front Delts** | **Fully Recovered** (Trained Oct 10) | **9/10** | Fully ready for Push B when queued. |
-| **Triceps** | **Recovered** (Delayed DOMS cleared) | **9/10** | Fully healed from Push A. |
-| **Quads & Hamstrings** | **Post-Workout Acclimatization** | **6/10** | First session in 1 year on Oct 13. Monitor DOMS for 24–48h. Do NOT load lower body. |
-| **Calves** | **Trained Oct 13 (80kg machine)** | **7/10** | Recovery underway. |
-| **Core / Rectus & Transverse** | **Mild Fatigue from Oct 13** | **7/10** | Floor crunches & deadbugs completed. Transverse abdominis recovering. |
+| **Chest & Front Delts** | **100% Fresh** (Last trained Oct 10) | **10/10** | Prime for maximum mechanical tension on Incline Press & Pec Deck. |
+| **Triceps** | **100% Fresh** (Full 4-day rest) | **10/10** | Peak performance ready for Overhead Cable Extension & Pushdowns. |
+| **Lateral Delts** | **100% Fresh** | **10/10** | Ready for high-volume Cable Lateral Raises with strict MMC cues. |
+| **Lats & Upper Back** | **High Fatigue from Oct 14** | **4/10** | 18 hard sets completed with straps. 48–72h recovery in progress. |
+| **Biceps & Brachialis** | **High Fatigue from Oct 14** | **4/10** | 38 reps of EZ curl + Hammer curls. Allow full recovery. |
+| **Quads & Hamstrings** | **DOMS Resolving (Trained Oct 13)** | **7/10** | Acclimatization adapting smoothly. Zero lower body loading. |
+| **Core / Pelvis** | **Recovered** | **8/10** | Maintain strict neutral pelvis throughout workday desk sitting. |
 
 ---
 
@@ -48,6 +49,9 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 2. **Exercise Intuition & Mind-Muscle Preference**:
    - *Observation*: Trainee dislikes exercises where load feels unstable, disconnected, or "cheat-y" (e.g. Kneeling Cable Crunches felt cheat-y with poor core connection; Floor Crunches with locked lower back felt immediate and 100% core-driven).
    - *Coaching Adaptation*: Validate biomechanical instincts. Anchor programs around high-stability, zero-cheat movements (Floor Crunches, Deadbugs, Chest-Supported Rows, Incline DB Press).
+3. **Equipment Leverage (Lifting Wrist Straps - Breakthrough)**:
+   - *Observation*: Deployed lifting wrist straps on Oct 14 Pull Day. Grip fatigue was completely removed from the back/forearm equation. Resulted in immediate double-progression PR on Seated Rows (55kg × 12, 12, 12) and heavy lat volume.
+   - *Coaching Adaptation*: Enforce straps on all heavy vertical and horizontal pulling sets. Treat hands as passive hooks to funnel 100% of mechanical tension into lat/rhomboid fibers.
 
 ---
 
@@ -81,4 +85,5 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | **2026-10-13** | Triceps DOMS reported in chat | Swapped Day 2 (Pull A) and Day 3 (Legs & Core). Prioritized triceps recovery. | Executed |
 | **2026-10-13** | First Leg Day in 1 Year (37m) | Established clean 45kg Leg Press, 10kg Leg Ext, 80kg Calf Raise baseline with 0% glute recruitment. | Logged & Analyzed |
 | **2026-10-14** | Core Exercise Feedback | Swapped Cable Crunch to Bodyweight Floor Crunch; established lower back contact rule for Leg Raises. | Incorporated into Catalog |
-| **2026-10-14** | Next Session Sequence Lock | Corrected queue from Push B to **Pull A** (deferred session). Pull A targets published to mobile app. | Active on Mobile |
+| **2026-10-14** | Pull A Completed with Straps (68m) | Unlocked 55kg $\times$ 12, 12, 12 Row PR, 50kg Lat Pulldown, 20kg EZ Curl. Rushed end due to gym closing. | Logged (`W-20261014-01`) |
+| **2026-10-15** | Queue Progression to Push B | Pulling muscles entering 48h recovery; pressing muscles 100% fresh. Next gym target: **Push B**. | Active on Mobile |

@@ -44,12 +44,26 @@ def match_exercise(line, catalog):
         return "LEG_PRESS", "Leg Press"
     if "dead bug" in line_clean or "deadbug" in line_clean:
         return "DEADBUG", "Deadbug Anti-APT Core"
-    if "lying leg raise" in line_clean or "leg raise" in line_clean:
-        return "LYING_LEG_RAISE", "Lying Leg Raise"
     if "cable crunch" in line_clean:
         return "CABLE_CRUNCH", "Kneeling Cable Crunch"
     if "crunch" in line_clean:
         return "FLOOR_CRUNCH", "Bodyweight Floor Crunch"
+    if "lying leg raise" in line_clean or "leg raise" in line_clean:
+        return "LYING_LEG_RAISE", "Lying Leg Raise"
+    if "single arm lat pulldown" in line_clean or "single arm pulldown" in line_clean:
+        return "SINGLE_ARM_LAT_PULLDOWN", "Single-Arm Cable Lat Pulldown"
+    if "lat pulldown" in line_clean:
+        return "LAT_PULLDOWN", "Lat Pulldown"
+    if "pull up" in line_clean or "pull-up" in line_clean:
+        return "PULL_UP", "Pull-Up"
+    if "rear delt" in line_clean or "reverse pec deck" in line_clean:
+        return "REAR_DELT_FLY", "Reverse Pec Deck (Rear Delt Fly)"
+    if "ez bar curl" in line_clean or "ez-bar curl" in line_clean:
+        return "EZ_BAR_CURL", "EZ-Bar Bicep Curl"
+    if "hammer curl" in line_clean:
+        return "HAMMER_CURL", "Dumbbell Hammer Curl"
+    if "seated row" in line_clean or "cable row" in line_clean:
+        return "SEATED_CABLE_ROW", "Seated Cable Row"
 
     for eid, data in catalog.items():
         name_clean = data["exercise_name"].lower().replace("-", " ")
@@ -287,7 +301,15 @@ def ingest_from_buffer():
     dur_match = re.search(r"Duration:\s*(\d+)m", content, re.IGNORECASE)
     duration_min = int(dur_match.group(1)) if dur_match else 38
 
-    session_name = "Day 3: Legs & Core"
+    if "pull" in session_type.lower():
+        session_name = "Day 2: Pull A"
+    elif "leg" in session_type.lower():
+        session_name = "Day 3: Legs & Core"
+    elif "push" in session_type.lower():
+        session_name = "Push Session"
+    else:
+        session_name = f"{session_type} Session"
+
     ingest(date_str, session_type, session_name, duration_min, raw_notes, sets)
 
     # Clear buffer after successful ingestion

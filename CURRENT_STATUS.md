@@ -25,27 +25,28 @@
 ---
 
 ## 3. TRAINING PERFORMANCE & OVERLOAD TRAJECTORY
-All 8 historical workouts (146 total sets) are now fully imported and verified:
-- **Leg Day Baseline Established (Oct 13)**: First leg session in 1 year completed! 21 sets in 37m. Zero glute volume. Leg Press: 45kg $\times$ 12, 12, 12; Leg Ext: 10kg $\times$ 12, 7.5kg $\times$ 12, 12; Leg Curl: 5kg $\times$ 12, 10, 8; Calf Raise: 80kg $\times$ 12, 12, 12; Floor Crunch 3 $\times$ 12; Deadbug 3 $\times$ 12.
+All 9 historical workouts (164 total sets) are now fully imported and verified:
+- **Pull A Double-Progression PR (Oct 14)**: Deployed lifting wrist straps. 18 sets in 68m. **Seated Cable Row: 55kg $\times$ 12, 12, 12 (Double progression unlocked! Bump to 60kg)**; Lat Pulldown: 40kg $\times$ 12, 50kg $\times$ 8, 6; EZ-Bar Curl: 20kg $\times$ 15, 12, 11; Rear Delt Fly: 15kg $\times$ 12, 12, 9; Single-Arm Pulldown: 12.5kg $\times$ 12, 12.
+- **Leg Day Baseline Established (Oct 13)**: First leg session in 1 year completed! 21 sets in 37m. Zero glute volume. Leg Press: 45kg $\times$ 12, 12, 12; Leg Ext: 10kg $\times$ 12, 7.5kg $\times$ 12, 12; Calf Raise: 80kg $\times$ 12, 12, 12; Floor Crunch 3 $\times$ 12; Deadbug 3 $\times$ 12.
 - **Incline DB Press**: Progressed from 17.5kg $\times$ 12, 20kg $\times$ 8, 6 (Sep 21) to **20kg $\times$ 9, 10, 10 (Oct 10)**. Solid double-progression accomplishment.
 - **Flat Barbell Bench Press**: Progressed from 42.5kg $\times$ 6 (Sep 28) to **42.5kg $\times$ 10 (Oct 10 PR)**!
 - **Dumbbell Lateral Raise**: Cleared 4 sets $\times$ 15 reps @ 5kg. Ready to test 7.5kg or switch to Cable Lateral Raises.
-- **Lat Pulldown**: 50kg $\times$ 8 (Sep 24) $\rightarrow$ 50kg $\times$ 8, 8, 8 (Sep 25) $\rightarrow$ **50kg $\times$ 9 PR (Oct 01)**.
-- **Workout Duration**: Fixed! Slashed marathon push session (Oct 04) down to **63m (Oct 10)** and **37m on Legs (Oct 13)** with zero junk volume.
+- **Workout Duration**: Consistently locked between 37–68m with zero junk volume.
 
 ---
 
 ## 4. IMMEDIATE NEXT SESSION
-- **Scheduled Session**: **DAY 2: PULL A (Lat Width, Upper Back & Biceps)**
-- **Target Date**: 2026-10-14 / 2026-10-15
-- **Sequence Note**: Tactically deferred while triceps recovered on Leg Day. Triceps and pressing muscles are now fully recovered; pulling musculature and biceps are fresh!
+- **Scheduled Session**: **DAY 5: PUSH B (Lateral Delt Specialization & Triceps)**
+- **Target Date**: 2026-10-15 (or Day 4 Rest / Active Recovery first, then Oct 16)
+- **Primary Focus**: Upper Chest, High-Volume Cable Lateral Delts, Long-Head Triceps
+- **Physiological State**: Pulling musculature and biceps are recovering from Oct 14; pressing musculature (chest, front delts, triceps) is 100% fresh (last pressed Oct 10).
 - **Focus Movements**:
-  1. Lat Pulldown (Neutral or Moderate Grip): 3 sets $\times$ 8–10 reps @ 50.0 kg (Target RIR: 1–2).
-  2. Chest-Supported Row Machine: 3 sets $\times$ 8–10 reps @ 40.0–45.0 kg (1s scapular retraction).
-  3. Straight-Arm Cable Pulldown: 3 sets $\times$ 12–15 reps @ 17.5–22.5 kg (Pure lat isolation).
-  4. Reverse Pec Deck (Rear Delt Fly): 3 sets $\times$ 12–15 reps @ 25.0–30.0 kg (Posterior delt balance).
-  5. Standing Cable Bicep Curl: 3 sets $\times$ 10–12 reps @ 15.0–20.0 kg (Pin elbows to ribs).
-  6. Dumbbell Hammer Curl: 3 sets $\times$ 8–10 reps @ 10.0–12.5 kg DBs (Brachialis & forearm thickness).
+  1. Incline Machine Press or Incline DB Press: 3 sets $\times$ 8–10 reps @ 20.0 kg DBs (Rest: 150s, Target RIR: 1–2).
+  2. Cable Lateral Raise: 4 sets $\times$ 12–15 reps @ lowest pin / 2.5–5kg (Pulley at wrist height, lead with elbows).
+  3. Pec Deck Machine Fly: 3 sets $\times$ 12–15 reps @ 35–45kg (1s peak squeeze, 3s eccentric).
+  4. DB Lateral Raise (Drop Set on final set): 3 sets $\times$ 12–15 reps @ 5.0 kg (Drop 30% on Set 3 for burnout).
+  5. Overhead Cable Triceps Ext: 3 sets $\times$ 10–12 reps @ 15–20kg (Long head priority, deep stretch behind neck).
+  6. Rope Triceps Pushdown: 3 sets $\times$ 12–15 reps @ 15–22.5kg (Spread rope at thighs).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---

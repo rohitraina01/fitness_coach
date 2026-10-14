@@ -1,5 +1,44 @@
 [
   {
+    "workout_id": "W-20261014-01",
+    "date": "2026-10-14",
+    "session_type": "Pull (Day 2: Pull A)",
+    "duration": "68 min",
+    "exercises": [
+      {
+        "name": "Pull-Up",
+        "summary": "Pull-Up: 0.0kg x 4, 0.0kg x 3"
+      },
+      {
+        "name": "Lat Pulldown",
+        "summary": "Lat Pulldown: 40.0kg x 12, 50.0kg x 8, 50.0kg x 6"
+      },
+      {
+        "name": "Reverse Pec Deck (Rear Delt Fly)",
+        "summary": "Reverse Pec Deck (Rear Delt Fly): 15.0kg x 12, 15.0kg x 12, 15.0kg x 9"
+      },
+      {
+        "name": "EZ-Bar Bicep Curl",
+        "summary": "EZ-Bar Bicep Curl: 20.0kg x 15, 20.0kg x 12, 20.0kg x 11"
+      },
+      {
+        "name": "Seated Cable Row",
+        "summary": "Seated Cable Row: 55.0kg x 12, 55.0kg x 12, 55.0kg x 12"
+      },
+      {
+        "name": "Dumbbell Hammer Curl",
+        "summary": "Dumbbell Hammer Curl: 5.0kg x 12, 7.5kg x 10"
+      },
+      {
+        "name": "Single-Arm Cable Lat Pulldown",
+        "summary": "Single-Arm Cable Lat Pulldown: 12.5kg x 12, 12.5kg x 12"
+      }
+    ],
+    "raw_text": "Workout\n2026-10-14 21:51\nDuration: 68m 4s\nPull-up\nSet 1: 4 reps\nSet 2: 3 reps\nLat Pulldown\nSet 1: 12 reps x 40.0 kg\nSet 2: 8 reps x 50.0 kg\nSet 3: 6 reps x 50.0 kg\nMachine Rear Delt Fly\nSet 1: 12 reps x 15.0 kg\nSet 2: 12 reps x 15.0 kg\nSet 3: 9 reps x 15.0 kg\nEZ Bar Curl\nSet 1: 15 reps x 20.0 kg\nSet 2: 12 reps x 20.0 kg\nSet 3: 11 reps x 20.0 kg\nSeated Row (Wide Grip)\nSet 1: 12 reps x 55.0 kg\nSet 2: 12 reps x 55.0 kg\nSet 3: 12 reps x 55.0 kg\nHammer Curl\nSet 1: 12 reps x 5.0 kg\nSet 2: 10 reps x 7.5 kg\nSingle Arm Lat Pulldown\nSet 1: 12 reps x 12.5 kg\nSet 2: 12 reps x 12.5 kg\n\n**Trainee Notes**: Used new lifting wrist straps for the first time\u2014significantly improved grip security and eliminated forearm fatigue on pulling movements. Followed this exact exercise sequence. Had to rush the final two movements (Hammer Curls & Single-Arm Pulldowns) as gym was closing.",
+    "template_text": "Pull-Up: 0.0kg x 4, 0.0kg x 3\nLat Pulldown: 40.0kg x 12, 50.0kg x 8, 50.0kg x 6\nReverse Pec Deck (Rear Delt Fly): 15.0kg x 12, 15.0kg x 12, 15.0kg x 9\nEZ-Bar Bicep Curl: 20.0kg x 15, 20.0kg x 12, 20.0kg x 11\nSeated Cable Row: 55.0kg x 12, 55.0kg x 12, 55.0kg x 12\nDumbbell Hammer Curl: 5.0kg x 12, 7.5kg x 10\nSingle-Arm Cable Lat Pulldown: 12.5kg x 12, 12.5kg x 12",
+    "copy_prompt": "/log\n# Session: Pull (Day 2: Pull A) (2026-10-14)\nPull-Up: 0.0kg x 4, 0.0kg x 3\nLat Pulldown: 40.0kg x 12, 50.0kg x 8, 50.0kg x 6\nReverse Pec Deck (Rear Delt Fly): 15.0kg x 12, 15.0kg x 12, 15.0kg x 9\nEZ-Bar Bicep Curl: 20.0kg x 15, 20.0kg x 12, 20.0kg x 11\nSeated Cable Row: 55.0kg x 12, 55.0kg x 12, 55.0kg x 12\nDumbbell Hammer Curl: 5.0kg x 12, 7.5kg x 10\nSingle-Arm Cable Lat Pulldown: 12.5kg x 12, 12.5kg x 12"
+  },
+  {
     "workout_id": "W-20261013-01",
     "date": "2026-10-13",
     "session_type": "LEGS (Day 3: Legs & Core)",
@@ -212,44 +251,5 @@
     "raw_text": "2026-09-25 \u2014 Pull Day\nPull-Up: BW \u00d7 3\nLat Pulldown: 50 kg \u00d7 8, 50 kg \u00d7 8, 50 kg \u00d7 8\nSeated Cable Row: 60 kg \u00d7 10, 60 kg \u00d7 10, 60 kg \u00d7 10\nStraight-Arm Pulldown: 15 kg \u00d7 12, 15 kg \u00d7 12, 15 kg \u00d7 12\nMachine Rear-Delt Fly: 15 kg \u00d7 12, 15 kg \u00d7 12, 15 kg \u00d7 12\nCable Curl: 20 kg \u00d7 12, 20 kg \u00d7 12, 20 kg \u00d7 12\nHammer Curl: 5 kg \u00d7 12, 5 kg \u00d7 12, 5 kg \u00d7 12",
     "template_text": "Pull-Up: 0.0kg x 3\nLat Pulldown: 50.0kg x 8, 50.0kg x 8, 50.0kg x 8\nSeated Cable Row: 60.0kg x 10, 60.0kg x 10, 60.0kg x 10\nStraight-Arm Pulldown: 15.0kg x 12, 15.0kg x 12, 15.0kg x 12\nRear-Delt Fly: 15.0kg x 12, 15.0kg x 12, 15.0kg x 12\nCable Bicep Curl: 20.0kg x 12, 20.0kg x 12, 20.0kg x 12\nDumbbell Hammer Curl: 5.0kg x 12, 5.0kg x 12, 5.0kg x 12",
     "copy_prompt": "/log\n# Session: Pull Workout (2026-09-25)\nPull-Up: 0.0kg x 3\nLat Pulldown: 50.0kg x 8, 50.0kg x 8, 50.0kg x 8\nSeated Cable Row: 60.0kg x 10, 60.0kg x 10, 60.0kg x 10\nStraight-Arm Pulldown: 15.0kg x 12, 15.0kg x 12, 15.0kg x 12\nRear-Delt Fly: 15.0kg x 12, 15.0kg x 12, 15.0kg x 12\nCable Bicep Curl: 20.0kg x 12, 20.0kg x 12, 20.0kg x 12\nDumbbell Hammer Curl: 5.0kg x 12, 5.0kg x 12, 5.0kg x 12"
-  },
-  {
-    "workout_id": "W-20260924-01",
-    "date": "2026-09-24",
-    "session_type": "Pull Workout (Pull Day: Aesthetic Back)",
-    "duration": "Unreliable (Logged 12m 36s post-session)",
-    "exercises": [
-      {
-        "name": "Pull-Up",
-        "summary": "Pull-Up: 0.0kg x 3"
-      },
-      {
-        "name": "Lat Pulldown",
-        "summary": "Lat Pulldown: 50.0kg x 8, 50.0kg x 6, 45.0kg x 7"
-      },
-      {
-        "name": "Seated Cable Row",
-        "summary": "Seated Cable Row: 60.0kg x 10, 60.0kg x 10, 60.0kg x 10"
-      },
-      {
-        "name": "Straight-Arm Pulldown",
-        "summary": "Straight-Arm Pulldown: 20.0kg x 8, 15.0kg x 12, 15.0kg x 12"
-      },
-      {
-        "name": "Rear-Delt Fly",
-        "summary": "Rear-Delt Fly: 15.0kg x 15, 15.0kg x 12, 15.0kg x 12"
-      },
-      {
-        "name": "Cable Bicep Curl",
-        "summary": "Cable Bicep Curl: 20.0kg x 12, 20.0kg x 12, 20.0kg x 12"
-      },
-      {
-        "name": "Dumbbell Hammer Curl",
-        "summary": "Dumbbell Hammer Curl: 5.0kg x 12, 5.0kg x 12, 5.0kg x 12"
-      }
-    ],
-    "raw_text": "2026-09-24 \u2014 Pull Day: Aesthetic Back\nReported duration: 12m 36s (unreliable)\nReported volume: 4,820 kg, 19 sets\nPull-Up: BW \u00d7 3\nLat Pulldown: 50 kg \u00d7 8, 50 kg \u00d7 6, 45 kg \u00d7 7\nSeated Cable Row: 60 kg \u00d7 10, 60 kg \u00d7 10, 60 kg \u00d7 10\nStraight-Arm Pulldown: 20 kg \u00d7 8, 15 kg \u00d7 12, 15 kg \u00d7 12\nRear-Delt Fly: 15 kg \u00d7 15, 15 kg \u00d7 12, 15 kg \u00d7 12\nCable Curl: 20 kg \u00d7 12, 20 kg \u00d7 12, 20 kg \u00d7 12\nHammer Curl: 5 kg \u00d7 12, 5 kg \u00d7 12, 5 kg \u00d7 12",
-    "template_text": "Pull-Up: 0.0kg x 3\nLat Pulldown: 50.0kg x 8, 50.0kg x 6, 45.0kg x 7\nSeated Cable Row: 60.0kg x 10, 60.0kg x 10, 60.0kg x 10\nStraight-Arm Pulldown: 20.0kg x 8, 15.0kg x 12, 15.0kg x 12\nRear-Delt Fly: 15.0kg x 15, 15.0kg x 12, 15.0kg x 12\nCable Bicep Curl: 20.0kg x 12, 20.0kg x 12, 20.0kg x 12\nDumbbell Hammer Curl: 5.0kg x 12, 5.0kg x 12, 5.0kg x 12",
-    "copy_prompt": "/log\n# Session: Pull Workout (Pull Day: Aesthetic Back) (2026-09-24)\nPull-Up: 0.0kg x 3\nLat Pulldown: 50.0kg x 8, 50.0kg x 6, 45.0kg x 7\nSeated Cable Row: 60.0kg x 10, 60.0kg x 10, 60.0kg x 10\nStraight-Arm Pulldown: 20.0kg x 8, 15.0kg x 12, 15.0kg x 12\nRear-Delt Fly: 15.0kg x 15, 15.0kg x 12, 15.0kg x 12\nCable Bicep Curl: 20.0kg x 12, 20.0kg x 12, 20.0kg x 12\nDumbbell Hammer Curl: 5.0kg x 12, 5.0kg x 12, 5.0kg x 12"
   }
 ]
