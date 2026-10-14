@@ -51,7 +51,9 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
    - *Coaching Adaptation*: Validate biomechanical instincts. Anchor programs around high-stability, zero-cheat movements (Floor Crunches, Deadbugs, Chest-Supported Rows, Incline DB Press).
 3. **Equipment Leverage (Lifting Wrist Straps - Breakthrough)**:
    - *Observation*: Deployed lifting wrist straps on Oct 14 Pull Day. Grip fatigue was completely removed from the back/forearm equation. Resulted in immediate double-progression PR on Seated Rows (55kg × 12, 12, 12) and heavy lat volume.
-   - *Coaching Adaptation*: Enforce straps on all heavy vertical and horizontal pulling sets. Treat hands as passive hooks to funnel 100% of mechanical tension into lat/rhomboid fibers.
+4. **Explicit Target Weight & Gym Floor Fallbacks (Non-Negotiable UI & Coaching Standard)**:
+   - *Observation*: Trainee highlighted that workout cards only displayed sets and reps, forcing them to guess loads or search through notes. Trainee expects the coach to prescribe exact target weights in kilograms (kg) for every movement, along with explicit overload progression targets, fallback weights if dumbbells/machines are occupied, and corresponding rep guidelines.
+   - *Coaching Adaptation*: Every session plan and mobile exercise card MUST display prominent target weight in kg (`ex.target_weight`). Always provide: (1) Primary target weight (kg) and reps; (2) Overload jump weight vs baseline weight; (3) Backup dumbbell/machine weights if primary station is busy.
 
 ---
 
@@ -87,3 +89,4 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | **2026-10-14** | Core Exercise Feedback | Swapped Cable Crunch to Bodyweight Floor Crunch; established lower back contact rule for Leg Raises. | Incorporated into Catalog |
 | **2026-10-14** | Pull A Completed with Straps (68m) | Unlocked 55kg $\times$ 12, 12, 12 Row PR, 50kg Lat Pulldown, 20kg EZ Curl. Rushed end due to gym closing. | Logged (`W-20261014-01`) |
 | **2026-10-15** | Queue Progression to Push B | Pulling muscles entering 48h recovery; pressing muscles 100% fresh. Next gym target: **Push B**. | Active on Mobile |
+| **2026-10-15** | Explicit Target Weight Requirement | Upgraded mobile cards, exporter, and plan with high-visibility target kg, fallback weights, and rep guidelines. | Deployed to Mobile App |

@@ -40,13 +40,13 @@ All 9 historical workouts (164 total sets) are now fully imported and verified:
 - **Target Date**: 2026-10-15 (or Day 4 Rest / Active Recovery first, then Oct 16)
 - **Primary Focus**: Upper Chest, High-Volume Cable Lateral Delts, Long-Head Triceps
 - **Physiological State**: Pulling musculature and biceps are recovering from Oct 14; pressing musculature (chest, front delts, triceps) is 100% fresh (last pressed Oct 10).
-- **Focus Movements**:
-  1. Incline Machine Press or Incline DB Press: 3 sets $\times$ 8–10 reps @ 20.0 kg DBs (Rest: 150s, Target RIR: 1–2).
-  2. Cable Lateral Raise: 4 sets $\times$ 12–15 reps @ lowest pin / 2.5–5kg (Pulley at wrist height, lead with elbows).
-  3. Pec Deck Machine Fly: 3 sets $\times$ 12–15 reps @ 35–45kg (1s peak squeeze, 3s eccentric).
-  4. DB Lateral Raise (Drop Set on final set): 3 sets $\times$ 12–15 reps @ 5.0 kg (Drop 30% on Set 3 for burnout).
-  5. Overhead Cable Triceps Ext: 3 sets $\times$ 10–12 reps @ 15–20kg (Long head priority, deep stretch behind neck).
-  6. Rope Triceps Pushdown: 3 sets $\times$ 12–15 reps @ 15–22.5kg (Spread rope at thighs).
+- **Focus Movements & Explicit Targets**:
+  1. Incline DB Press: 3 sets × 8–10 reps @ **22.5 kg DBs** (Overload Leap: 6–8 reps) OR **20.0 kg DBs** (Solidify PR: 10, 10, 10 reps). *Machine Pin*: 45.0–50.0 kg.
+  2. Cable Lateral Raise: 4 sets × 12–15 reps @ **2.5–5.0 kg pin** (Plate 1 or 2). *Backup*: 6.0 kg DBs or 5.0 kg with 2s top pause.
+  3. Pec Deck Machine Fly: 3 sets × 10–12 reps @ **35.0 kg pin** (Up +5kg). *Backup*: 30.0 kg pin for 12–15 reps with 2s squeeze.
+  4. DB Lateral Raise (Drop Set): 3 sets × 12–15 reps @ **5.0 kg DBs** (Set 3: 5kg to failure → drop to 2.5–3.0 kg to failure).
+  5. Overhead Cable Triceps Ext: 3 sets × 10–12 reps @ **17.5–20.0 kg pin** (Up from 15kg). *Backup*: 15.0 kg pin for 12–14 reps.
+  6. Rope Triceps Pushdown: 3 sets × 12–15 reps @ **22.5 kg pin** (Up from 20kg). *Backup*: 20.0 kg pin for 12–15 reps with 1s lockout hold.
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---

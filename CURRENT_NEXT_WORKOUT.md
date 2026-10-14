@@ -39,49 +39,61 @@ Follow this 1 $\rightarrow$ 6 flow if stations are free. If machines are occupie
 
 ## WORKOUT BLUEPRINT & EXERCISE CUES
 
-### 1. Incline Machine Press or Incline DB Press
-- **Order Rationale**: **#1 Heavy Compound First.** Demands peak motor unit recruitment.
-- **Gym Floor Swap Option**: If the incline press machine is taken, use the 30° Incline Dumbbell Bench.
+### 1. Incline DB Press (or Incline Machine Press)
+- **Order Rationale**: **#1 Heavy Compound First.** Demands peak motor unit recruitment when pressing musculature is 100% fresh.
 - **Working Sets**: **3 sets x 8–10 reps** | Rest: 150 sec | Target RIR: **1–2**
-- **Target Load**: **20.0 kg DBs** (or equivalent machine pin).
+- **Target Weight**: **22.5 kg DBs (Overload Leap: 6–8 reps) OR 20.0 kg DBs (Solidify PR: 10, 10, 10 reps)**
+- **Gym Floor Swap Option**: If 20kg/22.5kg DBs are busy, use Incline Chest Machine (Pin: 45.0–50.0 kg). If DB bench taken, use Flat DB Press (22.5 kg).
+- **Warm-Up Ramp**: 12.5 kg × 10 reps, 15.0 kg × 6 reps, 17.5 kg × 3 reps before working sets.
 - **Form Cue**: Bench set strictly at 30° (higher shifts load to front delts). Retract scapulae, 45° elbow tuck. Deep chest stretch at bottom.
+- **Mind-Muscle Cue**: Drive biceps across chest at top without banging dumbbells. Keep ribcage high and expanded.
 
 ---
 
 ### 2. Cable Lateral Raise
-- **Order Rationale**: **#2 Priority Delt Hypertrophy.** Takes lateral delts to near failure while central nervous energy is high.
+- **Order Rationale**: **#2 Priority Delt Hypertrophy.** Constant tension resistance profile across full ROM.
 - **Working Sets**: **4 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **0–1**
-- **Target Load**: Lowest pin or 2.5–5.0 kg stack.
+- **Target Weight**: **2.5 kg – 5.0 kg** (Plate 1 or 2 on low cable). *If cables taken*: **6.0 kg DBs** (or 5.0 kg with 2s top pause).
+- **Gym Floor Swap Option**: If cable station is fully occupied, perform Single-Arm Leaning DB Lateral Raise (5.0 kg or 6.0 kg DB).
 - **Form Cue**: Set pulley at wrist/hip height. Stand tall, lead with elbow, hold peak contraction for 1 full second.
+- **Mind-Muscle Cue**: Reach knuckles outward toward the walls; keep shoulder blades pinned down in your back pockets to completely eliminate upper traps.
 
 ---
 
 ### 3. Pec Deck Machine Fly
-- **Order Rationale**: **#3 Chest Isolation.** Pumps chest full of blood without fatiguing triceps.
-- **Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **0–1**
-- **Target Load**: 35–45 kg pin.
-- **Form Cue**: Seat adjusted so handles line up mid-sternum. 3-second slow eccentric. 1-second chest crush at contraction.
+- **Order Rationale**: **#3 Pure Sternal Chest Isolation.** Delivers deep stretch and pump without fatiguing triceps.
+- **Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**
+- **Target Weight**: **35.0 kg pin** (Up +5kg from 30kg). *Fallback if heavy*: **30.0 kg pin** for 12–15 reps with 2s squeeze.
+- **Gym Floor Swap Option**: If Pec Deck is taken, use Low-to-High Cable Crossover (10–12.5 kg/side) or Flat DB Flyes (10.0–12.5 kg DBs).
+- **Form Cue**: Seat adjusted so handles align with mid-sternum. 3-second slow eccentric descent. 1-second chest crush at contraction.
+- **Mind-Muscle Cue**: Think about bringing your inner biceps together to touch your ribcage. Do not let shoulders roll forward at the stretch.
 
 ---
 
 ### 4. DB Lateral Raise (Drop Set on Final Set)
-- **Order Rationale**: **#4 Metabolic Delt Finisher.** Creates extreme metabolic stress.
-- **Working Sets**: **3 sets x 12–15 reps (Final set is a Drop Set)** | Rest: 90 sec | Target RIR: **0**
-- **Target Load**: **5.0 kg DBs** (Drop to 3.0 kg or 2.5 kg on Set 3).
-- **Form Cue**: Slight 15° forward torso lean. Sweep outward toward room corners. Drop 30–40% weight on Set 3 and immediately crank out reps to true failure.
+- **Order Rationale**: **#4 High-Rep Metabolic Delt Finisher.** Recruits high-threshold motor units under extreme burn.
+- **Working Sets**: **3 sets x 12–15 reps (Set 3 is a Drop Set)** | Rest: 90 sec | Target RIR: **0**
+- **Target Weight**: **5.0 kg DBs** (Sets 1–2: 5kg × 12–15 reps; Set 3: 5kg to failure → immediate drop to **2.5 kg or 3.0 kg DBs** to failure). *If 5kg taken*: **6.0 kg DBs** (10–12 reps) or **4.0 kg DBs** (18–20 reps).
+- **Gym Floor Swap Option**: If 5kg DBs taken, use 6kg DBs or perform Plate Lateral Raises with 5kg plates.
+- **Form Cue**: Slight 15° forward torso lean. Sweep outward toward room corners in the scapular plane.
+- **Mind-Muscle Cue**: Collarbone height only. Zero hip momentum. Drop 40–50% load immediately on set 3 without resting more than 5 seconds.
 
 ---
 
 ### 5. Overhead Cable Triceps Extension
-- **Order Rationale**: **#5 Long-Head Triceps Builder.** The long head accounts for 60% of total arm mass and requires full shoulder flexion for maximal stretch.
+- **Order Rationale**: **#5 Long-Head Triceps Builder.** Places long head under maximal mechanical stretch at full shoulder flexion.
 - **Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**
-- **Target Load**: 15–20 kg on cable stack.
-- **Form Cue**: Cable pulley set head-height. Step forward into lunge. Keep upper arms locked in place; extend forearms until elbows lock out.
+- **Target Weight**: **17.5 kg – 20.0 kg pin** on cable stack (Up from 15kg). *Fallback*: **15.0 kg pin** for 12–14 strict reps.
+- **Gym Floor Swap Option**: If cable stack is taken, do Seated Incline DB Overhead Extension with a single **15.0 kg or 17.5 kg DB** held with both hands.
+- **Form Cue**: Cable pulley set at head height. Step forward into a stable lunge. Keep elbows pinned in place and flare 30° out. Full lockout.
+- **Mind-Muscle Cue**: Drop forearms deep behind your neck until biceps touch forearms. Squeeze triceps hard to straighten arms over your head.
 
 ---
 
 ### 6. Rope Triceps Pushdown
-- **Order Rationale**: **#6 Arm Hypertrophy Finisher.** Pure lockout mechanical pump.
+- **Order Rationale**: **#6 Arm Hypertrophy Finisher.** Pure lockout mechanical pump for lateral and medial heads.
 - **Working Sets**: **3 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **0**
-- **Target Load**: 15–22.5 kg on cable stack.
-- **Form Cue**: Pin elbows firmly against ribcage. At full extension, pull the rope ends apart toward the outside of your thighs for maximum contraction.
+- **Target Weight**: **22.5 kg pin** (Up from 20kg). *Fallback*: **20.0 kg pin** for 12–15 reps with 1s lockout hold.
+- **Gym Floor Swap Option**: If rope is missing, use Straight-Bar Cable Pushdown (25.0 kg) or V-Bar Pushdown (22.5 kg).
+- **Form Cue**: Pin elbows firmly against your ribcage. At full downward extension, flare the rope ends outward toward your outer thighs.
+- **Mind-Muscle Cue**: Lock the elbows completely and hold for 1 full second at peak contraction. Control the return to 90° without letting elbows drift forward.

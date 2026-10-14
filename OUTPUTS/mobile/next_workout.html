@@ -109,6 +109,13 @@
             font-weight: 700;
             color: #FFF;
         }
+        .target-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
         .target-tag {
             display: inline-block;
             font-size: 0.74rem;
@@ -117,7 +124,16 @@
             background: rgba(52, 211, 153, 0.1);
             padding: 2px 8px;
             border-radius: 6px;
-            margin-bottom: 8px;
+        }
+        .weight-tag {
+            display: inline-block;
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 2px 8px;
+            border-radius: 6px;
         }
         .quick-cue {
             font-size: 0.82rem;
@@ -214,17 +230,20 @@
         <div class="exercise-card">
             <div class="exercise-header">
                 <span class="badge">#1</span>
-                <span class="ex-name">1. Incline Machine Press or Incline DB Press</span>
+                <span class="ex-name">1. Incline DB Press (or Incline Machine Press)</span>
             </div>
-            <div class="target-tag">**3 sets x 8–10 reps** | Rest: 150 sec | Target RIR: **1–2**</div>
+            <div class="target-row">
+                <div class="target-tag">**3 sets x 8–10 reps** | Rest: 150 sec | Target RIR: **1–2**</div>
+                <div class="weight-tag">🎯 **22.5 kg DBs (Overload Leap: 6–8 reps) OR 20.0 kg DBs (Solidify PR: 10, 10, 10 reps)**</div>
+            </div>
             <p class="quick-cue">Bench set strictly at 30° (higher shifts load to front delts). Retract scapulae, 45° elbow tuck. Deep chest stretch at bottom.</p>
             
         <details class="mmc-details">
             <summary>💡 Mind-Muscle Cue & Execution</summary>
-            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#1 Heavy Compound First.** Demands peak motor unit recruitment.</p>
-            <p class="swap-text">⚡ <strong>If Machine Taken:</strong> If the incline press machine is taken, use the 30° Incline Dumbbell Bench.</p>
-            <p class="mmc-text"></p>
-            
+            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#1 Heavy Compound First.** Demands peak motor unit recruitment when pressing musculature is 100% fresh.</p>
+            <p class="swap-text">⚡ <strong>If Machine Taken:</strong> If 20kg/22.5kg DBs are busy, use Incline Chest Machine (Pin: 45.0–50.0 kg). If DB bench taken, use Flat DB Press (22.5 kg).</p>
+            <p class="mmc-text">Drive biceps across chest at top without banging dumbbells. Keep ribcage high and expanded.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **22.5 kg DBs (Overload Leap: 6–8 reps) OR 20.0 kg DBs (Solidify PR: 10, 10, 10 reps)**</p>
         </details>
         
             <div class="set-tracker">
@@ -237,15 +256,18 @@
                 <span class="badge">#2</span>
                 <span class="ex-name">2. Cable Lateral Raise</span>
             </div>
-            <div class="target-tag">**4 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **0–1**</div>
+            <div class="target-row">
+                <div class="target-tag">**4 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **0–1**</div>
+                <div class="weight-tag">🎯 **2.5 kg – 5.0 kg** (Plate 1 or 2 on low cable). *If cables taken*: **6.0 kg DBs** (or 5.0 kg with 2s top pause).</div>
+            </div>
             <p class="quick-cue">Set pulley at wrist/hip height. Stand tall, lead with elbow, hold peak contraction for 1 full second.</p>
             
         <details class="mmc-details">
             <summary>💡 Mind-Muscle Cue & Execution</summary>
-            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#2 Priority Delt Hypertrophy.** Takes lateral delts to near failure while central nervous energy is high.</p>
-            
-            <p class="mmc-text"></p>
-            
+            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#2 Priority Delt Hypertrophy.** Constant tension resistance profile across full ROM.</p>
+            <p class="swap-text">⚡ <strong>If Machine Taken:</strong> If cable station is fully occupied, perform Single-Arm Leaning DB Lateral Raise (5.0 kg or 6.0 kg DB).</p>
+            <p class="mmc-text">Reach knuckles outward toward the walls; keep shoulder blades pinned down in your back pockets to completely eliminate upper traps.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **2.5 kg – 5.0 kg** (Plate 1 or 2 on low cable). *If cables taken*: **6.0 kg DBs** (or 5.0 kg with 2s top pause).</p>
         </details>
         
             <div class="set-tracker">
@@ -258,15 +280,18 @@
                 <span class="badge">#3</span>
                 <span class="ex-name">3. Pec Deck Machine Fly</span>
             </div>
-            <div class="target-tag">**3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **0–1**</div>
-            <p class="quick-cue">Seat adjusted so handles line up mid-sternum. 3-second slow eccentric. 1-second chest crush at contraction.</p>
+            <div class="target-row">
+                <div class="target-tag">**3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**</div>
+                <div class="weight-tag">🎯 **35.0 kg pin** (Up +5kg from 30kg). *Fallback if heavy*: **30.0 kg pin** for 12–15 reps with 2s squeeze.</div>
+            </div>
+            <p class="quick-cue">Seat adjusted so handles align with mid-sternum. 3-second slow eccentric descent. 1-second chest crush at contraction.</p>
             
         <details class="mmc-details">
             <summary>💡 Mind-Muscle Cue & Execution</summary>
-            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#3 Chest Isolation.** Pumps chest full of blood without fatiguing triceps.</p>
-            
-            <p class="mmc-text"></p>
-            
+            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#3 Pure Sternal Chest Isolation.** Delivers deep stretch and pump without fatiguing triceps.</p>
+            <p class="swap-text">⚡ <strong>If Machine Taken:</strong> If Pec Deck is taken, use Low-to-High Cable Crossover (10–12.5 kg/side) or Flat DB Flyes (10.0–12.5 kg DBs).</p>
+            <p class="mmc-text">Think about bringing your inner biceps together to touch your ribcage. Do not let shoulders roll forward at the stretch.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **35.0 kg pin** (Up +5kg from 30kg). *Fallback if heavy*: **30.0 kg pin** for 12–15 reps with 2s squeeze.</p>
         </details>
         
             <div class="set-tracker">
@@ -279,15 +304,18 @@
                 <span class="badge">#4</span>
                 <span class="ex-name">4. DB Lateral Raise (Drop Set on Final Set)</span>
             </div>
-            <div class="target-tag">**3 sets x 12–15 reps (Final set is a Drop Set)** | Rest: 90 sec | Target RIR: **0**</div>
-            <p class="quick-cue">Slight 15° forward torso lean. Sweep outward toward room corners. Drop 30–40% weight on Set 3 and immediately crank out reps to true failure.</p>
+            <div class="target-row">
+                <div class="target-tag">**3 sets x 12–15 reps (Set 3 is a Drop Set)** | Rest: 90 sec | Target RIR: **0**</div>
+                <div class="weight-tag">🎯 **5.0 kg DBs** (Sets 1–2: 5kg × 12–15 reps; Set 3: 5kg to failure → immediate drop to **2.5 kg or 3.0 kg DBs** to failure). *If 5kg taken*: **6.0 kg DBs** (10–12 reps) or **4.0 kg DBs** (18–20 reps).</div>
+            </div>
+            <p class="quick-cue">Slight 15° forward torso lean. Sweep outward toward room corners in the scapular plane.</p>
             
         <details class="mmc-details">
             <summary>💡 Mind-Muscle Cue & Execution</summary>
-            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#4 Metabolic Delt Finisher.** Creates extreme metabolic stress.</p>
-            
-            <p class="mmc-text"></p>
-            
+            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#4 High-Rep Metabolic Delt Finisher.** Recruits high-threshold motor units under extreme burn.</p>
+            <p class="swap-text">⚡ <strong>If Machine Taken:</strong> If 5kg DBs taken, use 6kg DBs or perform Plate Lateral Raises with 5kg plates.</p>
+            <p class="mmc-text">Collarbone height only. Zero hip momentum. Drop 40–50% load immediately on set 3 without resting more than 5 seconds.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **5.0 kg DBs** (Sets 1–2: 5kg × 12–15 reps; Set 3: 5kg to failure → immediate drop to **2.5 kg or 3.0 kg DBs** to failure). *If 5kg taken*: **6.0 kg DBs** (10–12 reps) or **4.0 kg DBs** (18–20 reps).</p>
         </details>
         
             <div class="set-tracker">
@@ -300,15 +328,18 @@
                 <span class="badge">#5</span>
                 <span class="ex-name">5. Overhead Cable Triceps Extension</span>
             </div>
-            <div class="target-tag">**3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**</div>
-            <p class="quick-cue">Cable pulley set head-height. Step forward into lunge. Keep upper arms locked in place; extend forearms until elbows lock out.</p>
+            <div class="target-row">
+                <div class="target-tag">**3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**</div>
+                <div class="weight-tag">🎯 **17.5 kg – 20.0 kg pin** on cable stack (Up from 15kg). *Fallback*: **15.0 kg pin** for 12–14 strict reps.</div>
+            </div>
+            <p class="quick-cue">Cable pulley set at head height. Step forward into a stable lunge. Keep elbows pinned in place and flare 30° out. Full lockout.</p>
             
         <details class="mmc-details">
             <summary>💡 Mind-Muscle Cue & Execution</summary>
-            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#5 Long-Head Triceps Builder.** The long head accounts for 60% of total arm mass and requires full shoulder flexion for maximal stretch.</p>
-            
-            <p class="mmc-text"></p>
-            
+            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#5 Long-Head Triceps Builder.** Places long head under maximal mechanical stretch at full shoulder flexion.</p>
+            <p class="swap-text">⚡ <strong>If Machine Taken:</strong> If cable stack is taken, do Seated Incline DB Overhead Extension with a single **15.0 kg or 17.5 kg DB** held with both hands.</p>
+            <p class="mmc-text">Drop forearms deep behind your neck until biceps touch forearms. Squeeze triceps hard to straighten arms over your head.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **17.5 kg – 20.0 kg pin** on cable stack (Up from 15kg). *Fallback*: **15.0 kg pin** for 12–14 strict reps.</p>
         </details>
         
             <div class="set-tracker">
@@ -321,15 +352,18 @@
                 <span class="badge">#6</span>
                 <span class="ex-name">6. Rope Triceps Pushdown</span>
             </div>
-            <div class="target-tag">**3 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **0**</div>
-            <p class="quick-cue">Pin elbows firmly against ribcage. At full extension, pull the rope ends apart toward the outside of your thighs for maximum contraction.</p>
+            <div class="target-row">
+                <div class="target-tag">**3 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **0**</div>
+                <div class="weight-tag">🎯 **22.5 kg pin** (Up from 20kg). *Fallback*: **20.0 kg pin** for 12–15 reps with 1s lockout hold.</div>
+            </div>
+            <p class="quick-cue">Pin elbows firmly against your ribcage. At full downward extension, flare the rope ends outward toward your outer thighs.</p>
             
         <details class="mmc-details">
             <summary>💡 Mind-Muscle Cue & Execution</summary>
-            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#6 Arm Hypertrophy Finisher.** Pure lockout mechanical pump.</p>
-            
-            <p class="mmc-text"></p>
-            
+            <p class="flow-text">🔄 <strong>Order Rationale:</strong> **#6 Arm Hypertrophy Finisher.** Pure lockout mechanical pump for lateral and medial heads.</p>
+            <p class="swap-text">⚡ <strong>If Machine Taken:</strong> If rope is missing, use Straight-Bar Cable Pushdown (25.0 kg) or V-Bar Pushdown (22.5 kg).</p>
+            <p class="mmc-text">Lock the elbows completely and hold for 1 full second at peak contraction. Control the return to 90° without letting elbows drift forward.</p>
+            <p class="calib-text">⚖️ <strong>Starting Load Target:</strong> **22.5 kg pin** (Up from 20kg). *Fallback*: **20.0 kg pin** for 12–15 reps with 1s lockout hold.</p>
         </details>
         
             <div class="set-tracker">

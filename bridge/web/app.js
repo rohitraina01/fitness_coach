@@ -240,6 +240,15 @@ function renderWorkout(workout) {
       </div>
     ` : '';
 
+    const weightVal = ex.target_weight || ex.target_load || ex.calibration || "";
+    const weightBadgeHtml = weightVal ? `
+      <div class="ex-weight-target-badge">
+        <span class="weight-icon">🎯</span>
+        <span class="weight-title">Target Weight:</span>
+        <span class="weight-val">${escapeHtml(weightVal).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</span>
+      </div>
+    ` : '';
+
     card.innerHTML = `
       <div class="ex-top">
         <div class="ex-title-wrap">
@@ -248,6 +257,7 @@ function renderWorkout(workout) {
         </div>
         <span class="ex-target-pill">${escapeHtml(ex.target).replace(/\*\*(.*?)\*\*/g, '$1')}</span>
       </div>
+      ${weightBadgeHtml}
       <p class="ex-cue">${escapeHtml(ex.cue)}</p>
       ${mmcHtml}
       <div class="set-row">

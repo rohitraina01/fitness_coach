@@ -131,6 +131,7 @@ def export():
         cue = ""
         mmc = ""
         calibration = ""
+        target_weight = ""
         flow_reason = ""
         swap_option = ""
         sets_count = 3
@@ -150,8 +151,15 @@ def export():
                 mmc = d.replace("**Mind-Muscle Cue**:", "").strip()
             elif "Calibration Target" in d:
                 calibration = d.replace("**Calibration Target**:", "").strip()
+            elif "Target Load" in d or "Target Weight" in d or "Weight Target" in d:
+                target_weight = d.replace("**Target Load**:", "").replace("**Target Weight**:", "").replace("**Weight Target**:", "").strip()
             elif "Stop Cue" in d and not cue:
                 cue = d.replace("**Stop Cue**:", "").strip()
+
+        if not target_weight and calibration:
+            target_weight = calibration
+        if not calibration and target_weight:
+            calibration = target_weight
 
         m_sets = re.search(r"(\d+)\s*sets", target, re.IGNORECASE)
         if m_sets:
@@ -163,6 +171,7 @@ def export():
         json_exercises.append({
             "name": ex["name"],
             "target": target,
+            "target_weight": target_weight,
             "cue": cue,
             "mmc": mmc,
             "calibration": calibration,
@@ -198,6 +207,7 @@ def export():
         """ if (jex['mmc'] or jex['calibration'] or jex['flow_reason']) else ""
 
         sets_buttons = "".join([f'<label><input type="checkbox"> Set {s}</label>' for s in range(1, jex['sets'] + 1)])
+        weight_tag_html = f'<div class="weight-tag">🎯 {jex["target_weight"]}</div>' if jex.get("target_weight") else ''
 
         card = f"""
         <div class="exercise-card">
@@ -205,7 +215,10 @@ def export():
                 <span class="badge">#{idx}</span>
                 <span class="ex-name">{jex['name']}</span>
             </div>
-            <div class="target-tag">{jex['target']}</div>
+            <div class="target-row">
+                <div class="target-tag">{jex['target']}</div>
+                {weight_tag_html}
+            </div>
             <p class="quick-cue">{jex['cue']}</p>
             {mmc_html}
             <div class="set-tracker">
@@ -326,6 +339,13 @@ def export():
             font-weight: 700;
             color: #FFF;
         }}
+        .target-row {{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }}
         .target-tag {{
             display: inline-block;
             font-size: 0.74rem;
@@ -334,7 +354,16 @@ def export():
             background: rgba(52, 211, 153, 0.1);
             padding: 2px 8px;
             border-radius: 6px;
-            margin-bottom: 8px;
+        }}
+        .weight-tag {{
+            display: inline-block;
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 2px 8px;
+            border-radius: 6px;
         }}
         .quick-cue {{
             font-size: 0.82rem;
