@@ -1,5 +1,37 @@
 # INCOMING WORKOUT LOG BUFFER
-# This file receives raw logs submitted from the mobile web app.
-# When you return to your laptop, tell the coach "/log" or "process my incoming log", and it will read this file automatically.
+# Date: 2026-10-16 23:38
+# Session: Push
 
-(No pending unprocessed logs)
+Workout
+2026-10-16 22:13
+Duration: 50m 54s
+
+Incline Dumbbell Press
+Set 1: 10 reps x 20.0 kg
+Set 2: 10 reps x 20.0 kg
+Set 3: 9 reps x 20.0 kg
+
+Overhead Tricep Extension
+Set 1: 10 reps x 15.0 kg
+Set 2: 10 reps x 15.0 kg
+Set 3: 10 reps x 15.0 kg
+
+Cable Lateral Raise
+Set 1: 12 reps x 2.5 kg
+Set 2: 12 reps x 2.5 kg
+Set 3: 16 reps x 2.5 kg
+
+Pec Deck Machine
+Set 1: 12 reps x 35.0 kg
+Set 2: 12 reps x 35.0 kg
+Set 3: 10 reps x 35.0 kg
+
+Dumbbell Lateral Raise
+Set 1: 12 reps x 5.0 kg
+Set 2: 12 reps x 5.0 kg
+Set 3 (dropset): 11 reps x 5.0 kg
+Set 4 (dropset): 14 reps x 2.5 kg
+
+Cable Tricep Pushdown
+Set 1: 12 reps x 20.0 kg
+Set 2: 13 reps x 20.0 kg
