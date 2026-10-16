@@ -124,25 +124,43 @@ def parse_notes_to_sets(raw_notes, catalog):
             rep_matches = re.findall(r"(?:x|\*|@|,)\s*(\d+)", line, re.IGNORECASE)
             reps_list = [int(r) for r in rep_matches] if rep_matches else [10]
 
-        # Warmup classification:
+        # Drop set and warmup classification:
         set_type = "S"
+        parent_idx = None
+        is_dropset_line = any(w in line.lower() for w in ["dropset", "drop set", "drop-set"])
+
         if "warmup" in line.lower() or "warm up" in line.lower() or "feeler" in line.lower():
             set_type = "W"
         elif target_eid == "LEG_PRESS" and load < 30.0:
             set_type = "W"
         elif target_eid == "LEG_EXTENSION" and load < 6.0 and any("10" in l for l in lines):
             set_type = "W"
+        elif is_dropset_line:
+            # If the immediate preceding set was the same exercise, check load
+            if sets_data and sets_data[-1]["exercise"] == target_eid:
+                prev_load = sets_data[-1]["load"]
+                if load < prev_load or sets_data[-1].get("is_dropset_parent"):
+                    set_type = "D"
+                    parent_idx = len(sets_data) - 1
+                else:
+                    set_type = "S"
+                    sets_data[-1]["is_dropset_parent"] = True
+            else:
+                set_type = "S"
 
         for r in reps_list:
-            sets_data.append({
+            set_obj = {
                 "exercise": target_eid,
                 "load": load,
                 "reps": r,
                 "units": "kg",
                 "set_type": set_type,
-                "rir": 2,
+                "rir": 0 if is_dropset_line else 2,
                 "notes": line
-            })
+            }
+            if parent_idx is not None:
+                set_obj["parent_set_index"] = parent_idx
+            sets_data.append(set_obj)
 
     return sets_data
 
@@ -181,13 +199,22 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
         sid = f"S-{date_obj.strftime('%Y%m%d')}-01-{idx:02d}"
         eid = s.get("exercise", "")
         disp_name = catalog.get(eid, {}).get("exercise_name", eid)
+        parent_id = s.get("parent_set_id", "")
+        if not parent_id and "parent_set_index" in s:
+            parent_id = f"S-{date_obj.strftime('%Y%m%d')}-01-{s['parent_set_index']+1:02d}"
+        elif s.get("set_type") == "D" and not parent_id and normalized_sets:
+            for prev in reversed(normalized_sets):
+                if prev["exercise_id"] == eid and prev["set_type"] == "S":
+                    parent_id = prev["set_id"]
+                    break
+
         s_row = {
             "set_id": sid,
             "workout_id": wid,
             "exercise_id": eid,
             "set_order": idx,
             "set_type": s.get("set_type", "S"),
-            "parent_set_id": s.get("parent_set_id", ""),
+            "parent_set_id": parent_id,
             "load": s.get("load", 0.0),
             "units": s.get("units", "kg"),
             "reps": s.get("reps", 10),
@@ -261,7 +288,7 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
 
     print(f"\nWorkout {wid} successfully ingested and verified!")
 
-def ingest_from_buffer():
+def ingest_from_buffer(extra_notes=""):
     buffer_path = os.path.join(LOGS_DIR, "incoming_raw_log.txt")
     if not os.path.exists(buffer_path):
         print(f"Buffer file not found: {buffer_path}")
@@ -301,16 +328,32 @@ def ingest_from_buffer():
     dur_match = re.search(r"Duration:\s*(\d+)m", content, re.IGNORECASE)
     duration_min = int(dur_match.group(1)) if dur_match else 38
 
+    next_workout_path = os.path.join(BASE_DIR, "CURRENT_NEXT_WORKOUT.md")
+    nw_text = ""
+    if os.path.exists(next_workout_path):
+        with open(next_workout_path, "r", encoding="utf-8") as f:
+            nw_text = f.read().upper()
+
     if "pull" in session_type.lower():
-        session_name = "Day 2: Pull A"
+        if "PULL B" in nw_text:
+            session_name = "Day 6: Pull B"
+        else:
+            session_name = "Day 2: Pull A"
     elif "leg" in session_type.lower():
         session_name = "Day 3: Legs & Core"
     elif "push" in session_type.lower():
-        session_name = "Push Session"
+        if "PUSH B" in nw_text:
+            session_name = "Day 5: Push B"
+        else:
+            session_name = "Day 1: Push A"
     else:
         session_name = f"{session_type} Session"
 
-    ingest(date_str, session_type, session_name, duration_min, raw_notes, sets)
+    combined_notes = raw_notes
+    if extra_notes:
+        combined_notes = f"{raw_notes}\n\nTrainee Notes: {extra_notes}"
+
+    ingest(date_str, session_type, session_name, duration_min, combined_notes, sets)
 
     # Clear buffer after successful ingestion
     with open(buffer_path, "w", encoding="utf-8") as f:
@@ -321,6 +364,7 @@ def ingest_from_buffer():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ingest workout into personal coaching system")
     parser.add_argument("--from-buffer", action="store_true", help="Ingest pending raw text from WORKOUT_LOGS/incoming_raw_log.txt")
+    parser.add_argument("--extra-notes", help="Additional notes from chat to attach to raw notes", default="")
     parser.add_argument("--date", help="YYYY-MM-DD", default=datetime.now().strftime("%Y-%m-%d"))
     parser.add_argument("--type", help="Session Type (Push/Pull/Legs)", default="Pull")
     parser.add_argument("--name", help="Session Name (e.g. Pull A)", default="")
@@ -330,7 +374,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.from_buffer:
-        ingest_from_buffer()
+        ingest_from_buffer(extra_notes=args.extra_notes)
     else:
         sets = []
         if args.json_sets:
@@ -340,7 +384,10 @@ if __name__ == "__main__":
             sets = parse_notes_to_sets(args.notes, catalog)
 
         if sets:
-            ingest(args.date, args.type, args.name, args.duration, args.notes, sets)
+            combined = args.notes
+            if args.extra_notes:
+                combined = f"{args.notes}\n\nTrainee Notes: {args.extra_notes}"
+            ingest(args.date, args.type, args.name, args.duration, combined, sets)
         else:
             print("Warning: No sets provided or parsed from notes.")
 
