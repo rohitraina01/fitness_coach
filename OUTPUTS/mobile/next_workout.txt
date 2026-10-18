@@ -1,110 +1,85 @@
-=== DAY 6 - PULL B (HIGH-MMC LAT V-TAPER, DENSITY & ARMS) ===
+=== DAY 1 - PUSH A (UPPER CHEST & DELT HYPERTROPHY) ===
 Note: Evidence-Based Hypertrophy • 5-Day Aesthetic Split
 ------------------------------------
 [COACH PROTOCOLS]
 • 1. Recommended Session Flow & Sequencing Rationale:
-    - Follow this 1 $\rightarrow$ 6 flow for maximum back thickness, V-taper lat width, and arm peak:
-    - 1. **Primer (Lat Wake-Up)**: **Standing Rope Straight-Arm Pulldown** (2 feeler sets × 12–15 reps). Shuts off the biceps and floods the lats with blood so you feel them contract immediately on your heavy compounds.
-    - 2. **Primary Vertical Lat Compound**: **Close-Grip / V-Bar Lat Pulldown** (3 sets × 8–10 reps @ 45–50 kg). Direct sagittal plane line of pull for the mid-to-lower lat fibers.
-    - 3. **Heavy Horizontal Density Anchor**: **Seated Cable Row (V-Bar)** (3 sets × 8–10 reps @ 60.0 kg Overload Leap!). Conquered 55kg × 12, 12, 12 on Oct 14—today we test 60kg!
-    - 4. **Unilateral Lower Lat Sweep**: **Single-Arm Cable Lat Row** (3 sets × 10–12 reps @ 12.5–15 kg). Deep lat stretch and elbow driving straight into the hip crease.
-    - 5. **Posterior Delt Isolation**: **Reverse Pec Deck (Rear Delt Fly)** (3 sets × 10–12 reps @ 15.0 kg). Lock shoulder blades neutral to keep mid-traps out of it.
-    - 6. **Bicep Peak Overload**: **EZ-Bar Bicep Curl** (3 sets × 10–12 reps @ 20.0 kg). Strict form, elbows pinned.
-    - 7. **Arm Width & Forearms**: **Dumbbell Hammer Curl** (3 sets × 10–12 reps @ 7.5 kg DBs). Brachialis focus for 3D arm width.
-• 2. Equipment Leverage: Lifting Wrist Straps (Mandatory):
-    - **Deploy Straps on Movements #2, #3, and #4**: On Oct 14, lifting straps unlocked a 55kg row PR and completely eliminated forearm burnout. Wrap straps tight on all heavy pulldowns and rows today.
+    - Follow this 1 $\rightarrow$ 6 flow for maximum clavicular upper-chest fullness, capped side delts, and horseshoe triceps:
+    - 1. **Primary Upper Chest Driver**: **Incline DB Bench Press** (3 sets × 8–10 reps @ 20.0–22.5 kg DBs). Hits the high-priority clavicular head while fresh. 20kg was conquered for 29 reps on Oct 16—today we test 22.5kg!
+    - 2. **Sternal Chest Compound Anchor**: **Flat BB Bench Press** (3 sets × 6–8 reps @ 42.5–45.0 kg). Sternal chest overload. Touch lower sternum with control; press back and up.
+    - 3. **Primary Shoulder Width Overload**: **DB Lateral Raise** (4 sets × 10–12 reps @ 5.0–6.0 kg DBs). Reaches out to walls with elbows high. Test 6.0 kg on Set 1!
+    - 4. **Pectoral Stretch & Metabolic Contraction**: **Pec Deck Machine Fly** (3 sets × 10–12 reps @ 35.0 kg). Solidify the 35kg PR with a 1-second squeeze at the apex.
+    - 5. **Lateral/Medial Triceps Lockout**: **Cable Triceps Pushdown (Straight Bar)** (3 sets × 10–12 reps @ 20.0–22.5 kg). Pin upper arms to ribs; drive down to full elbow extension.
+    - 6. **Long-Head Triceps Stretch**: **Overhead Cable Triceps Ext** (3 sets × 10–12 reps @ 15.0–17.5 kg). Deep stretch behind the neck to target arm thickness from the front and back.
+• 2. Gym Duration Guardrail: 55–60 Minutes Max:
+    - **Eliminate Weight Hunting**: All starting loads and fallback weights are locked below. Go straight to your target weights without experimental sets.
+    - **Rest Timers**: Rest 150s on Incline DB Press, 180s on Flat BB Bench, 90s on Isolations.
 • 3. Dynamic Warm-Up Protocol (5 Mins):
-    - **Scapular Hangs / Depressions**: 10 slow reps (hang from bar, depress shoulder blades down without bending elbows).
-    - **Band Pull-Aparts**: 20 reps in the transverse plane, squeezing rear delts and rhomboids for 1 second.
-    - **Rope Straight-Arm Feeler**: 1 light set of 15 reps @ 12.5 kg to lubricate the shoulder joints.
+    - **Band Pull-Aparts**: 20 reps in the transverse plane to activate lower traps and rotator cuff.
+    - **Scapular Wall Slides**: 12 slow reps with elbows and wrists flat against wall.
+    - **Incline DB Feeler**: 1 light set of 10 reps @ 12.5 kg DBs to groove 30° pressing path.
 ------------------------------------
 
-[0. Primer: Standing Rope Straight-Arm Pulldown (Lat Activation)]
-  • **Order Rationale**: **#0 Lat Primer.** Neutralizes the biceps and establishes 10/10 mind-muscle connection before touching heavy weights.
-  • **Sets & Reps**: **2 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **2–3 (Feeler / zero failure)**
-  • **Target Weight**: **15.0 kg – 17.5 kg**
-  • **Form Cue**: Slight torso hinge at 15–20°, soft elbow bend locked in place. Pull rope down in a sweeping arc.
-  • **Mind-Muscle Cue**: At the bottom, flare your hands apart past your hips and squeeze your armpits into your sides for 1 full second.
+[1. Incline DB Bench Press]
+  • **Order Rationale**: **#1 Priority Upper Chest Driver.** First movement when neurological drive is 100% fresh.
+  • **Working Sets**: **3 sets x 8–10 reps** | Rest: 150 sec | Target RIR: **1–2**
+  • **Target Weight**: **20.0 kg – 22.5 kg DBs per hand** (Oct 16: 20kg × 10, 10, 9 $\rightarrow$ Test 22.5 kg DBs on Set 1!).
+  • **Gym Floor Swap Option**: Incline Machine Chest Press (40.0–45.0 kg) or 30° Incline Smith Machine Press.
+  • **Warm-Up Ramp**: 12.5 kg × 8 reps, 17.5 kg × 4 reps before working sets.
+  • **Form Cue**: Set bench to **30° (second notch)**. Avoid 45°+ which shifts load to anterior deltoids. Retract and depress shoulder blades into bench.
+  • **Mind-Muscle Cue**: Lower dumbbells with elbows tucked at 45–60°. Think about bringing your biceps together across your upper chest at the top, without clacking dumbbells.
 
-[1. Close-Grip / V-Bar Lat Pulldown]
-  • **Order Rationale**: **#1 Primary Vertical Lat Driver.** Replaces bodyweight pull-ups to isolate pure lat fibers with locked-in thigh stability.
-  • **Working Sets**: **3 sets x 8–10 reps** | Rest: 120 sec | Target RIR: **1–2**
-  • **Target Weight**: **45.0 kg (Set 1 feeler/groove) $\rightarrow$ 50.0 kg (Sets 2 & 3 working load)**
-  • **Gym Floor Swap Option**: Neutral-Grip Mag-Grip or Standard Wide Bar with moderate shoulder-width grip (45.0–50.0 kg).
-  • **Warm-Up Ramp**: 30.0 kg × 8 reps before working sets.
-  • **Form Cue**: Lock thighs tight under pads. Torso leaned back just 10–15°. Drive your elbows straight down into your ribs.
-  • **Mind-Muscle Cue**: Think about bending your elbows into your back pockets. Do not jerk or heave backward.
+[2. Flat Barbell Bench Press]
+  • **Order Rationale**: **#2 Sternal Chest Compound Anchor.** High mechanical tension for mid-to-lower pec fibers.
+  • **Working Sets**: **3 sets x 6–8 reps** | Rest: 180 sec | Target RIR: **1–2**
+  • **Target Weight**: **42.5 kg – 45.0 kg barbell** (Oct 10: 42.5kg × 10 reps PR $\rightarrow$ Target: 45.0 kg × 6–8 reps).
+  • **Gym Floor Swap Option**: Flat Dumbbell Press (20.0–22.5 kg DBs) or Seated Chest Press Machine (50.0–55.0 kg).
+  • **Warm-Up Ramp**: 30.0 kg × 6 reps before working load.
+  • **Form Cue**: Plant feet firmly on the floor. Moderate natural arch. Lower bar under control to lower sternum.
+  • **Mind-Muscle Cue**: Push the floor away with your legs and imagine bending the bar like a horseshoe to engage the chest and protect the rotator cuffs.
 
-[2. Seated Cable Row (V-Bar / Close Grip)]
-  • **Order Rationale**: **#2 Heavy Horizontal Back Density Anchor.** Primary mid-back and lower lat builder.
-  • **Working Sets**: **3 sets x 8–10 reps** | Rest: 120 sec | Target RIR: **1–2**
-  • **Target Weight**: **60.0 kg pin (OVERLOAD LEAP: 8–10 reps)**. *Fallback*: **55.0 kg pin** (10–12 reps if 60kg form breaks).
-  • **Gym Floor Swap Option**: Chest-Supported T-Bar Row Machine (40.0–45.0 kg) or Chest-Supported Row Machine (45.0–50.0 kg).
-  • **Warm-Up Ramp**: 35.0 kg × 8 reps, 47.5 kg × 4 reps before working load.
-  • **Form Cue**: Torso upright at ~85° (minimal momentum). Full stretch forward, initiate pull by setting shoulder blades, then drive elbows backward.
-  • **Mind-Muscle Cue**: Squeeze your mid-back for 1 second at peak contraction. Control the eccentric return for 2 seconds.
+[3. Dumbbell Lateral Raise]
+  • **Order Rationale**: **#3 Primary Shoulder Width Driver.** High priority for V-taper frame.
+  • **Working Sets**: **4 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**
+  • **Target Weight**: **5.0 kg – 6.0 kg DBs per hand** (Oct 10: 5kg × 15 reps $\rightarrow$ Test 6.0 kg DBs on Set 1–2; fall back to 5.0 kg × 12 with 2s negative).
+  • **Gym Floor Swap Option**: Cable Lateral Raise with cuff at wrist height (2.5–3.75 kg pin).
+  • **Form Cue**: Lean torso forward 10–15°. Raise dumbbells in the scapular plane (30° forward of torso line).
+  • **Mind-Muscle Cue**: Push knuckles *outward toward the walls*, NOT upward. Keep pinkies level with thumbs. Depress shoulder blades to shut off upper traps completely.
 
-[3. Single-Arm Cable Lat Row (or Single-Arm High-to-Low Pulldown)]
-  • **Order Rationale**: **#3 Unilateral Lower Lat Sweep.** Matches your natural ribcage angle and fixes side-to-side imbalances.
-  • **Working Sets**: **3 sets x 10–12 reps per side** | Rest: 90 sec | Target RIR: **1**
-  • **Target Weight**: **12.5 kg – 15.0 kg pin** (Completed 12.5kg × 12 on Oct 14).
-  • **Gym Floor Swap Option**: 1-Arm Dumbbell Row with hand braced on bench (15.0–17.5 kg DB).
-  • **Form Cue**: Set cable pulley at knee-to-chest height. Sit or kneel. Hand in neutral grip.
-  • **Mind-Muscle Cue**: Let the cable pull your arm forward for a deep lat stretch. Pull elbow back directly **into your hip crease**. Keep elbow tucked against your side.
-
-[4. Reverse Pec Deck (Rear Delt Fly)]
-  • **Order Rationale**: **#4 Posterior Delt Hypertrophy & Posture Restoration.**
+[4. Pec Deck Machine Fly]
+  • **Order Rationale**: **#4 Pectoral Isolation & Metabolic Stretch.** Isolated horizontal adduction with zero shoulder strain.
   • **Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**
-  • **Target Weight**: **15.0 kg pin** (Oct 14: 15kg × 12, 12, 9 $\rightarrow$ Target today: 12, 12, 12!).
-  • **Gym Floor Swap Option**: Cable Face Pulls with rope (15.0–17.5 kg) or Incline DB Rear Delt Flyes (4.0–5.0 kg DBs).
-  • **Form Cue**: Chest glued against pad, handles at shoulder height. Slight elbow bend locked.
-  • **Mind-Muscle Cue**: Sweep arms wide toward room corners. Do not pinch shoulder blades together—isolate the rear delts.
+  • **Target Weight**: **35.0 kg pin** (Oct 16: 35kg × 12, 12, 10 $\rightarrow$ Target today: 12, 12, 12 Solidification!).
+  • **Gym Floor Swap Option**: Standing Cable Crossover (10.0–12.5 kg per side) or Incline Dumbbell Flyes (10.0–12.5 kg DBs).
+  • **Form Cue**: Seat height aligned so handles are at mid-chest level. Slight bend in elbows locked rigidly.
+  • **Mind-Muscle Cue**: Squeeze chest hard for a 1-second pause at full contraction; take 3 seconds on the eccentric stretch.
 
-[5. EZ-Bar Bicep Curl]
-  • **Order Rationale**: **#5 Direct Bicep Loading.** High mechanical tension for the biceps brachii.
-  • **Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **1**
-  • **Target Weight**: **20.0 kg** (Oct 14: 20kg × 15, 12, 11).
-  • **Gym Floor Swap Option**: Incline DB Curls (7.5 kg DBs) or Standing Cable Curls (15.0–17.5 kg).
-  • **Form Cue**: Stand tall, elbows pinned to sides. Hinge strictly at the elbow joint without swinging hips.
-  • **Mind-Muscle Cue**: Squeeze biceps at the top for 1 second, lower under 2-second control.
+[5. Cable Triceps Pushdown (Straight Bar)]
+  • **Order Rationale**: **#5 Medial & Lateral Triceps Hypertrophy.** Heavy elbow extension.
+  • **Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**
+  • **Target Weight**: **20.0 kg – 22.5 kg pin** (Oct 16: 20kg × 13 reps $\rightarrow$ Advance to 22.5 kg pin).
+  • **Gym Floor Swap Option**: Rope Triceps Pushdown (17.5–20.0 kg pin) or EZ-Bar Skull Crushers (15.0–17.5 kg).
+  • **Form Cue**: Pin elbows tightly against ribcage. Stand upright with slight forward torso hinge.
+  • **Mind-Muscle Cue**: Push bar straight down until forearms lock out completely. Feel the outer horseshoe triceps squeeze for 1 second.
 
-[6. Dumbbell Hammer Curl]
-  • **Order Rationale**: **#6 Brachialis & Forearm Width Finisher.**
-  • **Working Sets**: **3 sets x 10–12 reps** | Rest: 60 sec | Target RIR: **0 (Failure on last set)**
-  • **Target Weight**: **7.5 kg DBs per hand** (Oct 14: 7.5kg × 10 reps).
-  • **Gym Floor Swap Option**: Cable Rope Hammer Curls (17.5–20.0 kg pin).
-  • **Form Cue**: Neutral grip (thumbs up). Upper arms locked against ribs.
-  • **Mind-Muscle Cue**: Squeeze forearms and outer biceps at the top. Strict 3-second negative.
+[6. Overhead Cable Triceps Extension]
+  • **Order Rationale**: **#6 Long-Head Triceps Specialist.** Targets the largest head of the triceps in the lengthened shoulder position.
+  • **Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**
+  • **Target Weight**: **15.0 kg – 17.5 kg pin** (Oct 16: 15kg × 10, 10, 10 $\rightarrow$ Target: 15kg × 12 reps or test 17.5kg on Set 1).
+  • **Gym Floor Swap Option**: Incline DB Overhead Triceps Extension (12.5–15.0 kg single DB held two-handed).
+  • **Form Cue**: Set pulley at chest/shoulder height. Step forward into split stance. Torso leaned forward 30°.
+  • **Mind-Muscle Cue**: Let the rope/bar travel deep behind your head for a massive long-head triceps stretch. Flare elbows slightly and extend straight forward.
 
 ------------------------------------
 [COACHING MASTERCLASS: WHY V-BAR IS PURE LAT]
 
-• 1. The Myth vs. The Anatomical Reality:
-    - **The Gym Myth**: *"If you grip wide, your back gets wide. If you grip close, it hits your inner back and traps."*
-    - **The Anatomical Reality**:
-    - **Wide Grip (Flared Elbows)** $\rightarrow$ Shifts tension to your **Upper Back, Traps, Rhomboids, and Teres Major**.
-    - **Close/Neutral Grip (Tucked Elbows)** $\rightarrow$ Directly isolates your **Lats (the V-Taper wings)**!
+• 1. The 30° vs. 45° Incline Paradox:
+    - **The Gym Trap**: Most gym benches default to 45° or even 60°. At 45°+, EMG studies show that recruitment shifts dramatically away from the clavicular pectoralis and directly into the **Anterior Deltoids**!
+    - **The Sweet Spot**: 30° (typically the second notch on adjustable commercial benches). At 30°, clavicular pec fiber activation peaks while front delt recruitment is minimized.
 
-• 2. Why Wide Grip Does NOT Isolate the Lats:
-    - **Shortened Range of Motion**: A wide grip cuts your active range of motion by roughly 30–40%. You cannot get a full overhead stretch or a deep contraction at the bottom.
-    - **The Muscle Hijack**: When your elbows flare out wide (80°–90°), your humerus moves in the *frontal plane*. Biomechanically, the muscles best positioned to pull from this flared angle are the **Teres Major (the small muscle right at your armpit), the Infraspinatus, and your Rhomboids/Mid-Traps** as your shoulder blades pinch together.
-    - **The Lower Lat Slacks**: Your lower lat fibers run vertically down your spine and insert into your hip/pelvis. When your elbows stay flared out wide, they never travel down toward your hips—meaning your lower lat fibers never fully contract!
-
-• 3. Why the V-Bar / Close Grip is Pure Lat:
-    - **The Direct Line of Pull**: Elbows track in front of your torso, tight against your ribs (*sagittal plane*). This elbow path mirrors the exact anatomical direction of your lat muscle fibers.
-    - **Shoulder Blades Stay Depressed (Traps Shut Off)**: Traps and rhomboids only fire heavily when your shoulder blades retract and pinch together. With a close neutral grip pulling straight down, your shoulder blades stay **down (depressed)** rather than pinching together. This actually **locks your mid-traps and rhomboids OUT of the movement**!
-    - **Huge Range of Motion**: You get a massive stretch at the very top overhead, and your elbows travel all the way down into your ribs for a bone-crushing lower lat contraction.
-
-• 4. Why Do People Think Close Grip Hits Traps? (The One Mistake to Avoid):
-    - **The Common Mistake**: Leaning back 45° to 60°, heaving with the lower back, yanking the V-bar down to the stomach like a seated row, and violently pinching the shoulder blades together. That turns a vertical pulldown into a mid-back row!
-    - **How to Do It Correctly for 100% Pure Lats Today**:
-    - 1. **Torso Upright**: Keep your torso almost completely upright (just a tiny 10°–15° natural lean so the bar clears your forehead).
-    - 2. **Elbows Drive to Ribs**: Don't think about your hands. Focus entirely on driving the points of your elbows straight down into your sides/ribs.
-    - 3. **Don't Pinch Your Shoulder Blades**: Keep your chest tall, but do **not** squeeze your shoulder blades together at the bottom. Stop the pull when your elbows reach your sides.
-
-• 5. Summary Checklist for Today:
-    - **Wide Grip** = Flared elbows $\rightarrow$ Teres Major, Rear Delts & Upper Back.
-    - **V-Bar / Close Grip** = Tucked elbows $\rightarrow$ **Pure Latissimus Dorsi (V-Taper width)**.
+• 2. How to Eliminate Shoulder Clicking on Incline Pressing:
+    - **Scapular Depression**: Before un-racking, pull your shoulder blades *down* toward your butt pockets and pinch them into the bench pad.
+    - **Elbow Angle**: Never flare elbows out 90° like a letter "T". Tuck elbows at 45°–60° from your ribs (like an arrow "$\rightarrow$"). This keeps the supraspinatus tendon out of the subacromial pinch zone.
+    - **Bottom Stretch**: Lower until dumbbells touch the level of your armpits. Do not bounce or drop into passive joint hang. Press up and slightly inward in a smooth arc.
 
 ------------------------------------
 Log: Weight x Reps (RIR) when done.

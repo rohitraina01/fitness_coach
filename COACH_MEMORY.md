@@ -16,15 +16,17 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | 2 | **Legs & Core** | Quads, Hamstrings, Calves, Anti-APT Core | **COMPLETED** | 2026-10-13 (`W-20261013-01`) |
 | 3 | **Pull A** | Lat Width, Upper Back Retraction, Biceps | **COMPLETED** | 2026-10-14 (`W-20261014-01`) |
 | 4 | **Rest / Active Recovery** | 8,000–10,000 Steps, Posture Reset, Mobility | **COMPLETED** | 2026-10-15 |
-| 5 | **Push B** | Sternal Chest, Cable Lateral Delts, Long-Head Triceps | **COMPLETED** | **2026-10-16 (`W-20261016-01`)** |
-| 6 | **Pull B** | Back Density, Rear Delts, Biceps Peak/Brachialis | **NEXT GYM** | **Day 6 (2026-10-17 / 2026-10-18)** |
-| 7 | **Rest** | Complete Recovery & Meal Prep | QUEUED | Day 7 |
+| 5 | **Push B** | Sternal Chest, Cable Lateral Delts, Long-Head Triceps | **COMPLETED** | 2026-10-16 (`W-20261016-01`) |
+| 6 | **Pull B** | Back Density, Rear Delts, Biceps Peak/Brachialis | **COMPLETED** | **2026-10-18 (`W-20261018-01`)** |
+| 7 | **Rest / Active Recovery** | Steps, Mobility, Complete Recovery | **ACTIVE** | **2026-10-19** |
+| 1 | **Push A** | Upper Chest, Heavy Lateral Delts, Triceps | **NEXT GYM** | **Cycle 2 Day 1 (2026-10-20)** |
 
 ### Active Autoregulation History & Tactical Swaps
 - **2026-10-13 Swap**: Trainee reported acute triceps soreness from previous workout. Successfully bumped Legs forward, allowing triceps complete recovery.
 - **2026-10-14 Pull A Executed**: Completed with new lifting wrist straps. High motor unit recruitment on lats (50kg pulldown, 55kg row PR) and biceps (20kg EZ bar).
-- **2026-10-16 Push B Executed (51m)**: Trainee executed smart floor audible: when the cable machine was busy for lateral raises, moved Overhead Triceps Extension to #2 while pressing muscles were 100% fresh. Smashed **35kg Pec Deck Fly PR (+5kg leap)**, broke the rep ceiling on **Cable Lateral Raise (16 reps @ 2.5kg)**, maintained **20kg Incline DB Press (29 reps)**, and completed high-rep drop set burnout.
-- **Current Queue Status**: Push B completed. Pressing musculature and lateral delts are in 48–72h recovery. Pulling musculature (lats, upper back, rear delts, biceps) is 100% fresh after 3 days of rest. Next gym target: **Day 6: Pull B**.
+- **2026-10-16 Push B Executed (51m)**: Trainee executed smart floor audible: moved Overhead Triceps Extension to #2. Smashed **35kg Pec Deck Fly PR (+5kg leap)**, broke rep ceiling on **Cable Lateral Raise (16 reps @ 2.5kg)**, maintained **20kg Incline DB Press (29 reps)**.
+- **2026-10-18 Pull B Executed (101m)**: Smashed **60kg × 12 and 65kg × 12 Seated Cable Row All-Time PR (+10kg Overload Leap)**! Rear Delt Fly cleared double progression (15kg × 12, 12, 12). Hammer Curl broke rep ceiling (7.5kg × 15 [PR]). Single-arm cable row identified with seated torso swinging, fatigue accumulation from hunting weights, and mild anterior shoulder strain; flagged for stabilization or swap to One-Arm DB Row on bench. Duration directive: lock starting weights to compress back to 55–65m.
+- **Current Queue Status**: Pull B completed. Pulling musculature and biceps in 48–72h recovery. Pressing musculature and lateral delts are rested (last trained Oct 16, 48h+). Legs & Core are 100% recovered (5 days rest). Next gym target: **Day 1: Push A** (with **Day 3: Legs & Core** as alternate floor audible).
 
 ---
 
@@ -32,12 +34,12 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 
 | Muscle Group | Soreness / Recovery Status | Freshness (1–10) | Tactical Directive for Next Session |
 | :--- | :---: | :---: | :--- |
-| **Chest & Front Delts** | **High Fatigue (Trained Oct 16)** | **3/10** | 6 heavy working sets completed. 48–72h recovery in progress. Zero pressing. |
-| **Triceps** | **High Fatigue (Trained Oct 16)** | **3/10** | 5 direct sets completed (Overhead Ext + Pushdown). Full rest. |
-| **Lateral Delts** | **High Fatigue (Trained Oct 16)** | **3/10** | 7 total sets completed including drop set. Allow full supercompensation. |
-| **Lats & Upper Back** | **100% Fresh** (Last trained Oct 14) | **10/10** | Fully primed for heavy 60kg Seated Row leap, Pull-ups, and DB Rows. |
-| **Biceps & Brachialis** | **100% Fresh** (Full 3-day rest) | **10/10** | Ready for high mechanical tension on Incline DB Curls & Hammer Curls. |
-| **Quads & Hamstrings** | **Recovered** (Last trained Oct 13) | **9/10** | Completely adapted. Zero lower body loading today. |
+| **Chest & Front Delts** | **Recovered (Trained Oct 16)** | **8/10** | 48h+ rest. Primed for heavy Incline DB Press (20–22.5 kg) and Flat BB Bench. |
+| **Triceps** | **Recovered (Trained Oct 16)** | **8/10** | Fully adapted. Ready for heavy straight-bar pushdowns & overhead extensions. |
+| **Lateral Delts** | **Recovered (Trained Oct 16)** | **8/10** | Supercompensated from drop-set workout. Ready for heavy DB lateral raises. |
+| **Lats & Upper Back** | **High Fatigue (Trained Oct 18)** | **2/10** | 13 direct working sets completed. 48–72h recovery mandatory. Zero pulling. |
+| **Biceps & Brachialis** | **High Fatigue (Trained Oct 18)** | **2/10** | Heavy mechanical loading completed. Full rest required. |
+| **Quads & Hamstrings** | **100% Fresh** (Last trained Oct 13) | **10/10** | 5 days of rest. Completely fresh for next lower body session. |
 | **Core / Pelvis** | **Recovered** | **9/10** | Maintain strict neutral pelvis throughout workday desk sitting. |
 
 ---
@@ -96,3 +98,4 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | **2026-10-15** | Explicit Target Weight Requirement | Upgraded mobile cards, exporter, and plan with high-visibility target kg, fallback weights, and rep guidelines. | Deployed to Mobile App |
 | **2026-10-16** | Push B Completed (51m) | Smashed 35kg Pec Deck Fly PR (+5kg), broke 2.5kg Cable Lateral rep ceiling (16 reps). Tactical floor audible approved. | Logged (`W-20261016-01`) |
 | **2026-10-17** | Queue Advanced to Pull B | Pressing muscles entering recovery; pulling muscles 100% fresh. Programmed 60kg Seated Row Overload Leap. | Active on Mobile |
+| **2026-10-18** | Pull B Completed (101m) | Smashed 60kg × 12 & 65kg × 12 Seated Row PRs (+10kg leap); Hammer Curl 7.5kg × 15 PR. Single-arm cable row identified with seated swinging & shoulder irritation. Advised One-Arm DB Row on bench or stabilized cues. Set duration reduction directive. | Logged (`W-20261018-01`) |

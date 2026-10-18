@@ -33,4 +33,5 @@ FLOOR_CRUNCH,Bodyweight Floor Crunch,Abs,Obliques,Bodyweight,12-15,60,bw_plus,Ti
 LYING_LEG_RAISE,Lying Leg Raise,Abs,Hip Flexors,Bodyweight,12-15,60,bw_plus,Tier 2
 EZ_BAR_CURL,EZ-Bar Bicep Curl,Biceps,Brachialis,Barbell,10-12,90,combined,Tier 1
 SINGLE_ARM_LAT_PULLDOWN,Single-Arm Cable Lat Pulldown,Lats,Teres Major,Cable,10-12,90,machine_pin,Tier 1
+SINGLE_ARM_CABLE_ROW,Single-Arm Cable Row,Lats,"Upper Back, Biceps",Cable,10-12,90,machine_pin,Tier 1
 

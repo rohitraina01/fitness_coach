@@ -1,5 +1,44 @@
 [
   {
+    "workout_id": "W-20261018-01",
+    "date": "2026-10-18",
+    "session_type": "Pull (Day 6: Pull B)",
+    "duration": "101 min",
+    "exercises": [
+      {
+        "name": "Straight-Arm Cable Pulldown",
+        "summary": "Straight-Arm Cable Pulldown: 15.0kg x 12, 15.0kg x 12, 15.0kg x 12"
+      },
+      {
+        "name": "Lat Pulldown",
+        "summary": "Lat Pulldown: 45.0kg x 10, 45.0kg x 8, 40.0kg x 8"
+      },
+      {
+        "name": "Seated Cable Row",
+        "summary": "Seated Cable Row: 60.0kg x 12, 65.0kg x 12, 65.0kg x 9"
+      },
+      {
+        "name": "Single-Arm Cable Row",
+        "summary": "Single-Arm Cable Row: 12.0kg x 10, 15.0kg x 15, 20.0kg x 12, 15.0kg x 12"
+      },
+      {
+        "name": "Reverse Pec Deck (Rear Delt Fly)",
+        "summary": "Reverse Pec Deck (Rear Delt Fly): 15.0kg x 12, 15.0kg x 12, 15.0kg x 12"
+      },
+      {
+        "name": "EZ-Bar Bicep Curl",
+        "summary": "EZ-Bar Bicep Curl: 20.0kg x 12, 20.0kg x 10, 20.0kg x 10"
+      },
+      {
+        "name": "Dumbbell Hammer Curl",
+        "summary": "Dumbbell Hammer Curl: 5.0kg x 12, 7.5kg x 15, 7.5kg x 11"
+      }
+    ],
+    "raw_text": "=== WORKOUT REPORT ===\nPull b i guess not a but sending in pull a section as I can see pull b here in app\nName:      Workout\nDate:      Sunday, Oct 18 2026 \u2013 1:27 PM\nDuration:  101m 35s\nVolume:    5955.0 kg\nSets:      22\nExercises: 7",
+    "template_text": "Straight-Arm Cable Pulldown: 15.0kg x 12, 15.0kg x 12, 15.0kg x 12\nLat Pulldown: 45.0kg x 10, 45.0kg x 8, 40.0kg x 8\nSeated Cable Row: 60.0kg x 12, 65.0kg x 12, 65.0kg x 9\nSingle-Arm Cable Row: 12.0kg x 10, 15.0kg x 15, 20.0kg x 12, 15.0kg x 12\nReverse Pec Deck (Rear Delt Fly): 15.0kg x 12, 15.0kg x 12, 15.0kg x 12\nEZ-Bar Bicep Curl: 20.0kg x 12, 20.0kg x 10, 20.0kg x 10\nDumbbell Hammer Curl: 5.0kg x 12, 7.5kg x 15, 7.5kg x 11",
+    "copy_prompt": "/log\n# Session: Pull (Day 6: Pull B) (2026-10-18)\nStraight-Arm Cable Pulldown: 15.0kg x 12, 15.0kg x 12, 15.0kg x 12\nLat Pulldown: 45.0kg x 10, 45.0kg x 8, 40.0kg x 8\nSeated Cable Row: 60.0kg x 12, 65.0kg x 12, 65.0kg x 9\nSingle-Arm Cable Row: 12.0kg x 10, 15.0kg x 15, 20.0kg x 12, 15.0kg x 12\nReverse Pec Deck (Rear Delt Fly): 15.0kg x 12, 15.0kg x 12, 15.0kg x 12\nEZ-Bar Bicep Curl: 20.0kg x 12, 20.0kg x 10, 20.0kg x 10\nDumbbell Hammer Curl: 5.0kg x 12, 7.5kg x 15, 7.5kg x 11"
+  },
+  {
     "workout_id": "W-20261016-01",
     "date": "2026-10-16",
     "session_type": "Push (Day 5: Push B)",
@@ -212,40 +251,5 @@
     "raw_text": "2026-10-01 \u2014 Pull Day\nDuration: 83m 36s\nReported volume: 3,535 kg, Reported sets: 22, Reported exercises: 9\nPull-Up: BW \u00d7 3\nLat Pulldown: 50 kg \u00d7 9 \u2014 PR, 50 kg \u00d7 6, 45 kg \u00d7 7\nChest-Supported Row Machine: 20 kg \u00d7 12\nDumbbell Row: 10 kg \u00d7 12, 10 kg \u00d7 12, 10 kg \u00d7 12\nMissing data: Five exercises and set details not available in currently recovered record. Do not fabricate.",
     "template_text": "Pull-Up: 0.0kg x 3\nLat Pulldown: 50.0kg x 9, 50.0kg x 6, 45.0kg x 7\nChest-Supported Row Machine: 20.0kg x 12\nOne-Arm Dumbbell Row: 10.0kg x 12, 10.0kg x 12, 10.0kg x 12",
     "copy_prompt": "/log\n# Session: Pull Workout (2026-10-01)\nPull-Up: 0.0kg x 3\nLat Pulldown: 50.0kg x 9, 50.0kg x 6, 45.0kg x 7\nChest-Supported Row Machine: 20.0kg x 12\nOne-Arm Dumbbell Row: 10.0kg x 12, 10.0kg x 12, 10.0kg x 12"
-  },
-  {
-    "workout_id": "W-20260928-01",
-    "date": "2026-09-28",
-    "session_type": "Push Workout",
-    "duration": "112 min 23 sec",
-    "exercises": [
-      {
-        "name": "Incline DB Press",
-        "summary": "Incline DB Press: 20.0kg x 9, 20.0kg x 8, 20.0kg x 7"
-      },
-      {
-        "name": "DB Lateral Raise",
-        "summary": "DB Lateral Raise: 5.0kg x 14, 5.0kg x 13, 5.0kg x 15, 5.0kg x 5"
-      },
-      {
-        "name": "Flat BB Bench Press",
-        "summary": "Flat BB Bench Press: 37.5kg x 10, 42.5kg x 6, 42.5kg x 5"
-      },
-      {
-        "name": "Pec Deck Machine Fly",
-        "summary": "Pec Deck Machine Fly: 30.0kg x 10, 30.0kg x 8, 30.0kg x 8"
-      },
-      {
-        "name": "Overhead Rope Ext",
-        "summary": "Overhead Rope Ext: 20.0kg x 10, 15.0kg x 14, 15.0kg x 10"
-      },
-      {
-        "name": "Cable Triceps Pushdown",
-        "summary": "Cable Triceps Pushdown: 25.0kg x 10"
-      }
-    ],
-    "raw_text": "2026-09-28 \u2014 Push Day\nDuration: 112m 23s\nReported volume: 3,147.5 kg, Reported sets: 17\nIncline Dumbbell Press: 20 kg \u00d7 9 \u2014 PR, 20 kg \u00d7 8, 20 kg \u00d7 7\nDumbbell Lateral Raise: 5 kg \u00d7 14, 5 kg \u00d7 13, 5 kg \u00d7 15, 5 kg \u00d7 5\nBarbell Bench Press: 37.5 kg \u00d7 10 \u2014 PR, 42.5 kg \u00d7 6 \u2014 PR, 42.5 kg \u00d7 5\nPec Deck: 30 kg \u00d7 10, 30 kg \u00d7 8, 30 kg \u00d7 8\nOverhead Rope Extension: 20 kg \u00d7 10, 15 kg \u00d7 14, 15 kg \u00d7 10\nCable Triceps Pushdown: 25 kg \u00d7 10\nData note: 17 reported sets vs 18 individual entries listed. Discrepancy preserved.",
-    "template_text": "Incline DB Press: 20.0kg x 9, 20.0kg x 8, 20.0kg x 7\nDB Lateral Raise: 5.0kg x 14, 5.0kg x 13, 5.0kg x 15, 5.0kg x 5\nFlat BB Bench Press: 37.5kg x 10, 42.5kg x 6, 42.5kg x 5\nPec Deck Machine Fly: 30.0kg x 10, 30.0kg x 8, 30.0kg x 8\nOverhead Rope Ext: 20.0kg x 10, 15.0kg x 14, 15.0kg x 10\nCable Triceps Pushdown: 25.0kg x 10",
-    "copy_prompt": "/log\n# Session: Push Workout (2026-09-28)\nIncline DB Press: 20.0kg x 9, 20.0kg x 8, 20.0kg x 7\nDB Lateral Raise: 5.0kg x 14, 5.0kg x 13, 5.0kg x 15, 5.0kg x 5\nFlat BB Bench Press: 37.5kg x 10, 42.5kg x 6, 42.5kg x 5\nPec Deck Machine Fly: 30.0kg x 10, 30.0kg x 8, 30.0kg x 8\nOverhead Rope Ext: 20.0kg x 10, 15.0kg x 14, 15.0kg x 10\nCable Triceps Pushdown: 25.0kg x 10"
   }
 ]

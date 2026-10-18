@@ -94,6 +94,12 @@
 - **Execution Cues**: Neutral grip (palms facing each other). Controlled curl without swinging shoulders.
 - **Progression Model**: Double progression, 8–12 reps.
 
+### 2.9 Single-Arm Cable Row (`SINGLE_ARM_CABLE_ROW`)
+- **Primary Movers**: Latissimus Dorsi (Iliac / Thoracic lower lat division).
+- **Secondary Movers**: Teres Major, Posterior Deltoid, Biceps Brachii.
+- **Execution Cues**: Position pulley at knee-to-mid-thigh height. Brace the non-working arm on the bench or knee for stability. Allow the working arm to fully stretch forward into protraction. Initiate the pull by driving the elbow back tight against the ribcage straight toward the hip crease / waistband. Do NOT rotate or twist the torso or yank with the shoulder. Keep chest locked and stop when the elbow reaches the torso.
+- **Progression Model**: Double progression, 10–12 reps. Increment by +1 pin or +2.5 kg.
+
 ---
 
 ## 3. LOWER BODY & CORE (QUADS, HAMSTRINGS, GLUTES, CALVES, ABS)

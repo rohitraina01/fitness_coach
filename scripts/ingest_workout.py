@@ -52,6 +52,10 @@ def match_exercise(line, catalog):
         return "LYING_LEG_RAISE", "Lying Leg Raise"
     if "single arm lat pulldown" in line_clean or "single arm pulldown" in line_clean:
         return "SINGLE_ARM_LAT_PULLDOWN", "Single-Arm Cable Lat Pulldown"
+    if "single arm cable row" in line_clean or "single arm lat row" in line_clean or "single arm row" in line_clean:
+        return "SINGLE_ARM_CABLE_ROW", "Single-Arm Cable Row"
+    if "straight arm pulldown" in line_clean or "straight arm" in line_clean:
+        return "STRAIGHT_ARM_PULLDOWN", "Straight-Arm Cable Pulldown"
     if "lat pulldown" in line_clean:
         return "LAT_PULLDOWN", "Lat Pulldown"
     if "pull up" in line_clean or "pull-up" in line_clean:
@@ -148,6 +152,8 @@ def parse_notes_to_sets(raw_notes, catalog):
             else:
                 set_type = "S"
 
+        is_pr_flag = 1 if "[pr]" in line.lower() or " pr" in line.lower() else 0
+
         for r in reps_list:
             set_obj = {
                 "exercise": target_eid,
@@ -155,7 +161,8 @@ def parse_notes_to_sets(raw_notes, catalog):
                 "reps": r,
                 "units": "kg",
                 "set_type": set_type,
-                "rir": 0 if is_dropset_line else 2,
+                "rir": 0 if is_dropset_line or is_pr_flag else 2,
+                "is_pr": is_pr_flag,
                 "notes": line
             }
             if parent_idx is not None:
@@ -170,8 +177,31 @@ def append_csv(filename, fieldnames, row_dict):
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writerow(row_dict)
 
+def get_historical_prs():
+    sets_path = os.path.join(DATA_DIR, "workout_sets.csv")
+    prs = {}
+    if os.path.exists(sets_path):
+        with open(sets_path, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for r in reader:
+                eid = r["exercise_id"]
+                try:
+                    load = float(r["load"]) if r["load"] else 0.0
+                    reps = int(r["reps"]) if r["reps"] else 0
+                except (ValueError, TypeError):
+                    continue
+                if eid not in prs:
+                    prs[eid] = {"max_load": 0.0, "max_reps_at_max_load": 0}
+                if load > prs[eid]["max_load"]:
+                    prs[eid]["max_load"] = load
+                    prs[eid]["max_reps_at_max_load"] = reps
+                elif load == prs[eid]["max_load"] and reps > prs[eid]["max_reps_at_max_load"]:
+                    prs[eid]["max_reps_at_max_load"] = reps
+    return prs
+
 def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_data):
     catalog = load_catalog()
+    hist_prs = get_historical_prs()
     date_obj = datetime.strptime(date_str, "%Y-%m-%d")
     year_str = date_obj.strftime("%Y")
     month_str = date_obj.strftime("%Y-%m")
@@ -208,6 +238,23 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
                     parent_id = prev["set_id"]
                     break
 
+        load_val = s.get("load", 0.0)
+        reps_val = s.get("reps", 10)
+        is_pr_val = s.get("is_pr", 0)
+
+        if not is_pr_val and eid in hist_prs and hist_prs[eid]["max_load"] > 0:
+            if load_val > hist_prs[eid]["max_load"]:
+                is_pr_val = 1
+            elif load_val == hist_prs[eid]["max_load"] and reps_val > hist_prs[eid]["max_reps_at_max_load"]:
+                is_pr_val = 1
+
+        if is_pr_val and eid in hist_prs:
+            if load_val > hist_prs[eid]["max_load"]:
+                hist_prs[eid]["max_load"] = load_val
+                hist_prs[eid]["max_reps_at_max_load"] = reps_val
+            elif load_val == hist_prs[eid]["max_load"] and reps_val > hist_prs[eid]["max_reps_at_max_load"]:
+                hist_prs[eid]["max_reps_at_max_load"] = reps_val
+
         s_row = {
             "set_id": sid,
             "workout_id": wid,
@@ -215,13 +262,13 @@ def ingest(date_str, session_type, session_name, duration_min, raw_notes, sets_d
             "set_order": idx,
             "set_type": s.get("set_type", "S"),
             "parent_set_id": parent_id,
-            "load": s.get("load", 0.0),
+            "load": load_val,
             "units": s.get("units", "kg"),
-            "reps": s.get("reps", 10),
+            "reps": reps_val,
             "rir": s.get("rir", 2),
             "rpe": s.get("rpe", ""),
             "rest_sec": s.get("rest_sec", 90),
-            "is_pr": s.get("is_pr", 0),
+            "is_pr": is_pr_val,
             "notes": s.get("notes", "")
         }
         append_csv("workout_sets.csv", s_fields, s_row)
