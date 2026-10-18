@@ -1,5 +1,63 @@
 # INCOMING WORKOUT LOG BUFFER
-# This file receives raw logs submitted from the mobile web app.
-# When you return to your laptop, tell the coach "/log" or "process my incoming log", and it will read this file automatically.
+# Date: 2026-10-18 20:44
+# Session: Pull
 
-(No pending unprocessed logs)
+=== WORKOUT REPORT ===
+
+Pull b i guess not a but sending in pull a section as I can see pull b here in app
+Name:      Workout
+Date:      Sunday, Oct 18 2026 – 1:27 PM
+Duration:  101m 35s
+Volume:    5955.0 kg
+Sets:      22
+Exercises: 7
+
+--- Straight Arm Pulldown ---
+  Set 1: 15.0 kg × 12 reps
+  Set 2: 15.0 kg × 12 reps
+  Set 3: 15.0 kg × 12 reps
+
+--- Close Grip Lat Pulldown ---
+  Set 1: 45.0 kg × 10 reps
+  Set 2: 45.0 kg × 8 reps
+  Set 3: 40.0 kg × 8 reps
+
+--- Seated Row (V-Bar) ---
+  Set 1: 60.0 kg × 12 reps
+  Set 2: 65.0 kg × 12 reps
+  Set 3: 65.0 kg × 9 reps
+
+--- Single Arm Cable Row ---
+  Set 1: 12.0 kg × 10 reps
+  Set 2: 15.0 kg × 15 reps
+  Set 3: 20.0 kg × 12 reps
+  Set 4: 15.0 kg × 12 reps
+
+--- Machine Rear Delt Fly ---
+  Set 1: 15.0 kg × 12 reps
+  Set 2: 15.0 kg × 12 reps
+  Set 3: 15.0 kg × 12 reps
+
+--- EZ Bar Curl ---
+  Set 1: 20.0 kg × 12 reps
+  Set 2: 20.0 kg × 10 reps
+  Set 3: 20.0 kg × 10 reps
+
+--- Hammer Curl ---
+  Set 1: 5.0 kg × 12 reps
+  Set 2: 7.5 kg × 15 reps [PR]
+  Set 3: 7.5 kg × 11 reps
+
+--- XP ---
+  Rear Delts: +54 XP
+  Biceps: +118 XP
+  Forearms: +58 XP
+  Lats: +130 XP
+  Upper Back: +82 XP
+  Abs: +18 XP
+  Total: +460 XP
+========================
+
+
+All went great except single arm lat now what bad in it idk... Felt or not felt MMC idk .. just felt kinda weird idk which muscle from I was pulling kinda all went tired and I was going and going in small can't pull in hard so took some time to find the weight suited for rep also I hard swing while seating make i shoulder a bit ouch not so much I think will be good next session ...
+But I need a proper guide to do this ex and to feel if I should continue a proper guide and how to feel it and do it ... Maybe not done that kuch so.. but idk you decide based on whatever my history this ex history reputation and all
