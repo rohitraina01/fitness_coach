@@ -94,15 +94,16 @@ Perform either mid-day at your desk or immediately after work to reverse neck pa
 
 ---
 
-### DAY 6: PULL B (BACK DENSITY, REAR DELTS, FOREARMS)
+### DAY 6: PULL B (HIGH-MMC LAT V-TAPER, DENSITY & ARMS)
 | Order | Exercise | Sets | Rep Range | Rest (s) | Target RIR | Execution Cues & Progression |
 | :---: | :--- | :---: | :---: | :---: | :---: | :--- |
-| 1 | **Pull-Up or Weighted Pull-Up** | 3 | 6–8 | 180 | 1–2 | Full dead-hang stretch. Chin clear over bar. |
-| 2 | **Seated Cable Row (V-Bar or Neutral)** | 3 | 8–10 | 120 | 1–2 | Pull to navel. Full scapular stretch and retract. |
-| 3 | **One-Arm Dumbbell Row** | 3 | 8–10 | 90 | 1–2 | Pull dumbbell to hip crease for lat emphasis. |
-| 4 | **Face Pulls or Rear Delt Fly** | 3 | 12–15 | 60 | 0–1 | External shoulder rotation at peak. |
-| 5 | **Incline Dumbbell Curl** | 3 | 10–12 | 90 | 0–1 | Bench at 45°. Stretches long head of biceps. |
-| 6 | **Standing Hammer Curl / Reverse Curl** | 3 | 10–12 | 60 | 0–1 | Forearm & brachialis hypertrophy. |
+| 0 | **Standing Rope Straight-Arm Pulldown** | 2 | 12–15 | 60 | 2–3 | **Primer / Lat Wake-Up.** Soft elbows locked, flare rope past hips. Floods lats with blood. |
+| 1 | **Close-Grip / V-Bar Lat Pulldown** | 3 | 8–10 | 120 | 1–2 | **Primary Vertical Compound.** Sagittal plane lat line. Drive elbows down to ribs. 45–50 kg. |
+| 2 | **Seated Cable Row (V-Bar or Neutral)** | 3 | 8–10 | 120 | 1–2 | **Primary Horizontal Density.** 60.0 kg Overload Leap! Full stretch and mid-back contraction. |
+| 3 | **Single-Arm Cable Lat Row** | 3 | 10–12 | 90 | 1 | **Unilateral Lat Isolation.** Pull straight into hip crease. Deep stretch on return. 12.5–15 kg. |
+| 4 | **Reverse Pec Deck (Rear Delt Fly)** | 3 | 10–12 | 90 | 0–1 | Neutral scapulae, sweep knuckles wide to corners. 15.0 kg. |
+| 5 | **EZ-Bar Bicep Curl** | 3 | 10–12 | 90 | 1 | Elbows pinned to ribs. Full extension and contraction. 20.0 kg. |
+| 6 | **Dumbbell Hammer Curl** | 3 | 10–12 | 60 | 0 | Neutral grip. Targets brachialis & brachioradialis for 3D arm thickness. 7.5 kg DBs. |
 
 ---
 
