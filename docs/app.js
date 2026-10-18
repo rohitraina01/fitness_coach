@@ -266,6 +266,37 @@ function renderWorkout(workout) {
     `;
     feed.appendChild(card);
   });
+
+  // Render Masterclass Card if present
+  if (workout.masterclass && workout.masterclass.length > 0) {
+    const mcCard = document.createElement("div");
+    mcCard.className = "ex-card masterclass-card";
+    mcCard.style.border = "1px solid rgba(251, 146, 60, 0.4)";
+    mcCard.style.background = "linear-gradient(145deg, #1e293b, #0f172a)";
+
+    let mcItemsHtml = "";
+    workout.masterclass.forEach(section => {
+      const itemsLi = (section.items || []).map(it => `<li style="margin-bottom:6px;line-height:1.45;">${escapeHtml(it).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li>`).join("");
+      mcItemsHtml += `
+        <div style="margin-bottom:12px;background:rgba(15,23,42,0.6);padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);">
+          <h4 style="color:#38bdf8;font-size:0.84rem;margin-bottom:6px;">${escapeHtml(section.title)}</h4>
+          <ul style="list-style:disc;padding-left:18px;font-size:0.8rem;color:#cbd5e1;">${itemsLi}</ul>
+        </div>
+      `;
+    });
+
+    mcCard.innerHTML = `
+      <div class="ex-top" style="border-bottom:1px solid rgba(251,146,60,0.25);padding-bottom:8px;margin-bottom:10px;">
+        <div class="ex-title-wrap">
+          <span style="font-size:1.1rem;">💡</span>
+          <span class="ex-name" style="color:#fb923c;font-size:0.95rem;">COACHING MASTERCLASS: WHY V-BAR IS PURE LAT</span>
+        </div>
+        <span class="ex-target-pill" style="background:rgba(251,146,60,0.15);color:#fb923c;border-color:rgba(251,146,60,0.3);">ANATOMY GUIDE</span>
+      </div>
+      ${mcItemsHtml}
+    `;
+    feed.appendChild(mcCard);
+  }
 }
 
 function toggleSetCheck(el) {

@@ -111,3 +111,5 @@ Perform either mid-day at your desk or immediately after work to reverse neck pa
 - Complete physical recovery. Meal prep for upcoming training week.
 
 - **Remote Mobile Posture Cue (2026-10-18 18:33:03)**: maintain neutral pelvis while standing
+
+- **Remote Mobile Posture Cue (2026-10-18 18:36:32)**: maintain neutral pelvis while standing

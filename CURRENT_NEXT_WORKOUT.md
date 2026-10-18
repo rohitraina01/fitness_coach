@@ -1,7 +1,7 @@
 # NEXT WORKOUT: DAY 6 - PULL B (HIGH-MMC LAT V-TAPER, DENSITY & ARMS)
 
 *Status: READY FOR EXECUTION*  
-*Updated: 2026-10-18 18:20:00*  
+*Updated: 2026-10-18 18:35:00*  
 *Estimated Duration: 55–60 minutes*  
 *Sequence Context: Pull B focuses on maximum Mind-Muscle Connection (MMC) and direct lat hypertrophy. Pulling musculature is 100% fresh and recovered after 4 days of rest (last pulled Oct 14). We skip bodyweight pull-ups first so 100% of your neural drive and grip go into heavy progressive overload on V-Bar Pulldowns and Rows.*
 
@@ -99,3 +99,34 @@ Follow this 1 $\rightarrow$ 6 flow for maximum back thickness, V-taper lat width
 - **Gym Floor Swap Option**: Cable Rope Hammer Curls (17.5–20.0 kg pin).
 - **Form Cue**: Neutral grip (thumbs up). Upper arms locked against ribs.
 - **Mind-Muscle Cue**: Squeeze forearms and outer biceps at the top. Strict 3-second negative.
+
+---
+
+## 3. COACHING MASTERCLASS: WHY V-BAR / CLOSE-GRIP IS PURE LAT VS WIDE GRIP
+
+### 1. The Myth vs. The Anatomical Reality
+- **The Gym Myth**: *"If you grip wide, your back gets wide. If you grip close, it hits your inner back and traps."*
+- **The Anatomical Reality**: 
+  - **Wide Grip (Flared Elbows)** $\rightarrow$ Shifts tension to your **Upper Back, Traps, Rhomboids, and Teres Major**.
+  - **Close/Neutral Grip (Tucked Elbows)** $\rightarrow$ Directly isolates your **Lats (the V-Taper wings)**!
+
+### 2. Why Wide Grip Does NOT Isolate the Lats
+- **Shortened Range of Motion**: A wide grip cuts your active range of motion by roughly 30–40%. You cannot get a full overhead stretch or a deep contraction at the bottom.
+- **The Muscle Hijack**: When your elbows flare out wide (80°–90°), your humerus moves in the *frontal plane*. Biomechanically, the muscles best positioned to pull from this flared angle are the **Teres Major (the small muscle right at your armpit), the Infraspinatus, and your Rhomboids/Mid-Traps** as your shoulder blades pinch together.
+- **The Lower Lat Slacks**: Your lower lat fibers run vertically down your spine and insert into your hip/pelvis. When your elbows stay flared out wide, they never travel down toward your hips—meaning your lower lat fibers never fully contract!
+
+### 3. Why the V-Bar / Close Grip is Pure Lat
+- **The Direct Line of Pull**: Elbows track in front of your torso, tight against your ribs (*sagittal plane*). This elbow path mirrors the exact anatomical direction of your lat muscle fibers.
+- **Shoulder Blades Stay Depressed (Traps Shut Off)**: Traps and rhomboids only fire heavily when your shoulder blades retract and pinch together. With a close neutral grip pulling straight down, your shoulder blades stay **down (depressed)** rather than pinching together. This actually **locks your mid-traps and rhomboids OUT of the movement**!
+- **Huge Range of Motion**: You get a massive stretch at the very top overhead, and your elbows travel all the way down into your ribs for a bone-crushing lower lat contraction.
+
+### 4. Why Do People Think Close Grip Hits Traps? (The One Mistake to Avoid)
+- **The Common Mistake**: Leaning back 45° to 60°, heaving with the lower back, yanking the V-bar down to the stomach like a seated row, and violently pinching the shoulder blades together. That turns a vertical pulldown into a mid-back row!
+- **How to Do It Correctly for 100% Pure Lats Today**:
+  1. **Torso Upright**: Keep your torso almost completely upright (just a tiny 10°–15° natural lean so the bar clears your forehead).
+  2. **Elbows Drive to Ribs**: Don't think about your hands. Focus entirely on driving the points of your elbows straight down into your sides/ribs.
+  3. **Don't Pinch Your Shoulder Blades**: Keep your chest tall, but do **not** squeeze your shoulder blades together at the bottom. Stop the pull when your elbows reach your sides.
+
+### 5. Summary Checklist for Today
+- **Wide Grip** = Flared elbows $\rightarrow$ Teres Major, Rear Delts & Upper Back.
+- **V-Bar / Close Grip** = Tucked elbows $\rightarrow$ **Pure Latissimus Dorsi (V-Taper width)**.

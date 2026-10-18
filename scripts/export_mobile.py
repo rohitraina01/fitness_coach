@@ -20,13 +20,16 @@ def parse_markdown(content):
     subtitle = "Evidence-Based Hypertrophy • 5-Day Aesthetic Split"
     instructions = []
     exercises = []
+    masterclass = []
     
     current_sec = None
     current_inst = None
     current_ex = None
+    current_mc = None
     
     in_briefing = False
     in_blueprint = False
+    in_masterclass = False
 
     for line in lines:
         stripped = line.strip()
@@ -37,30 +40,59 @@ def parse_markdown(content):
         elif stripped.startswith("## COACHING BRIEFING") or stripped.startswith("## 1. PRE-WORKOUT") or stripped.startswith("## BRIEFING"):
             in_briefing = True
             in_blueprint = False
+            in_masterclass = False
             if current_ex:
                 exercises.append(current_ex)
                 current_ex = None
+            if current_mc:
+                masterclass.append(current_mc)
+                current_mc = None
         elif stripped.startswith("## WORKOUT BLUEPRINT") or stripped.startswith("## 2. WORKOUT BLUEPRINT") or stripped.startswith("## BLUEPRINT"):
             in_briefing = False
             in_blueprint = True
+            in_masterclass = False
+            if current_inst:
+                instructions.append(current_inst)
+                current_inst = None
+            if current_mc:
+                masterclass.append(current_mc)
+                current_mc = None
+        elif any(k in stripped.upper() for k in ["MASTERCLASS", "COACHING NOTE", "DEEP DIVE", "BIOMECHANICS", "APPENDIX"]):
+            in_briefing = False
+            in_blueprint = False
+            in_masterclass = True
+            if current_ex:
+                exercises.append(current_ex)
+                current_ex = None
             if current_inst:
                 instructions.append(current_inst)
                 current_inst = None
         elif stripped.startswith("## "):
             in_briefing = False
             in_blueprint = False
+            in_masterclass = False
             if current_ex:
                 exercises.append(current_ex)
                 current_ex = None
             if current_inst:
                 instructions.append(current_inst)
                 current_inst = None
+            if current_mc:
+                masterclass.append(current_mc)
+                current_mc = None
         elif stripped.startswith("### "):
             header_text = stripped.replace("### ", "").strip()
             if in_briefing:
                 if current_inst:
                     instructions.append(current_inst)
                 current_inst = {
+                    "title": header_text,
+                    "items": []
+                }
+            elif in_masterclass:
+                if current_mc:
+                    masterclass.append(current_mc)
+                current_mc = {
                     "title": header_text,
                     "items": []
                 }
@@ -78,6 +110,13 @@ def parse_markdown(content):
                     current_inst["items"].append(clean_item)
             elif stripped and not stripped.startswith("#") and not stripped.startswith("---"):
                 current_inst["items"].append(stripped)
+        elif in_masterclass and current_mc:
+            if stripped.startswith("- ") or stripped.startswith("• "):
+                clean_item = stripped[2:].strip()
+                if clean_item:
+                    current_mc["items"].append(clean_item)
+            elif stripped and not stripped.startswith("#") and not stripped.startswith("---"):
+                current_mc["items"].append(stripped)
         elif current_ex and stripped.startswith("- "):
             current_ex["details"].append(stripped[2:])
 
@@ -85,8 +124,10 @@ def parse_markdown(content):
         exercises.append(current_ex)
     if current_inst:
         instructions.append(current_inst)
+    if current_mc:
+        masterclass.append(current_mc)
 
-    return title, subtitle, instructions, exercises
+    return title, subtitle, instructions, exercises, masterclass
 
 def export():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -97,7 +138,7 @@ def export():
     with open(NEXT_WORKOUT_MD, "r", encoding="utf-8") as f:
         content = f.read()
 
-    title, subtitle, instructions, exercises = parse_markdown(content)
+    title, subtitle, instructions, exercises, masterclass = parse_markdown(content)
 
     # 1. Plain Text Export
     txt_lines = [
@@ -118,6 +159,15 @@ def export():
         for d in ex["details"]:
             txt_lines.append(f"  • {d}")
     txt_lines.append("\n------------------------------------")
+
+    if masterclass:
+        txt_lines.append("[COACHING MASTERCLASS: WHY V-BAR IS PURE LAT]")
+        for mc in masterclass:
+            txt_lines.append(f"\n• {mc['title']}:")
+            for itm in mc['items']:
+                txt_lines.append(f"    - {itm}")
+        txt_lines.append("\n------------------------------------")
+
     txt_lines.append("Log: Weight x Reps (RIR) when done.")
 
     with open(TXT_OUTPUT, "w", encoding="utf-8") as f:
@@ -227,6 +277,25 @@ def export():
         </div>
         """
         html_cards.append(card)
+
+    masterclass_boxes = ""
+    for mc in masterclass:
+        items_li = "".join([f"<li>{it}</li>" for it in mc['items']])
+        masterclass_boxes += f"""
+        <div class="briefing-box" style="margin-top:8px;">
+            <h4 style="color:var(--accent-orange);">{mc['title']}</h4>
+            <ul>{items_li}</ul>
+        </div>
+        """
+
+    masterclass_html = f"""
+    <details class="coach-accordion" style="margin-top:20px;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.06);" open>
+        <summary style="color:var(--accent-orange);">💡 COACHING MASTERCLASS: WHY V-BAR IS PURE LAT <span>▼</span></summary>
+        <div class="coach-accordion-content">
+            {masterclass_boxes}
+        </div>
+    </details>
+    """ if masterclass else ""
 
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -444,6 +513,8 @@ def export():
         {"".join(html_cards)}
     </main>
 
+    {masterclass_html}
+
     <footer>
         <p>Apex Fitness Coaching System • 100% Evidence-Based Hypertrophy</p>
     </footer>
@@ -461,6 +532,7 @@ def export():
         "subtitle": subtitle,
         "instructions": instructions,
         "exercises": json_exercises,
+        "masterclass": masterclass,
         "raw_markdown": content
     }
 
