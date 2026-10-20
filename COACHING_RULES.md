@@ -85,3 +85,11 @@ Any workout plan or instruction given to the trainee must automatically update t
 1. **Top Collapsible Briefing**: Every workout card on the app must feature a collapsible **Master Coach Protocols & Warm-Up** briefing accordion (dynamic warm-up, intensity/RIR rules, architectural guardrails).
 2. **Per-Exercise MMC Drawers**: Every exercise card must feature an expandable **💡 Mind-Muscle Cue & Execution** drawer with visceral execution cues and starting load guidance.
 3. **Instant Mobile Export & GitHub Deployment**: Whenever workout instructions change, automatically run `python scripts/export_mobile.py`, synchronize `docs/` and `bridge/web/`, and push to GitHub `origin/master`.
+
+---
+
+## 9. STRICT SPLIT BALANCING & ANTI-LEG-SKIPPING GOVERNANCE
+- **Max Consecutive Upper-Body Cap (Strict 2-Session Limit)**:
+  - The system strictly prohibits prescribing more than **2 consecutive upper-body sessions (Push or Pull)** without an intervening **Legs & Core** session.
+  - If a Push session and a Pull session have both been completed, the next scheduled session is **HARD LOCKED to Day 3: Legs & Core**.
+  - Lower body and anti-APT core work must NEVER be relegated to a passive "alternate floor audible". Reversing Anterior Pelvic Tilt and maintaining balanced muscular development requires non-negotiable lower body frequency.
