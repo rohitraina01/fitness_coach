@@ -19,15 +19,16 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | 5 | **Push B** | Sternal Chest, Cable Lateral Delts, Long-Head Triceps | **COMPLETED** | 2026-10-16 (`W-20261016-01`) |
 | 6 | **Pull B** | Back Density, Rear Delts, Biceps Peak/Brachialis | **COMPLETED** | 2026-10-18 (`W-20261018-01`) |
 | 7 | **Push A (Cycle 2)** | Upper Chest, Heavy Lateral Delts, Triceps | **COMPLETED** | **2026-10-19 (`W-20261019-01`)** |
-| 8 | **Pull A (Cycle 2)** | Lat Width, Upper Back Scapular Retraction, Biceps | **NEXT GYM** | **Cycle 2 Day 2 (2026-10-20)** |
+| 8 | **Legs & Core (Cycle 2)**| Quads, Hamstrings, Calves, Anti-APT Core | **NEXT GYM** | **Cycle 2 Day 3 (2026-10-21)** |
+| 9 | **Pull A (Cycle 2)** | Lat Width, Upper Back Scapular Retraction, Biceps | **QUEUED** | **Cycle 2 Day 2 (2026-10-22)** |
 
 ### Active Autoregulation History & Tactical Swaps
-- **2026-10-13 Swap**: Trainee reported acute triceps soreness from previous workout. Successfully bumped Legs forward, allowing triceps complete recovery.
+- **2026-10-13 Leg Baseline**: Established clean 45kg Leg Press, 10kg Leg Ext, 80kg Calf Raise with 0% glute recruitment.
 - **2026-10-14 Pull A Executed**: Completed with new lifting wrist straps. High motor unit recruitment on lats (50kg pulldown, 55kg row PR) and biceps (20kg EZ bar).
 - **2026-10-16 Push B Executed (51m)**: Smashed **35kg Pec Deck Fly PR (+5kg leap)**, broke rep ceiling on **Cable Lateral Raise (16 reps @ 2.5kg)**, maintained **20kg Incline DB Press (29 reps)**.
 - **2026-10-18 Pull B Executed (101m)**: Smashed **60kg × 12 and 65kg × 12 Seated Cable Row All-Time PR (+10kg Overload Leap)**! Rear Delt Fly cleared double progression (15kg × 12, 12, 12). Hammer Curl broke rep ceiling (15 reps).
 - **2026-10-19 Push A Executed (75m)**: Conquered **22.5 kg Incline DB Press All-Time PR (10, 9 reps - +2.5kg Overload Leap!)**, established **47.5 kg Smith Machine Bench PR**, smashed **20.0 kg Overhead Triceps Ext PR (+5kg Leap!)**, accumulated 50 reps of DB lateral raises.
-- **Current Queue Status**: Push A completed. Pressing musculature and triceps in 48h active recovery. Pulling musculature and biceps 48h rested from Oct 18 Pull B (freshness 7/10). Next gym target: **Day 2: Pull A** (with **Day 3: Legs & Core** [7 days fresh, 10/10] as alternate floor audible).
+- **2026-10-21 Tactical Autoregulation**: Trainee verified last leg session was Oct 13 (8 days ago). Lower body is 100% fresh (10/10) with zero local fatigue. Squeezing Legs & Core in now gives entire upper body (pressing & pulling musculature) full 48h+ recovery, priming back & biceps for a massive, uncompromised Pull A session next. Next gym target: **Day 3: Legs & Core**.
 
 ---
 

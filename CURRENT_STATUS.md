@@ -51,18 +51,18 @@ All 12 historical workouts (222 total sets) are now fully imported and verified:
 ---
 
 ## 4. IMMEDIATE NEXT SESSION
-- **Scheduled Session**: **DAY 2: PULL A (Lat Width & Bicep Hypertrophy)**
-- **Target Date**: 2026-10-20 (Pull A Gym Execution)
-- **Primary Focus**: Vertical Lat Width (Lat Pulldown), Upper Back Thickness (Chest-Supported Row), Bicep Peaks & Brachialis
-- **Physiological State**: Chest, front delts, and triceps are in 48h active recovery from Oct 19 Push A; pulling musculature and biceps are recovered (48h elapsed since Oct 18 Pull B, freshness 7/10). Legs & Core are 100% fresh (last trained Oct 13, 7 days rest).
+- **Scheduled Session**: **DAY 3: LEGS & CORE (Quad Sweep, Calves & Anti-APT Posture)**
+- **Target Date**: 2026-10-21 (Legs & Core Gym Execution)
+- **Primary Focus**: Vastus Lateralis Quad Sweep (Leg Press, Leg Extension), Diamond Calves (Standing Calf Raise), Anti-APT Core (Floor Crunches, Deadbugs, Psoas Stretch)
+- **Physiological State**: Lower body and core are 100% fresh (last trained Oct 13, 8 full days of complete rest, freshness 10/10). Chest, front delts, and triceps are in 48h active recovery from Oct 19 Push A. Pulling muscles and biceps get a crucial additional 24h rest before Pull A.
 - **Focus Movements & Explicit Targets**:
-  1. **Lat Pulldown (Neutral/Moderate Grip)**: 3 sets × 8–10 reps @ **45.0 kg – 50.0 kg pin** (Use wrist straps! Test 50.0 kg × 8–10 on Set 1).
-  2. **Chest-Supported Row Machine**: 3 sets × 8–10 reps @ **40.0 kg – 45.0 kg pin** (Chest glued to pad; 1s scapular squeeze).
-  3. **Straight-Arm Cable Pulldown**: 3 sets × 12–15 reps @ **15.0 kg pin** (Push reps to 15 before +5kg machine jump).
-  4. **Reverse Pec Deck (Rear Delt Fly)**: 3 sets × 12–15 reps @ **15.0 kg – 20.0 kg pin** (Test 20.0 kg on Set 1 or solidify 15kg × 15).
-  5. **EZ-Bar Bicep Curl**: 3 sets × 10–12 reps @ **20.0 kg bar** (Elbows pinned to ribs; 3s eccentric).
-  6. **Dumbbell Hammer Curl**: 3 sets × 10–12 reps @ **7.0 kg – 8.0 kg DBs** per hand (Test 8.0 kg DBs; back off to 7.0 kg).
-- **Alternate Floor Audible**: If trainee prefers extra 24h rest for pulling musculature, **Day 3: Legs & Core** is 100% fresh (7 days rest).
+  1. **Leg Press (Narrow / Mid-Low Stance)**: 3 sets × 10–12 reps @ **50.0 kg – 55.0 kg** (Oct 13: 45kg conquered $\rightarrow$ Test 50–55 kg on Set 1!).
+  2. **Leg Extension Machine**: 3 sets × 12–15 reps @ **10.0 kg – 12.5 kg pin** (1s peak knee lockout hold, 3s negative).
+  3. **Lying or Seated Leg Curl**: 3 sets × 10–12 reps @ **5.0 kg – 7.5 kg pin** (Dorsiflex feet to isolate hamstrings).
+  4. **Standing Calf Raise**: 4 sets × 12–15 reps @ **80.0 kg – 85.0 kg pin** (2-second dead stop in deep bottom stretch).
+  5. **Bodyweight Floor Crunch**: 3 sets × 12–15 reps (Lower back glued flat to floor; exhale all air at peak).
+  6. **Deadbugs**: 3 sets × 12–15 reps per side (Zero lower back arch; transverse abdominis firing).
+  7. **Half-Kneeling Hip Flexor Stretch**: 2 sets × 45s per side (9h desk psoas release; posterior pelvic tilt).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---
