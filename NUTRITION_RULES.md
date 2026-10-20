@@ -2,8 +2,8 @@
 
 ## 1. ENERGY BALANCE & PHASE TARGETS
 - **Current Phase**: Body Recomposition & Measured Deficit (Initial 8–12 Weeks).
-- **Estimated Baseline Maintenance**: ~2,100 kcal/day (Unverified theoretical range: 2,000–2,200 kcal/day).
-- **Prescribed Intake**: **1,850 kcal/day** ($\pm 50$ kcal window).
+- **Estimated Baseline Maintenance**: ~2,100 kcal/day (Theoretical range: 2,000–2,200 kcal/day).
+- **Prescribed Intake**: **1,850 kcal/day** (±50 kcal window).
   - Deficit magnitude: ~250–300 kcal/day below maintenance.
   - Expected fat loss rate: ~0.25 to 0.4 kg/week (~1.0 to 1.5 kg/month).
   - Rationale: A moderate deficit preserves lifting strength, supports lean tissue accretion/preservation in beginner-intermediate trainees, and avoids metabolic slowdown and binge triggers.
@@ -28,7 +28,7 @@
    - *Yield*: ~31 g protein per 100 g.
    - *Cost Efficiency*: Exceptional. 200 g raw provides ~62 g protein for ~240 kcal.
 2. **Whole Eggs & Egg Whites**:
-   - *Yield*: 1 whole egg $\approx 6$ g protein, 5 g fat, 70 kcal. 1 egg white $\approx 3.6$ g protein, 0 g fat, 17 kcal.
+   - *Yield*: 1 whole egg ≈ 6 g protein, 5 g fat, 70 kcal. 1 egg white ≈ 3.6 g protein, 0 g fat, 17 kcal.
    - *Application*: 2 whole eggs + 3–4 egg whites scramble = ~25 g protein, 10 g fat, ~200 kcal.
 3. **Whey Protein (Concentrate or Isolate)**:
    - *Yield*: ~24–27 g protein per 30 g scoop.
@@ -60,7 +60,16 @@
 ## 5. WEIGHT LOGGING & RECALIBRATION METHODOLOGY
 - **Weigh-In Protocol**: Step on scale first thing in the morning after urinating, before food or water, wearing minimal clothing.
 - **Rolling Averages**: Never judge fat loss by daily scale weight. Fluid retention from sodium spikes, muscle inflammation from hard workouts, and digestive stool bulk cause 1–2 kg swings.
-- **The 7-Day Moving Average Rule**: Compare the median or average of Week $N$ with Week $N-1$:
-  - If weight decreases by $0.25 - 0.5$ kg/week: **Maintain calorie intake.**
+- **The 7-Day Moving Average Rule**: Compare the median or average of Week N with Week N-1:
+  - If weight decreases by 0.25 to 0.5 kg/week: **Maintain calorie intake.**
   - If weight is stagnant across 3 consecutive weeks: **Reduce calories by 150 kcal/day OR add 1,500 daily steps.**
-  - If weight drops $> 0.8$ kg/week with strength loss: **Increase calories by 150 kcal/day.**
+  - If weight drops > 0.8 kg/week with strength loss: **Increase calories by 150 kcal/day.**
+
+---
+
+## 6. DAILY PROTEIN ACCOUNTABILITY & BOTTLENECK PROTOCOL
+- **Non-Negotiable Protein Floor**: **145 g/day**.
+- **Historical Gap Alert**: Trainee 30-day recorded average was 108.1 g/day, with dips down to 70 g. This represents the single biggest biological rate-limiting bottleneck in the system.
+- **Automated Escalation Rule**:
+  - If rolling 3-day average protein drops below 135 g/day, the coaching engine will flag an active **Nutrition Bottleneck Alert**.
+  - No additional working set volume will be added to workout plans while the protein floor is compromised, as under-fueled muscle tissue cannot recover from extra training stress.
