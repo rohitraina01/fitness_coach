@@ -7,9 +7,9 @@ All hypertrophy exercises follow double progression unless explicitly specified 
 1. **Assigned Rep Range**: e.g., 8–12 reps.
 2. **Phase A (Rep Accumulation)**: Keep the working weight static across all working sets until **all prescribed working sets** reach the top of the rep target (e.g., Set 1: 12 reps, Set 2: 12 reps, Set 3: 12 reps) with strict form and $\text{RIR} \le 2$.
 3. **Phase B (Load Increase)**: Increase the working load by the smallest increment possible:
-   - Dumbbells: +2 kg per hand (or +2.5 kg depending on gym increments).
-   - Barbells: +2.5 kg total (+1.25 kg per side).
-   - Cable / Machines: +1 pin or +2.5 / 5 kg increment.
+   - **Dumbbells**: +2 kg per hand for compound movements. **Crucial Gym Constraint**: The gym dumbbell rack has 1, 2, 3, 4, 5, 7, 8 kg (NO 6 kg dumbbell). A jump from 5 kg to 7 kg represents an aggressive **+40% overload**, which will instantly compromise lateral delt isolation. For isolations (e.g. DB Lateral Raises), do NOT jump to 7 kg; instead, expand the rep accumulation window to 15–20 reps with 2-second eccentrics, deploy dropsets, or shift heavy progression to Cable Lateral Raises.
+   - **Barbells**: +2.5 kg total (+1.25 kg per side).
+   - **Cable / Pulley / Selectorized Machines**: Light plates start at 2.5 kg increments, but main stacks transition strictly to **+5 kg increments**. Intermediate fractional pins (17.5 kg, 22.5 kg) do not exist. When a +5 kg leap is too steep for an isolation exercise (e.g. Triceps Pushdowns 20 kg $\rightarrow$ 25 kg is a +25% jump), the trainee must master the top rep ceiling (12–15 strict reps) before advancing the pin.
 4. **Phase C (Rep Drop Acceptance)**: After a load increase, reps will naturally decrease into the lower half of the rep window (e.g. 8–9 reps). Never compromise range of motion or tempo to artificially retain the previous rep count.
 
 ---

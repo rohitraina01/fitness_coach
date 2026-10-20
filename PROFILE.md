@@ -20,6 +20,8 @@
 - **Recent Adherence Reality**: 7 recorded sessions between late September and early October 2026. Consistent Push/Pull focus, lower body training unrepresented in recent logs.
 - **Activity Level**: Sedentary-to-light outside the gym; typical daily step count ~6,000 steps.
 - **Gym Equipment Access**: Standard commercial gym with free weights (dumbbells, barbells), cable stations (dual adjustable pulleys, lat pulldown, seated cable row), and select selectorized machines (pec deck/rear delt fly, chest-supported row).
+  - **Dumbbell Rack Calibration**: 1, 2, 3, 4, 5, 7, 8 kg (Note: **NO 6.0 kg dumbbell available**; direct jump from 5 kg to 7 kg (+40%)). Heavy dumbbells available in standard steps (10 kg, 12.5 kg, 15 kg, 17.5 kg, 20 kg, 22.5 kg, etc.).
+  - **Cable & Pulley / Rope Machines**: Select machines begin with 2.5 kg plates at the very low end (e.g. 2.5, 5.0, 7.5, 10.0 kg), but the stack transitions strictly to **+5.0 kg plate increments** (e.g. 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65 kg). Intermediate fractions like 17.5 kg or 22.5 kg do NOT exist on heavy stacks; progression must rely on rep accumulation before advancing the pin.
 
 ---
 

@@ -103,7 +103,7 @@ Perform either mid-day at your desk or immediately after work to reverse neck pa
 | 3 | **Single-Arm Cable Lat Row** | 3 | 10–12 | 90 | 1 | **Unilateral Lat Isolation.** Pull straight into hip crease. Deep stretch on return. 12.5–15 kg. |
 | 4 | **Reverse Pec Deck (Rear Delt Fly)** | 3 | 10–12 | 90 | 0–1 | Neutral scapulae, sweep knuckles wide to corners. 15.0 kg. |
 | 5 | **EZ-Bar Bicep Curl** | 3 | 10–12 | 90 | 1 | Elbows pinned to ribs. Full extension and contraction. 20.0 kg. |
-| 6 | **Dumbbell Hammer Curl** | 3 | 10–12 | 60 | 0 | Neutral grip. Targets brachialis & brachioradialis for 3D arm thickness. 7.5 kg DBs. |
+| 6 | **Dumbbell Hammer Curl** | 3 | 10–12 | 60 | 0 | Neutral grip. Targets brachialis & brachioradialis for 3D arm thickness. 7.0 kg DBs. |
 
 ---
 

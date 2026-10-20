@@ -1,3 +1,16 @@
+### [2026-10-20 - Update 1.4] - Gym Equipment Constraints Calibration (Dumbbells & Cable Stacks)
+- **Equipment Reality Calibration**:
+  - Trainee confirmed actual commercial gym constraints:
+    - **Dumbbell Rack**: Fixed whole-kg weights: 1, 2, 3, 4, 5, 7, 8 kg (**6.0 kg DB does not exist**). Direct jump from 5 kg to 7 kg (+40% leap).
+    - **Cable & Pulley / Rope Machines**: Low-end stations start with 2.5 kg plates, but main stacks transition strictly to **+5.0 kg increments** (no fractional 17.5 kg or 22.5 kg pins on heavy stacks).
+  - Updated `PROFILE.md`, `COACHING_RULES.md`, and `COACH_MEMORY.md` with strict progression guardrails:
+    - Prohibited jumping DB lateral raises from 5kg to 7kg (+40%); enforced rep accumulation (12–15+ reps with 2s eccentrics) or cable micro-loading.
+    - Calibrated cable triceps pushdown (20.0 kg) and overhead extension (15.0 kg) to rely on rep-accumulation progression before advancing pins by +5 kg.
+  - Recalibrated `CURRENT_NEXT_WORKOUT.md` and `CURRENT_STATUS.md` to remove impossible weights.
+  - Regenerated all mobile app artifacts via `python scripts/export_mobile.py`.
+
+---
+
 ### [2026-10-17 - Update 1.3] - Push B Ingestion, PR Breakthroughs & Pull B Prescription
 - **Push B Ingestion (W-20261016-01)**:
   - Ingested 18 sets in 50m 54s from mobile buffer with combined trainee chat notes.

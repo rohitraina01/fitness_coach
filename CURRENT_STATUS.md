@@ -54,11 +54,11 @@ All 11 historical workouts (204 total sets) are now fully imported and verified:
 - **Focus Movements & Explicit Targets**:
   1. **Incline DB Bench Press**: 3 sets × 8–10 reps @ **20.0 kg – 22.5 kg DBs** per hand. *Main Target*: Test 22.5 kg DBs for 8 reps on Set 1, or solidify 20.0 kg for 10, 10, 10.
   2. **Flat BB Bench Press**: 3 sets × 6–8 reps @ **42.5 kg – 45.0 kg**. *Main Target*: 45.0 kg × 6–7 reps. *Fallback*: 42.5 kg × 8–10 reps.
-  3. **DB Lateral Raise**: 4 sets × 10–12 reps @ **5.0 kg – 6.0 kg DBs** per hand. *Main Target*: Test 6.0 kg DBs for 10 reps on Set 1; back off to 5.0 kg × 12–15 reps with 2s negative.
+  3. **DB Lateral Raise**: 4 sets × 12–15 reps @ **5.0 kg DBs** per hand. *Main Target*: 5.0 kg × 12–15 reps with strict 2s eccentric; Set 4 drop set to 2.5/3.0 kg. (Gym lacks 6kg DBs; jumping to 7kg prohibited to protect delt isolation).
   4. **Pec Deck Machine Fly**: 3 sets × 10–12 reps @ **35.0 kg pin**. *Main Target*: 35.0 kg × 12, 12, 12 (Solidify double progression).
-  5. **Cable Triceps Pushdown (Straight Bar)**: 3 sets × 10–12 reps @ **20.0 kg – 22.5 kg pin**. *Main Target*: 22.5 kg × 10 reps.
-  6. **Overhead Cable Triceps Ext**: 3 sets × 10–12 reps @ **15.0 kg – 17.5 kg pin**. *Main Target*: 17.5 kg × 8–10 reps.
-- **Alternate Floor Audible**: If schedule or recovery demands lower body before upper body pressing, **Day 3: Legs & Core** is 100% fresh (5 days rest).
+  5. **Cable Triceps Pushdown (Straight Bar)**: 3 sets × 12–15 reps @ **20.0 kg pin**. *Main Target*: Solidify 15 reps at 20.0 kg before advancing to 25.0 kg (+5kg machine leap).
+  6. **Overhead Cable Triceps Ext**: 3 sets × 12–15 reps @ **15.0 kg pin**. *Main Target*: Push reps to 15 with deep stretch before advancing to 20.0 kg (+5kg machine leap).
+- **Alternate Floor Audible**: If schedule or recovery demands lower body before upper body pressing, **Day 3: Legs & Core** is 100% fresh (7 days rest).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---

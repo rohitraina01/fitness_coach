@@ -60,6 +60,9 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 5. **Pragmatic Floor Audibles (Station Congestion Navigation)**:
    - *Observation*: On Oct 16 Push B, trainee found the cable lateral station occupied after Incline DB Press. Rather than waiting or killing momentum, swapped Overhead Triceps Extension forward to #2 since triceps were fresh.
    - *Coaching Adaptation*: Validate this tactical flexibility. As long as exercise substitutions remain within the prescribed session pool and priority movements are completed, station re-ordering preserves session density.
+6. **Gym Equipment Ground Truth (Dumbbells & Cable Stacks)**:
+   - *Observation*: Trainee confirmed equipment reality: Dumbbells are 1, 2, 3, 4, 5, 7, 8 kg (**NO 6.0 kg DB exists**). Cable / rope stations start with 2.5 kg plates only on light end, but main stacks transition strictly to **+5.0 kg increments** (no 17.5 kg or 22.5 kg pins).
+   - *Coaching Adaptation*: Never prescribe 6.0 kg DBs or fractional cable weights. Jumping DB lateral raises from 5kg to 7kg (+40%) is prohibited as it causes immediate trap shrugging; expand 5kg rep ceiling to 15–20 reps or use Cable Lateral Raises. On cable triceps, require 12–15 reps before jumping +5kg on the stack.
 
 ---
 
@@ -99,3 +102,5 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | **2026-10-16** | Push B Completed (51m) | Smashed 35kg Pec Deck Fly PR (+5kg), broke 2.5kg Cable Lateral rep ceiling (16 reps). Tactical floor audible approved. | Logged (`W-20261016-01`) |
 | **2026-10-17** | Queue Advanced to Pull B | Pressing muscles entering recovery; pulling muscles 100% fresh. Programmed 60kg Seated Row Overload Leap. | Active on Mobile |
 | **2026-10-18** | Pull B Completed (101m) | Smashed 60kg × 12 & 65kg × 12 Seated Row PRs (+10kg leap); Hammer Curl 7.5kg × 15 PR. Single-arm cable row identified with seated swinging & shoulder irritation. Advised One-Arm DB Row on bench or stabilized cues. Set duration reduction directive. | Logged (`W-20261018-01`) |
+| **2026-10-20** | Equipment Calibration | Trainee verified: dumbbells are 1, 2, 3, 4, 5, 7, 8 kg (NO 6 kg DB); cable stacks transition to +5 kg increments. Calibrated Push A and progression rules to eliminate non-existent 6kg/17.5kg/22.5kg targets. | Applied across system |
+
