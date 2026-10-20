@@ -68,6 +68,24 @@ def match_exercise(line, catalog):
         return "HAMMER_CURL", "Dumbbell Hammer Curl"
     if "seated row" in line_clean or "cable row" in line_clean:
         return "SEATED_CABLE_ROW", "Seated Cable Row"
+    if "smith" in line_clean and "bench" in line_clean:
+        return "SMITH_BENCH", "Smith Machine Bench Press"
+    if "overhead" in line_clean and ("tricep" in line_clean or "triceps" in line_clean):
+        return "OVERHEAD_TRICEPS_EXT", "Overhead Cable Triceps Extension"
+    if "pushdown" in line_clean:
+        if "rope" in line_clean:
+            return "ROPE_PUSHDOWN", "Rope Triceps Pushdown"
+        return "TRICEPS_PUSHDOWN", "Cable Triceps Pushdown"
+    if "pec deck" in line_clean or "pec fly" in line_clean:
+        return "PEC_DECK_FLY", "Pec Deck Machine Fly"
+    if "incline" in line_clean and "press" in line_clean:
+        if "machine" in line_clean:
+            return "INCLINE_MACHINE_PRESS", "Incline Machine Chest Press"
+        return "INCLINE_DB_PRESS", "Incline Dumbbell Press"
+    if "lateral raise" in line_clean:
+        if "cable" in line_clean:
+            return "CABLE_LATERAL_RAISE", "Cable Lateral Raise"
+        return "DB_LATERAL_RAISE", "Dumbbell Lateral Raise"
 
     for eid, data in catalog.items():
         name_clean = data["exercise_name"].lower().replace("-", " ")
@@ -369,6 +387,19 @@ def ingest_from_buffer(extra_notes=""):
     if not sets:
         print("Warning: Could not match any sets from incoming buffer text.")
         return False
+
+    if session_type.lower() in ["rest", "workout", "session", ""]:
+        push_eids = {"INCLINE_DB_PRESS", "FLAT_BB_BENCH", "SMITH_BENCH", "PEC_DECK_FLY", "TRICEPS_PUSHDOWN", "ROPE_PUSHDOWN", "OVERHEAD_TRICEPS_EXT", "DB_LATERAL_RAISE", "CABLE_LATERAL_RAISE", "INCLINE_MACHINE_PRESS"}
+        pull_eids = {"LAT_PULLDOWN", "SEATED_CABLE_ROW", "STRAIGHT_ARM_PULLDOWN", "REAR_DELT_FLY", "EZ_BAR_CURL", "HAMMER_CURL", "PULL_UP", "SINGLE_ARM_CABLE_ROW", "SINGLE_ARM_LAT_PULLDOWN"}
+        leg_eids = {"LEG_PRESS", "LEG_EXTENSION", "LEG_CURL", "CALF_RAISE", "DEADBUG", "FLOOR_CRUNCH"}
+        
+        eids_in_sets = {s["exercise"] for s in sets}
+        if len(eids_in_sets & push_eids) >= len(eids_in_sets & pull_eids) and len(eids_in_sets & push_eids) >= len(eids_in_sets & leg_eids):
+            session_type = "Push"
+        elif len(eids_in_sets & pull_eids) > len(eids_in_sets & leg_eids):
+            session_type = "Pull"
+        elif len(eids_in_sets & leg_eids) > 0:
+            session_type = "Legs"
 
     date_match = re.search(r"(\d{4}-\d{2}-\d{2})", content)
     date_str = date_match.group(1) if date_match else datetime.now().strftime("%Y-%m-%d")

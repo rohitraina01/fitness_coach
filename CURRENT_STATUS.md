@@ -25,40 +25,44 @@
 ---
 
 ## 3. TRAINING PERFORMANCE & OVERLOAD TRAJECTORY
-All 11 historical workouts (204 total sets) are now fully imported and verified:
+All 12 historical workouts (222 total sets) are now fully imported and verified:
+- **Push A Double-Progression PR (Oct 19 - W-20261019-01)**: 18 sets in 75m!
+  - **Incline DB Bench Press**: **22.5 kg × 10 reps [ALL-TIME PR] & 22.5 kg × 9 reps (+2.5 kg Overload Leap!)** followed by 20.0 kg × 10 backoff.
+  - **Smith Machine Bench Press**: **42.5 kg × 8, 47.5 kg × 6 [PR LOAD], 42.5 kg × 7 reps**. Strong high-tension sternal chest anchor.
+  - **Overhead Cable Triceps Ext**: **15.0 kg × 12, 20.0 kg × 6 [PR LOAD LEAP +5kg!], 15.0 kg × 8 reps**.
+  - **DB Lateral Raise**: **5.0 kg × 15, 12, 12, 11 reps (50 total reps across 4 sets!)**.
+  - **Cable Triceps Pushdown**: **20.0 kg × 12, 12 reps**.
+  - **Pec Deck Machine Fly**: **35.0 kg × 11, 35.0 kg × 6, 30.0 kg × 6 reps**.
 - **Pull B Double-Progression PR (Oct 18 - W-20261018-01)**: 22 sets in 101m!
   - **Seated Cable Row (V-Bar)**: **60.0 kg × 12 [PR] & 65.0 kg × 12 [ALL-TIME PR] (+10kg Overload Leap from Oct 14!)**
-  - **Machine Rear Delt Fly**: **15.0 kg × 12, 12, 12 (Double progression unlocked! Bump to 17.5 kg)**
-  - **Dumbbell Hammer Curl**: **7.5 kg × 15 reps [ALL-TIME REP PR] (+5 reps over Oct 14 ceiling!)**
-  - **Straight-Arm Cable Pulldown**: **15.0 kg × 12, 12, 12 (Primer locked in)**
-  - **Close-Grip Lat Pulldown**: **45.0 kg × 10, 8, 40.0 kg × 8 (V-Bar vertical compound baseline established)**
-  - **EZ-Bar Bicep Curl**: **20.0 kg × 12, 10, 10 (Mechanical tension maintained)**
-  - **Single-Arm Cable Row**: 12–20 kg (Identified seated instability & shoulder irritation; tactical recommendation: One-Arm DB Row on bench).
+  - **Machine Rear Delt Fly**: **15.0 kg × 12, 12, 12 (Double progression unlocked!)**
+  - **Dumbbell Hammer Curl**: **7.0/7.5 kg × 15 reps [ALL-TIME REP PR]**
+  - **Straight-Arm Cable Pulldown**: **15.0 kg × 12, 12, 12**
+  - **Close-Grip Lat Pulldown**: **45.0 kg × 10, 8, 40.0 kg × 8**
+  - **EZ-Bar Bicep Curl**: **20.0 kg × 12, 10, 10**
 - **Push B Double-Progression PR (Oct 16 - W-20261016-01)**: 18 sets in 51m!
   - **Pec Deck Machine Fly**: **35.0 kg × 12, 12, 10 (+5kg All-Time PR Leap!)**
   - **Cable Lateral Raise**: **2.5 kg × 12, 12, 16 (Rep Ceiling Smashed on Set 3 - Load Leap Unlocked!)**
-  - **Incline DB Press**: **20.0 kg × 10, 10, 9 (Rock solid 29-rep volume; 22.5kg test ready)**
-  - **Overhead Cable Triceps Ext**: **15.0 kg × 10, 10, 10 (Moved forward fresh; clean long-head stretch)**
-  - **DB Lateral Raise**: **5.0 kg × 12, 12, 11 $\rightarrow$ Drop Set 2.5 kg × 14 reps**
-  - **Triceps Pushdown**: **20.0 kg × 12, 13 (+1 rep progression)**
+  - **Incline DB Press**: **20.0 kg × 10, 10, 9 (Rock solid 29-rep volume)**
+  - **Overhead Cable Triceps Ext**: **15.0 kg × 10, 10, 10**
 - **Pull A Double-Progression PR (Oct 14 - W-20261014-01)**: Deployed lifting wrist straps. 18 sets in 68m. Seated Row: 55kg $\times$ 12, 12, 12; Lat Pulldown: 50kg $\times$ 8, 6; EZ-Bar Curl: 20kg $\times$ 15, 12, 11.
 - **Leg Day Baseline Established (Oct 13 - W-20261013-01)**: 21 sets in 37m. Zero glute volume. Leg Press: 45kg $\times$ 12, 12, 12; Leg Ext: 10kg $\times$ 12; Calf Raise: 80kg $\times$ 12.
 
 ---
 
 ## 4. IMMEDIATE NEXT SESSION
-- **Scheduled Session**: **DAY 1: PUSH A (Upper Chest, Heavy Lateral Delts & Triceps)**
-- **Target Date**: 2026-10-19 (Rest / Active Recovery) / 2026-10-20 (Push A Gym Execution)
-- **Primary Focus**: Clavicular Pectoralis Major (Upper Chest), Heavy Lateral Delt Overload, Medial/Lateral Triceps
-- **Physiological State**: Pulling musculature and biceps are in 48–72h recovery from Oct 18 Pull B; pressing musculature (chest, triceps, front delts) and lateral delts are 100% recovered (last trained Oct 16, 48h+ elapsed). Legs & Core are 100% fresh (last trained Oct 13).
+- **Scheduled Session**: **DAY 2: PULL A (Lat Width & Bicep Hypertrophy)**
+- **Target Date**: 2026-10-20 (Pull A Gym Execution)
+- **Primary Focus**: Vertical Lat Width (Lat Pulldown), Upper Back Thickness (Chest-Supported Row), Bicep Peaks & Brachialis
+- **Physiological State**: Chest, front delts, and triceps are in 48h active recovery from Oct 19 Push A; pulling musculature and biceps are recovered (48h elapsed since Oct 18 Pull B, freshness 7/10). Legs & Core are 100% fresh (last trained Oct 13, 7 days rest).
 - **Focus Movements & Explicit Targets**:
-  1. **Incline DB Bench Press**: 3 sets × 8–10 reps @ **20.0 kg – 22.5 kg DBs** per hand. *Main Target*: Test 22.5 kg DBs for 8 reps on Set 1, or solidify 20.0 kg for 10, 10, 10.
-  2. **Flat BB Bench Press**: 3 sets × 6–8 reps @ **42.5 kg – 45.0 kg**. *Main Target*: 45.0 kg × 6–7 reps. *Fallback*: 42.5 kg × 8–10 reps.
-  3. **DB Lateral Raise**: 4 sets × 12–15 reps @ **5.0 kg DBs** per hand. *Main Target*: 5.0 kg × 12–15 reps with strict 2s eccentric; Set 4 drop set to 2.5/3.0 kg. (Gym lacks 6kg DBs; jumping to 7kg prohibited to protect delt isolation).
-  4. **Pec Deck Machine Fly**: 3 sets × 10–12 reps @ **35.0 kg pin**. *Main Target*: 35.0 kg × 12, 12, 12 (Solidify double progression).
-  5. **Cable Triceps Pushdown (Straight Bar)**: 3 sets × 12–15 reps @ **20.0 kg pin**. *Main Target*: Solidify 15 reps at 20.0 kg before advancing to 25.0 kg (+5kg machine leap).
-  6. **Overhead Cable Triceps Ext**: 3 sets × 12–15 reps @ **15.0 kg pin**. *Main Target*: Push reps to 15 with deep stretch before advancing to 20.0 kg (+5kg machine leap).
-- **Alternate Floor Audible**: If schedule or recovery demands lower body before upper body pressing, **Day 3: Legs & Core** is 100% fresh (7 days rest).
+  1. **Lat Pulldown (Neutral/Moderate Grip)**: 3 sets × 8–10 reps @ **45.0 kg – 50.0 kg pin** (Use wrist straps! Test 50.0 kg × 8–10 on Set 1).
+  2. **Chest-Supported Row Machine**: 3 sets × 8–10 reps @ **40.0 kg – 45.0 kg pin** (Chest glued to pad; 1s scapular squeeze).
+  3. **Straight-Arm Cable Pulldown**: 3 sets × 12–15 reps @ **15.0 kg pin** (Push reps to 15 before +5kg machine jump).
+  4. **Reverse Pec Deck (Rear Delt Fly)**: 3 sets × 12–15 reps @ **15.0 kg – 20.0 kg pin** (Test 20.0 kg on Set 1 or solidify 15kg × 15).
+  5. **EZ-Bar Bicep Curl**: 3 sets × 10–12 reps @ **20.0 kg bar** (Elbows pinned to ribs; 3s eccentric).
+  6. **Dumbbell Hammer Curl**: 3 sets × 10–12 reps @ **7.0 kg – 8.0 kg DBs** per hand (Test 8.0 kg DBs; back off to 7.0 kg).
+- **Alternate Floor Audible**: If trainee prefers extra 24h rest for pulling musculature, **Day 3: Legs & Core** is 100% fresh (7 days rest).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---
