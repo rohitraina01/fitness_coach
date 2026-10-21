@@ -110,3 +110,5 @@ To prevent upper-body overuse and guarantee posture restoration, the split follo
 ### DAY 7: REST & SYSTEMIC RECHARGE
 - Complete physical recovery. Hydration: 3.5 liters.
 - Meal prep for upcoming week: Chicken breast, eggs, low-fat paneer, whey.
+
+- **Remote Mobile Posture Cue (2026-10-21 23:47:07)**: maintain neutral pelvis while standing
