@@ -25,7 +25,13 @@
 ---
 
 ## 3. TRAINING PERFORMANCE & OVERLOAD TRAJECTORY
-All 12 historical workouts (222 total sets) are now fully imported and verified:
+All 13 historical workouts (240 total sets) are now fully imported and verified:
+- **Legs & Core Double-Progression PR (Oct 21 - W-20261021-01)**: 18 sets in 61m 54s!
+  - **Leg Press (Narrow / Mid-Low Stance)**: **54.0 kg × 12, 12, 12 reps (+9.0 kg Overload Leap!) [ALL-TIME PR]** across all 3 sets! Conquered 12-rep ceiling.
+  - **Leg Extension Machine**: **12.0 kg × 5 reps [LOAD PR]** top-set test, followed by 7.5 kg × 11, 9 reps back-off.
+  - **Lying Leg Curl Machine**: **5.0 kg × 12, 9 reps, 2.5 kg × 5 reps** with strict dorsiflexed feet.
+  - **Bodyweight Calf Raise**: **20, 20, 15 reps (55 total reps)**.
+  - **Core & Posture Circuit**: Floor Crunch 3 × 12, Deadbug 3 × 6–7 reps, Half-Kneeling Hip Flexor Stretch 2 × 30s.
 - **Push A Double-Progression PR (Oct 19 - W-20261019-01)**: 18 sets in 75m!
   - **Incline DB Bench Press**: **22.5 kg × 10 reps [ALL-TIME PR] & 22.5 kg × 9 reps (+2.5 kg Overload Leap!)** followed by 20.0 kg × 10 backoff.
   - **Smith Machine Bench Press**: **42.5 kg × 8, 47.5 kg × 6 [PR LOAD], 42.5 kg × 7 reps**. Strong high-tension sternal chest anchor.
@@ -51,18 +57,16 @@ All 12 historical workouts (222 total sets) are now fully imported and verified:
 ---
 
 ## 4. IMMEDIATE NEXT SESSION
-- **Scheduled Session**: **DAY 3: LEGS & CORE (Quad Sweep, Calves & Anti-APT Posture)**
-- **Target Date**: 2026-10-21 (Legs & Core Gym Execution)
-- **Primary Focus**: Vastus Lateralis Quad Sweep (Leg Press, Leg Extension), Diamond Calves (Standing Calf Raise), Anti-APT Core (Floor Crunches, Deadbugs, Psoas Stretch)
-- **Physiological State**: Lower body and core are 100% fresh (last trained Oct 13, 8 full days of complete rest, freshness 10/10). Chest, front delts, and triceps are in 48h active recovery from Oct 19 Push A. Pulling muscles and biceps get a crucial additional 24h rest before Pull A.
+- **Scheduled Session**: **DAY 2: PULL A (Lat Width, Scapular Retraction & Biceps Peak)**
+- **Target Date**: 2026-10-22 (Pull A Gym Execution)
+- **Primary Focus**: V-Taper Lat Width (Lat Pulldown, Straight-Arm Pulldown), Upper Back Thickness (Seated Cable Row), Rear Delts, Biceps Peak (EZ-Bar Curl).
+- **Physiological State**: Pulling musculature and biceps are **100% Fresh (Freshness 9/10)**, having rested for 72h+ since Oct 18. Quads, calves, and hamstrings enter 48–72h deep recovery. Pressing muscles (chest/triceps) fully recovered (Freshness 8/10).
 - **Focus Movements & Explicit Targets**:
-  1. **Leg Press (Narrow / Mid-Low Stance)**: 3 sets × 10–12 reps @ **50.0 kg – 55.0 kg** (Oct 13: 45kg conquered $\rightarrow$ Test 50–55 kg on Set 1!).
-  2. **Leg Extension Machine**: 3 sets × 12–15 reps @ **10.0 kg – 12.5 kg pin** (1s peak knee lockout hold, 3s negative).
-  3. **Lying or Seated Leg Curl**: 3 sets × 10–12 reps @ **5.0 kg – 7.5 kg pin** (Dorsiflex feet to isolate hamstrings).
-  4. **Standing Calf Raise**: 4 sets × 12–15 reps @ **80.0 kg – 85.0 kg pin** (2-second dead stop in deep bottom stretch).
-  5. **Bodyweight Floor Crunch**: 3 sets × 12–15 reps (Lower back glued flat to floor; exhale all air at peak).
-  6. **Deadbugs**: 3 sets × 12–15 reps per side (Zero lower back arch; transverse abdominis firing).
-  7. **Half-Kneeling Hip Flexor Stretch**: 2 sets × 45s per side (9h desk psoas release; posterior pelvic tilt).
+  1. **Lat Pulldown (Neutral or Wide Grip)**: 3 sets × 8–12 reps @ **50.0 kg – 55.0 kg** (Oct 14: 50kg × 8, 6 $\rightarrow$ Straps mandatory; conquer 50kg for 10–12 reps or test 55kg on Set 1!).
+  2. **Seated Cable Row (V-Bar Grip)**: 3 sets × 8–12 reps @ **60.0 kg – 65.0 kg** (Oct 18: 65kg × 12 conquered $\rightarrow$ Anchor at 60–65kg with chest upright).
+  3. **Straight-Arm Cable Pulldown**: 3 sets × 12–15 reps @ **15.0 kg – 20.0 kg** (Oct 18: 15kg × 12, 12, 12 conquered $\rightarrow$ Test 20.0 kg on Set 1!).
+  4. **Machine Rear Delt Fly (Reverse Pec Deck)**: 3 sets × 12–15 reps @ **15.0 kg – 17.5 kg** (Oct 18: 15kg × 12, 12, 12 conquered $\rightarrow$ Test 17.5 kg pin!).
+  5. **EZ-Bar Bicep Curl**: 3 sets × 10–12 reps @ **20.0 kg – 22.5 kg** (Oct 14: 20kg × 15, 12, 11 $\rightarrow$ Test 22.5kg!).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---

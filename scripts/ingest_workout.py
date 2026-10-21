@@ -34,6 +34,8 @@ def load_catalog():
 
 def match_exercise(line, catalog):
     line_clean = line.lower().replace("-", " ").replace("_", " ")
+    if "stretch" in line_clean or "mobility" in line_clean or "hip flexor" in line_clean or "hipflexor" in line_clean or "foam roll" in line_clean:
+        return None, None
     if "lying leg curl" in line_clean or "leg curl" in line_clean:
         return "LEG_CURL", "Leg Curl Machine"
     if "standing calf raise" in line_clean or "calf raise" in line_clean:
@@ -120,7 +122,7 @@ def parse_notes_to_sets(raw_notes, catalog):
         eid, disp_name = match_exercise(line, catalog)
         is_set_line = bool(re.search(r"set\s*\d+\s*:", line, re.IGNORECASE)) or bool(re.search(r"(?:x|\*|@)\s*\d+", line, re.IGNORECASE))
 
-        if eid and not is_set_line:
+        if not is_set_line:
             current_eid = eid
             continue
 
@@ -129,8 +131,6 @@ def parse_notes_to_sets(raw_notes, catalog):
         elif eid and is_set_line:
             target_eid = eid
             current_eid = eid
-        elif eid:
-            target_eid = eid
         else:
             continue
 

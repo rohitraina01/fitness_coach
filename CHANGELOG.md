@@ -1,3 +1,20 @@
+### [2026-10-21 - Update 1.5] - Legs & Core Ingestion, PR Breakthroughs & Pull A Prescription
+- **Legs & Core Ingestion (W-20261021-01)**:
+  - Ingested 18 sets in 61m 54s from mobile buffer (`WORKOUT_LOGS/incoming_raw_log.txt`).
+  - Smashed **Leg Press All-Time PR (+9.0 kg Overload Leap)**: 54.0 kg × 12, 12, 12 reps across all 3 sets (+20% load increase from Oct 13 45kg baseline; zero glute recruitment).
+  - Tested **Leg Extension Load PR**: 12.0 kg × 5 reps top-set (+2.0 kg over previous 10kg), followed by 7.5 kg × 11, 9 reps back-off sets.
+  - Executed 55 reps of Bodyweight Calf Raises (20, 20, 15) and clean Anti-APT Core Circuit (Floor Crunches 3 × 12, Deadbugs 3 × 6–7 reps, Half-Kneeling Hip Flexor Stretch 2 × 30s).
+  - Appended normalized relational rows to `DATA/workouts.csv` and `DATA/workout_sets.csv`.
+  - Generated comprehensive workout log in `WORKOUT_LOGS/2026/2026-10/2026-10-21_legs.md`.
+- **System Queue Advancement**:
+  - Advanced split queue to **Day 2: Pull A (Lat Width, Scapular Retraction & Biceps Peak)**.
+  - Pulling musculature 100% fresh (Freshness 9/10) after 72h+ rest.
+  - Programmed 50.0–55.0 kg Lat Pulldown, 60.0–65.0 kg Seated Cable Row, 15.0–20.0 kg Straight-Arm Pulldown, 15.0–17.5 kg Rear Delt Fly, and 20.0–22.5 kg EZ-Bar Curl.
+  - Updated `CURRENT_NEXT_WORKOUT.md`, `CURRENT_STATUS.md`, and `COACH_MEMORY.md`.
+  - Rebuilt Excel dashboard (`DASHBOARD/fitness_dashboard.xlsx`) and synchronized mobile exports across `OUTPUTS/mobile/`, `docs/`, and `bridge/web/`.
+
+---
+
 ### [2026-10-20 - Update 1.4] - Gym Equipment Constraints Calibration (Dumbbells & Cable Stacks)
 - **Equipment Reality Calibration**:
   - Trainee confirmed actual commercial gym constraints:

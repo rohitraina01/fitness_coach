@@ -1,114 +1,91 @@
 {
-  "title": "DAY 3 - LEGS & CORE (QUAD SWEEP, CALVES & ANTI-APT POSTURE)",
+  "title": "DAY 2 - PULL A (LAT WIDTH, SCAPULAR RETRACTION & BICEPS PEAK)",
   "subtitle": "Evidence-Based Hypertrophy \u2022 5-Day Aesthetic Split",
   "instructions": [
     {
       "title": "1. Recommended Session Flow & Sequencing Rationale",
       "items": [
-        "Follow this 1 $\\rightarrow$ 6 flow for athletic quad sweep, diamond calves, and 9-hour desk Anterior Pelvic Tilt (APT) reversal:",
-        "1. **Primary Quad Mass Anchor**: **Leg Press (Narrow / Mid-Low Foot Stance)** (3 working sets \u00d7 10\u201312 reps @ 50.0\u201355.0 kg). Feet low and narrow on the platform. Direct quad recruitment; 0% glute recruitment. Oct 13 conquered 45kg for 12, 12, 12 $\\rightarrow$ Today we test 50\u201355 kg!",
-        "2. **Pure Quad Isolation (Peak Extension)**: **Leg Extension Machine** (3 sets \u00d7 12\u201315 reps @ 10.0\u201312.5 kg). 1-second pause at full knee lockout, 3-second descent. Eliminates hip flexor and glute involvement completely.",
-        "3. **Hamstring Knee-Flexion Specialist**: **Lying or Seated Leg Curl** (3 sets \u00d7 10\u201312 reps @ 5.0\u20137.5 kg). Feet dorsiflexed (toes pulled to shins). Strengthens hamstrings to pull the anterior-tilted pelvis back to neutral.",
-        "4. **Calf Thickness & Athletic Taper**: **Standing Calf Raise** (4 sets \u00d7 12\u201315 reps @ 80.0\u201385.0 kg). 2-second dead stop in the deep stretch at the bottom to kill tendon elastic bounce.",
-        "5. **Anti-APT Core Anchor**: **Bodyweight Floor Crunch** (3 sets \u00d7 12\u201315 reps). Lower back glued 100% flat into the floor. Curl ribcage toward pelvis; exhale all air at top.",
-        "6. **Deep Core Transverse Abdominis Activation**: **Deadbugs** (3 sets \u00d7 12\u201315 reps). Opposite arm/leg reach with zero lumbar arch.",
-        "7. **Post-Workout 9-Hour Desk Psoas Release**: **Half-Kneeling Hip Flexor Stretch** (2 sets \u00d7 45s/side). Posterior pelvic tilt tuck; squeeze rear glute hard."
+        "Follow this 1 $\\rightarrow$ 5 flow for maximum V-taper lat width, dense mid-back scapular retraction, and full bicep peaks:",
+        "1. **Primary Lat Width Driver**: **Lat Pulldown (Neutral or Wide Grip)** (3 working sets \u00d7 8\u201312 reps @ 50.0\u201355.0 kg). Lifting wrist straps are non-negotiable. Oct 14 hit 50kg for 8, 6 $\\rightarrow$ Today we test 50.0 kg for 10\u201312 clean reps or advance to 55.0 kg on Set 1!",
+        "2. **Mid-Back Density & Scapular Retractor**: **Seated Cable Row (V-Bar or Chest-Supported Machine)** (3 working sets \u00d7 8\u201312 reps @ 60.0\u201365.0 kg). Pull handle directly into the belly button while maintaining rigid upright spine. Smashed 65kg \u00d7 12 on Oct 18 $\\rightarrow$ Solidify 60\u201365kg working sets.",
+        "3. **Pure Lat Shoulder Extension Isolation**: **Straight-Arm Cable Pulldown** (3 sets \u00d7 12\u201315 reps @ 15.0\u201320.0 kg). Bypasses fatigued biceps completely. Oct 18 conquered 15kg for 12, 12, 12 $\\rightarrow$ Today we test the 20.0 kg pin on Set 1!",
+        "4. **Posterior Delt 3D Cap**: **Reverse Pec Deck / Rear Delt Fly Machine** (3 sets \u00d7 12\u201315 reps @ 15.0\u201317.5 kg). Conquered 15kg for 12, 12, 12 $\\rightarrow$ Overload leap to 17.5 kg pin!",
+        "5. **Direct Biceps Hypertrophy Anchor**: **EZ-Bar Bicep Curl** (3 sets \u00d7 10\u201312 reps @ 20.0\u201322.5 kg). Conquered 20kg for 15, 12, 11 on Oct 14 $\\rightarrow$ Advance to 22.5 kg on Set 1!"
       ]
     },
     {
-      "title": "2. Biomechanical Guardrails (Strict Anti-Glute & Anti-APT Rules)",
+      "title": "2. Biomechanical Guardrails (Strict Anti-Swinging & Strap Mandate)",
       "items": [
-        "**ZERO Barbell Squats, Deadlifts, or Lunges**: Strictly prohibited. We want quad sweep and V-taper frame, NOT wider hips or larger glutes.",
-        "**Narrow Foot Placement on Leg Press**: Never place feet high or wide on the sled (which shifts load to glutes). Keep feet hip-width, mid-low on platform.",
-        "**Lower Back Floor Contact**: On all abdominal work, if your lower back leaves the floor by even 1 millimeter, stop immediately. The psoas took over."
+        "**Lifting Wrist Straps Mandatory**: Grip and forearm fatigue must NEVER limit your back stimulation. Lock straps on Lat Pulldowns and Rows before every set.",
+        "**Torso Angle Lock (Zero Seated Swinging)**: On Seated Cable Rows, do NOT swing your lower back forward and back like a rowing machine. Lock your hips, keep chest tall, and initiate purely through scapular retraction and elbow drive.",
+        "**Hand Hook Cue**: Grip handles loosely with fingers acting as passive hooks. Think \"pull from elbows down to hip pockets\"."
       ]
     },
     {
       "title": "3. Gym Duration Guardrail: 50\u201355 Minutes Max",
       "items": [
-        "Move directly between stations. Rest 150s on Leg Press, 90s on Leg Extension/Curl, 60s on Calves and Core."
+        "**Hard Session Cap**: Exactly 5 exercises, 15 total working sets. Move crisply between stations.",
+        "Rest 150s on Lat Pulldowns, 120s on Cable Rows, 90s on Straight-Arm Pulldowns, Rear Delts, and EZ-Bar Curls."
       ]
     }
   ],
   "exercises": [
     {
-      "name": "1. Leg Press (Narrow / Mid-Low Stance)",
-      "target": "**3 sets x 10\u201312 reps** | Rest: 150 sec | Target RIR: **1\u20132**",
-      "target_weight": "**50.0 kg \u2013 55.0 kg** (Oct 13: 45.0 kg \u00d7 12, 12, 12 conquered $\\rightarrow$ Test 50.0 kg or 55.0 kg on Set 1!).",
-      "cue": "Position feet hip-width apart on the lower half of the sled. Keep lower back and pelvis glued firmly to the seat pad throughout the entire range of motion.",
-      "mmc": "Lower sled until knees hit 90\u00b0. Do NOT bounce out of the bottom. Push through the mid-foot/heels and focus on driving your quads outward against the weight. Stop 2 inches short of soft lockout to maintain continuous mechanical tension on the vastus lateralis.",
-      "calibration": "**50.0 kg \u2013 55.0 kg** (Oct 13: 45.0 kg \u00d7 12, 12, 12 conquered $\\rightarrow$ Test 50.0 kg or 55.0 kg on Set 1!).",
-      "flow_reason": "**#1 Primary Quad Driver.** Maximum load tolerance without spinal compression or lower back strain.",
+      "name": "1. Lat Pulldown (Neutral or Wide Grip)",
+      "target": "**3 sets x 8\u201312 reps** | Rest: 150 sec | Target RIR: **1\u20132**",
+      "target_weight": "**50.0 kg \u2013 55.0 kg** (Oct 14: 50.0 kg \u00d7 8, 6 $\\rightarrow$ Straps locked: target 10\u201312 reps at 50.0 kg, or test 55.0 kg on Set 1!).",
+      "cue": "Straps wrapped tight. Lean torso back slightly (10\u201315\u00b0). Drive elbows straight down toward your hip pockets.",
+      "mmc": "Do NOT yank down with arms. Imagine squeezing an orange under each armpit at the bottom contraction. 2-second controlled ascent to full lat stretch.",
+      "calibration": "**50.0 kg \u2013 55.0 kg** (Oct 14: 50.0 kg \u00d7 8, 6 $\\rightarrow$ Straps locked: target 10\u201312 reps at 50.0 kg, or test 55.0 kg on Set 1!).",
+      "flow_reason": "**#1 Primary Lat Width Driver.** Maximum motor unit recruitment while lats are 100% fresh.",
       "swap_option": "",
       "sets": 3
     },
     {
-      "name": "2. Leg Extension Machine",
+      "name": "2. Seated Cable Row (V-Bar Grip)",
+      "target": "**3 sets x 8\u201312 reps** | Rest: 120 sec | Target RIR: **1\u20132**",
+      "target_weight": "**60.0 kg \u2013 65.0 kg** (Oct 18: smashed 65.0 kg \u00d7 12 [ALL-TIME PR] $\\rightarrow$ Anchor Set 1 at 65.0 kg, Sets 2\u20133 at 60.0 kg).",
+      "cue": "Plant feet firmly on footpegs with slight knee bend. Chest held high, shoulders down. Pull handle directly into your lower abdomen (belly button).",
+      "mmc": "Scapulae protract forward during the stretch; violently retract and pinch your shoulder blades together at the finish. Hold peak contraction for 1 full second.",
+      "calibration": "**60.0 kg \u2013 65.0 kg** (Oct 18: smashed 65.0 kg \u00d7 12 [ALL-TIME PR] $\\rightarrow$ Anchor Set 1 at 65.0 kg, Sets 2\u20133 at 60.0 kg).",
+      "flow_reason": "**#2 Mid-Back & Lower Lat Thickness.** Heavy horizontal pulling with zero lower back shear.",
+      "swap_option": "Chest-Supported Machine Row (Sternum glued to pad).",
+      "sets": 3
+    },
+    {
+      "name": "3. Straight-Arm Cable Pulldown",
       "target": "**3 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**",
-      "target_weight": "**10.0 kg \u2013 12.5 kg pin** (Oct 13: 10kg \u00d7 12 reps $\\rightarrow$ Test 12.5 kg on Set 1, or solidify 10.0 kg for 15 strict reps).",
-      "cue": "Align knee joints directly with the machine pivot axis. Pad sits comfortably on lower shins just above ankles.",
-      "mmc": "Kick up smoothly. Lock out knees completely at the top and squeeze your quads hard for a strict 1-second hold. Lower the weight under control for 3 full seconds.",
-      "calibration": "**10.0 kg \u2013 12.5 kg pin** (Oct 13: 10kg \u00d7 12 reps $\\rightarrow$ Test 12.5 kg on Set 1, or solidify 10.0 kg for 15 strict reps).",
-      "flow_reason": "**#2 Pure Quad Isolation.** Hits the rectus femoris in full shortened contraction where leg press has zero tension.",
+      "target_weight": "**15.0 kg \u2013 20.0 kg pin** (Oct 18: 15.0 kg \u00d7 12, 12, 12 conquered $\\rightarrow$ Test 20.0 kg on Set 1, back off to 15.0 kg for Sets 2\u20133).",
+      "cue": "Stand 2 feet back from cable station. Hinge hips slightly (15\u00b0). Arms extended with soft elbow bend locked in place.",
+      "mmc": "Sweep the straight bar/rope downward in a smooth arc until it grazes your upper thighs. Squeeze your lats violently at the bottom.",
+      "calibration": "**15.0 kg \u2013 20.0 kg pin** (Oct 18: 15.0 kg \u00d7 12, 12, 12 conquered $\\rightarrow$ Test 20.0 kg on Set 1, back off to 15.0 kg for Sets 2\u20133).",
+      "flow_reason": "**#3 Isolated Lat Extension.** Takes biceps out of the equation to pump maximum blood into the latissimus dorsi.",
       "swap_option": "",
       "sets": 3
     },
     {
-      "name": "3. Lying or Seated Leg Curl Machine",
+      "name": "4. Reverse Pec Deck / Rear Delt Fly Machine",
+      "target": "**3 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**",
+      "target_weight": "**15.0 kg \u2013 17.5 kg pin** (Oct 18: 15.0 kg \u00d7 12, 12, 12 conquered $\\rightarrow$ Test 17.5 kg pin on Set 1!).",
+      "cue": "Adjust seat so handles are level with your shoulders. Keep elbows slightly bent but rigid.",
+      "mmc": "Push your knuckles straight out toward the side walls. Do NOT pull with your upper traps or pinch scapulae together. Stop when upper arms are in line with your back.",
+      "calibration": "**15.0 kg \u2013 17.5 kg pin** (Oct 18: 15.0 kg \u00d7 12, 12, 12 conquered $\\rightarrow$ Test 17.5 kg pin on Set 1!).",
+      "flow_reason": "**#4 3D Deltoid Taper.** Balances shoulder joint health and builds the back shelf of the V-taper.",
+      "swap_option": "Incline Dumbbell Rear Delt Fly (5.0\u20137.0 kg DBs, chest against 30\u00b0 incline bench).",
+      "sets": 3
+    },
+    {
+      "name": "5. EZ-Bar Bicep Curl",
       "target": "**3 sets x 10\u201312 reps** | Rest: 90 sec | Target RIR: **0\u20131**",
-      "target_weight": "**5.0 kg \u2013 7.5 kg pin** (Oct 13: 5.0 kg \u00d7 12, 10, 8 $\\rightarrow$ Target: 5.0 kg \u00d7 12, 12, 12 or test 7.5 kg on Set 1).",
-      "cue": "**DORSIFLEX FEET** (pull your toes up toward your shins). This simple biomechanical tweak prevents your gastrocnemius (calves) from assisting and forces 100% hamstring isolation.",
-      "mmc": "Pull heels smoothly toward your glutes. Do NOT arch your lower back off the pad at the peak contraction. 3-second negative.",
-      "calibration": "**5.0 kg \u2013 7.5 kg pin** (Oct 13: 5.0 kg \u00d7 12, 10, 8 $\\rightarrow$ Target: 5.0 kg \u00d7 12, 12, 12 or test 7.5 kg on Set 1).",
-      "flow_reason": "**#3 Pure Hamstring Knee Flexion.** Strengthens hamstrings without hip extension (zero glute growth). Reverses Anterior Pelvic Tilt.",
-      "swap_option": "",
+      "target_weight": "**20.0 kg \u2013 22.5 kg** (Oct 14: 20.0 kg \u00d7 15, 12, 11 conquered $\\rightarrow$ Test 22.5 kg top-set, or 20.0 kg with 3-second negatives).",
+      "cue": "Stand tall with feet shoulder-width apart. Grip the undulating EZ-bar curves. Pin elbows firmly against your side ribs.",
+      "mmc": "Curl upward with zero hip momentum. Squeeze your biceps at the top without letting your elbows drift forward. Lower the bar for 3 full seconds.",
+      "calibration": "**20.0 kg \u2013 22.5 kg** (Oct 14: 20.0 kg \u00d7 15, 12, 11 conquered $\\rightarrow$ Test 22.5 kg top-set, or 20.0 kg with 3-second negatives).",
+      "flow_reason": "**#5 Direct Biceps Peak Hypertrophy.** Heavy spinal-stable bicep overload to complete the pulling session.",
+      "swap_option": "Standing Cable Bicep Curl (20.0\u201325.0 kg stack).",
       "sets": 3
-    },
-    {
-      "name": "4. Standing Calf Raise (Machine or Dumbbell)",
-      "target": "**4 sets x 12\u201315 reps** | Rest: 60 sec | Target RIR: **0**",
-      "target_weight": "**80.0 kg \u2013 85.0 kg pin** (Oct 13: 80.0 kg \u00d7 12, 12, 12 $\\rightarrow$ Advance to 85.0 kg on Set 1\u20132!).",
-      "cue": "Balls of feet on the edge of the block. Knees soft (slight 5\u00b0 bend, not hyper-extended).",
-      "mmc": "Drop heels down into maximum deep stretch and **HOLD for 2 full seconds** (this kills the elastic Achilles tendon reflex). Drive up high on the balls of your big toes for a 1-second squeeze.",
-      "calibration": "**80.0 kg \u2013 85.0 kg pin** (Oct 13: 80.0 kg \u00d7 12, 12, 12 $\\rightarrow$ Advance to 85.0 kg on Set 1\u20132!).",
-      "flow_reason": "**#4 Lower Leg Athletic Proportions.** Creates the visual taper from knee to ankle.",
-      "swap_option": "Single-Leg Dumbbell Calf Raise on a step (15.0\u201320.0 kg DB in hand).",
-      "sets": 4
-    },
-    {
-      "name": "5. Bodyweight Floor Crunch (Anti-APT Abdominal Anchor)",
-      "target": "**3 sets x 12\u201315 reps** | Rest: 60 sec | Target RIR: **0\u20131**",
-      "target_weight": "**Bodyweight** (Controlled tempo).",
-      "cue": "Lie flat on the floor, knees bent at 90\u00b0, feet flat. Press your lower back firmly into the floor so there is zero gap under your lumbar spine.",
-      "mmc": "Do NOT pull on your neck. Imagine curling your ribcage down into your belt line. Squeeze your abs and exhale all air forcefully at the peak contraction.",
-      "calibration": "**Bodyweight** (Controlled tempo).",
-      "flow_reason": "**#5 Direct Rectus Abdominis Flexion.** Far superior to cable crunch; 100% mind-muscle core connection with zero hip flexor cheating.",
-      "swap_option": "",
-      "sets": 3
-    },
-    {
-      "name": "6. Deadbugs (Deep Transverse Abdominis Activation)",
-      "target": "**3 sets x 12\u201315 reps per side** | Rest: 60 sec | Target RIR: **0\u20131**",
-      "target_weight": "**Bodyweight**",
-      "cue": "Lie on back, arms pointing to ceiling, hips and knees at 90\u00b0. Slowly extend opposite arm and leg toward the floor without letting your lower back arch off the floor.",
-      "mmc": "Imagine bracing your core as if someone is about to step on your stomach. Only lower your leg as far as you can maintain 100% flat lower back contact with the floor.",
-      "calibration": "**Bodyweight**",
-      "flow_reason": "**#6 Anterior Pelvic Tilt Reversal.** Directly counters 9 hours of seated desk posture.",
-      "swap_option": "",
-      "sets": 3
-    },
-    {
-      "name": "7. Half-Kneeling Hip Flexor Stretch (Desk Worker Posture Reset)",
-      "target": "**2 sets x 45 seconds per side** | Rest: 30 sec",
-      "target_weight": "",
-      "cue": "",
-      "mmc": "",
-      "calibration": "",
-      "flow_reason": "**#7 Psoas Lengthening.** Directly releases shortened hip flexors from 9 hours of desk chair sitting.",
-      "swap_option": "",
-      "sets": 2
     }
   ],
   "masterclass": [],
-  "raw_markdown": "# NEXT WORKOUT: DAY 3 - LEGS & CORE (QUAD SWEEP, CALVES & ANTI-APT POSTURE)\n\n*Status: READY FOR EXECUTION*  \n*Updated: 2026-10-21 02:45:00*  \n*Estimated Duration: 50\u201355 minutes*  \n*Sequence Context: Autoregulated tactical deployment. Legs last trained Oct 13 (8 days ago, 100% fresh, 10/10). Push A was completed Oct 19 (chest/triceps recovering). Pull B was completed Oct 18 (22 sets). Hitting Legs & Core today gives your entire upper body (pressing & pulling) complete recovery while stimulating untouched quad/calf fibers.*\n\n---\n\n## COACHING BRIEFING & PROTOCOLS\n\n### 1. Recommended Session Flow & Sequencing Rationale\nFollow this 1 $\\rightarrow$ 6 flow for athletic quad sweep, diamond calves, and 9-hour desk Anterior Pelvic Tilt (APT) reversal:\n1. **Primary Quad Mass Anchor**: **Leg Press (Narrow / Mid-Low Foot Stance)** (3 working sets \u00d7 10\u201312 reps @ 50.0\u201355.0 kg). Feet low and narrow on the platform. Direct quad recruitment; 0% glute recruitment. Oct 13 conquered 45kg for 12, 12, 12 $\\rightarrow$ Today we test 50\u201355 kg!\n2. **Pure Quad Isolation (Peak Extension)**: **Leg Extension Machine** (3 sets \u00d7 12\u201315 reps @ 10.0\u201312.5 kg). 1-second pause at full knee lockout, 3-second descent. Eliminates hip flexor and glute involvement completely.\n3. **Hamstring Knee-Flexion Specialist**: **Lying or Seated Leg Curl** (3 sets \u00d7 10\u201312 reps @ 5.0\u20137.5 kg). Feet dorsiflexed (toes pulled to shins). Strengthens hamstrings to pull the anterior-tilted pelvis back to neutral.\n4. **Calf Thickness & Athletic Taper**: **Standing Calf Raise** (4 sets \u00d7 12\u201315 reps @ 80.0\u201385.0 kg). 2-second dead stop in the deep stretch at the bottom to kill tendon elastic bounce.\n5. **Anti-APT Core Anchor**: **Bodyweight Floor Crunch** (3 sets \u00d7 12\u201315 reps). Lower back glued 100% flat into the floor. Curl ribcage toward pelvis; exhale all air at top.\n6. **Deep Core Transverse Abdominis Activation**: **Deadbugs** (3 sets \u00d7 12\u201315 reps). Opposite arm/leg reach with zero lumbar arch.\n7. **Post-Workout 9-Hour Desk Psoas Release**: **Half-Kneeling Hip Flexor Stretch** (2 sets \u00d7 45s/side). Posterior pelvic tilt tuck; squeeze rear glute hard.\n\n### 2. Biomechanical Guardrails (Strict Anti-Glute & Anti-APT Rules)\n- **ZERO Barbell Squats, Deadlifts, or Lunges**: Strictly prohibited. We want quad sweep and V-taper frame, NOT wider hips or larger glutes.\n- **Narrow Foot Placement on Leg Press**: Never place feet high or wide on the sled (which shifts load to glutes). Keep feet hip-width, mid-low on platform.\n- **Lower Back Floor Contact**: On all abdominal work, if your lower back leaves the floor by even 1 millimeter, stop immediately. The psoas took over.\n\n### 3. Gym Duration Guardrail: 50\u201355 Minutes Max\n- Move directly between stations. Rest 150s on Leg Press, 90s on Leg Extension/Curl, 60s on Calves and Core.\n\n---\n\n## WORKOUT BLUEPRINT & EXERCISE TARGETS\n\n### 1. Leg Press (Narrow / Mid-Low Stance)\n- **Order Rationale**: **#1 Primary Quad Driver.** Maximum load tolerance without spinal compression or lower back strain.\n- **Working Sets**: **3 sets x 10\u201312 reps** | Rest: 150 sec | Target RIR: **1\u20132**\n- **Target Weight**: **50.0 kg \u2013 55.0 kg** (Oct 13: 45.0 kg \u00d7 12, 12, 12 conquered $\\rightarrow$ Test 50.0 kg or 55.0 kg on Set 1!).\n- **Warm-Up Ramp**: 25.0 kg \u00d7 10 reps, 35.0 kg \u00d7 6 reps before working sets.\n- **Form Cue**: Position feet hip-width apart on the lower half of the sled. Keep lower back and pelvis glued firmly to the seat pad throughout the entire range of motion.\n- **Mind-Muscle Cue**: Lower sled until knees hit 90\u00b0. Do NOT bounce out of the bottom. Push through the mid-foot/heels and focus on driving your quads outward against the weight. Stop 2 inches short of soft lockout to maintain continuous mechanical tension on the vastus lateralis.\n\n---\n\n### 2. Leg Extension Machine\n- **Order Rationale**: **#2 Pure Quad Isolation.** Hits the rectus femoris in full shortened contraction where leg press has zero tension.\n- **Working Sets**: **3 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Weight**: **10.0 kg \u2013 12.5 kg pin** (Oct 13: 10kg \u00d7 12 reps $\\rightarrow$ Test 12.5 kg on Set 1, or solidify 10.0 kg for 15 strict reps).\n- **Form Cue**: Align knee joints directly with the machine pivot axis. Pad sits comfortably on lower shins just above ankles.\n- **Mind-Muscle Cue**: Kick up smoothly. Lock out knees completely at the top and squeeze your quads hard for a strict 1-second hold. Lower the weight under control for 3 full seconds.\n\n---\n\n### 3. Lying or Seated Leg Curl Machine\n- **Order Rationale**: **#3 Pure Hamstring Knee Flexion.** Strengthens hamstrings without hip extension (zero glute growth). Reverses Anterior Pelvic Tilt.\n- **Working Sets**: **3 sets x 10\u201312 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Weight**: **5.0 kg \u2013 7.5 kg pin** (Oct 13: 5.0 kg \u00d7 12, 10, 8 $\\rightarrow$ Target: 5.0 kg \u00d7 12, 12, 12 or test 7.5 kg on Set 1).\n- **Form Cue**: **DORSIFLEX FEET** (pull your toes up toward your shins). This simple biomechanical tweak prevents your gastrocnemius (calves) from assisting and forces 100% hamstring isolation.\n- **Mind-Muscle Cue**: Pull heels smoothly toward your glutes. Do NOT arch your lower back off the pad at the peak contraction. 3-second negative.\n\n---\n\n### 4. Standing Calf Raise (Machine or Dumbbell)\n- **Order Rationale**: **#4 Lower Leg Athletic Proportions.** Creates the visual taper from knee to ankle.\n- **Working Sets**: **4 sets x 12\u201315 reps** | Rest: 60 sec | Target RIR: **0**\n- **Target Weight**: **80.0 kg \u2013 85.0 kg pin** (Oct 13: 80.0 kg \u00d7 12, 12, 12 $\\rightarrow$ Advance to 85.0 kg on Set 1\u20132!).\n- **Gym Floor Swap Option**: Single-Leg Dumbbell Calf Raise on a step (15.0\u201320.0 kg DB in hand).\n- **Form Cue**: Balls of feet on the edge of the block. Knees soft (slight 5\u00b0 bend, not hyper-extended).\n- **Mind-Muscle Cue**: Drop heels down into maximum deep stretch and **HOLD for 2 full seconds** (this kills the elastic Achilles tendon reflex). Drive up high on the balls of your big toes for a 1-second squeeze.\n\n---\n\n### 5. Bodyweight Floor Crunch (Anti-APT Abdominal Anchor)\n- **Order Rationale**: **#5 Direct Rectus Abdominis Flexion.** Far superior to cable crunch; 100% mind-muscle core connection with zero hip flexor cheating.\n- **Working Sets**: **3 sets x 12\u201315 reps** | Rest: 60 sec | Target RIR: **0\u20131**\n- **Target Weight**: **Bodyweight** (Controlled tempo).\n- **Form Cue**: Lie flat on the floor, knees bent at 90\u00b0, feet flat. Press your lower back firmly into the floor so there is zero gap under your lumbar spine.\n- **Mind-Muscle Cue**: Do NOT pull on your neck. Imagine curling your ribcage down into your belt line. Squeeze your abs and exhale all air forcefully at the peak contraction.\n\n---\n\n### 6. Deadbugs (Deep Transverse Abdominis Activation)\n- **Order Rationale**: **#6 Anterior Pelvic Tilt Reversal.** Directly counters 9 hours of seated desk posture.\n- **Working Sets**: **3 sets x 12\u201315 reps per side** | Rest: 60 sec | Target RIR: **0\u20131**\n- **Target Weight**: **Bodyweight**\n- **Form Cue**: Lie on back, arms pointing to ceiling, hips and knees at 90\u00b0. Slowly extend opposite arm and leg toward the floor without letting your lower back arch off the floor.\n- **Mind-Muscle Cue**: Imagine bracing your core as if someone is about to step on your stomach. Only lower your leg as far as you can maintain 100% flat lower back contact with the floor.\n\n---\n\n### 7. Half-Kneeling Hip Flexor Stretch (Desk Worker Posture Reset)\n- **Order Rationale**: **#7 Psoas Lengthening.** Directly releases shortened hip flexors from 9 hours of desk chair sitting.\n- **Working Sets**: **2 sets x 45 seconds per side** | Rest: 30 sec\n- **Execution**: Half-kneeling position (one knee down, one foot forward). Posterior pelvic tilt: tuck tailbone under and squeeze the glute of the trailing leg hard. Shift weight forward 2 inches until a deep stretch is felt in the front of the hip. Breathe deeply.\n"
+  "raw_markdown": "# NEXT WORKOUT: DAY 2 - PULL A (LAT WIDTH, SCAPULAR RETRACTION & BICEPS PEAK)\n\n*Status: READY FOR EXECUTION*  \n*Updated: 2026-10-21 23:50:00*  \n*Estimated Duration: 50\u201355 minutes*  \n*Sequence Context: Autoregulated tactical progression. Legs & Core completed Oct 21 (18 sets, 54kg Leg Press PR). Pulling musculature and biceps are 100% fresh (Freshness 9/10), having rested for 72h+ since Oct 18. Upper body pressing muscles (chest/triceps) are fully recovered (Freshness 8/10). Deploying lifting wrist straps to maximize back overload.*\n\n---\n\n## COACHING BRIEFING & PROTOCOLS\n\n### 1. Recommended Session Flow & Sequencing Rationale\nFollow this 1 $\\rightarrow$ 5 flow for maximum V-taper lat width, dense mid-back scapular retraction, and full bicep peaks:\n1. **Primary Lat Width Driver**: **Lat Pulldown (Neutral or Wide Grip)** (3 working sets \u00d7 8\u201312 reps @ 50.0\u201355.0 kg). Lifting wrist straps are non-negotiable. Oct 14 hit 50kg for 8, 6 $\\rightarrow$ Today we test 50.0 kg for 10\u201312 clean reps or advance to 55.0 kg on Set 1!\n2. **Mid-Back Density & Scapular Retractor**: **Seated Cable Row (V-Bar or Chest-Supported Machine)** (3 working sets \u00d7 8\u201312 reps @ 60.0\u201365.0 kg). Pull handle directly into the belly button while maintaining rigid upright spine. Smashed 65kg \u00d7 12 on Oct 18 $\\rightarrow$ Solidify 60\u201365kg working sets.\n3. **Pure Lat Shoulder Extension Isolation**: **Straight-Arm Cable Pulldown** (3 sets \u00d7 12\u201315 reps @ 15.0\u201320.0 kg). Bypasses fatigued biceps completely. Oct 18 conquered 15kg for 12, 12, 12 $\\rightarrow$ Today we test the 20.0 kg pin on Set 1!\n4. **Posterior Delt 3D Cap**: **Reverse Pec Deck / Rear Delt Fly Machine** (3 sets \u00d7 12\u201315 reps @ 15.0\u201317.5 kg). Conquered 15kg for 12, 12, 12 $\\rightarrow$ Overload leap to 17.5 kg pin!\n5. **Direct Biceps Hypertrophy Anchor**: **EZ-Bar Bicep Curl** (3 sets \u00d7 10\u201312 reps @ 20.0\u201322.5 kg). Conquered 20kg for 15, 12, 11 on Oct 14 $\\rightarrow$ Advance to 22.5 kg on Set 1!\n\n### 2. Biomechanical Guardrails (Strict Anti-Swinging & Strap Mandate)\n- **Lifting Wrist Straps Mandatory**: Grip and forearm fatigue must NEVER limit your back stimulation. Lock straps on Lat Pulldowns and Rows before every set.\n- **Torso Angle Lock (Zero Seated Swinging)**: On Seated Cable Rows, do NOT swing your lower back forward and back like a rowing machine. Lock your hips, keep chest tall, and initiate purely through scapular retraction and elbow drive.\n- **Hand Hook Cue**: Grip handles loosely with fingers acting as passive hooks. Think \"pull from elbows down to hip pockets\".\n\n### 3. Gym Duration Guardrail: 50\u201355 Minutes Max\n- **Hard Session Cap**: Exactly 5 exercises, 15 total working sets. Move crisply between stations.\n- Rest 150s on Lat Pulldowns, 120s on Cable Rows, 90s on Straight-Arm Pulldowns, Rear Delts, and EZ-Bar Curls.\n\n---\n\n## WORKOUT BLUEPRINT & EXERCISE TARGETS\n\n### 1. Lat Pulldown (Neutral or Wide Grip)\n- **Order Rationale**: **#1 Primary Lat Width Driver.** Maximum motor unit recruitment while lats are 100% fresh.\n- **Working Sets**: **3 sets x 8\u201312 reps** | Rest: 150 sec | Target RIR: **1\u20132**\n- **Target Weight**: **50.0 kg \u2013 55.0 kg** (Oct 14: 50.0 kg \u00d7 8, 6 $\\rightarrow$ Straps locked: target 10\u201312 reps at 50.0 kg, or test 55.0 kg on Set 1!).\n- **Warm-Up Ramp**: 25.0 kg \u00d7 10 reps, 35.0 kg \u00d7 6 reps before working sets.\n- **Form Cue**: Straps wrapped tight. Lean torso back slightly (10\u201315\u00b0). Drive elbows straight down toward your hip pockets.\n- **Mind-Muscle Cue**: Do NOT yank down with arms. Imagine squeezing an orange under each armpit at the bottom contraction. 2-second controlled ascent to full lat stretch.\n\n---\n\n### 2. Seated Cable Row (V-Bar Grip)\n- **Order Rationale**: **#2 Mid-Back & Lower Lat Thickness.** Heavy horizontal pulling with zero lower back shear.\n- **Working Sets**: **3 sets x 8\u201312 reps** | Rest: 120 sec | Target RIR: **1\u20132**\n- **Target Weight**: **60.0 kg \u2013 65.0 kg** (Oct 18: smashed 65.0 kg \u00d7 12 [ALL-TIME PR] $\\rightarrow$ Anchor Set 1 at 65.0 kg, Sets 2\u20133 at 60.0 kg).\n- **Gym Floor Swap Option**: Chest-Supported Machine Row (Sternum glued to pad).\n- **Form Cue**: Plant feet firmly on footpegs with slight knee bend. Chest held high, shoulders down. Pull handle directly into your lower abdomen (belly button).\n- **Mind-Muscle Cue**: Scapulae protract forward during the stretch; violently retract and pinch your shoulder blades together at the finish. Hold peak contraction for 1 full second.\n\n---\n\n### 3. Straight-Arm Cable Pulldown\n- **Order Rationale**: **#3 Isolated Lat Extension.** Takes biceps out of the equation to pump maximum blood into the latissimus dorsi.\n- **Working Sets**: **3 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Weight**: **15.0 kg \u2013 20.0 kg pin** (Oct 18: 15.0 kg \u00d7 12, 12, 12 conquered $\\rightarrow$ Test 20.0 kg on Set 1, back off to 15.0 kg for Sets 2\u20133).\n- **Form Cue**: Stand 2 feet back from cable station. Hinge hips slightly (15\u00b0). Arms extended with soft elbow bend locked in place.\n- **Mind-Muscle Cue**: Sweep the straight bar/rope downward in a smooth arc until it grazes your upper thighs. Squeeze your lats violently at the bottom.\n\n---\n\n### 4. Reverse Pec Deck / Rear Delt Fly Machine\n- **Order Rationale**: **#4 3D Deltoid Taper.** Balances shoulder joint health and builds the back shelf of the V-taper.\n- **Working Sets**: **3 sets x 12\u201315 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Weight**: **15.0 kg \u2013 17.5 kg pin** (Oct 18: 15.0 kg \u00d7 12, 12, 12 conquered $\\rightarrow$ Test 17.5 kg pin on Set 1!).\n- **Gym Floor Swap Option**: Incline Dumbbell Rear Delt Fly (5.0\u20137.0 kg DBs, chest against 30\u00b0 incline bench).\n- **Form Cue**: Adjust seat so handles are level with your shoulders. Keep elbows slightly bent but rigid.\n- **Mind-Muscle Cue**: Push your knuckles straight out toward the side walls. Do NOT pull with your upper traps or pinch scapulae together. Stop when upper arms are in line with your back.\n\n---\n\n### 5. EZ-Bar Bicep Curl\n- **Order Rationale**: **#5 Direct Biceps Peak Hypertrophy.** Heavy spinal-stable bicep overload to complete the pulling session.\n- **Working Sets**: **3 sets x 10\u201312 reps** | Rest: 90 sec | Target RIR: **0\u20131**\n- **Target Weight**: **20.0 kg \u2013 22.5 kg** (Oct 14: 20.0 kg \u00d7 15, 12, 11 conquered $\\rightarrow$ Test 22.5 kg top-set, or 20.0 kg with 3-second negatives).\n- **Gym Floor Swap Option**: Standing Cable Bicep Curl (20.0\u201325.0 kg stack).\n- **Form Cue**: Stand tall with feet shoulder-width apart. Grip the undulating EZ-bar curves. Pin elbows firmly against your side ribs.\n- **Mind-Muscle Cue**: Curl upward with zero hip momentum. Squeeze your biceps at the top without letting your elbows drift forward. Lower the bar for 3 full seconds.\n"
 }
