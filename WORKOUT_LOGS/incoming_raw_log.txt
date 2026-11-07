@@ -1,5 +1,48 @@
 # INCOMING WORKOUT LOG BUFFER
-# This file receives raw logs submitted from the mobile web app.
-# When you return to your laptop, tell the coach "/log" or "process my incoming log", and it will read this file automatically.
+# Date: 2026-11-07 16:58
+# Session: Pull
 
-(No pending unprocessed logs)
+=== WORKOUT REPORT ===
+Name:      Workout
+Date:      Saturday, Nov 7 2026 – 10:18 AM
+Duration:  63m 14s
+Volume:    4540.0 kg
+Sets:      16
+Exercises: 6
+
+--- Pull-up ---
+  Set 1: – kg × 5 reps
+
+--- Lat Pulldown ---
+  Set 1: 50.0 kg × 6 reps
+  Set 2: 50.0 kg × 6 reps
+  Set 3: 50.0 kg × 7 reps
+
+--- Seated Cable Row ---
+  Set 1: 65.0 kg × 10 reps [PR]
+  Set 2: 60.0 kg × 12 reps [PR]
+  Set 3: 60.0 kg × 12 reps
+
+--- Machine Rear Delt Fly ---
+  Set 1: 17.5 kg × 12 reps
+  Set 2: 17.5 kg × 12 reps
+  Set 3: 17.5 kg × 11 reps
+
+--- Single Arm Lat Pulldown ---
+  Set 1: 10.0 kg × 12 reps
+  Set 2: 15.0 kg × 6 reps
+  Set 3: 12.5 kg × 11 reps
+
+--- EZ Bar Curl ---
+  Set 1: 20.0 kg × 12 reps
+  Set 2: 20.0 kg × 8 reps
+  Set 3: 20.0 kg × 7 reps
+
+--- XP ---
+  Rear Delts: +43 XP
+  Biceps: +58 XP
+  Forearms: +9 XP
+  Lats: +91 XP
+  Upper Back: +69 XP
+  Total: +270 XP
+========================
