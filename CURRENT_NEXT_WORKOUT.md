@@ -1,78 +1,109 @@
-# NEXT WORKOUT: DAY 2 - PULL A (LAT WIDTH, SCAPULAR RETRACTION & BICEPS PEAK)
+# NEXT WORKOUT: DAY 5 - PUSH B (LATERAL DELT SPECIALIZATION & LONG-HEAD TRICEPS)
 
 *Status: READY FOR EXECUTION*  
-*Updated: 2026-10-21 23:50:00*  
+*Updated: 2026-11-10 05:00:00*  
 *Estimated Duration: 50–55 minutes*  
-*Sequence Context: Autoregulated tactical progression. Legs & Core completed Oct 21 (18 sets, 54kg Leg Press PR). Pulling musculature and biceps are 100% fresh (Freshness 9/10), having rested for 72h+ since Oct 18. Upper body pressing muscles (chest/triceps) are fully recovered (Freshness 8/10). Deploying lifting wrist straps to maximize back overload.*
+*Sequence Context: Autoregulated tactical progression. Pull A completed Nov 7 (16 sets, Pull-up rep PR, 17.5kg Rear Delt Fly load leap, Seated Cable Row heavy volume consolidation). Pressing musculature (upper chest, sternal chest, lateral delts, triceps) is 100% fresh (Freshness 9/10), having fully rested. Note: Rule 9 in effect—Push B is Upper Session #2; following Push B, Legs & Core is MANDATORY before any subsequent upper session.*
 
 ---
 
 ## COACHING BRIEFING & PROTOCOLS
 
 ### 1. Recommended Session Flow & Sequencing Rationale
-Follow this 1 $\rightarrow$ 5 flow for maximum V-taper lat width, dense mid-back scapular retraction, and full bicep peaks:
-1. **Primary Lat Width Driver**: **Lat Pulldown (Neutral or Wide Grip)** (3 working sets × 8–12 reps @ 50.0–55.0 kg). Lifting wrist straps are non-negotiable. Oct 14 hit 50kg for 8, 6 $\rightarrow$ Today we test 50.0 kg for 10–12 clean reps or advance to 55.0 kg on Set 1!
-2. **Mid-Back Density & Scapular Retractor**: **Seated Cable Row (V-Bar or Chest-Supported Machine)** (3 working sets × 8–12 reps @ 60.0–65.0 kg). Pull handle directly into the belly button while maintaining rigid upright spine. Smashed 65kg × 12 on Oct 18 $\rightarrow$ Solidify 60–65kg working sets.
-3. **Pure Lat Shoulder Extension Isolation**: **Straight-Arm Cable Pulldown** (3 sets × 12–15 reps @ 15.0–20.0 kg). Bypasses fatigued biceps completely. Oct 18 conquered 15kg for 12, 12, 12 $\rightarrow$ Today we test the 20.0 kg pin on Set 1!
-4. **Posterior Delt 3D Cap**: **Reverse Pec Deck / Rear Delt Fly Machine** (3 sets × 12–15 reps @ 15.0–17.5 kg). Conquered 15kg for 12, 12, 12 $\rightarrow$ Overload leap to 17.5 kg pin!
-5. **Direct Biceps Hypertrophy Anchor**: **EZ-Bar Bicep Curl** (3 sets × 10–12 reps @ 20.0–22.5 kg). Conquered 20kg for 15, 12, 11 on Oct 14 $\rightarrow$ Advance to 22.5 kg on Set 1!
+Follow this 1 $\rightarrow$ 6 flow for maximum lateral deltoid capping, clavicular upper chest shelf, and long-head triceps stretch:
+1. **Primary Upper Chest Compound**: **Incline DB Bench Press** (3 working sets × 8–10 reps @ 20.0–22.5 kg). Set 1 top-set probe at 22.5 kg (Oct 19 hit 10 reps); Sets 2–3 anchored at 20.0 kg.
+2. **Long-Head Triceps Stretch Driver**: **Overhead Cable Triceps Ext** (3 sets × 10–12 reps @ 15.0–20.0 kg pin). Deep stretch behind neck while shoulder joint is lubricated from pressing.
+3. **Continuous-Tension Lateral Delt Builder**: **Cable Lateral Raise** (4 sets × 12–15 reps @ 2.5–5.0 kg). Oct 16 smashed rep ceiling (16 reps @ 2.5kg). Test 5.0 kg on Set 1, back off to 2.5 kg for sets 2–4.
+4. **Sternal Chest Peak Contraction**: **Pec Deck Machine Fly** (3 sets × 10–12 reps @ 35.0 kg pin). Smashed 35kg for 12, 12, 10 on Oct 16. Conquer 12, 12, 12 today!
+5. **Lateral Delt Burnout Finisher**: **DB Lateral Raise (Drop Set Finisher)** (3 sets × 12–15 reps @ 5.0 kg $\rightarrow$ drop set to 2.5 kg on final set). Strict side delts; no trap shrugging.
+6. **Medial/Lateral Triceps Finisher**: **Cable Triceps Pushdown** (2–3 sets × 12–15 reps @ 20.0 kg pin). Lock out elbows and pump maximum blood into arm horseshoes.
 
-### 2. Biomechanical Guardrails (Strict Anti-Swinging & Strap Mandate)
-- **Lifting Wrist Straps Mandatory**: Grip and forearm fatigue must NEVER limit your back stimulation. Lock straps on Lat Pulldowns and Rows before every set.
-- **Torso Angle Lock (Zero Seated Swinging)**: On Seated Cable Rows, do NOT swing your lower back forward and back like a rowing machine. Lock your hips, keep chest tall, and initiate purely through scapular retraction and elbow drive.
-- **Hand Hook Cue**: Grip handles loosely with fingers acting as passive hooks. Think "pull from elbows down to hip pockets".
+### 2. Biomechanical Guardrails (Anti-Trap Shrugging & Shoulder Protection)
+- **Zero Trap Shrugging on Lateral Raises**: Do NOT shrug up toward your ears. Depress shoulder blades down into your back pockets. Reach your knuckles outward toward the room corners.
+- **Gym Dumbbell Ground Truth Reminder**: There are NO 6.0 kg dumbbells in your gym (only 1, 2, 3, 4, 5, 7, 8 kg). Do NOT jump from 5kg to 7kg on DB lateral raises (+40% jump causes immediate trap shrugging). Build rep volume on 5.0 kg (up to 15–20 reps) and use Cable Lateral Raises for incremental micro-overload.
+- **Incline Bench Angle Lock**: Exactly 30° (or second pin from flat). Any angle higher than 30° shifts tension from upper pecs directly onto anterior deltoids.
+- **waistband & Elbow Path**: Tuck elbows to a 45° angle on Incline DB Press. Never flare elbows to 90°.
 
 ### 3. Gym Duration Guardrail: 50–55 Minutes Max
-- **Hard Session Cap**: Exactly 5 exercises, 15 total working sets. Move crisply between stations.
-- Rest 150s on Lat Pulldowns, 120s on Cable Rows, 90s on Straight-Arm Pulldowns, Rear Delts, and EZ-Bar Curls.
+- **Hard Session Cap**: Exactly 6 exercises, 17 working sets + 1 drop set.
+- Rest 150s on Incline DB Press, 90s on Overhead Triceps and Pec Deck Fly, 60–90s on Lateral Raises and Pushdowns. Move with intent.
 
 ---
 
 ## WORKOUT BLUEPRINT & EXERCISE TARGETS
 
-### 1. Lat Pulldown (Neutral or Wide Grip)
-- **Order Rationale**: **#1 Primary Lat Width Driver.** Maximum motor unit recruitment while lats are 100% fresh.
-- **Working Sets**: **3 sets x 8–12 reps** | Rest: 150 sec | Target RIR: **1–2**
-- **Target Weight**: **50.0 kg – 55.0 kg** (Oct 14: 50.0 kg × 8, 6 $\rightarrow$ Straps locked: target 10–12 reps at 50.0 kg, or test 55.0 kg on Set 1!).
-- **Warm-Up Ramp**: 25.0 kg × 10 reps, 35.0 kg × 6 reps before working sets.
-- **Form Cue**: Straps wrapped tight. Lean torso back slightly (10–15°). Drive elbows straight down toward your hip pockets.
-- **Mind-Muscle Cue**: Do NOT yank down with arms. Imagine squeezing an orange under each armpit at the bottom contraction. 2-second controlled ascent to full lat stretch.
+### 1. Incline Dumbbell Press
+- **Order Rationale**: **#1 Primary Upper Chest Mass Driver.** Maximum motor unit recruitment for the upper chest shelf while shoulders and triceps are fresh.
+- **Working Sets**: **3 sets x 8–10 reps** | Rest: 150 sec | Target RIR: **1–2**
+- **Target Weight**: **20.0 kg – 22.5 kg per hand**
+  - *Floor Target*: 20.0 kg × 10, 10, 10 reps (30 total reps).
+  - *Main Target*: Set 1 @ 22.5 kg (8–10 reps); Sets 2–3 @ 20.0 kg (10, 10 reps).
+  - *Stretch Target*: Set 1 @ 22.5 kg (10 reps); Set 2 @ 22.5 kg (8–9 reps); Set 3 @ 20.0 kg (10 reps).
+- **Warm-Up Ramp**: 10.0 kg × 10 reps, 15.0 kg × 6 reps before working sets.
+- **Gym Floor Swap Option**: Incline Machine Chest Press (40.0–50.0 kg pin).
+- **Form Cue**: Bench set to 30° incline. Retract shoulder blades, plant feet firmly. Dumbbells tucked at 45° angle to torso. Controlled 3-second descent until DB handles touch outer chest.
+- **Mind-Muscle Cue**: Drive elbows inward and upward toward your chin to shorten the clavicular pectoralis. Squeeze upper chest at peak without banging dumbbells together.
 
 ---
 
-### 2. Seated Cable Row (V-Bar Grip)
-- **Order Rationale**: **#2 Mid-Back & Lower Lat Thickness.** Heavy horizontal pulling with zero lower back shear.
-- **Working Sets**: **3 sets x 8–12 reps** | Rest: 120 sec | Target RIR: **1–2**
-- **Target Weight**: **60.0 kg – 65.0 kg** (Oct 18: smashed 65.0 kg × 12 [ALL-TIME PR] $\rightarrow$ Anchor Set 1 at 65.0 kg, Sets 2–3 at 60.0 kg).
-- **Gym Floor Swap Option**: Chest-Supported Machine Row (Sternum glued to pad).
-- **Form Cue**: Plant feet firmly on footpegs with slight knee bend. Chest held high, shoulders down. Pull handle directly into your lower abdomen (belly button).
-- **Mind-Muscle Cue**: Scapulae protract forward during the stretch; violently retract and pinch your shoulder blades together at the finish. Hold peak contraction for 1 full second.
-
----
-
-### 3. Straight-Arm Cable Pulldown
-- **Order Rationale**: **#3 Isolated Lat Extension.** Takes biceps out of the equation to pump maximum blood into the latissimus dorsi.
-- **Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **0–1**
-- **Target Weight**: **15.0 kg – 20.0 kg pin** (Oct 18: 15.0 kg × 12, 12, 12 conquered $\rightarrow$ Test 20.0 kg on Set 1, back off to 15.0 kg for Sets 2–3).
-- **Form Cue**: Stand 2 feet back from cable station. Hinge hips slightly (15°). Arms extended with soft elbow bend locked in place.
-- **Mind-Muscle Cue**: Sweep the straight bar/rope downward in a smooth arc until it grazes your upper thighs. Squeeze your lats violently at the bottom.
-
----
-
-### 4. Reverse Pec Deck / Rear Delt Fly Machine
-- **Order Rationale**: **#4 3D Deltoid Taper.** Balances shoulder joint health and builds the back shelf of the V-taper.
-- **Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **0–1**
-- **Target Weight**: **15.0 kg – 17.5 kg pin** (Oct 18: 15.0 kg × 12, 12, 12 conquered $\rightarrow$ Test 17.5 kg pin on Set 1!).
-- **Gym Floor Swap Option**: Incline Dumbbell Rear Delt Fly (5.0–7.0 kg DBs, chest against 30° incline bench).
-- **Form Cue**: Adjust seat so handles are level with your shoulders. Keep elbows slightly bent but rigid.
-- **Mind-Muscle Cue**: Push your knuckles straight out toward the side walls. Do NOT pull with your upper traps or pinch scapulae together. Stop when upper arms are in line with your back.
-
----
-
-### 5. EZ-Bar Bicep Curl
-- **Order Rationale**: **#5 Direct Biceps Peak Hypertrophy.** Heavy spinal-stable bicep overload to complete the pulling session.
+### 2. Overhead Cable Triceps Extension
+- **Order Rationale**: **#2 Long-Head Triceps Stretch Driver.** Places the long head in maximum stretch while shoulders are warm from pressing.
 - **Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**
-- **Target Weight**: **20.0 kg – 22.5 kg** (Oct 14: 20.0 kg × 15, 12, 11 conquered $\rightarrow$ Test 22.5 kg top-set, or 20.0 kg with 3-second negatives).
-- **Gym Floor Swap Option**: Standing Cable Bicep Curl (20.0–25.0 kg stack).
-- **Form Cue**: Stand tall with feet shoulder-width apart. Grip the undulating EZ-bar curves. Pin elbows firmly against your side ribs.
-- **Mind-Muscle Cue**: Curl upward with zero hip momentum. Squeeze your biceps at the top without letting your elbows drift forward. Lower the bar for 3 full seconds.
+- **Target Weight**: **15.0 kg – 20.0 kg pin**
+  - *Floor Target*: 15.0 kg × 12, 12, 12 reps.
+  - *Main Target*: Set 1 @ 20.0 kg (8–10 reps); Sets 2–3 @ 15.0 kg (11–12 reps).
+  - *Stretch Target*: 20.0 kg × 10, 10, 8 reps.
+- **Gym Floor Swap Option**: Overhead Dumbbell Extension (15.0–17.5 kg single dumbbell behind head).
+- **Form Cue**: Set pulley to upper chest/neck height. Rope attached. Take staggered stance, lean torso forward 30°. Keep elbows tucked alongside ears.
+- **Mind-Muscle Cue**: Allow rope to pull hands deep behind your neck for a 2-second loaded stretch. Drive forearms forward into full extension, spreading the rope ends wide at lockout. Squeeze triceps for 1 full second.
+
+---
+
+### 3. Cable Lateral Raise
+- **Order Rationale**: **#3 Constant-Tension Lateral Delt Isolation.** Constant tension across the entire range of motion, particularly at the bottom where dumbbells provide zero tension.
+- **Working Sets**: **4 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **0–1**
+- **Target Weight**: **2.5 kg – 5.0 kg pin**
+  - *Floor Target*: 2.5 kg × 15, 15, 15, 15 reps.
+  - *Main Target*: Set 1 @ 5.0 kg (8–10 strict reps); Sets 2–4 @ 2.5 kg (15, 14, 13 reps).
+  - *Stretch Target*: Sets 1–2 @ 5.0 kg (10, 8 reps); Sets 3–4 @ 2.5 kg (15, 15 reps).
+- **Gym Floor Swap Option**: Incline Bench Dumbbell Lateral Raise (3.0–4.0 kg DBs, chest against 30° incline).
+- **Form Cue**: Set pulley to wrist/knee height. Stand slightly side-on to cable stack, lean 10–15° away from station. Grip cable collar or D-handle.
+- **Mind-Muscle Cue**: Sweep your hand out toward the wall corners, NOT straight up. Stop exactly at collarbone height. Shoulder blade stays pinned down—do NOT shrug traps!
+
+---
+
+### 4. Pec Deck Machine Fly
+- **Order Rationale**: **#4 Isolated Pectoral Horizontal Adduction.** Heavy mechanical stretch and inner-sternal contraction with zero triceps involvement.
+- **Working Sets**: **3 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**
+- **Target Weight**: **35.0 kg pin**
+  - *Floor Target*: 35.0 kg × 10, 10, 10 reps.
+  - *Main Target*: 35.0 kg × 12, 12, 12 reps (conquer double progression!).
+  - *Stretch Target*: Set 1 test @ 40.0 kg pin (8–10 reps); Sets 2–3 @ 35.0 kg (12, 12 reps).
+- **Gym Floor Swap Option**: Flat Dumbbell Fly or Cable Crossover (10.0–12.5 kg).
+- **Form Cue**: Adjust seat so handles/elbow pads align with mid-chest. Keep chest proud, shoulder blades pinned against the back pad. Soft bend in elbows locked rigid throughout.
+- **Mind-Muscle Cue**: Think "bring your inner biceps together across your chest". 2-second controlled eccentric stretch; violently hug a giant barrel at peak contraction and hold for 1 full second.
+
+---
+
+### 5. Dumbbell Lateral Raise (Drop Set Finisher)
+- **Order Rationale**: **#5 Deltoid Capping & Metabolic Exhaustion.** Final high-volume pump to maximize sarcoplasmic volume in the lateral delts.
+- **Working Sets**: **3 sets x 12–15 reps + 1 drop set to failure** | Rest: 60 sec | Target RIR: **0**
+- **Target Weight**: **5.0 kg DBs** $\rightarrow$ immediate drop to **2.5 kg DBs** on Set 3.
+  - *Floor Target*: 5.0 kg × 12, 12, 12 reps.
+  - *Main Target*: 5.0 kg × 14, 13, 12 reps $\rightarrow$ immediate drop set @ 2.5 kg × 12–15 reps.
+  - *Stretch Target*: 5.0 kg × 15, 15, 15 reps $\rightarrow$ immediate drop set @ 2.5 kg × 15–20 reps.
+- **Form Cue**: Hinge forward 10° at the hips. Lead with elbows, keep pinkies level with thumbs ("pour the water" cue). Stop at shoulder height.
+- **Mind-Muscle Cue**: Imagine pushing the walls away from your body. Burn through the lactic threshold; zero swinging from knees or hips.
+
+---
+
+### 6. Cable Triceps Pushdown
+- **Order Rationale**: **#6 Medial & Lateral Triceps Horseshoe Finisher.** Direct elbow extension lockout to finish off arm volume.
+- **Working Sets**: **2–3 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **0–1**
+- **Target Weight**: **20.0 kg pin**
+  - *Floor Target*: 20.0 kg × 12, 12 reps.
+  - *Main Target*: 20.0 kg × 15, 14 reps (pushing toward the 15-rep ceiling).
+  - *Stretch Target*: 20.0 kg × 15, 15 reps (unlocks 25.0 kg pin test next cycle).
+- **Gym Floor Swap Option**: Overhead Triceps Pushdown or Rope Pushdown.
+- **Form Cue**: Straight bar or V-bar attached to high pulley. Pin elbows tight against side ribs. Lean forward slightly at torso.
+- **Mind-Muscle Cue**: Press straight down, locking out elbows with zero movement from upper arms. Squeeze the triceps horseshoe at bottom lockout for 1 full second.

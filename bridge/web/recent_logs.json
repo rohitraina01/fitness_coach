@@ -1,5 +1,40 @@
 [
   {
+    "workout_id": "W-20261107-01",
+    "date": "2026-11-07",
+    "session_type": "Pull (Day 2: Pull A)",
+    "duration": "63 min",
+    "exercises": [
+      {
+        "name": "Pull-Up",
+        "summary": "Pull-Up: 0.0kg x 5"
+      },
+      {
+        "name": "Lat Pulldown",
+        "summary": "Lat Pulldown: 50.0kg x 6, 50.0kg x 6, 50.0kg x 7"
+      },
+      {
+        "name": "Seated Cable Row",
+        "summary": "Seated Cable Row: 65.0kg x 10, 60.0kg x 12, 60.0kg x 12"
+      },
+      {
+        "name": "Reverse Pec Deck (Rear Delt Fly)",
+        "summary": "Reverse Pec Deck (Rear Delt Fly): 17.5kg x 12, 17.5kg x 12, 17.5kg x 11"
+      },
+      {
+        "name": "Single-Arm Cable Lat Pulldown",
+        "summary": "Single-Arm Cable Lat Pulldown: 10.0kg x 12, 15.0kg x 6, 12.5kg x 11"
+      },
+      {
+        "name": "EZ-Bar Bicep Curl",
+        "summary": "EZ-Bar Bicep Curl: 20.0kg x 12, 20.0kg x 8, 20.0kg x 7"
+      }
+    ],
+    "raw_text": "=== WORKOUT REPORT ===\nName:      Workout\nDate:      Saturday, Nov 7 2026 \u2013 10:18 AM\nDuration:  63m 14s\nVolume:    4540.0 kg\nSets:      16\nExercises: 6",
+    "template_text": "Pull-Up: 0.0kg x 5\nLat Pulldown: 50.0kg x 6, 50.0kg x 6, 50.0kg x 7\nSeated Cable Row: 65.0kg x 10, 60.0kg x 12, 60.0kg x 12\nReverse Pec Deck (Rear Delt Fly): 17.5kg x 12, 17.5kg x 12, 17.5kg x 11\nSingle-Arm Cable Lat Pulldown: 10.0kg x 12, 15.0kg x 6, 12.5kg x 11\nEZ-Bar Bicep Curl: 20.0kg x 12, 20.0kg x 8, 20.0kg x 7",
+    "copy_prompt": "/log\n# Session: Pull (Day 2: Pull A) (2026-11-07)\nPull-Up: 0.0kg x 5\nLat Pulldown: 50.0kg x 6, 50.0kg x 6, 50.0kg x 7\nSeated Cable Row: 65.0kg x 10, 60.0kg x 12, 60.0kg x 12\nReverse Pec Deck (Rear Delt Fly): 17.5kg x 12, 17.5kg x 12, 17.5kg x 11\nSingle-Arm Cable Lat Pulldown: 10.0kg x 12, 15.0kg x 6, 12.5kg x 11\nEZ-Bar Bicep Curl: 20.0kg x 12, 20.0kg x 8, 20.0kg x 7"
+  },
+  {
     "workout_id": "W-20261021-01",
     "date": "2026-10-21",
     "session_type": "Legs (Day 3: Legs & Core)",
@@ -220,40 +255,5 @@
     "raw_text": "Workout\n2026-10-13 22:26\nDuration: 37m 42s\nLeg Press\nSet 1: 12 reps x 18.0 kg\nSet 2: 12 reps x 45.0 kg\nSet 3: 12 reps x 45.0 kg\nSet 4: 12 reps x 45.0 kg\nLeg Extension\nSet 1: 12 reps x 5.0 kg\nSet 2: 12 reps x 10.0 kg\nSet 3: 12 reps x 7.5 kg\nSet 4: 12 reps x 7.5 kg\nLying Leg Curl\nSet 1: 12 reps x 5.0 kg\nSet 2: 10 reps x 5.0 kg\nSet 3: 8 reps x 5.0 kg\nStanding Calf Raise\nSet 1: 12 reps x 80.0 kg\nSet 2: 12 reps x 80.0 kg\nSet 3: 12 reps x 80.0 kg\nCrunch\nSet 1: 12 reps\nSet 2: 12 reps\nSet 3: 12 reps\nDead Bug\nSet 1: 12 reps\nSet 2: 12 reps\nSet 3: 12 reps\nLying Leg Raises\nSet 1: 12 reps x 0.0 kg",
     "template_text": "Leg Press: 18.0kg x 12, 45.0kg x 12, 45.0kg x 12, 45.0kg x 12\nLeg Extension Machine: 5.0kg x 12, 10.0kg x 12, 7.5kg x 12, 7.5kg x 12\nLeg Curl Machine: 5.0kg x 12, 5.0kg x 10, 5.0kg x 8\nStanding Calf Raise: 80.0kg x 12, 80.0kg x 12, 80.0kg x 12\nBodyweight Floor Crunch: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nDeadbug Anti-APT Core: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nLying Leg Raise: 0.0kg x 12",
     "copy_prompt": "/log\n# Session: LEGS (Day 3: Legs & Core) (2026-10-13)\nLeg Press: 18.0kg x 12, 45.0kg x 12, 45.0kg x 12, 45.0kg x 12\nLeg Extension Machine: 5.0kg x 12, 10.0kg x 12, 7.5kg x 12, 7.5kg x 12\nLeg Curl Machine: 5.0kg x 12, 5.0kg x 10, 5.0kg x 8\nStanding Calf Raise: 80.0kg x 12, 80.0kg x 12, 80.0kg x 12\nBodyweight Floor Crunch: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nDeadbug Anti-APT Core: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nLying Leg Raise: 0.0kg x 12"
-  },
-  {
-    "workout_id": "W-20261010-01",
-    "date": "2026-10-10",
-    "session_type": "Push Workout",
-    "duration": "63 min 10 sec",
-    "exercises": [
-      {
-        "name": "DB Lateral Raise",
-        "summary": "DB Lateral Raise: 5.0kg x 15, 5.0kg x 15, 5.0kg x 15, 5.0kg x 15"
-      },
-      {
-        "name": "Incline DB Press",
-        "summary": "Incline DB Press: 20.0kg x 9, 20.0kg x 10, 20.0kg x 10"
-      },
-      {
-        "name": "Flat BB Bench Press",
-        "summary": "Flat BB Bench Press: 37.5kg x 10, 42.5kg x 10, 42.5kg x 7"
-      },
-      {
-        "name": "Overhead Cable Triceps Ext",
-        "summary": "Overhead Cable Triceps Ext: 10.0kg x 12, 15.0kg x 12, 15.0kg x 13"
-      },
-      {
-        "name": "Pec Deck Machine Fly",
-        "summary": "Pec Deck Machine Fly: 30.0kg x 12, 30.0kg x 9, 15.0kg x 6"
-      },
-      {
-        "name": "Cable Triceps Pushdown",
-        "summary": "Cable Triceps Pushdown: 20.0kg x 12, 20.0kg x 12, 20.0kg x 12"
-      }
-    ],
-    "raw_text": "2026-10-10 \u2014 Push Day\nDuration: 63m 10s\nDumbbell Lateral Raise: 5 kg \u00d7 15, 5 kg \u00d7 15, 5 kg \u00d7 15, 5 kg \u00d7 15\nIncline Dumbbell Press: 20 kg \u00d7 9, 20 kg \u00d7 10, 20 kg \u00d7 10\nBarbell Bench Press: 37.5 kg \u00d7 10, 42.5 kg \u00d7 10 \u2014 PR, 42.5 kg \u00d7 7\nOverhead Triceps Extension: 10 kg \u00d7 12, 15 kg \u00d7 12, 15 kg \u00d7 13\nPec Deck Machine: 30 kg \u00d7 12, 30 kg \u00d7 9; Drop-set: 30 kg \u00d7 9 \u2192 15 kg \u00d7 6\nCable Triceps Pushdown: 20 kg \u00d7 12, 20 kg \u00d7 12, 20 kg \u00d7 12",
-    "template_text": "DB Lateral Raise: 5.0kg x 15, 5.0kg x 15, 5.0kg x 15, 5.0kg x 15\nIncline DB Press: 20.0kg x 9, 20.0kg x 10, 20.0kg x 10\nFlat BB Bench Press: 37.5kg x 10, 42.5kg x 10, 42.5kg x 7\nOverhead Cable Triceps Ext: 10.0kg x 12, 15.0kg x 12, 15.0kg x 13\nPec Deck Machine Fly: 30.0kg x 12, 30.0kg x 9, 15.0kg x 6\nCable Triceps Pushdown: 20.0kg x 12, 20.0kg x 12, 20.0kg x 12",
-    "copy_prompt": "/log\n# Session: Push Workout (2026-10-10)\nDB Lateral Raise: 5.0kg x 15, 5.0kg x 15, 5.0kg x 15, 5.0kg x 15\nIncline DB Press: 20.0kg x 9, 20.0kg x 10, 20.0kg x 10\nFlat BB Bench Press: 37.5kg x 10, 42.5kg x 10, 42.5kg x 7\nOverhead Cable Triceps Ext: 10.0kg x 12, 15.0kg x 12, 15.0kg x 13\nPec Deck Machine Fly: 30.0kg x 12, 30.0kg x 9, 15.0kg x 6\nCable Triceps Pushdown: 20.0kg x 12, 20.0kg x 12, 20.0kg x 12"
   }
 ]
