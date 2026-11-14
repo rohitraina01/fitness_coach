@@ -1,3 +1,25 @@
+### [2026-11-14 - Update 1.7] - Push B Ingestion, Triceps PR, /log Skill Setup & Day 6 Legs Prescription
+- **Native Skill System**:
+  - Registered `/log` skill in `.agents/skills/log/SKILL.md` and `SKILLS/log/SKILL.md` so typing `/log` displays the command directly in the dropdown.
+  - Enhanced `scripts/ingest_workout.py` buffer parser with intelligent session type inference and duration override parsing.
+- **Push B Ingestion (W-20261114-01)**:
+  - Ingested 19 sets in ~60m from mobile buffer (`WORKOUT_LOGS/incoming_raw_log.txt`).
+  - Smashed **Overhead Cable Triceps Extension All-Time Rep PR**: 20.0 kg × 10 reps [PR], 20.0 kg × 8 reps, 20.0 kg × 7 reps (All 3 sets executed on top 20.0 kg pin; 25 total reps @ 20kg vs 6 reps previously).
+  - Conquered **Pec Deck Machine Fly Volume Density**: 35.0 kg × 12, 11, 6 reps (29 reps at 35.0 kg vs 17 reps on Oct 19).
+  - Stabilized **Incline DB Bench Press**: 22.5 kg × 6 reps, 20.0 kg × 10, 9 reps (25 compound reps following 26-day pressing layoff).
+  - Maintained strict lateral delt volume: **Cable Lateral Raise** 2.5 kg × 12, 12, 12 reps, and **DB Lateral Raise** 5.0 kg × 12, 12, 7 reps $\rightarrow$ Drop Set: 2.5 kg × 10 reps.
+  - Accumulated **Cable Triceps Pushdown**: 20.0 kg × 12, 12, 10 reps (added 3rd working set).
+  - Normalized relational records into `DATA/workouts.csv` and `DATA/workout_sets.csv`.
+  - Generated comprehensive workout log in `WORKOUT_LOGS/2026/2026-11/2026-11-14_push.md`.
+- **System Queue Advancement & Rule 9 Enforcement**:
+  - Advanced split queue to **Day 6: Legs & Anti-APT Core (Quad Sweep, Hamstrings & Pelvic Restoration)**.
+  - Pressing musculature entering 48–72h recovery (Freshness 3/10). Legs & Core 100% fresh (Freshness 10/10).
+  - Programmed 54.0–60.0 kg Leg Press, 10.0–12.0 kg Leg Extension, 5.0–7.5 kg Lying Leg Curl (dorsiflexed feet), 80.0–85.0 kg dead-stop Calf Raises, and Floor Crunch / Deadbug anti-APT superset.
+  - Updated `CURRENT_NEXT_WORKOUT.md`, `CURRENT_STATUS.md`, and `COACH_MEMORY.md`.
+  - Rebuilt Excel dashboard (`DASHBOARD/fitness_dashboard.xlsx`) and synchronized mobile exports across `OUTPUTS/mobile/`, `docs/`, and `bridge/web/`.
+
+---
+
 ### [2026-11-10 - Update 1.6] - Pull A Ingestion, PR Breakthroughs & Push B Prescription
 - **Pull A Ingestion (W-20261107-01)**:
   - Ingested 16 sets in 63m 14s from mobile buffer (`WORKOUT_LOGS/incoming_raw_log.txt`).

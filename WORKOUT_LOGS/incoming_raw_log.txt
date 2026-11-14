@@ -1,53 +1,5 @@
 # INCOMING WORKOUT LOG BUFFER
-# Date: 2026-11-14 18:13
-# Session: Legs
+# This file receives raw logs submitted from the mobile web app.
+# When you return to your laptop, tell the coach "/log" or "process my incoming log", and it will read this file automatically.
 
-=== WORKOUT REPORT ===
-Name:      push b
-Date:      Saturday, Nov 14 2026 – 10:41 AM
-Duration:  121m 4s
-Volume:    2980.0 kg
-Sets:      19
-Exercises: 6
-
---- Incline Dumbbell Press ---
-  Set 1: 22.5 kg × 6 reps
-  Set 2: 20.0 kg × 10 reps
-  Set 3: 20.0 kg × 9 reps
-
---- Overhead Cable Extension ---
-  Set 1: 20.0 kg × 10 reps
-  Set 2: 20.0 kg × 8 reps
-  Set 3: 20.0 kg × 7 reps
-
---- Cable Lateral Raise ---
-  Set 1: 2.5 kg × 12 reps
-  Set 2: 2.5 kg × 12 reps
-  Set 3: 2.5 kg × 12 reps
-
---- Pec Deck Machine ---
-  Set 1: 35.0 kg × 12 reps
-  Set 2: 35.0 kg × 11 reps
-  Set 3: 35.0 kg × 6 reps
-
---- Dumbbell Lateral Raise ---
-  Set 1: 5.0 kg × 12 reps
-  Set 2: 5.0 kg × 12 reps
-  Set 3: 5.0 kg × 7 reps (dropset)
-  Set 4: 2.5 kg × 10 reps (dropset)
-
---- Cable Tricep Pushdown ---
-  Set 1: 20.0 kg × 12 reps
-  Set 2: 20.0 kg × 12 reps
-  Set 3: 20.0 kg × 10 reps
-
---- XP ---
-  Upper Chest: +28 XP
-  Lower Chest: +12 XP
-  Front Delts: +7 XP
-  Side Delts: +19 XP
-  Triceps: +71 XP
-  Middle Chest: +28 XP
-  Total: +165 XP
-========================
-Ignore time I forgot to press stop it was around 60 min
+(No pending unprocessed logs)

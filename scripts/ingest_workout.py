@@ -388,23 +388,43 @@ def ingest_from_buffer(extra_notes=""):
         print("Warning: Could not match any sets from incoming buffer text.")
         return False
 
-    if session_type.lower() in ["rest", "workout", "session", ""]:
-        push_eids = {"INCLINE_DB_PRESS", "FLAT_BB_BENCH", "SMITH_BENCH", "PEC_DECK_FLY", "TRICEPS_PUSHDOWN", "ROPE_PUSHDOWN", "OVERHEAD_TRICEPS_EXT", "DB_LATERAL_RAISE", "CABLE_LATERAL_RAISE", "INCLINE_MACHINE_PRESS"}
-        pull_eids = {"LAT_PULLDOWN", "SEATED_CABLE_ROW", "STRAIGHT_ARM_PULLDOWN", "REAR_DELT_FLY", "EZ_BAR_CURL", "HAMMER_CURL", "PULL_UP", "SINGLE_ARM_CABLE_ROW", "SINGLE_ARM_LAT_PULLDOWN"}
-        leg_eids = {"LEG_PRESS", "LEG_EXTENSION", "LEG_CURL", "CALF_RAISE", "DEADBUG", "FLOOR_CRUNCH"}
-        
-        eids_in_sets = {s["exercise"] for s in sets}
-        if len(eids_in_sets & push_eids) >= len(eids_in_sets & pull_eids) and len(eids_in_sets & push_eids) >= len(eids_in_sets & leg_eids):
+    # Check if workout report explicitly declares a name
+    name_match = re.search(r"Name:\s*([^\n\r]+)", content, re.IGNORECASE)
+    declared_name = name_match.group(1).strip() if name_match else ""
+
+    push_eids = {"INCLINE_DB_PRESS", "FLAT_BB_BENCH", "SMITH_BENCH", "PEC_DECK_FLY", "TRICEPS_PUSHDOWN", "ROPE_PUSHDOWN", "OVERHEAD_TRICEPS_EXT", "DB_LATERAL_RAISE", "CABLE_LATERAL_RAISE", "INCLINE_MACHINE_PRESS"}
+    pull_eids = {"LAT_PULLDOWN", "SEATED_CABLE_ROW", "STRAIGHT_ARM_PULLDOWN", "REAR_DELT_FLY", "EZ_BAR_CURL", "HAMMER_CURL", "PULL_UP", "SINGLE_ARM_CABLE_ROW", "SINGLE_ARM_LAT_PULLDOWN"}
+    leg_eids = {"LEG_PRESS", "LEG_EXTENSION", "LEG_CURL", "CALF_RAISE", "DEADBUG", "FLOOR_CRUNCH"}
+    
+    eids_in_sets = {s["exercise"] for s in sets}
+    push_count = len(eids_in_sets & push_eids)
+    pull_count = len(eids_in_sets & pull_eids)
+    leg_count = len(eids_in_sets & leg_eids)
+
+    if "push" in declared_name.lower() or (push_count > pull_count and push_count > leg_count):
+        session_type = "Push"
+    elif "pull" in declared_name.lower() or (pull_count > push_count and pull_count > leg_count):
+        session_type = "Pull"
+    elif "leg" in declared_name.lower() or (leg_count > push_count and leg_count > pull_count):
+        session_type = "Legs"
+    elif session_type.lower() in ["rest", "workout", "session", ""]:
+        if push_count >= pull_count and push_count >= leg_count:
             session_type = "Push"
-        elif len(eids_in_sets & pull_eids) > len(eids_in_sets & leg_eids):
+        elif pull_count > leg_count:
             session_type = "Pull"
-        elif len(eids_in_sets & leg_eids) > 0:
+        elif leg_count > 0:
             session_type = "Legs"
 
     date_match = re.search(r"(\d{4}-\d{2}-\d{2})", content)
     date_str = date_match.group(1) if date_match else datetime.now().strftime("%Y-%m-%d")
-    dur_match = re.search(r"Duration:\s*(\d+)m", content, re.IGNORECASE)
-    duration_min = int(dur_match.group(1)) if dur_match else 38
+
+    # Check for duration override in notes (e.g. "Ignore time I forgot to press stop it was around 60 min")
+    dur_override = re.search(r"(?:around|about|approx|actually|real time)\s*(\d+)\s*min", content, re.IGNORECASE)
+    if dur_override:
+        duration_min = int(dur_override.group(1))
+    else:
+        dur_match = re.search(r"Duration:\s*(\d+)m", content, re.IGNORECASE)
+        duration_min = int(dur_match.group(1)) if dur_match else 60
 
     next_workout_path = os.path.join(BASE_DIR, "CURRENT_NEXT_WORKOUT.md")
     nw_text = ""
@@ -413,14 +433,14 @@ def ingest_from_buffer(extra_notes=""):
             nw_text = f.read().upper()
 
     if "pull" in session_type.lower():
-        if "PULL B" in nw_text:
+        if "b" in declared_name.lower() or "PULL B" in nw_text:
             session_name = "Day 6: Pull B"
         else:
             session_name = "Day 2: Pull A"
     elif "leg" in session_type.lower():
         session_name = "Day 3: Legs & Core"
     elif "push" in session_type.lower():
-        if "PUSH B" in nw_text:
+        if "b" in declared_name.lower() or "PUSH B" in nw_text:
             session_name = "Day 5: Push B"
         else:
             session_name = "Day 1: Push A"

@@ -1,5 +1,40 @@
 [
   {
+    "workout_id": "W-20261114-01",
+    "date": "2026-11-14",
+    "session_type": "Push (Day 5: Push B)",
+    "duration": "60 min",
+    "exercises": [
+      {
+        "name": "Incline Dumbbell Press",
+        "summary": "Incline Dumbbell Press: 22.5kg x 6, 20.0kg x 10, 20.0kg x 9"
+      },
+      {
+        "name": "Overhead Cable Triceps Extension",
+        "summary": "Overhead Cable Triceps Extension: 20.0kg x 10, 20.0kg x 8, 20.0kg x 7"
+      },
+      {
+        "name": "Cable Lateral Raise",
+        "summary": "Cable Lateral Raise: 2.5kg x 12, 2.5kg x 12, 2.5kg x 12"
+      },
+      {
+        "name": "Pec Deck Machine Fly",
+        "summary": "Pec Deck Machine Fly: 35.0kg x 12, 35.0kg x 11, 35.0kg x 6"
+      },
+      {
+        "name": "Dumbbell Lateral Raise",
+        "summary": "Dumbbell Lateral Raise: 5.0kg x 12, 5.0kg x 12, 5.0kg x 7, 2.5kg x 10"
+      },
+      {
+        "name": "Cable Triceps Pushdown",
+        "summary": "Cable Triceps Pushdown: 20.0kg x 12, 20.0kg x 12, 20.0kg x 10"
+      }
+    ],
+    "raw_text": "=== WORKOUT REPORT ===\nName:      push b\nDate:      Saturday, Nov 14 2026 \u2013 10:41 AM\nDuration:  121m 4s\nVolume:    2980.0 kg\nSets:      19\nExercises: 6",
+    "template_text": "Incline Dumbbell Press: 22.5kg x 6, 20.0kg x 10, 20.0kg x 9\nOverhead Cable Triceps Extension: 20.0kg x 10, 20.0kg x 8, 20.0kg x 7\nCable Lateral Raise: 2.5kg x 12, 2.5kg x 12, 2.5kg x 12\nPec Deck Machine Fly: 35.0kg x 12, 35.0kg x 11, 35.0kg x 6\nDumbbell Lateral Raise: 5.0kg x 12, 5.0kg x 12, 5.0kg x 7, 2.5kg x 10\nCable Triceps Pushdown: 20.0kg x 12, 20.0kg x 12, 20.0kg x 10",
+    "copy_prompt": "/log\n# Session: Push (Day 5: Push B) (2026-11-14)\nIncline Dumbbell Press: 22.5kg x 6, 20.0kg x 10, 20.0kg x 9\nOverhead Cable Triceps Extension: 20.0kg x 10, 20.0kg x 8, 20.0kg x 7\nCable Lateral Raise: 2.5kg x 12, 2.5kg x 12, 2.5kg x 12\nPec Deck Machine Fly: 35.0kg x 12, 35.0kg x 11, 35.0kg x 6\nDumbbell Lateral Raise: 5.0kg x 12, 5.0kg x 12, 5.0kg x 7, 2.5kg x 10\nCable Triceps Pushdown: 20.0kg x 12, 20.0kg x 12, 20.0kg x 10"
+  },
+  {
     "workout_id": "W-20261107-01",
     "date": "2026-11-07",
     "session_type": "Pull (Day 2: Pull A)",
@@ -216,44 +251,5 @@
     "raw_text": "Workout\n2026-10-14 21:51\nDuration: 68m 4s\nPull-up\nSet 1: 4 reps\nSet 2: 3 reps\nLat Pulldown\nSet 1: 12 reps x 40.0 kg\nSet 2: 8 reps x 50.0 kg\nSet 3: 6 reps x 50.0 kg\nMachine Rear Delt Fly\nSet 1: 12 reps x 15.0 kg\nSet 2: 12 reps x 15.0 kg\nSet 3: 9 reps x 15.0 kg\nEZ Bar Curl\nSet 1: 15 reps x 20.0 kg\nSet 2: 12 reps x 20.0 kg\nSet 3: 11 reps x 20.0 kg\nSeated Row (Wide Grip)\nSet 1: 12 reps x 55.0 kg\nSet 2: 12 reps x 55.0 kg\nSet 3: 12 reps x 55.0 kg\nHammer Curl\nSet 1: 12 reps x 5.0 kg\nSet 2: 10 reps x 7.5 kg\nSingle Arm Lat Pulldown\nSet 1: 12 reps x 12.5 kg\nSet 2: 12 reps x 12.5 kg\n\n**Trainee Notes**: Used new lifting wrist straps for the first time\u2014significantly improved grip security and eliminated forearm fatigue on pulling movements. Followed this exact exercise sequence. Had to rush the final two movements (Hammer Curls & Single-Arm Pulldowns) as gym was closing.",
     "template_text": "Pull-Up: 0.0kg x 4, 0.0kg x 3\nLat Pulldown: 40.0kg x 12, 50.0kg x 8, 50.0kg x 6\nReverse Pec Deck (Rear Delt Fly): 15.0kg x 12, 15.0kg x 12, 15.0kg x 9\nEZ-Bar Bicep Curl: 20.0kg x 15, 20.0kg x 12, 20.0kg x 11\nSeated Cable Row: 55.0kg x 12, 55.0kg x 12, 55.0kg x 12\nDumbbell Hammer Curl: 5.0kg x 12, 7.5kg x 10\nSingle-Arm Cable Lat Pulldown: 12.5kg x 12, 12.5kg x 12",
     "copy_prompt": "/log\n# Session: Pull (Day 2: Pull A) (2026-10-14)\nPull-Up: 0.0kg x 4, 0.0kg x 3\nLat Pulldown: 40.0kg x 12, 50.0kg x 8, 50.0kg x 6\nReverse Pec Deck (Rear Delt Fly): 15.0kg x 12, 15.0kg x 12, 15.0kg x 9\nEZ-Bar Bicep Curl: 20.0kg x 15, 20.0kg x 12, 20.0kg x 11\nSeated Cable Row: 55.0kg x 12, 55.0kg x 12, 55.0kg x 12\nDumbbell Hammer Curl: 5.0kg x 12, 7.5kg x 10\nSingle-Arm Cable Lat Pulldown: 12.5kg x 12, 12.5kg x 12"
-  },
-  {
-    "workout_id": "W-20261013-01",
-    "date": "2026-10-13",
-    "session_type": "LEGS (Day 3: Legs & Core)",
-    "duration": "37 min",
-    "exercises": [
-      {
-        "name": "Leg Press",
-        "summary": "Leg Press: 18.0kg x 12, 45.0kg x 12, 45.0kg x 12, 45.0kg x 12"
-      },
-      {
-        "name": "Leg Extension Machine",
-        "summary": "Leg Extension Machine: 5.0kg x 12, 10.0kg x 12, 7.5kg x 12, 7.5kg x 12"
-      },
-      {
-        "name": "Leg Curl Machine",
-        "summary": "Leg Curl Machine: 5.0kg x 12, 5.0kg x 10, 5.0kg x 8"
-      },
-      {
-        "name": "Standing Calf Raise",
-        "summary": "Standing Calf Raise: 80.0kg x 12, 80.0kg x 12, 80.0kg x 12"
-      },
-      {
-        "name": "Bodyweight Floor Crunch",
-        "summary": "Bodyweight Floor Crunch: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12"
-      },
-      {
-        "name": "Deadbug Anti-APT Core",
-        "summary": "Deadbug Anti-APT Core: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12"
-      },
-      {
-        "name": "Lying Leg Raise",
-        "summary": "Lying Leg Raise: 0.0kg x 12"
-      }
-    ],
-    "raw_text": "Workout\n2026-10-13 22:26\nDuration: 37m 42s\nLeg Press\nSet 1: 12 reps x 18.0 kg\nSet 2: 12 reps x 45.0 kg\nSet 3: 12 reps x 45.0 kg\nSet 4: 12 reps x 45.0 kg\nLeg Extension\nSet 1: 12 reps x 5.0 kg\nSet 2: 12 reps x 10.0 kg\nSet 3: 12 reps x 7.5 kg\nSet 4: 12 reps x 7.5 kg\nLying Leg Curl\nSet 1: 12 reps x 5.0 kg\nSet 2: 10 reps x 5.0 kg\nSet 3: 8 reps x 5.0 kg\nStanding Calf Raise\nSet 1: 12 reps x 80.0 kg\nSet 2: 12 reps x 80.0 kg\nSet 3: 12 reps x 80.0 kg\nCrunch\nSet 1: 12 reps\nSet 2: 12 reps\nSet 3: 12 reps\nDead Bug\nSet 1: 12 reps\nSet 2: 12 reps\nSet 3: 12 reps\nLying Leg Raises\nSet 1: 12 reps x 0.0 kg",
-    "template_text": "Leg Press: 18.0kg x 12, 45.0kg x 12, 45.0kg x 12, 45.0kg x 12\nLeg Extension Machine: 5.0kg x 12, 10.0kg x 12, 7.5kg x 12, 7.5kg x 12\nLeg Curl Machine: 5.0kg x 12, 5.0kg x 10, 5.0kg x 8\nStanding Calf Raise: 80.0kg x 12, 80.0kg x 12, 80.0kg x 12\nBodyweight Floor Crunch: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nDeadbug Anti-APT Core: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nLying Leg Raise: 0.0kg x 12",
-    "copy_prompt": "/log\n# Session: LEGS (Day 3: Legs & Core) (2026-10-13)\nLeg Press: 18.0kg x 12, 45.0kg x 12, 45.0kg x 12, 45.0kg x 12\nLeg Extension Machine: 5.0kg x 12, 10.0kg x 12, 7.5kg x 12, 7.5kg x 12\nLeg Curl Machine: 5.0kg x 12, 5.0kg x 10, 5.0kg x 8\nStanding Calf Raise: 80.0kg x 12, 80.0kg x 12, 80.0kg x 12\nBodyweight Floor Crunch: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nDeadbug Anti-APT Core: 0.0kg x 12, 0.0kg x 12, 0.0kg x 12\nLying Leg Raise: 0.0kg x 12"
   }
 ]
