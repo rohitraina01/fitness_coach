@@ -31,3 +31,4 @@ Triggered when the trainee runs `/log` or says "process my incoming log", or sub
    - Verify integrity: `python scripts/audit_integrity.py`.
 7. **Sync & Deploy**: Commit and push changes to `origin/master` so the mobile web app immediately updates on the trainee's phone.
 8. **Deliver Feedback**: Provide strict, objective feedback to the trainee on progressive overload, technical execution, and next workout targets.
+

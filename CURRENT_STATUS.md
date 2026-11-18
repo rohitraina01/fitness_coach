@@ -50,17 +50,18 @@ All 15 historical workouts (275 total sets) are now fully imported and verified:
 ---
 
 ## 4. IMMEDIATE NEXT SESSION
-- **Scheduled Session**: **DAY 6: LEGS & ANTI-APT CORE (Quad Sweep, Hamstrings & Pelvic Restoration)**
-- **Target Date**: Immediate / Next Gym Session
-- **Mandate**: **RULE 9 STRICT ENFORCEMENT**: 2 consecutive upper-body workouts (Pull A Nov 7, Push B Nov 14) have completed. An intervening Legs & Core workout is MANDATORY before any subsequent upper session.
-- **Primary Focus**: Vastus Lateralis Quad Sweep (Leg Press), Hamstring Knee Flexion (Leg Curl with dorsiflexed feet), Diamond Calves (Dead-stop stretch Calf Raise), Anti-APT Core (Floor Crunches & Deadbugs). 0% Glute Work.
-- **Physiological State**: Quads, hamstrings, and calves are **100% Fresh (Freshness 10/10; last trained Oct 21)**. Pressing musculature entering 48–72h recovery (Freshness 3/10).
+- **Scheduled Session**: **DAY 7: PULL B (HIGH-STABILITY BACK DENSITY, REAR DELTS & ARMS + ANTI-APT CORE)**
+- **Target Date**: Immediate / Today (2026-11-18)
+- **Autoregulation Rationale**: Trainee completed demanding trekking on Nov 17. Quads, calves, and lumbar stabilizers are fatigued from eccentric loading. Forcing heavy Leg Press poses injury and form breakdown risks. Pulling chain (lats, upper back, rear delts, biceps) is **100% Fresh (Freshness 10/10; last trained Nov 07)**.
+- **Biomechanical Guardrail**: 100% chest-supported and bench-braced movements (zero axial spine load). Mandatory Anti-APT core finisher.
+- **Rule 9 Enforcement**: Following this session, the split is **HARD-LOCKED to Day 6: Legs & Core** before any pressing is permitted.
 - **Focus Movements & Explicit Targets**:
-  1. **Leg Press (Narrow / Mid-Low Platform)**: 3 sets × 10–12 reps @ **54.0 kg – 60.0 kg** (Oct 21 smashed 54kg for 12, 12, 12 $\rightarrow$ Set 1 top-set probe at 60.0 kg, Sets 2–3 anchored at 54.0 kg).
-  2. **Leg Extension Machine**: 3 sets × 12–15 reps @ **10.0 kg – 12.0 kg pin** (Test 12.0 kg for 8–10 reps, back off to 10.0 kg for sets 2–3).
-  3. **Lying Leg Curl Machine**: 4 sets × 10–12 reps @ **5.0 kg – 7.5 kg** (**Dorsiflex feet** to eliminate calves and recruit hamstrings to pull pelvis into neutral).
-  4. **Standing Calf Raise**: 4 sets × 12–15 reps @ **80.0 kg – 85.0 kg** (2-second dead stop in deep bottom stretch).
-  5. **Floor Crunch & Deadbugs Superset**: 3 sets × 12–15 reps (Lower back glued to floor; curl ribcage to pelvis).
+  1. **Close-Grip / V-Bar Lat Pulldown**: 3 sets × 8–10 reps @ **45.0 kg – 50.0 kg pin** (Straps locked, drive elbows to hip crease).
+  2. **Chest-Supported Machine Row**: 3 sets × 8–10 reps @ **60.0 kg – 65.0 kg pin** (Sternum glued to pad, 1s rhomboid squeeze).
+  3. **Bench-Braced One-Arm DB Row**: 3 sets × 8–10 reps per side @ **17.5 kg – 20.0 kg DB** (Knee & hand on flat bench).
+  4. **Reverse Pec Deck (Rear Delt Fly)**: 3 sets × 12–15 reps @ **15.0 kg – 17.5 kg pin** (Protracted scapulae, sweep wide).
+  5. **EZ-Bar Curl & DB Hammer Curl Superset**: 3 sets × 10–12 reps @ **20.0 kg bar + 7.0–8.0 kg DBs** (Brachialis & bicep thickness).
+  6. **Anti-APT Core Finisher**: Floor Crunch & Deadbugs Superset 3 sets × 12–15 reps (Lower back glued to floor) + 45s/side Hip Flexor Stretch.
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---

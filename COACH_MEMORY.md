@@ -22,8 +22,8 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | 8 | **Legs & Core (Cycle 2)**| Quads, Hamstrings, Calves, Anti-APT Core | **COMPLETED** | **2026-10-21 (`W-20261021-01`)** |
 | 9 | **Pull A (Cycle 2)** | Lat Width, Upper Back Scapular Retraction, Biceps | **COMPLETED** | **2026-11-07 (`W-20261107-01`)** |
 | 10 | **Push B (Cycle 2)** | Sternal Chest, Cable Lateral Delts, Long-Head Triceps | **COMPLETED** | **2026-11-14 (`W-20261114-01`)** |
-| 11 | **Legs & Core (Cycle 3)**| Quads, Hamstrings, Calves, Anti-APT Core | **NEXT GYM** | **Immediate Session (Rule 9 Mandatory)** |
-| 12 | **Pull B (Cycle 2)** | Back Density, Rear Delts, Biceps Peak/Brachialis | **PLANNED** | Following Legs & Core |
+| 11 | **Pull B (Cycle 2)** | Back Density, Rear Delts, Biceps Peak/Brachialis | **NEXT GYM** | **Immediate Session (Autoregulated Swap)** |
+| 12 | **Legs & Core (Cycle 3)**| Quads, Hamstrings, Calves, Anti-APT Core | **HARD-LOCKED**| **Mandatory Following Pull B (Rule 9)** |
 
 ### Active Autoregulation History & Tactical Swaps
 - **2026-10-13 Leg Baseline**: Established clean 45kg Leg Press, 10kg Leg Ext, 80kg Calf Raise with 0% glute recruitment.
@@ -115,4 +115,5 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | **2026-10-21** | Legs & Core Ingested (62m) | Conquered 54.0 kg Leg Press PR (+9.0 kg leap, 12, 12, 12); tested 12.0 kg Leg Extension PR. Advanced queue to Day 2: Pull A (Pulling muscles fresh at 9/10). | Logged (`W-20261021-01`) |
 | **2026-11-07** | Pull A Completed (63m) | Conquered Pull-Up 5-rep all-time PR; Rear Delt Fly 17.5kg × 12, 12, 11 (+2.5kg load leap); Seated Cable Row 65kg × 10 & 60kg × 12, 12; Lat Pulldown 50kg × 6, 6, 7. 38m duration compression. Single-arm cable lat pulldown anchored at 12.5kg. Advanced queue to Day 5: Push B. | Logged (`W-20261107-01`) |
 | **2026-11-10** | Log Ingestion & Mobile Sync | Ingested buffered Nov 07 session via `/log`. Smashed PRs logged, dashboard refreshed, mobile cards updated with Day 5: Push B blueprint. Rule 9 mandatory Legs reminder established. | Deployed to Mobile App |
+| **2026-11-18** | Post-Trek Autoregulation Audible | Trainee completed trekking Nov 17; quads/calves loaded eccentrically and lumbar stabilizers fatigued. Swapped immediate session to Day 7: Pull B with strict chest-support guardrails (zero axial load) and mandatory Anti-APT core finisher. Hard-locked subsequent session to Day 6: Legs & Core. | Deployed to Mobile App |
 
