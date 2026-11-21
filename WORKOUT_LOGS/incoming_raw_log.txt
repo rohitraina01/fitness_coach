@@ -1,5 +1,66 @@
 # INCOMING WORKOUT LOG BUFFER
-# This file receives raw logs submitted from the mobile web app.
-# When you return to your laptop, tell the coach "/log" or "process my incoming log", and it will read this file automatically.
+# Date: 2026-11-21 18:40
+# Session: Push
 
-(No pending unprocessed logs)
+=== WORKOUT REPORT ===
+Name:      Workout
+Date:      Saturday, Nov 21 2026 – 12:00 PM
+Duration:  68m 57s
+Volume:    5020.0 kg
+Sets:      26
+Exercises: 9
+
+--- Straight Arm Pulldown ---
+  Set 1: 10.0 kg × 12 reps (warmup)
+  Set 2: 15.0 kg × 12 reps
+
+--- Close Grip Lat Pulldown ---
+  Set 1: 50.0 kg × 7 reps [PR]
+  Set 2: 45.0 kg × 7 reps
+  Set 3: 45.0 kg × 7 reps
+
+--- Seated Cable Row ---
+  Set 1: 65.0 kg × 12 reps [PR]
+  Set 2: 65.0 kg × 12 reps
+  Set 3: 65.0 kg × 10 reps
+
+--- Dumbbell Row ---
+  Set 1: 12.5 kg × 12 reps [PR]
+  Set 2: 12.5 kg × 10 reps
+  Set 3: 12.5 kg × 10 reps
+
+--- Machine Rear Delt Fly ---
+  Set 1: 17.5 kg × 12 reps
+  Set 2: 17.5 kg × 8 reps
+  Set 3: 17.5 kg × 7 reps
+
+--- EZ Bar Curl ---
+  Set 1: 20.0 kg × 12 reps (superset)
+  Set 2: 20.0 kg × 8 reps (superset)
+  Set 3: 20.0 kg × 7 reps (superset)
+
+--- Hammer Curl ---
+  Set 1: 7.5 kg × 7 reps (superset)
+  Set 2: 5.0 kg × 7 reps (superset)
+  Set 3: 5.0 kg × 6 reps (superset)
+
+--- Crunch ---
+  Set 1: – kg × 15 reps (superset)
+  Set 2: – kg × 10 reps (superset)
+  Set 3: – kg × 10 reps (superset)
+
+--- Dead Bug ---
+  Set 1: – kg × 6 reps (superset)
+  Set 2: – kg × 6 reps (superset)
+  Set 3: – kg × 8 reps (superset)
+
+--- XP ---
+  Rear Delts: +37 XP
+  Biceps: +74 XP
+  Forearms: +16 XP
+  Lats: +117 XP
+  Upper Back: +87 XP
+  Abs: +34 XP
+  Obliques: +3 XP
+  Total: +368 XP
+========================
