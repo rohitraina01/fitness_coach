@@ -393,7 +393,7 @@ def ingest_from_buffer(extra_notes=""):
     declared_name = name_match.group(1).strip() if name_match else ""
 
     push_eids = {"INCLINE_DB_PRESS", "FLAT_BB_BENCH", "SMITH_BENCH", "PEC_DECK_FLY", "TRICEPS_PUSHDOWN", "ROPE_PUSHDOWN", "OVERHEAD_TRICEPS_EXT", "DB_LATERAL_RAISE", "CABLE_LATERAL_RAISE", "INCLINE_MACHINE_PRESS"}
-    pull_eids = {"LAT_PULLDOWN", "SEATED_CABLE_ROW", "STRAIGHT_ARM_PULLDOWN", "REAR_DELT_FLY", "EZ_BAR_CURL", "HAMMER_CURL", "PULL_UP", "SINGLE_ARM_CABLE_ROW", "SINGLE_ARM_LAT_PULLDOWN"}
+    pull_eids = {"LAT_PULLDOWN", "SEATED_CABLE_ROW", "STRAIGHT_ARM_PULLDOWN", "REAR_DELT_FLY", "EZ_BAR_CURL", "HAMMER_CURL", "PULL_UP", "SINGLE_ARM_CABLE_ROW", "SINGLE_ARM_LAT_PULLDOWN", "DB_SINGLE_ARM_ROW", "CHEST_SUPPORTED_ROW"}
     leg_eids = {"LEG_PRESS", "LEG_EXTENSION", "LEG_CURL", "CALF_RAISE", "DEADBUG", "FLOOR_CRUNCH"}
     
     eids_in_sets = {s["exercise"] for s in sets}
@@ -434,11 +434,11 @@ def ingest_from_buffer(extra_notes=""):
 
     if "pull" in session_type.lower():
         if "b" in declared_name.lower() or "PULL B" in nw_text:
-            session_name = "Day 6: Pull B"
+            session_name = "Day 7: Pull B"
         else:
-            session_name = "Day 2: Pull A"
+            session_name = "Day 3: Pull A"
     elif "leg" in session_type.lower():
-        session_name = "Day 3: Legs & Core"
+        session_name = "Day 6: Legs & Core" if ("6" in nw_text or "CYCLE 3" in nw_text) else "Day 2: Legs & Core"
     elif "push" in session_type.lower():
         if "b" in declared_name.lower() or "PUSH B" in nw_text:
             session_name = "Day 5: Push B"

@@ -1,3 +1,25 @@
+### [2026-11-22 - Update 1.8] - Pull B Ingestion, Monster Row PR & Mandatory Legs & Core Lock
+- **Pull B Ingestion (W-20261121-01)**:
+  - Ingested 26 sets in 68m 57s from mobile buffer (`WORKOUT_LOGS/incoming_raw_log.txt`). Total volume crossed **5,020 kg**!
+  - Smashed **Seated Cable Row All-Time Volume Density PR**: 65.0 kg × 12 reps [PR], 65.0 kg × 12 reps, 65.0 kg × 10 reps (**34 total reps @ 65.0 kg** across all 3 sets vs previous maximum of 10–12 reps).
+  - Conquered top-set **Close Grip Lat Pulldown PR**: 50.0 kg × 7 reps [PR], followed by 45.0 kg × 7, 7 reps.
+  - Successfully established **One-Arm Dumbbell Row** baseline: 12.5 kg × 12 reps [PR], 12.5 kg × 10, 10 reps (clean bench-braced execution replacing unstable cable rows).
+  - Maintained **Machine Rear Delt Fly** (17.5 kg × 12, 8, 7 reps) and **EZ-Bar Curl** (20.0 kg × 12, 8, 7 reps) with immediate **DB Hammer Curl** superset (7.5 kg / 5.0 kg).
+  - Executed diligent anti-APT core finisher: Bodyweight Floor Crunch (15, 10, 10) + Deadbug (6, 6, 8) supersets.
+  - Appended normalized relational rows to `DATA/workouts.csv` and `DATA/workout_sets.csv`.
+  - Generated comprehensive workout log in `WORKOUT_LOGS/2026/2026-11/2026-11-21_pull.md`.
+- **Trainee Biomechanical Diagnosis & Query Resolution**:
+  - Investigated trainee note ("the row really burned my side delts"): diagnosed elbow flare / humeral abduction (60°–90°) and upper trap shrugging under 65kg load as causing isometric lateral delt tension and radiating rear delt burn. Prescribed 30°–45° tuck and waistband pull path.
+  - Confirmed trainee's split sequence query: Affirmative, split is **HARD-LOCKED to Day 6: Legs & Core** under Rule 9 after 3 consecutive upper body workouts.
+- **System Queue Advancement & Rule 9 Enforcement**:
+  - Advanced split queue to **Day 6: Legs & Anti-APT Core (Cycle 3 - Quad Sweep, Hamstrings & Pelvic Restoration)**.
+  - Pulling musculature entering 48–72h recovery (Freshness 3/10). Legs & Core 100% fresh (Freshness 10/10; last trained Oct 21).
+  - Programmed 50.0–55.0 kg Leg Press, 10.0–12.0 kg Leg Extension, 5.0–7.5 kg Lying Leg Curl (dorsiflexed feet), 80.0–85.0 kg dead-stop Calf Raises, and Floor Crunch / Deadbug anti-APT superset.
+  - Updated `CURRENT_NEXT_WORKOUT.md`, `CURRENT_STATUS.md`, and `COACH_MEMORY.md`.
+  - Rebuilt Excel dashboard (`DASHBOARD/fitness_dashboard.xlsx`) and synchronized mobile exports across `OUTPUTS/mobile/`, `docs/`, and `bridge/web/`.
+
+---
+
 ### [2026-11-14 - Update 1.7] - Push B Ingestion, Triceps PR, /log Skill Setup & Day 6 Legs Prescription
 - **Native Skill System**:
   - Registered `/log` skill in `.agents/skills/log/SKILL.md` and `SKILLS/log/SKILL.md` so typing `/log` displays the command directly in the dropdown.

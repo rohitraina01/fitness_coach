@@ -1,7 +1,7 @@
 # CURRENT SYSTEM STATUS & OPERATIONAL SNAPSHOT
 
-*Last Refreshed: 2026-11-14*  
-*Active System Version: 1.4 (Push B Ingested, Verified & Queue Advanced to Day 6: Legs & Core)*  
+*Last Refreshed: 2026-11-22*  
+*Active System Version: 1.5 (Pull B Ingested, Verified & Queue Hard-Locked to Day 6: Legs & Core Cycle 3)*  
 *Authoritative Record: Local Markdown, CSV databases, and Excel analytics dashboard*
 
 ---
@@ -25,7 +25,15 @@
 ---
 
 ## 3. TRAINING PERFORMANCE & OVERLOAD TRAJECTORY
-All 15 historical workouts (275 total sets) are now fully imported and verified:
+All 16 historical workouts (301 total sets) are now fully imported and verified:
+- **Pull B Double-Progression PR (Nov 21 - W-20261121-01)**: 26 sets in 68m 57s! Volume: **5,020 kg**!
+  - **Seated Cable Row**: **65.0 kg × 12 reps [PR]**, **65.0 kg × 12 reps**, **65.0 kg × 10 reps**. **34 total reps @ 65.0 kg** (All-Time Volume Density PR! Previous best was 10–12 reps at 65kg).
+  - **Close Grip Lat Pulldown**: **50.0 kg × 7 reps [ALL-TIME REP PR]**, followed by 45.0 kg × 7, 7 reps.
+  - **One-Arm Dumbbell Row**: **12.5 kg × 12 reps [PR]**, **12.5 kg × 10, 10 reps**. Rock-solid bench-braced execution replacing unstable cable rows.
+  - **Straight-Arm Cable Pulldown**: 10.0 kg × 12 (warmup), 15.0 kg × 12 reps (clean pre-activation).
+  - **Machine Rear Delt Fly**: 17.5 kg × 12, 8, 7 reps (solid threshold set 1; delts pre-exhausted from heavy rows).
+  - **EZ-Bar & DB Hammer Curl Superset**: 20.0 kg bar × 12, 8, 7 reps + 7.5/5.0 kg DBs × 7, 7, 6 reps.
+  - **Anti-APT Core Finisher**: Floor Crunch 3 × 15, 10, 10 + Deadbug 3 × 6, 6, 8 reps.
 - **Push B Double-Progression PR (Nov 14 - W-20261114-01)**: 19 sets in 60m!
   - **Overhead Cable Triceps Ext**: **20.0 kg × 10 reps [ALL-TIME REP PR!], 20.0 kg × 8 reps, 20.0 kg × 7 reps**. Conquered all 3 working sets on the 20.0 kg pin (25 total reps @ 20kg vs 6 reps previously).
   - **Pec Deck Machine Fly**: **35.0 kg × 12, 11, 6 reps (29 reps @ 35kg)**. Volume density leap (up from 17 reps on Oct 19).
@@ -50,25 +58,26 @@ All 15 historical workouts (275 total sets) are now fully imported and verified:
 ---
 
 ## 4. IMMEDIATE NEXT SESSION
-- **Scheduled Session**: **DAY 7: PULL B (HIGH-STABILITY BACK DENSITY, REAR DELTS & ARMS + ANTI-APT CORE)**
-- **Target Date**: Immediate / Today (2026-11-18)
-- **Autoregulation Rationale**: Trainee completed demanding trekking on Nov 17. Quads, calves, and lumbar stabilizers are fatigued from eccentric loading. Forcing heavy Leg Press poses injury and form breakdown risks. Pulling chain (lats, upper back, rear delts, biceps) is **100% Fresh (Freshness 10/10; last trained Nov 07)**.
-- **Biomechanical Guardrail**: 100% chest-supported and bench-braced movements (zero axial spine load). Mandatory Anti-APT core finisher.
-- **Rule 9 Enforcement**: Following this session, the split is **HARD-LOCKED to Day 6: Legs & Core** before any pressing is permitted.
+- **Scheduled Session**: **DAY 6: LEGS & ANTI-APT CORE (CYCLE 3 - QUAD SWEEP, HAMSTRINGS & PELVIC RESTORATION)**
+- **Target Date**: Immediate / Next Gym Day
+- **Autoregulation Rationale**: Pulling musculature (lats, upper back, rear delts, biceps) is heavily fatigued (Freshness 3/10) following the 5,020 kg volume breakthrough. Quads, hamstrings, and calves are **100% Fresh & Primed (Freshness 10/10; last trained Oct 21)**.
+- **Rule 9 Hard-Lock**: 3 consecutive upper-body workouts have elapsed (Pull A Nov 7, Push B Nov 14, Pull B Nov 21). Under Rule 9, the split is **HARD-LOCKED to Legs & Core**. Zero pressing or pulling is permitted.
+- **Biomechanical Guardrail**: 0% glute recruitment (narrow/mid-low platform stance on Leg Press; zero squats/deadlifts/hip thrusts/lunges). 2-second dead stop at bottom stretch on calf raises. Lower back 100% glued flat to floor on core.
 - **Focus Movements & Explicit Targets**:
-  1. **Close-Grip / V-Bar Lat Pulldown**: 3 sets × 8–10 reps @ **45.0 kg – 50.0 kg pin** (Straps locked, drive elbows to hip crease).
-  2. **Chest-Supported Machine Row**: 3 sets × 8–10 reps @ **60.0 kg – 65.0 kg pin** (Sternum glued to pad, 1s rhomboid squeeze).
-  3. **Bench-Braced One-Arm DB Row**: 3 sets × 8–10 reps per side @ **17.5 kg – 20.0 kg DB** (Knee & hand on flat bench).
-  4. **Reverse Pec Deck (Rear Delt Fly)**: 3 sets × 12–15 reps @ **15.0 kg – 17.5 kg pin** (Protracted scapulae, sweep wide).
-  5. **EZ-Bar Curl & DB Hammer Curl Superset**: 3 sets × 10–12 reps @ **20.0 kg bar + 7.0–8.0 kg DBs** (Brachialis & bicep thickness).
-  6. **Anti-APT Core Finisher**: Floor Crunch & Deadbugs Superset 3 sets × 12–15 reps (Lower back glued to floor) + 45s/side Hip Flexor Stretch.
+  1. **Leg Press (Narrow / Mid-Low Stance)**: 3 sets × 10–12 reps @ **50.0 kg – 55.0 kg** (Target: Match or exceed 54.0 kg × 12, 12, 12).
+  2. **Leg Extension Machine**: 3 sets × 12–15 reps @ **10.0 kg – 12.0 kg pin** (1s peak contraction flex, 3s negative).
+  3. **Lying or Seated Leg Curl**: 4 sets × 10–12 reps @ **5.0 kg – 7.5 kg pin** (Dorsiflex feet to shut off calves and force pure hamstring recruitment).
+  4. **Standing Calf Raise**: 4 sets × 12–15 reps @ **80.0 kg – 85.0 kg pin** (2-second dead stop in deep stretch).
+  5. **Anti-APT Core Finisher**: Floor Crunch & Deadbugs Superset 3 sets × 12–15 crunches + 6–8 deadbugs per side.
+  6. **Posture Reset**: Half-Kneeling Hip Flexor Stretch (2 sets × 45s/side).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---
 
 ## 5. RESOLVED VS REMAINING BOTTLENECKS
-- **Resolved**: Nov 14 Push B ingested, verified, and analyzed.
-- **Resolved**: Overhead Cable Triceps Extension All-Time Rep PR (20.0 kg × 10, 8, 7) confirmed.
-- **Resolved**: Pec Deck Fly volume density at 35.0 kg (+12 reps over Oct 19) secured.
-- **Rule 9 Enforcement**: Legs & Core scheduled as next mandatory session.
+- **Resolved**: Nov 21 Pull B ingested, verified, and analyzed.
+- **Resolved**: Seated Cable Row all-time volume density PR (65.0 kg × 12, 12, 10 = 34 reps) confirmed.
+- **Resolved**: Close Grip Lat Pulldown top-set PR (50.0 kg × 7 reps) secured.
+- **Resolved**: Side delt burn on rows biomechanically diagnosed and explained to trainee (elbow flare/abduction vs hip-pocket drive).
+- **Rule 9 Enforcement**: Hard-lock on Day 6: Legs & Core activated.
 - **Critical Action Required**: Elevate daily protein floor from 108g average to 145g minimum.
