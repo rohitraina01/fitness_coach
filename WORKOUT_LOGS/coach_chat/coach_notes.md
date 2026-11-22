@@ -418,3 +418,19 @@
 • **System Record**: This query is logged on your laptop bridge and cross-referenced with your historical progression logs.
 
 ---
+
+### [2026-11-22 21:32:27] Trainee Prompt
+**Query**: the row really burned by side delts.. so i will do legs next right ?
+
+**Coach Response**:
+⚡ **APEX COACH INTELLIGENCE DIRECTIVE**
+
+• **Inquiry**: "the row really burned by side delts.. so i will do legs next right ?"
+• **Coach Analysis**: Rohit completed Pull B (`W-20261121-01`) totaling 5,020 kg volume and 26 sets. Smashed Seated Cable Row (34 reps @ 65kg) and Close-Grip Lat Pulldown (50kg × 7).
+• **Actionable Guidance**:
+  1. **Row Side Delt Burn Diagnostic**: Flaring elbows wide (60°–90° abduction) and elevating scapulae (upper trap shrugging) under maximum 65kg loads forces isometric lateral delt contractions, while radiating severe rear delt burn. Remediation: tuck elbows 30°–45° and pull directly into the waistband/hip pocket.
+  2. **Split Hard-Lock Affirmation**: 100% YES. Rule 9 hard-locks the queue to Day 6: Legs & Anti-APT Core (Cycle 3). 3 consecutive upper body workouts have been completed. Quads and hamstrings have 10/10 freshness (last trained Oct 21).
+  3. **Immediate Target**: Day 6 Legs & Core (50–55kg Leg Press, 10–12kg Leg Extension, 5–7.5kg dorsiflexed Leg Curls, 80–85kg dead-stop Calf Raises, Floor Crunch/Deadbug anti-APT superset).
+• **System Record**: Ingested, audited, verified, and pushed to mobile app.
+
+---
