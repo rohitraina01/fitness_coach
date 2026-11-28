@@ -102,3 +102,13 @@ Any workout plan or instruction given to the trainee must automatically update t
   - The system strictly prohibits prescribing more than **2 consecutive upper-body sessions (Push or Pull)** without an intervening **Legs & Core** session.
   - If a Push session and a Pull session have both been completed, the next scheduled session is **HARD LOCKED to Day 3: Legs & Core**.
   - Lower body and anti-APT core work must NEVER be relegated to a passive "alternate floor audible". Reversing Anterior Pelvic Tilt and maintaining balanced muscular development requires non-negotiable lower body frequency.
+
+---
+
+## 10. MANDATORY PRE-PRESCRIPTION FACT-CHECKING & SEQUENCING GOVERNANCE (RULE 10)
+Every coaching agent MUST pass these deterministic checks before prescribing any workout or editing `CURRENT_NEXT_WORKOUT.md` / `CURRENT_PROGRAM.md`:
+1. **No Back-to-Back Same-Muscle Stacking**: Never place two exercises with the same primary muscle group consecutively (e.g., never `Incline DB` → `Smith Bench`, never `Lat Pulldown` → `Seated Row` → `DB Row`, never `Leg Press` → `Leg Extension`). Always interleave a non-competing muscle (e.g., Lateral Delts between Chest presses; Rear Delts/Biceps between Back pulls; Hamstrings between Quad exercises).
+2. **CSV-Grounded Load Verification**: Always query `DATA/workout_sets.csv` for each exercise's latest working loads before setting targets. Never invent or copy stale loads from memory (and never jump > +15% above recorded working weight without clearing the rep ceiling).
+3. **Equipment Ground Truth**: Never prescribe non-existent 6.0 kg DBs, fractional heavy cable pins (17.5/22.5 kg), Standing Calf Raise Machine, or glute-loading compounds (squats, deadlifts, hip thrusts, lunges).
+4. **Tier-1 Priority Coverage**: Every Push session must train Lateral Delts through both lengthened (Cable) and shortened (DB) profiles; every Pull session must train Rear Delts before heavy rowing fatigue; every stretch/hold must specify hold time (`4 total holds (2 per leg) × 30–45 sec`), never rep defaults.
+5. **Automated Program Gate**: Run `python scripts/audit_program.py` alongside `python scripts/audit_integrity.py` on every `/log` and program update.

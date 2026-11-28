@@ -25,10 +25,11 @@ Triggered when the trainee runs `/log` or says "process my incoming log", or sub
    - Update `CURRENT_STATUS.md` with latest metrics and current active day.
    - Advance and prescribe the next workout in `CURRENT_NEXT_WORKOUT.md` following the program rotation and recovery rules.
    - Record entry in `CHANGELOG.md`.
-6. **Rebuild & Export**:
+6. **Rebuild, Export & Fact-Check**:
    - Rebuild Excel dashboard: `python scripts/build_dashboard.py`.
    - Rebuild mobile app assets: `python scripts/export_mobile.py`.
-   - Verify integrity: `python scripts/audit_integrity.py`.
+   - Verify data integrity: `python scripts/audit_integrity.py`.
+   - Verify coaching science, load grounding & equipment rules: `python scripts/audit_program.py`.
 7. **Sync & Deploy**: Commit and push changes to `origin/master` so the mobile web app immediately updates on the trainee's phone.
 8. **Deliver Feedback**: Provide strict, objective feedback to the trainee on progressive overload, technical execution, and next workout targets.
 

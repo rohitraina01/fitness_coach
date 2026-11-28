@@ -77,6 +77,7 @@ Whenever the trainee submits a workout report (or raw gym log), execute the **7-
    - Run `python scripts/export_mobile.py` to update phone exports in `OUTPUTS/mobile/`.
 6. **STAGE 6: VERIFY**
    - Run `python scripts/audit_integrity.py` to confirm zero duplicate IDs, intact foreign keys, and matching counts.
+   - Run `python scripts/audit_program.py` to verify no back-to-back same-muscle stacking, CSV-grounded target loads, equipment reality compliance, and complete per-exercise MMC/stretch formatting.
 7. **STAGE 7: REPORT**
    - Present concise review to the user with the next session prescription formatted for quick mobile viewing.
 
