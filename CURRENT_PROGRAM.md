@@ -46,7 +46,7 @@ To prevent upper-body overuse and guarantee posture restoration, the split follo
 | 1 | **Leg Press (Narrow / Mid-Low Stance)** | 3 | 10–12 | 150 | 1–2 | Feet low-to-mid platform, hip-width apart. Pure quad sweep loading; 0% glute recruitment. 50.0–55.0 kg. |
 | 2 | **Leg Extension Machine** | 3 | 12–15 | 90 | 0–1 | Pure quad isolation. 10.0–12.5 kg pin. 1s hard peak lockout flex, 3s eccentric negative. |
 | 3 | **Lying or Seated Leg Curl** | 4 | 10–12 | 90 | 0–1 | **Dorsiflex feet (toes to shins)** to shut off calves and force pure hamstring knee flexion. Pulls pelvis neutral. 5.0–7.5 kg. |
-| 4 | **Standing Calf Raise** | 4 | 12–15 | 60 | 0 | 80.0–85.0 kg pin. **2-second dead stop in deep bottom stretch** to kill Achilles tendon bounce. |
+| 4 | **Bodyweight / Single-Leg Calf Raise** | 4 | 12–20 | 60 | 0 | **No standing calf raise machine in gym**. Elevated block (or single-leg / 10–15 kg DB hold). **2-second dead stop in deep bottom stretch** to kill Achilles bounce. |
 | 5 | **Bodyweight Floor Crunch & Deadbugs Superset**| 3 | 12–15 | 60 | 0–1 | **Anti-APT Anchor**: Lower back 100% glued flat to floor. Curl ribcage to pelvis; exhale all air at peak. |
 
 *Post-Workout Reset*: Half-Kneeling Hip Flexor Stretch (2 sets × 45s/side to lengthen tight psoas).  
