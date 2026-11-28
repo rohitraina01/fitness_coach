@@ -24,17 +24,18 @@ To prevent upper-body overuse and guarantee posture restoration, the split follo
 ## 2. DETAILED SESSION BLUEPRINTS (5 EXERCISES MAX • 50–55 MINS)
 
 ### DAY 1: PUSH A (UPPER CHEST, HEAVY DELTS & HORSESHOE TRICEPS)
-*Focus: Clavicular Upper Chest, Lateral Delt Width, Lateral/Medial Triceps Lockout*
+*Focus: Clavicular Upper Chest, Dual-Profile Lateral Delt Width, Interleaved Chest Recovery, Lateral/Medial Triceps*
 
 | Order | Exercise | Sets | Rep Range | Rest (s) | Target RIR | Execution & Overload Protocol |
 | :---: | :--- | :---: | :---: | :---: | :---: | :--- |
 | 1 | **Incline DB Bench Press** | 3 | 6–10 / 8–12 | 150 | 1–2 | **Top-Set + Back-Off**: Set 1 @ 22.5 kg (6–10 reps). Sets 2–3 back-off @ 20.0 kg (8–12 reps). Bench at 30°. |
-| 2 | **Smith Machine Bench Press** | 3 | 6–8 | 150 | 1–2 | Sternal chest anchor. High mechanical tension. 42.5–47.5 kg. Controlled descent. |
-| 3 | **DB Lateral Raise** | 4 | 12–15 | 90 | 0–1 | 5.0 kg DBs. Strict scapular depression. 2s negative tempo. Set 4 drop set to 2.5/3.0 kg. (No 6kg DB in gym; do NOT jump to 7kg). |
-| 4 | **Pec Deck Machine Fly** | 2 | 10–12 | 90 | 0–1 | 30.0–35.0 kg pin. Pure pectoral horizontal adduction. 1s apex squeeze. |
-| 5 | **Cable Triceps Pushdown** | 3 | 12–15 | 60 | 0–1 | Straight bar @ 20.0 kg pin. Pin elbows to ribs. Full extension lockout. |
+| 2 | **Cable Lateral Raise** | 3 | 12–15 | 90 | 0–1 | 2.5–5.0 kg pin. Lengthened-range constant tension; acts as active chest/triceps recovery before flat pressing. |
+| 3 | **Smith Machine Bench Press** | 3 | 6–8 | 150 | 1–2 | Sternal chest anchor (refreshed after cable laterals). 42.5–47.5 kg. Controlled 2s descent. |
+| 4 | **DB Lateral Raise (Drop Set)** | 3 | 12–15 | 90 | 0–1 | 5.0 kg DBs. Shortened-range peak + Set 3 drop set to 2.5 kg. (No 6kg DB in gym; do NOT jump to 7kg). |
+| 5 | **Pec Deck Machine Fly** | 2 | 10–12 | 90 | 0–1 | 30.0–35.0 kg pin (chest refreshed after DB laterals). Pure pectoral adduction. 1s apex squeeze. |
+| 6 | **Cable Triceps Pushdown** | 3 | 12–15 | 60–90 | 0–1 | Straight bar @ 20.0 kg pin. Pin elbows to ribs. Full extension lockout. |
 
-*Total Volume: 15 working sets | Target Duration: 50–55 minutes*
+*Total Volume: 17 working sets (6 lateral delt + 1 drop, 8 chest, 3 triceps) | Target Duration: 50–55 minutes*
 
 ---
 

@@ -13,8 +13,8 @@
   - Fixed `scripts/export_mobile.py` so mobility/stretch prescriptions (`Execution` / `Hold Duration` / `per leg`) no longer fall back to `3 sets x 8–12 reps`.
   - Fixed `scripts/export_mobile.py` and `docs/app.js` / `bridge/web/app.js` to render markdown bold formatting in `cue` and `mmc` fields, generalize the Masterclass header, and automatically reset stale set checkboxes when switching to a new workout.
   - Enriched every exercise in `CURRENT_NEXT_WORKOUT.md` with explicit `Order Rationale`, `Working Sets`, `Target Weight`, `Gym Floor Swap Option`, `Form Cue`, and `Mind-Muscle Cue`.
-- **System Queue Advancement**:
-  - Rule 9 hard-lock cleared! Unlocked and prescribed **Day 1: Push A (Cycle 3 — Upper Chest, Heavy Lateral Delts & Horseshoe Triceps)**.
+- **System Queue Advancement & Push A Interleaved Upgrade**:
+  - Rule 9 hard-lock cleared! Unlocked and prescribed **Day 1: Push A (Cycle 3)** upgraded to interleaved sequencing (`Incline DB → Cable Lateral Raise → Smith Bench → DB Lateral Raise → Pec Deck → Triceps Pushdown`) so chest presses never stack back-to-back and lateral delts receive dual-profile stimulation (6 sets + drop set).
 
 ---
 

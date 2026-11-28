@@ -67,12 +67,13 @@ All 17 historical workouts (319 total sets) are now fully imported and verified:
 - **Scheduled Session**: **DAY 1: PUSH A (CYCLE 3 — UPPER CHEST, HEAVY LATERAL DELTS & HORSESHOE TRICEPS)**
 - **Target Date**: Immediate / Next Gym Day
 - **Autoregulation Rationale**: Rule 9 hard-lock satisfied via Nov 27 Legs & Core (`W-20261127-01`). Lower body enters 48–72h recovery (Freshness 3/10). Chest, anterior delts, and triceps have rested 14 days since Nov 14 and are **100% Fresh & Primed (10/10)**.
-- **Focus Movements & Explicit Targets**:
+- **Focus Movements & Explicit Targets (Interleaved Sequencing)**:
   1. **Incline Dumbbell Bench Press (30°)**: 3 sets × 6–10 / 8–12 reps @ **22.5 kg top-set / 20.0 kg back-off (per hand)** (Warm-up: 12.5 kg × 10, 17.5 kg × 4 feeler set).
-  2. **Smith Machine Bench Press**: 3 sets × 6–8 reps @ **42.5 kg – 47.5 kg total**.
-  3. **Dumbbell Lateral Raise**: 4 sets × 12–15 reps @ **5.0 kg per hand** (+ Set 4 drop set to **2.5 kg**; NO 6.0 kg DB in gym).
-  4. **Pec Deck Machine Fly**: 2 sets × 10–12 reps @ **35.0 kg pin** (Fallback: 30.0 kg).
-  5. **Cable Triceps Pushdown (Straight Bar)**: 3 sets × 12–15 reps @ **20.0 kg pin** (Master 12–15 across all 3 sets before +5 kg jump to 25.0 kg).
+  2. **Cable Lateral Raise**: 3 sets × 12–15 reps @ **2.5 kg pin** (Lengthened stretch + active chest/triceps recovery before flat pressing).
+  3. **Smith Machine Bench Press (Flat)**: 3 sets × 6–8 reps @ **42.5 kg – 47.5 kg total**.
+  4. **Dumbbell Lateral Raise (+ Set 3 Drop Set)**: 3 sets × 12–15 reps @ **5.0 kg per hand** → drop to **2.5 kg** (Shortened peak + active chest breather before Pec Deck).
+  5. **Pec Deck Machine Fly**: 2 sets × 10–12 reps @ **35.0 kg pin** (Fallback: 30.0 kg).
+  6. **Cable Triceps Pushdown (Straight Bar)**: 3 sets × 12–15 reps @ **20.0 kg pin** (Master 12–15 across all 3 sets before +5 kg jump to 25.0 kg).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---
