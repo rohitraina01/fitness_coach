@@ -1,83 +1,74 @@
-=== DAY 6 - LEGS & ANTI-APT CORE (QUAD SWEEP, HAMSTRINGS & PELVIC RESTORATION) ===
-Note: Evidence-Based Hypertrophy • 5-Day Aesthetic Split
+=== DAY 1 - PUSH A (CYCLE 3 • UPPER CHEST, HEAVY DELTS & TRICEPS) ===
+Note: Rule 9 satisfied via Nov 27 Legs & Core (Leg Extension 12kg PR & 54kg Leg Press matched). Chest, anterior delts, and triceps are 100% rested (14 days since Nov 14 Push B) and primed for upper-chest & shoulder overload.
 ------------------------------------
 [COACH PROTOCOLS]
-• 1. Recommended Session Flow & Sequencing Rationale:
-    - Follow this 1 $\rightarrow$ 6 flow for maximum vastus lateralis quad sweep, hamstring knee flexion, diamond calves, and pelvic restoration:
-    - **Primary Quad Sweep Anchor**: **Leg Press (Narrow / Mid-Low Stance)** (3 sets × 10–12 reps @ 50.0–55.0 kg). Feet low-to-mid platform, hip-width apart. 100% quad loading; 0% glute engagement.
-    - **Pure Quad Isolation**: **Leg Extension Machine** (3 sets × 12–15 reps @ 10.0–12.0 kg pin). 1s hard peak lockout squeeze, 3s eccentric negative.
-    - **Hamstring Knee Flexion**: **Lying or Seated Leg Curl** (4 sets × 10–12 reps @ 5.0–7.5 kg pin). **Dorsiflex feet (pull toes hard toward shins)** to inhibit gastrocnemius assist and isolate pure hamstring knee flexion.
-    - **Calf Hypertrophy Anchor**: **Standing Calf Raise** (4 sets × 12–15 reps @ 80.0–85.0 kg pin). **2-second dead stop in the deep bottom stretch** to eliminate Achilles tendon elastic rebound.
-    - **Mandatory Anti-APT Core Reset**: **Floor Crunch & Deadbugs Superset** (3 sets × 12–15 crunches + 6–8 deadbugs per side). Lower back 100% glued flat to floor at all times.
-    - **Post-Workout Pelvic Reset**: **Half-Kneeling Hip Flexor Stretch** (2 sets × 45s per side) to lengthen shortened psoas from desk sitting.
-• 2. Biomechanical Guardrails (0% Glute Work & APT Protection):
-    - **Zero Glute Recruitment Architecture**: Squats, deadlifts, hip thrusts, and lunges remain STRICTLY PROHIBITED. To build the aesthetic V-taper, hips and glutes must not widen. All lower-body volume targets the vastus lateralis (quad sweep) and hamstrings.
-    - **Leg Press Platform Stance**: Place feet **hip-width apart in the lower-middle half of the sled**. Do NOT place feet high or wide (which shifts loading to glutes and adductors). Stop descent before pelvis tilts or lumbar lifts off the seat ("butt wink").
-    - **Dorsiflexed Leg Curls**: When curling, actively pull toes upward toward your kneecap. If you point your toes (plantarflexion), calves take over 40% of the movement.
-    - **Core Lumbar Contact Rule**: On crunches and deadbugs, if the lower back lifts even 1 millimeter off the mat, stop the rep immediately. Arching means the hip flexors have hijacked the exercise.
-• 3. Gym Duration Guardrail: 45–50 Minutes Max:
-    - **Session Cap**: 4 lower-body movements (14 working sets) + 8-minute core finisher.
-    - Rest 120–150s on heavy Leg Press, 90s on Leg Extensions and Leg Curls, 60s on Calf Raises and Core. Execute with crisp tempo.
+• 1. Recommended Session Flow & Warm-Up Protocol:
+    - **Dynamic Warm-Up (3 Minutes Max)**: 15 band/arm circles forward & backward, 15 scapular wall slides, and 2 ramp-up sets on Incline DB Press (**12.5 kg × 10 reps** + **17.5 kg × 4 feeler reps**). The 17.5 kg feeler set is mandatory so your nervous system is primed before touching 22.5 kg!
+    - **Sequence 1 $\rightarrow$ 5**:
+    - 1. **Incline Dumbbell Press (30°)**: Heavy clavicular upper-chest anchor while CNS is 100% fresh.
+    - 2. **Smith Machine Bench Press**: Fixed-path sternal chest mechanical tension (no barbell wobble).
+    - 3. **Dumbbell Lateral Raise**: High-volume shoulder capping (4 sets + Set 4 drop set).
+    - 4. **Pec Deck Machine Fly**: Deep pectoral stretch and 1-second apex squeeze.
+    - 5. **Cable Triceps Pushdown**: Lateral/medial horseshoe triceps lockout to finish.
+• 2. Equipment & Progression Guardrails:
+    - **NO 6.0 kg DB in Gym**: Rack jumps 5.0 kg $\rightarrow$ 7.0 kg (+40%). Stay strictly on **5.0 kg DBs** for Lateral Raises and push rep density (12–15+ reps with 2s eccentrics) + a Set 4 drop set to **2.5 kg**. Jumping to 7.0 kg forces upper-trap shrugging.
+    - **+5.0 kg Cable Stack Increments**: On Triceps Pushdown, master **12–15 clean reps across all 3 sets at 20.0 kg** before jumping +5 kg to the 25.0 kg pin.
+    - **RIR Standards**: Stop compounds (Incline DB, Smith Bench) at **1–2 RIR** (clean bar speed, zero shoulder roll). Push isolations (Lateral Raise, Pec Deck, Pushdowns) to **0–1 RIR**.
+• 3. Gym Duration Guardrail: 50–55 Minutes Max:
+    - **15 Working Sets Total**: Rest **150 sec** on Incline DB & Smith Bench, **90 sec** on Lateral Raises & Pec Deck, **60–90 sec** on Triceps Pushdowns. Use the app Rest Timer so sets don't drift.
 ------------------------------------
 
-[1. Leg Press (Narrow / Mid-Low Stance)]
-  • **Order Rationale**: **#1 Vastus Lateralis Quad Mass Driver.** High stability compound pressing with zero spinal compression.
-  • **Working Sets**: **3 sets x 10–12 reps** | Rest: 120–150 sec | Target RIR: **1–2**
-  • **Target Weight**: **50.0 kg – 55.0 kg sled**
-  • *Floor Target*: 50.0 kg × 12, 12, 12 reps (solid baseline re-entry).
-  • *Main Target*: 54.0 kg × 12, 12, 12 reps (matching Oct 21 all-time PR benchmark).
-  • *Stretch Target*: 55.0 kg – 60.0 kg × 10–12 reps (overload leap into 60kg territory).
-  • **Warm-Up Ramp**: Sled only (or 20.0 kg) × 12 reps, 35.0 kg × 8 reps before working sets.
-  • **Form Cue**: Sit firmly back into seat with head against pad. Feet positioned hip-width apart on lower-to-middle half of platform. Lower the sled under strict control until knees reach 90°. Do NOT let lower back curl off the pad. Drive through mid-foot and heels; stop 1 inch short of knee lockout at top.
-  • **Mind-Muscle Cue**: Feel the outside of your thighs (vastus lateralis) pushing the sled. Zero glute push.
+[1. Incline Dumbbell Bench Press (30° Bench)]
+  • **Order Rationale**: **#1 Clavicular Upper-Chest Anchor.** Executed first while pressing CNS and front delts are 100% fresh.
+  • **Working Sets**: **3 sets x 6–10 (Set 1) / 8–12 (Sets 2–3) reps** | Rest: 150 sec | Target RIR: **1–2**
+  • **Target Weight**: **22.5 kg top-set / 20.0 kg back-off (per hand)**
+  • *Warm-Up Ramp*: 12.5 kg × 10 reps, then **17.5 kg × 4 feeler reps** (critical neuromuscular primer).
+  • *Main Target*: Set 1 @ **22.5 kg × 8–10 reps** (beat Nov 14's 6 reps); Sets 2–3 @ **20.0 kg × 10–12 reps**.
+  • *Stretch Target*: 22.5 kg × 10 reps on Set 1 + 22.5 kg × 8–9 reps on Set 2 (matching Oct 19 PR).
+  • **Gym Floor Swap Option**: If all adjustable benches are occupied, use **Incline Machine Chest Press** (35.0–45.0 kg) or start with **Smith Machine Bench Press** (#2) and return to Incline DBs.
+  • **Form Cue**: Set bench strictly to **30° (second notch)**—never 45°, which shifts tension to front delts. Tuck elbows **45°–60°** from torso, lower DBs to outer upper-chest stretch for 2 seconds, drive up smoothly without clacking weights at top.
+  • **Mind-Muscle Cue**: Pin shoulder blades **down and back into the bench** before unracking. Think about pushing your biceps inward across your collarbone shelf rather than pushing your hands away.
 
-[2. Leg Extension Machine]
-  • **Order Rationale**: **#2 Pure Rectus Femoris & Quad Isolation.** Isolates the quads in the shortened position where Leg Press falls off.
-  • **Working Sets**: **3 sets x 12–15 reps** | Rest: 90 sec | Target RIR: **0–1**
-  • **Target Weight**: **10.0 kg – 12.0 kg pin**
-  • *Floor Target*: 10.0 kg × 12, 12, 12 reps.
-  • *Main Target*: Set 1 @ 12.0 kg (8–10 reps); Sets 2–3 @ 10.0 kg (12 reps).
-  • *Stretch Target*: 12.0 kg × 12, 10, 10 reps across all 3 sets.
-  • **Form Cue**: Adjust back pad so knees align directly with machine pivot point. Shin pad rests comfortably against lower shins just above ankles. Grip side handles tightly to anchor hips into seat.
-  • **Mind-Muscle Cue**: Kick up smoothly. At full extension, hold peak squeeze and flex quads for 1 full second. Lower under a strict 3-second eccentric return. Do NOT let weight stack clank between reps.
+[2. Smith Machine Bench Press (Flat)]
+  • **Order Rationale**: **#2 Fixed-Path Sternal Chest Mass Driver.** High mechanical tension without stabilizer fatigue after heavy incline DBs.
+  • **Working Sets**: **3 sets x 6–8 reps** | Rest: 150 sec | Target RIR: **1–2**
+  • **Target Weight**: **42.5 kg – 47.5 kg total (bar + plates)**
+  • *Floor Target*: 42.5 kg × 8, 8, 8 reps.
+  • *Main Target*: Set 1 @ **47.5 kg × 6–8 reps** (matching Oct 19 PR); Sets 2–3 @ **42.5 kg × 8–10 reps**.
+  • *Stretch Target*: 47.5 kg × 8, 7, 6 reps across all 3 sets.
+  • **Gym Floor Swap Option**: If the Smith machine is taken, execute **Flat Barbell Bench Press** (40.0–42.5 kg) or **Seated Chest Press Machine** (40.0–45.0 kg) for 3 × 8–10 reps.
+  • **Form Cue**: Align bench so the bar touches your **lower sternum / nipple line** at the bottom. Plant feet flat into the floor, keep chest proud, and lower under a 2-second controlled descent without bouncing off the chest.
+  • **Mind-Muscle Cue**: Imagine trying to **bend the bar inward** and squeeze your elbows together across your lower chest as you press. Keep shoulders depressed away from your ears.
 
-[3. Lying or Seated Leg Curl Machine]
-  • **Order Rationale**: **#3 Hamstring Knee Flexion & Pelvic Stabilizer.** Directly balances quadriceps pull on the pelvis to treat anterior tilt.
-  • **Working Sets**: **4 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**
-  • **Target Weight**: **5.0 kg – 7.5 kg pin**
-  • *Floor Target*: 5.0 kg × 12, 12, 10, 10 reps.
-  • *Main Target*: Set 1 @ 7.5 kg (8–10 reps); Sets 2–4 @ 5.0 kg (12, 12, 10 reps).
-  • *Stretch Target*: 7.5 kg × 10, 10, 8, 8 reps across all 4 sets.
-  • **Form Cue**: Lie face down with pad resting against lower calves (just below calves, above Achilles). **Pull toes hard toward shins (dorsiflexion)** and keep them pulled throughout the set. Grip handles to pin hips down flat against the bench.
-  • **Mind-Muscle Cue**: Curl heels smoothly toward glutes using pure hamstring tension. Do NOT let your lower back hyperextend or hips rise off the bench. 2-second controlled descent.
+[3. Dumbbell Lateral Raise (+ Set 4 Drop Set)]
+  • **Order Rationale**: **#3 Top-Priority Lateral Delt Width Builder.** Hits the medial delts before triceps/chest fatigue ruins posture.
+  • **Working Sets**: **4 sets x 12–15 reps (Set 4 drops immediately to 2.5 kg x 10–15)** | Rest: 90 sec | Target RIR: **0–1**
+  • **Target Weight**: **5.0 kg per hand (Drop set: 2.5 kg per hand)**
+  • *Main Target*: 5.0 kg × 15, 13, 12, 12 reps $\rightarrow$ Drop Set: 2.5 kg × 12+ reps.
+  • *Equipment Guardrail*: **NO 6.0 kg DB exists** and 7.0 kg (+40%) causes trap shrugging—earn overload via strict 2-second negatives and 15-rep density at 5.0 kg.
+  • **Gym Floor Swap Option**: If 5.0 kg DBs are missing, use **Cable Lateral Raise** at **2.5 kg pin** (pulley at wrist height) for 4 × 12–15 reps per arm.
+  • **Form Cue**: Lean torso forward ~10–15°. Raise arms in the **scapular plane (15°–30° forward of your sides)**, stopping strictly at **collarbone/shoulder height**. Zero torso swing or knee bounce.
+  • **Mind-Muscle Cue**: **Pocket your shoulder blades down** before rep 1. Reach your **knuckles outward toward the far walls** (not upward toward the ceiling) and pull your elbows apart like stretching a tight elastic band.
 
-[4. Standing Calf Raise Machine]
-  • **Order Rationale**: **#4 Lower Leg Aesthetics & Gastrocnemius Density.** Diamond calves frame the lower leg and balance the physique.
-  • **Working Sets**: **4 sets x 12–15 reps** | Rest: 60 sec | Target RIR: **0**
-  • **Target Weight**: **80.0 kg – 85.0 kg pin**
-  • *Floor Target*: 80.0 kg × 12, 12, 12, 12 reps.
-  • *Main Target*: 80.0 kg × 15, 15, 12, 12 reps.
-  • *Stretch Target*: 85.0 kg × 12, 12, 12, 10 reps.
-  • **Form Cue**: Balls of feet on block, heels hanging free. Legs straight with soft micro-bend in knees (do not lock out knees). Drop heels down into maximum possible stretch. **HOLD THE BOTTOM STRETCH FOR 2 FULL SECONDS (1-Mississippi, 2-Mississippi)** to kill tendon bounce. Explode onto big toes and hold peak contraction for 1 second.
-  • **Mind-Muscle Cue**: Think about pushing the floor away with the balls of your big toes. Feel the deep stretch tear through the calf belly.
+[4. Pec Deck Machine Fly]
+  • **Order Rationale**: **#4 Pure Pectoral Isolation & Lengthened Stretch.** Strips triceps completely out of pressing to finish chest fibers cleanly.
+  • **Working Sets**: **2 sets x 10–12 reps** | Rest: 90 sec | Target RIR: **0–1**
+  • **Target Weight**: **35.0 kg pin (Fallback: 30.0 kg pin)**
+  • *Main Target*: 35.0 kg × 12, 11–12 reps (matching and beating Nov 14's 12, 11).
+  • *Stretch Target*: 35.0 kg × 12, 12 reps with a 1-second peak contraction pause on every rep.
+  • **Gym Floor Swap Option**: If Pec Deck is busy, execute **Standing Cable Chest Fly** (set pulleys at shoulder height, 5.0–7.5 kg per side) for 2 × 12–15 reps.
+  • **Form Cue**: Set seat height so handles align directly with **mid-chest**. Keep elbows softly bent at a fixed angle (do not turn the fly into a press). Control a **3-second eccentric stretch** back until handles align with torso, then sweep smoothly inward.
+  • **Mind-Muscle Cue**: Lead the inward sweep with your **inner elbows and wrists together**, not your hands. Hold a hard **1-second squeeze** when knuckles meet in front of your sternum.
 
-[5. Anti-APT Core Finisher: Floor Crunch & Deadbugs Superset]
-  • **Order Rationale**: **#5 Transverse Abdominis & Rectus Abdominis Restoration.** Pushes the pelvis backward into neutral alignment to erase desk posture belly protrusion.
-  • **Working Sets**: **3 supersets (12–15 crunches immediately into 6–8 deadbugs per side)** | Rest: 45–60 sec | Target RIR: **0–1**
-  • **Target Weight**: **Bodyweight (0.0 kg)**
-  • **Floor Crunch Execution**:
-  • Lie on back, knees bent 90°, feet flat on floor.
-  • **Press lower back 100% flat into the mat (zero gap under lumbar spine)**.
-  • Hands lightly touching temples. Curl your ribcage toward your pelvis; exhale every drop of air from your lungs at peak crunch. Hold peak contraction for 1 full second.
-  • **Deadbug Execution**:
-  • Immediately raise knees to 90° tabletop position, arms pointing straight up toward ceiling.
-  • Maintain absolute lumbar contact with the ground.
-  • Slowly extend right arm overhead while extending left leg straight out hovering 2 inches off floor. Return and alternate sides.
-  • *CRITICAL CUE*: If lower back arches off floor even 1mm, stop extension immediately. Quality over reach.
-
-[6. Post-Workout Posture Reset: Half-Kneeling Hip Flexor Stretch]
-  • **Execution**: 2 sets × 45 seconds per side.
-  • **Form Cue**: Drop into a half-kneeling lunge on mat. Squeeze rear glute hard to force posterior pelvic tilt. Keep torso tall and tuck pelvis under. Do NOT arch lower back. Stretch must be felt deeply in the front hip crease (psoas) to undo 9 hours of seated desk posture.
+[5. Cable Triceps Pushdown (Straight Bar)]
+  • **Order Rationale**: **#5 Lateral & Medial Triceps Lockout Finisher.** Carves the horseshoe triceps contour while elbows are thoroughly warmed up.
+  • **Working Sets**: **3 sets x 12–15 reps** | Rest: 60–90 sec | Target RIR: **0–1**
+  • **Target Weight**: **20.0 kg pin (No 22.5 kg pin; earn 3 × 12–15 before jumping to 25.0 kg)**
+  • *Main Target*: 20.0 kg × 14, 13, 12 reps (beating Nov 14's 12, 12, 10).
+  • *Stretch Target*: 20.0 kg × 15, 15, 13 reps to unlock the 25.0 kg pin next Push cycle.
+  • **Gym Floor Swap Option**: If straight bar is occupied, use **Rope Triceps Pushdown** at 15.0–20.0 kg (spreading rope apart at bottom lockout) or **Overhead Cable Triceps Extension** at 20.0 kg.
+  • **Form Cue**: Stand tall with slight forward hip hinge, **pin upper arms/elbows strictly to your ribs**. Press bar smoothly down to **full elbow lockout**, hold 1 second, and control the return until forearms just clear parallel (90°–100°). Do NOT let elbows drift forward or flare out.
+  • **Mind-Muscle Cue**: Think about pushing your **pinky-side palms straight into the floor** and flexing the outside horseshoe of your arm hard at every lockout.
 
 ------------------------------------
 Log: Weight x Reps (RIR) when done.

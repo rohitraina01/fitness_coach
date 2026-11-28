@@ -1,6 +1,6 @@
 # COACH MEMORY: CONTINUOUS TRAINEE CONTEXT & PROGRESSION ENGINE
 
-*Last Refreshed: 2026-11-22 21:30:00*  
+*Last Refreshed: 2026-11-28 16:15:00*  
 *Purpose: Authoritative living ledger of trainee biomechanics, soreness states, behavioral patterns, active queue autoregulation, and progressive overload bottlenecks. Read on every coaching turn to guarantee zero amnesia and hyper-optimized aesthetic acceleration.*
 
 ---
@@ -23,8 +23,9 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | 9 | **Pull A (Cycle 2)** | Lat Width, Upper Back Scapular Retraction, Biceps | **COMPLETED** | **2026-11-07 (`W-20261107-01`)** |
 | 10 | **Push B (Cycle 2)** | Sternal Chest, Cable Lateral Delts, Long-Head Triceps | **COMPLETED** | **2026-11-14 (`W-20261114-01`)** |
 | 11 | **Pull B (Cycle 2)** | Back Density, Rear Delts, Biceps Peak/Brachialis | **COMPLETED** | **2026-11-21 (`W-20261121-01`)** |
-| 12 | **Legs & Core (Cycle 3)**| Quads, Hamstrings, Calves, Anti-APT Core | **NEXT GYM** | **Mandatory (Rule 9 Hard-Lock)** |
-| 13 | **Push A (Cycle 3)** | Upper Chest, Heavy Lateral Delts, Triceps | **QUEUED** | **Following Legs & Core** |
+| 12 | **Legs & Core (Cycle 3)**| Quads, Hamstrings, Calves, Anti-APT Core | **COMPLETED** | **2026-11-27 (`W-20261127-01`)** |
+| 13 | **Push A (Cycle 3)** | Upper Chest, Heavy Lateral Delts, Triceps | **NEXT GYM** | **Unlocked (Rule 9 Satisfied)** |
+| 14 | **Pull A (Cycle 3)** | Lat Width, Upper Back Scapular Retraction, Biceps | **QUEUED** | **Following Push A** |
 
 ### Active Autoregulation History & Tactical Swaps
 - **2026-10-13 Leg Baseline**: Established clean 45kg Leg Press, 10kg Leg Ext, 80kg Calf Raise with 0% glute recruitment.
@@ -35,7 +36,8 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 - **2026-10-21 Legs & Core Executed (62m - W-20261021-01)**: Conquered **54.0 kg Leg Press All-Time PR (+9.0 kg leap)** for 12, 12, 12 reps! Tested **12.0 kg Leg Extension Load PR**; accumulated 55 reps of bodyweight calf raises; completed anti-APT floor crunch, deadbugs, and half-kneeling hip flexor stretch. Zero glute volume. Squeezing Legs in gave pulling musculature 72h complete rest. Queue advances to **Day 2: Pull A**.
 - **2026-11-07 Pull A Executed (63m - W-20261107-01)**: Smashed **Pull-Up 5-Rep All-Time PR (0.0 kg BW)**; conquered **Rear Delt Fly 17.5 kg × 12, 12, 11 reps (+2.5 kg Load Leap!)**; solidified **Seated Cable Row 65.0 kg × 10 & 60.0 kg × 12, 12**; anchored **Lat Pulldown 50.0 kg × 6, 6, 7**; tested **Single-Arm Lat Pulldown 10kg/15kg/12.5kg** (12.5kg locked as anchor); compressed duration by **38 minutes** (63m vs 101m). Queue advances to **Day 5: Push B** (with Rule 9 mandatory Legs to follow).
 - **2026-11-14 Push B Executed (60m - W-20261114-01)**: Smashed **Overhead Cable Triceps Ext All-Time Rep PR (20.0 kg × 10, 8, 7 reps - all 3 sets at 20.0 kg!)**; conquered **Pec Deck Fly 35.0 kg volume density (12, 11, 6 reps = 29 reps @ 35kg)**; stabilized **Incline DB Press (22.5kg x 6, 20kg x 10, 9)**; accumulated lateral delt volume (3 sets Cable + 3 sets DB + dropset); Triceps pushdown (3 sets x 20kg). Queue advances to **MANDATORY Day 6: Legs & Core** under Rule 9.
-- **2026-11-21 Pull B Executed (68m - W-20261121-01)**: Smashed **Seated Cable Row Volume Density PR (65.0 kg × 12, 12, 10 = 34 total reps @ 65kg)**; conquered top-set **Close-Grip Lat Pulldown PR (50.0 kg × 7 reps)**; anchored **Bench-Braced One-Arm DB Row (12.5 kg × 12, 10, 10 reps)** with 100% spinal stability; matched **EZ-Bar Curl (20.0 kg × 12, 8, 7)** and executed hammer curl superset; completed anti-APT floor crunch (15, 10, 10) and deadbug (6, 6, 8) circuit. Total volume crossed **5,020 kg**. Trainee reported side delt burn during rows: diagnosed elbow flare/abduction and upper trap shrugging under heavy load. Queue is **HARD-LOCKED to Day 6: Legs & Core (Cycle 3)** under Rule 9.
+- **2026-11-21 Pull B Executed (68m - W-20261121-01)**: Smashed **Seated Cable Row Volume Density PR (65.0 kg × 12, 12, 10 = 34 total reps @ 65kg)**; conquered top-set **Close-Grip Lat Pulldown PR (50.0 kg × 7 reps)**; anchored **Bench-Braced One-Arm DB Row (12.5 kg × 12, 10, 10 reps)** with 100% spinal stability; matched **EZ-Bar Curl (20.0 kg × 12, 8, 7)** and executed hammer curl superset; completed anti-APT floor crunch (15, 10, 10) and deadbug (6, 6, 8) circuit. Total volume crossed **5,020 kg**. Trainee reported side delt burn during rows: diagnosed elbow flare/abduction and upper trap shrugging under heavy load. Queue was hard-locked to Day 6: Legs & Core (Cycle 3) under Rule 9.
+- **2026-11-27 Legs & Core Executed (54m - W-20261127-01)**: Satisfied Rule 9 after cricket leg soreness! Smashed **Leg Extension PR (12.0 kg × 12, 10, 7 = 29 total reps @ 12kg vs 5 reps on Oct 21)**; matched **Leg Press PR (54.0 kg × 12, 12, 12)** with 0% glute recruitment; held **Lying Leg Curl @ 5.0 kg (10, 9, 7)**; completed **Bodyweight Calf Raises (20, 20, 14)** and confirmed **NO standing calf raise machine exists in gym**; hit **Deadbug Rep PR (8, 8, 12 = 28 reps)** + Floor Crunch (15, 12, 8) + **Hip Flexor Stretch (4 holds: 2 per leg @ 31–40s)**. Queue unlocks and advances to **Day 1: Push A (Cycle 3)**.
 
 ---
 
@@ -43,15 +45,15 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 
 | Muscle Group | Soreness / Recovery Status | Freshness (1–10) | Tactical Directive for Next Session |
 | :--- | :---: | :---: | :--- |
-| **Chest & Front Delts** | **Recovered (Trained Nov 14)** | **8/10** | Fully recovered; locked out until Leg Day volume is logged. |
-| **Triceps** | **Recovered (Trained Nov 14)** | **8/10** | Fully recovered; locked out until Leg Day volume is logged. |
-| **Lateral Delts** | **Fatigued (Trained Nov 21)** | **4/10** | Fatigued from row flaring & isometric stabilization. Needs recovery. |
-| **Lats & Upper Back** | **Fatigued / Adapting (Trained Nov 21)** | **3/10** | Heavy mechanical fatigue from 65kg row & pulldowns. Needs 48–72h recovery. |
-| **Biceps & Brachialis** | **Fatigued (Trained Nov 21)** | **4/10** | Needs 48h recovery from curls & heavy pulling. |
-| **Rear Delts** | **Fatigued (Trained Nov 21)** | **3/10** | Exhausted from rows and flyes. Needs rest. |
-| **Quads & Hamstrings** | **Fully Rested & Primed (Last trained Oct 21)**| **10/10** | **100% PRIMED & HARD-LOCKED FOR NEXT SESSION (Rule 9).** |
-| **Calves** | **Fully Rested & Primed** | **10/10** | Primed for deep stretch pause calf raises. |
-| **Core / Pelvis** | **Light Stimulus (Trained Nov 21)** | **8/10** | Primed for anti-APT Floor Crunches & Deadbugs. |
+| **Chest & Front Delts** | **100% Rested & Primed (Last trained Nov 14)** | **10/10** | **PRIMED FOR NEXT SESSION (Push A).** 14 days recovery since Nov 14. |
+| **Triceps** | **100% Rested & Primed (Last trained Nov 14)** | **10/10** | **PRIMED FOR NEXT SESSION (Push A).** Ready for heavy pushdown volume. |
+| **Lateral Delts** | **Recovered (Last direct Nov 14; row Nov 21)** | **9/10** | Fully recovered; ready for 4 sets DB Lateral Raise @ 5.0 kg + drop set. |
+| **Lats & Upper Back** | **Recovered (Trained Nov 21)** | **9/10** | Rested 7 days; queued for Pull A after Push A. |
+| **Biceps & Brachialis** | **Recovered (Trained Nov 21)** | **9/10** | Rested 7 days; ready for Pull A after Push A. |
+| **Rear Delts** | **Recovered (Trained Nov 21)** | **9/10** | Rested 7 days; ready for Pull A after Push A. |
+| **Quads & Hamstrings** | **Fatigued (Trained Nov 27)** | **3/10** | Heavy quad extension PR & leg press stimulus + post-cricket fatigue. Needs 48–72h rest. |
+| **Calves** | **Fatigued (Trained Nov 27)** | **4/10** | 54 bodyweight reps after cricket running; needs 48h rest. |
+| **Core / Pelvis** | **Stimulated (Trained Nov 27)** | **6/10** | 63 anti-APT core reps + hip flexor stretches logged. |
 
 ---
 
@@ -71,9 +73,9 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 5. **Pragmatic Floor Audibles (Station Congestion Navigation)**:
    - *Observation*: On Oct 16 Push B, trainee found the cable lateral station occupied after Incline DB Press. Rather than waiting or killing momentum, swapped Overhead Triceps Extension forward to #2 since triceps were fresh.
    - *Coaching Adaptation*: Validate this tactical flexibility. As long as exercise substitutions remain within the prescribed session pool and priority movements are completed, station re-ordering preserves session density.
-6. **Gym Equipment Ground Truth (Dumbbells & Cable Stacks)**:
-   - *Observation*: Trainee confirmed equipment reality: Dumbbells are 1, 2, 3, 4, 5, 7, 8 kg (**NO 6.0 kg DB exists**). Cable / rope stations start with 2.5 kg plates only on light end, but main stacks transition strictly to **+5.0 kg increments** (no 17.5 kg or 22.5 kg pins).
-   - *Coaching Adaptation*: Never prescribe 6.0 kg DBs or fractional cable weights. Jumping DB lateral raises from 5kg to 7kg (+40%) is prohibited as it causes immediate trap shrugging; expand 5kg rep ceiling to 15–20 reps or use Cable Lateral Raises. On cable triceps, require 12–15 reps before jumping +5kg on the stack.
+6. **Gym Equipment Ground Truth (Dumbbells, Cable Stacks & Calf Machine)**:
+   - *Observation*: Trainee confirmed equipment reality: Dumbbells are 1, 2, 3, 4, 5, 7, 8 kg (**NO 6.0 kg DB exists**). Cable / rope stations start with 2.5 kg plates only on light end, but main stacks transition strictly to **+5.0 kg increments** (no 17.5 kg or 22.5 kg pins). **NO Standing Calf Raise Machine exists in gym** (confirmed Nov 28).
+   - *Coaching Adaptation*: Never prescribe 6.0 kg DBs, fractional cable weights, or Standing Calf Raise Machine. Jumping DB lateral raises from 5kg to 7kg (+40%) is prohibited as it causes immediate trap shrugging; expand 5kg rep ceiling to 15–20 reps or use Cable Lateral Raises. On cable triceps, require 12–15 reps before jumping +5kg on the stack. For calves, prescribe elevated Bodyweight / Single-Leg Calf Raises (`BW_CALF_RAISE`) or single-DB loaded elevated calf raises.
 
 ---
 
@@ -120,4 +122,6 @@ Workouts are governed by **muscular recovery and joint freshness**, never rigid 
 | **2026-11-10** | Log Ingestion & Mobile Sync | Ingested buffered Nov 07 session via `/log`. Smashed PRs logged, dashboard refreshed, mobile cards updated with Day 5: Push B blueprint. Rule 9 mandatory Legs reminder established. | Deployed to Mobile App |
 | **2026-11-18** | Post-Trek Autoregulation Audible | Trainee completed trekking Nov 17; quads/calves loaded eccentrically and lumbar stabilizers fatigued. Swapped immediate session to Day 7: Pull B with strict chest-support guardrails (zero axial load) and mandatory Anti-APT core finisher. Hard-locked subsequent session to Day 6: Legs & Core. | Deployed to Mobile App |
 | **2026-11-21** | Pull B Completed (68m) | Conquered Seated Cable Row 65kg × 12, 12, 10 (34 reps @ 65kg volume PR); Close Grip Lat Pulldown 50kg × 7 PR; Bench-Braced DB Row 12.5kg baseline. Biomechanically diagnosed side delt burn on rows (elbow flare/shrugging). Hard-locked queue to Day 6: Legs & Core (Cycle 3) under Rule 9. | Logged (`W-20261121-01`) |
+| **2026-11-27** | 6-Day Layoff & Push Request Denied | Trainee reported 6-day gap (office work + procrastination) and cricket match on Nov 26; requested Push instead of Legs. Denied under Rule 9 (37 days since Oct 21 leg session; 3 consecutive upper workouts already logged). Follow-up at 21:33 confirmed leg soreness/fatigue from match running; approved tonight as rest/recovery with strict commitment to execute Day 6: Legs & Core tomorrow (Nov 28) at Floor Targets (no Push tonight). | Hard-Lock Maintained (Legs Nov 28) |
+| **2026-11-28** | Legs & Core Ingested (54m) & Equipment/App Fixes | Trainee logged Nov 27 Legs & Core (`W-20261127-01`): Leg Extension 12.0kg × 12, 10, 7 PR; Leg Press 54.0kg × 12, 12, 12; Leg Curl 5.0kg × 10, 9, 7; Bodyweight Calf Raise 20, 20, 14; Deadbug 8, 8, 12 PR; Floor Crunch 15, 12, 8; Hip Flexor Stretch 4 holds (2/leg @ 31–40s). Confirmed gym lacks Standing Calf Raise Machine (added `BW_CALF_RAISE`). Fixed mobile exporter stretch-target bug & MMC formatting. Unlocked and prescribed **Day 1: Push A (Cycle 3)**. | Logged (`W-20261127-01`) |
 

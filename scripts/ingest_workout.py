@@ -38,6 +38,8 @@ def match_exercise(line, catalog):
         return None, None
     if "lying leg curl" in line_clean or "leg curl" in line_clean:
         return "LEG_CURL", "Leg Curl Machine"
+    if "bodyweight calf raise" in line_clean or "bw calf raise" in line_clean or "single leg calf raise" in line_clean:
+        return "BW_CALF_RAISE", "Bodyweight / Single-Leg Calf Raise"
     if "standing calf raise" in line_clean or "calf raise" in line_clean:
         return "CALF_RAISE", "Standing Calf Raise"
     if "leg extension" in line_clean:
@@ -394,7 +396,7 @@ def ingest_from_buffer(extra_notes=""):
 
     push_eids = {"INCLINE_DB_PRESS", "FLAT_BB_BENCH", "SMITH_BENCH", "PEC_DECK_FLY", "TRICEPS_PUSHDOWN", "ROPE_PUSHDOWN", "OVERHEAD_TRICEPS_EXT", "DB_LATERAL_RAISE", "CABLE_LATERAL_RAISE", "INCLINE_MACHINE_PRESS"}
     pull_eids = {"LAT_PULLDOWN", "SEATED_CABLE_ROW", "STRAIGHT_ARM_PULLDOWN", "REAR_DELT_FLY", "EZ_BAR_CURL", "HAMMER_CURL", "PULL_UP", "SINGLE_ARM_CABLE_ROW", "SINGLE_ARM_LAT_PULLDOWN", "DB_SINGLE_ARM_ROW", "CHEST_SUPPORTED_ROW"}
-    leg_eids = {"LEG_PRESS", "LEG_EXTENSION", "LEG_CURL", "CALF_RAISE", "DEADBUG", "FLOOR_CRUNCH"}
+    leg_eids = {"LEG_PRESS", "LEG_EXTENSION", "LEG_CURL", "CALF_RAISE", "BW_CALF_RAISE", "DEADBUG", "FLOOR_CRUNCH"}
     
     eids_in_sets = {s["exercise"] for s in sets}
     push_count = len(eids_in_sets & push_eids)

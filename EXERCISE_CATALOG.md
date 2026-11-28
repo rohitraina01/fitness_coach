@@ -119,10 +119,11 @@
 - **Execution Cues**: Dorsiflex feet. Curl to touch pad to glutes. Slow 3-second eccentric return.
 - **Progression Model**: Double progression, 10–12 reps.
 
-### 3.4 Standing Calf Raise (`CALF_RAISE`)
+### 3.4 Standing Calf Raise (`CALF_RAISE`) & Bodyweight / Single-Leg Calf Raise (`BW_CALF_RAISE`)
 - **Primary Movers**: Gastrocnemius, Soleus.
-- **Execution Cues**: Pause 2 seconds in the full deep stretch at bottom to kill the Achilles tendon stretch reflex. Explosive plantarflexion, 1s peak squeeze.
-- **Progression Model**: Double progression, 12–15 reps.
+- **Equipment Note**: Current gym lacks a Standing Calf Raise Machine; use **Bodyweight / Elevated Single-Leg Calf Raise (`BW_CALF_RAISE`)** on a step/plate (progressing to holding a single 10–15 kg dumbbell once 3×20 bilateral reps are mastered).
+- **Execution Cues**: Pause 2 seconds in the full deep stretch at bottom to kill the Achilles tendon stretch reflex. Explosive plantarflexion through the big toe ball, 1s peak squeeze.
+- **Progression Model**: Double progression, 12–20 reps.
 
 ### 3.5 Cable Kneeling Crunch (`CABLE_CRUNCH`)
 - **Primary Movers**: Rectus Abdominis.

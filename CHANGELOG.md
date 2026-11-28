@@ -1,3 +1,23 @@
+### [2026-11-28 - Update 1.9] - Legs & Core Ingestion, Equipment Calibration & Mobile MMC/Stretch Fixes
+- **Legs & Core Ingestion (`W-20261127-01`)**:
+  - Ingested 18 resistance sets (+ 4 hip flexor stretch holds) in 54m 11s from mobile buffer (`WORKOUT_LOGS/incoming_raw_log.txt`). Total volume: **2,422 kg**.
+  - Smashed **Leg Extension All-Time PR**: **12.0 kg × 12 reps [PR], 10 reps, 7 reps** (29 total reps @ 12.0 kg vs 5 reps on Oct 21).
+  - Matched **Leg Press PR**: **54.0 kg × 12, 12, 12 reps** (36 total reps) despite post-cricket fatigue, with 0% glute recruitment.
+  - Anchored **Lying Leg Curl**: 5.0 kg × 10, 9, 7 reps (all 3 sets at 5.0 kg with dorsiflexed feet).
+  - Recorded **Bodyweight Calf Raise (`BW_CALF_RAISE`)**: 0.0 kg × 20, 20, 14 reps (54 total reps).
+  - Smashed **Deadbug Rep PR**: 8, 8, 12 reps (28 total reps) alongside **Floor Crunch** (15, 12, 8) and **Hip Flexor Stretch** (4 holds: 2 per leg @ 31–40s).
+  - Generated comprehensive workout log in `WORKOUT_LOGS/2026/2026-11/2026-11-27_legs.md`.
+- **Gym Equipment & Catalog Correction**:
+  - Trainee confirmed the gym does **not** have a Standing Calf Raise Machine. Added `BW_CALF_RAISE` (`Bodyweight / Single-Leg Calf Raise`) to `DATA/exercise_catalog.csv` and updated `scripts/ingest_workout.py`, `PROFILE.md`, `EXERCISE_CATALOG.md`, `CURRENT_PROGRAM.md`, and `COACH_MEMORY.md`.
+- **Mobile App & Exporter Bug Fixes**:
+  - Fixed `scripts/export_mobile.py` so mobility/stretch prescriptions (`Execution` / `Hold Duration` / `per leg`) no longer fall back to `3 sets x 8–12 reps`.
+  - Fixed `scripts/export_mobile.py` and `docs/app.js` / `bridge/web/app.js` to render markdown bold formatting in `cue` and `mmc` fields, generalize the Masterclass header, and automatically reset stale set checkboxes when switching to a new workout.
+  - Enriched every exercise in `CURRENT_NEXT_WORKOUT.md` with explicit `Order Rationale`, `Working Sets`, `Target Weight`, `Gym Floor Swap Option`, `Form Cue`, and `Mind-Muscle Cue`.
+- **System Queue Advancement**:
+  - Rule 9 hard-lock cleared! Unlocked and prescribed **Day 1: Push A (Cycle 3 — Upper Chest, Heavy Lateral Delts & Horseshoe Triceps)**.
+
+---
+
 ### [2026-11-22 - Update 1.8] - Pull B Ingestion, Monster Row PR & Mandatory Legs & Core Lock
 - **Pull B Ingestion (W-20261121-01)**:
   - Ingested 26 sets in 68m 57s from mobile buffer (`WORKOUT_LOGS/incoming_raw_log.txt`). Total volume crossed **5,020 kg**!

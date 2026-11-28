@@ -161,7 +161,7 @@ def export():
     txt_lines.append("\n------------------------------------")
 
     if masterclass:
-        txt_lines.append("[COACHING MASTERCLASS: WHY V-BAR IS PURE LAT]")
+        txt_lines.append("[COACHING MASTERCLASS & BIOMECHANICS]")
         for mc in masterclass:
             txt_lines.append(f"\n• {mc['title']}:")
             for itm in mc['items']:
@@ -187,34 +187,39 @@ def export():
         sets_count = 3
 
         for d in ex["details"]:
-            if "Working Sets" in d:
-                target = d.replace("**Working Sets**:", "").strip()
+            d_clean = re.sub(r"^\*\*[^*]+\*\*:\s*", "", d).strip()
+            if any(k in d for k in ["Working Sets", "Sets & Hold", "Prescribed Sets"]):
+                target = d_clean
+            elif ("Execution" in d or "Hold Duration" in d) and "Floor Crunch" not in d and "Deadbug" not in d and target == "3 sets x 8–12 reps":
+                target = d_clean
             elif "Targets:" in d and target == "3 sets x 8–12 reps":
                 target = d.replace("- Targets:", "").strip()
             elif "Order Rationale" in d or "Flow Rationale" in d:
-                flow_reason = d.replace("**Order Rationale**:", "").replace("**Flow Rationale**:", "").strip()
-            elif "Gym Floor Swap Option" in d or "Swap Option" in d:
-                swap_option = d.replace("**Gym Floor Swap Option**:", "").replace("**Swap Option**:", "").strip()
-            elif "Form Cue" in d:
-                cue = d.replace("**Form Cue**:", "").strip()
-            elif "Mind-Muscle Cue" in d:
-                mmc = d.replace("**Mind-Muscle Cue**:", "").strip()
-            elif "Calibration Target" in d:
-                calibration = d.replace("**Calibration Target**:", "").strip()
+                flow_reason = d_clean
+            elif "Gym Floor Swap Option" in d or "Swap Option" in d or "If Machine Taken" in d:
+                swap_option = d_clean
+            elif "Form Cue" in d or "Execution Cue" in d:
+                cue = d_clean
+            elif "Mind-Muscle Cue" in d or "Mind-Muscle Connection" in d:
+                mmc = d_clean
+            elif "Calibration Target" in d or "Starting Load" in d:
+                calibration = d_clean
             elif "Target Load" in d or "Target Weight" in d or "Weight Target" in d:
-                target_weight = d.replace("**Target Load**:", "").replace("**Target Weight**:", "").replace("**Weight Target**:", "").strip()
+                target_weight = d_clean
             elif "Stop Cue" in d and not cue:
-                cue = d.replace("**Stop Cue**:", "").strip()
+                cue = d_clean
 
         if not target_weight and calibration:
             target_weight = calibration
         if not calibration and target_weight:
             calibration = target_weight
 
-        m_sets = re.search(r"(\d+)\s*sets", target, re.IGNORECASE)
+        m_sets = re.search(r"(\d+)\s*(?:total\s+holds?|sets?|supersets?)", target, re.IGNORECASE)
         if m_sets:
             try:
                 sets_count = int(m_sets.group(1))
+                if ("per side" in target.lower() or "per leg" in target.lower()) and "total" not in target.lower():
+                    sets_count *= 2
             except Exception:
                 pass
 
@@ -230,10 +235,13 @@ def export():
             "sets": sets_count
         })
 
+    def md_bold(txt):
+        return re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", txt or "")
+
     # 2. Responsive Mobile HTML Card (Stand-alone View)
     briefing_cards_html = ""
     for inst in instructions:
-        items_li = "".join([f"<li>{it}</li>" for it in inst['items']])
+        items_li = "".join([f"<li>{md_bold(it)}</li>" for it in inst['items']])
         briefing_cards_html += f"""
         <div class="briefing-box">
             <h4>{inst['title']}</h4>
@@ -243,21 +251,21 @@ def export():
 
     html_cards = []
     for idx, jex in enumerate(json_exercises, 1):
-        flow_part = f'<p class="flow-text">🔄 <strong>Order Rationale:</strong> {jex["flow_reason"]}</p>' if jex['flow_reason'] else ''
-        swap_part = f'<p class="swap-text">⚡ <strong>If Machine Taken:</strong> {jex["swap_option"]}</p>' if jex['swap_option'] else ''
+        flow_part = f'<p class="flow-text">🔄 <strong>Order Rationale:</strong> {md_bold(jex["flow_reason"])}</p>' if jex['flow_reason'] else ''
+        swap_part = f'<p class="swap-text">⚡ <strong>If Machine Taken:</strong> {md_bold(jex["swap_option"])}</p>' if jex['swap_option'] else ''
         
         mmc_html = f"""
         <details class="mmc-details">
             <summary>💡 Mind-Muscle Cue & Execution</summary>
             {flow_part}
             {swap_part}
-            <p class="mmc-text">{jex['mmc']}</p>
-            {f'<p class="calib-text">⚖️ <strong>Starting Load Target:</strong> {jex["calibration"]}</p>' if jex['calibration'] else ''}
+            <p class="mmc-text">{md_bold(jex['mmc'])}</p>
+            {f'<p class="calib-text">⚖️ <strong>Starting Load Target:</strong> {md_bold(jex["calibration"])}</p>' if jex['calibration'] else ''}
         </details>
-        """ if (jex['mmc'] or jex['calibration'] or jex['flow_reason']) else ""
+        """ if (jex['mmc'] or jex['calibration'] or jex['flow_reason'] or jex['swap_option']) else ""
 
         sets_buttons = "".join([f'<label><input type="checkbox"> Set {s}</label>' for s in range(1, jex['sets'] + 1)])
-        weight_tag_html = f'<div class="weight-tag">🎯 {jex["target_weight"]}</div>' if jex.get("target_weight") else ''
+        weight_tag_html = f'<div class="weight-tag">🎯 {md_bold(jex["target_weight"])}</div>' if jex.get("target_weight") else ''
 
         card = f"""
         <div class="exercise-card">
@@ -266,10 +274,10 @@ def export():
                 <span class="ex-name">{jex['name']}</span>
             </div>
             <div class="target-row">
-                <div class="target-tag">{jex['target']}</div>
+                <div class="target-tag">{md_bold(jex['target'])}</div>
                 {weight_tag_html}
             </div>
-            <p class="quick-cue">{jex['cue']}</p>
+            <p class="quick-cue">{md_bold(jex['cue'])}</p>
             {mmc_html}
             <div class="set-tracker">
                 {sets_buttons}
@@ -280,7 +288,7 @@ def export():
 
     masterclass_boxes = ""
     for mc in masterclass:
-        items_li = "".join([f"<li>{it}</li>" for it in mc['items']])
+        items_li = "".join([f"<li>{md_bold(it)}</li>" for it in mc['items']])
         masterclass_boxes += f"""
         <div class="briefing-box" style="margin-top:8px;">
             <h4 style="color:var(--accent-orange);">{mc['title']}</h4>
@@ -290,7 +298,7 @@ def export():
 
     masterclass_html = f"""
     <details class="coach-accordion" style="margin-top:20px;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.06);" open>
-        <summary style="color:var(--accent-orange);">💡 COACHING MASTERCLASS: WHY V-BAR IS PURE LAT <span>▼</span></summary>
+        <summary style="color:var(--accent-orange);">💡 COACHING MASTERCLASS & BIOMECHANICS <span>▼</span></summary>
         <div class="coach-accordion-content">
             {masterclass_boxes}
         </div>

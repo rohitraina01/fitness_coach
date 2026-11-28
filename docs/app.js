@@ -169,7 +169,14 @@ function renderWorkout(workout) {
     };
   }
 
-  localStorage.setItem("apex_cached_next_workout", JSON.stringify(workout));
+  if (workout && workout.exercises && workout.exercises.length > 0) {
+    const prevTitle = localStorage.getItem("apex_last_workout_title");
+    if (prevTitle && prevTitle !== workout.title) {
+      localStorage.removeItem(CHECKED_SETS_KEY);
+    }
+    localStorage.setItem("apex_last_workout_title", workout.title || "");
+    localStorage.setItem("apex_cached_next_workout", JSON.stringify(workout));
+  }
 
   // Update Header UI
   const titleEl = document.getElementById("sessionTitle");
@@ -234,7 +241,7 @@ function renderWorkout(workout) {
         <div class="mmc-drawer" style="display:none;">
           ${ex.flow_reason ? `<div class="mmc-flow"><span class="flow-tag">🔄 ORDER RATIONALE:</span> ${escapeHtml(ex.flow_reason).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>` : ''}
           ${ex.swap_option ? `<div class="mmc-swap"><span class="swap-tag">⚡ IF MACHINE TAKEN:</span> ${escapeHtml(ex.swap_option).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>` : ''}
-          ${ex.mmc ? `<div class="mmc-content"><span class="mmc-tag">🎯 MIND-MUSCLE CONNECTION:</span> ${escapeHtml(ex.mmc)}</div>` : ''}
+          ${ex.mmc ? `<div class="mmc-content"><span class="mmc-tag">🎯 MIND-MUSCLE CONNECTION:</span> ${escapeHtml(ex.mmc).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>` : ''}
           ${ex.calibration ? `<div class="mmc-calibration"><span class="calib-tag">⚖️ STARTING LOAD:</span> ${escapeHtml(ex.calibration).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>` : ''}
         </div>
       </div>
@@ -258,7 +265,7 @@ function renderWorkout(workout) {
         <span class="ex-target-pill">${escapeHtml(ex.target).replace(/\*\*(.*?)\*\*/g, '$1')}</span>
       </div>
       ${weightBadgeHtml}
-      <p class="ex-cue">${escapeHtml(ex.cue)}</p>
+      <p class="ex-cue">${escapeHtml(ex.cue).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>
       ${mmcHtml}
       <div class="set-row">
         ${setsHtml}
@@ -289,7 +296,7 @@ function renderWorkout(workout) {
       <div class="ex-top" style="border-bottom:1px solid rgba(251,146,60,0.25);padding-bottom:8px;margin-bottom:10px;">
         <div class="ex-title-wrap">
           <span style="font-size:1.1rem;">💡</span>
-          <span class="ex-name" style="color:#fb923c;font-size:0.95rem;">COACHING MASTERCLASS: WHY V-BAR IS PURE LAT</span>
+          <span class="ex-name" style="color:#fb923c;font-size:0.95rem;">COACHING MASTERCLASS &amp; BIOMECHANICS</span>
         </div>
         <span class="ex-target-pill" style="background:rgba(251,146,60,0.15);color:#fb923c;border-color:rgba(251,146,60,0.3);">ANATOMY GUIDE</span>
       </div>

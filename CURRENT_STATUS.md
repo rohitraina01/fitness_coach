@@ -1,7 +1,7 @@
 # CURRENT SYSTEM STATUS & OPERATIONAL SNAPSHOT
 
-*Last Refreshed: 2026-11-22*  
-*Active System Version: 1.5 (Pull B Ingested, Verified & Queue Hard-Locked to Day 6: Legs & Core Cycle 3)*  
+*Last Refreshed: 2026-11-28*  
+*Active System Version: 1.6 (Legs & Core Ingested, Verified & Queue Unlocked to Day 1: Push A Cycle 3)*  
 *Authoritative Record: Local Markdown, CSV databases, and Excel analytics dashboard*
 
 ---
@@ -25,7 +25,13 @@
 ---
 
 ## 3. TRAINING PERFORMANCE & OVERLOAD TRAJECTORY
-All 16 historical workouts (301 total sets) are now fully imported and verified:
+All 17 historical workouts (319 total sets) are now fully imported and verified:
+- **Legs & Core Double-Progression PR (Nov 27 - W-20261127-01)**: 18 resistance sets + 4 stretch holds in 54m 11s! Volume: **2,422 kg**!
+  - **Leg Extension Machine**: **12.0 kg × 12 reps [PR], 10 reps, 7 reps (29 total reps @ 12.0 kg)** — massive leap from Oct 21's 12.0 kg × 5, 7.5 kg × 11, 9!
+  - **Leg Press (Narrow / Mid-Low Stance)**: **54.0 kg × 12, 12, 12 reps** (Matched Oct 21 PR across all 3 sets under post-cricket fatigue; 0% glute recruitment).
+  - **Lying Leg Curl Machine**: **5.0 kg × 10, 9, 7 reps** (All 3 sets held at 5.0 kg with dorsiflexed feet).
+  - **Bodyweight / Single-Leg Calf Raise (`BW_CALF_RAISE`)**: **0.0 kg × 20, 20, 14 reps** (54 total reps; gym confirmed to lack Standing Calf Raise Machine).
+  - **Anti-APT Core & Posture**: Floor Crunch **15, 12, 8** + Deadbug **8, 8, 12 [REP PR]** (28 reps) + Half-Kneeling Hip Flexor Stretch **4 holds (2/leg @ 31–40s)**.
 - **Pull B Double-Progression PR (Nov 21 - W-20261121-01)**: 26 sets in 68m 57s! Volume: **5,020 kg**!
   - **Seated Cable Row**: **65.0 kg × 12 reps [PR]**, **65.0 kg × 12 reps**, **65.0 kg × 10 reps**. **34 total reps @ 65.0 kg** (All-Time Volume Density PR! Previous best was 10–12 reps at 65kg).
   - **Close Grip Lat Pulldown**: **50.0 kg × 7 reps [ALL-TIME REP PR]**, followed by 45.0 kg × 7, 7 reps.
@@ -58,26 +64,22 @@ All 16 historical workouts (301 total sets) are now fully imported and verified:
 ---
 
 ## 4. IMMEDIATE NEXT SESSION
-- **Scheduled Session**: **DAY 6: LEGS & ANTI-APT CORE (CYCLE 3 - QUAD SWEEP, HAMSTRINGS & PELVIC RESTORATION)**
+- **Scheduled Session**: **DAY 1: PUSH A (CYCLE 3 — UPPER CHEST, HEAVY LATERAL DELTS & HORSESHOE TRICEPS)**
 - **Target Date**: Immediate / Next Gym Day
-- **Autoregulation Rationale**: Pulling musculature (lats, upper back, rear delts, biceps) is heavily fatigued (Freshness 3/10) following the 5,020 kg volume breakthrough. Quads, hamstrings, and calves are **100% Fresh & Primed (Freshness 10/10; last trained Oct 21)**.
-- **Rule 9 Hard-Lock**: 3 consecutive upper-body workouts have elapsed (Pull A Nov 7, Push B Nov 14, Pull B Nov 21). Under Rule 9, the split is **HARD-LOCKED to Legs & Core**. Zero pressing or pulling is permitted.
-- **Biomechanical Guardrail**: 0% glute recruitment (narrow/mid-low platform stance on Leg Press; zero squats/deadlifts/hip thrusts/lunges). 2-second dead stop at bottom stretch on calf raises. Lower back 100% glued flat to floor on core.
+- **Autoregulation Rationale**: Rule 9 hard-lock satisfied via Nov 27 Legs & Core (`W-20261127-01`). Lower body enters 48–72h recovery (Freshness 3/10). Chest, anterior delts, and triceps have rested 14 days since Nov 14 and are **100% Fresh & Primed (10/10)**.
 - **Focus Movements & Explicit Targets**:
-  1. **Leg Press (Narrow / Mid-Low Stance)**: 3 sets × 10–12 reps @ **50.0 kg – 55.0 kg** (Target: Match or exceed 54.0 kg × 12, 12, 12).
-  2. **Leg Extension Machine**: 3 sets × 12–15 reps @ **10.0 kg – 12.0 kg pin** (1s peak contraction flex, 3s negative).
-  3. **Lying or Seated Leg Curl**: 4 sets × 10–12 reps @ **5.0 kg – 7.5 kg pin** (Dorsiflex feet to shut off calves and force pure hamstring recruitment).
-  4. **Standing Calf Raise**: 4 sets × 12–15 reps @ **80.0 kg – 85.0 kg pin** (2-second dead stop in deep stretch).
-  5. **Anti-APT Core Finisher**: Floor Crunch & Deadbugs Superset 3 sets × 12–15 crunches + 6–8 deadbugs per side.
-  6. **Posture Reset**: Half-Kneeling Hip Flexor Stretch (2 sets × 45s/side).
+  1. **Incline Dumbbell Bench Press (30°)**: 3 sets × 6–10 / 8–12 reps @ **22.5 kg top-set / 20.0 kg back-off (per hand)** (Warm-up: 12.5 kg × 10, 17.5 kg × 4 feeler set).
+  2. **Smith Machine Bench Press**: 3 sets × 6–8 reps @ **42.5 kg – 47.5 kg total**.
+  3. **Dumbbell Lateral Raise**: 4 sets × 12–15 reps @ **5.0 kg per hand** (+ Set 4 drop set to **2.5 kg**; NO 6.0 kg DB in gym).
+  4. **Pec Deck Machine Fly**: 2 sets × 10–12 reps @ **35.0 kg pin** (Fallback: 30.0 kg).
+  5. **Cable Triceps Pushdown (Straight Bar)**: 3 sets × 12–15 reps @ **20.0 kg pin** (Master 12–15 across all 3 sets before +5 kg jump to 25.0 kg).
 - **Blueprint Location**: [CURRENT_NEXT_WORKOUT.md](file:///d:/Workspace/fitness_coach/CURRENT_NEXT_WORKOUT.md) & [next_workout.html](file:///d:/Workspace/fitness_coach/OUTPUTS/mobile/next_workout.html)
 
 ---
 
 ## 5. RESOLVED VS REMAINING BOTTLENECKS
-- **Resolved**: Nov 21 Pull B ingested, verified, and analyzed.
-- **Resolved**: Seated Cable Row all-time volume density PR (65.0 kg × 12, 12, 10 = 34 reps) confirmed.
-- **Resolved**: Close Grip Lat Pulldown top-set PR (50.0 kg × 7 reps) secured.
-- **Resolved**: Side delt burn on rows biomechanically diagnosed and explained to trainee (elbow flare/abduction vs hip-pocket drive).
-- **Rule 9 Enforcement**: Hard-lock on Day 6: Legs & Core activated.
-- **Critical Action Required**: Elevate daily protein floor from 108g average to 145g minimum.
+- **Resolved**: Nov 27 Legs & Core ingested, verified, and Rule 9 hard-lock cleared.
+- **Resolved**: Leg Extension 12.0 kg volume PR (12, 10, 7 = 29 reps) & Deadbug 28-rep PR recorded.
+- **Resolved**: Equipment catalog updated (`BW_CALF_RAISE` added; Standing Calf Raise Machine removed from active prescriptions).
+- **Resolved**: Mobile app exporter & JS patched so stretch/hold targets and per-exercise Mind-Muscle Connection cues update accurately.
+- **Critical Action Required**: Elevate daily protein floor from 108g average to 145g minimum and maintain 2–3x/week session cadence.

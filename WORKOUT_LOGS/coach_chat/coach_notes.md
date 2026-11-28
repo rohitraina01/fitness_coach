@@ -434,3 +434,31 @@
 • **System Record**: Ingested, audited, verified, and pushed to mobile app.
 
 ---
+
+### [2026-11-27 21:32:33] Trainee Check-In
+**Query**: missed lot of days office work then procastination then played cricket match yesterday.. aah dont wana do legs now can i do push today ?
+
+**Coach Response**:
+- **Verdict**: **NO.** Push is denied. Split remains **HARD-LOCKED to Day 6: Legs & Anti-APT Core**.
+- **Accountability Audit**: Last workout was Nov 21 (6 days ago). Last Legs & Core workout was Oct 21 (**37 days ago**). 3 consecutive upper-body workouts have already elapsed (`Pull A` Nov 7, `Push B` Nov 14, `Pull B` Nov 21).
+- **Directive**: Execute **Day 6: Legs & Core** today using **Floor Targets** (50 kg Leg Press, 10 kg Leg Ext, 5 kg dorsiflexed Leg Curl, 80 kg or reduced-volume Calf Raise if calves are sore from cricket, plus Floor Crunch + Deadbug + Hip Flexor Stretch). Once logged, Push A unlocks immediately.
+
+---
+
+### [2026-11-27 21:33:41] Trainee Follow-Up
+**Query**: legs are hurting and tired due to runing and all from cricket then ill do tomorow ?
+
+**Coach Response**:
+- **Verdict**: Rest tonight and execute **Day 6: Legs & Anti-APT Core tomorrow (Nov 28)** — **APPROVED**. Doing Push tonight instead and pushing Legs to tomorrow — **DENIED**.
+- **Protocol**: Hydrate, hit 145–150 g protein tonight, perform 5-min Hip Flexor Stretch / light anti-APT mobility at home, sleep well, and execute Legs & Core tomorrow before any Push session is unlocked.
+
+---
+
+### [2026-11-27 21:35:01] Trainee Pushback on Scheduling Push Tonight
+**Query**: do leg tomorow then push then pull then monday week start maybe procastination and all why not use today for psh ? as i have missed but i have recovered push right
+
+**Coach Response**:
+- **Verdict**: System contract (**Rule 9**) stays **HARD-LOCKED to Day 6: Legs & Core** (already at 3 consecutive upper sessions across 37 days without legs; recent cadence is ~1 session/week on Saturdays).
+- **Constructive Option Tonight**: If trainee insists on training tonight (21:35) while legs are cricket-sore, execute a **30-min Anti-APT Core + light blood-flow Lower Isolation** session (`Leg Extension`, `Leg Curl` with dorsiflexed feet, `Floor Crunch`, `Deadbugs`, `Hip Flexor Stretch`) to legitimately clear the leg/posture lock and unlock **Push A** for tomorrow. Coach does not co-sign a 4th consecutive upper-body session.
+
+---
