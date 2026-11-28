@@ -13,14 +13,11 @@
   - Fixed `scripts/export_mobile.py` so mobility/stretch prescriptions (`Execution` / `Hold Duration` / `per leg`) no longer fall back to `3 sets x 8–12 reps`.
   - Fixed `scripts/export_mobile.py` and `docs/app.js` / `bridge/web/app.js` to render markdown bold formatting in `cue` and `mmc` fields, generalize the Masterclass header, and automatically reset stale set checkboxes when switching to a new workout.
   - Enriched every exercise in `CURRENT_NEXT_WORKOUT.md` with explicit `Order Rationale`, `Working Sets`, `Target Weight`, `Gym Floor Swap Option`, `Form Cue`, and `Mind-Muscle Cue`.
-- **Full 5-Day Program Audit & Automated Fact-Checker (`scripts/audit_program.py`)**:
-  - Audited all 5 training days in `CURRENT_PROGRAM.md` against `DATA/workout_sets.csv` and exercise science principles:
-    - Fixed uncalibrated `17.5–20.0 kg` One-Arm DB Row target in Pull B → `12.5–15.0 kg` (matching Nov 21 `12.5 kg` PR).
-    - Replaced uncalibrated `40–45 kg` Chest-Supported Row in Pull A with Pull-Ups + Seated Cable Row (`60–65 kg`).
-    - Interleaved all sessions under **Rule 10** (no back-to-back same-primary-muscle stacking: Rear Delts before heavy rows on Pull A/B, Leg Curl between Leg Press & Leg Extension on Legs, dual-profile Cable + DB Lateral Raises interleaving Chest on Push A/B, Pushdowns added to Push B).
-  - Created `scripts/audit_program.py` and `tests/test_program_audit.py` to enforce sequencing, CSV-grounded load ceilings, equipment constraints, and complete mobile MMC/stretch formatting automatically.
-- **System Queue Advancement & Push A Interleaved Upgrade**:
-  - Rule 9 hard-lock cleared! Unlocked and prescribed **Day 1: Push A (Cycle 3)** upgraded to interleaved sequencing (`Incline DB → Cable Lateral Raise → Smith Bench → DB Lateral Raise → Pec Deck → Triceps Pushdown`) so chest presses never stack back-to-back and lateral delts receive dual-profile stimulation (6 sets + drop set).
+- **Dynamic Real-Time Coaching Architecture (`CURRENT_PROGRAM.md` v4.0 & `scripts/coach_brief_context.py`)**:
+  - Eliminated static 5-day hardcoded workout tables in `CURRENT_PROGRAM.md`, replacing them with a dynamic real-time synthesis engine, Rule 10 interleaving requirements, and an equipment-verified exercise pool.
+  - Created `scripts/coach_brief_context.py` so every session is planned from live telemetry (`DATA/workouts.csv`, `DATA/workout_sets.csv`, days since each muscle/lift was trained, 14-day muscle volume, and >14d layoff feeler flags).
+  - Dynamically re-engineered the immediate next Push session (`CURRENT_NEXT_WORKOUT.md`): `Incline DB → Cable Lateral Raise → Smith Bench (with 40d layoff feeler) → Overhead Cable Triceps Extension (stretch-mediated long-head priority) → DB Lateral Raise (+ drop) → Pec Deck Fly`.
+  - Updated `scripts/audit_program.py` and `tests/test_program_audit.py` to enforce Rule 10 interleaving, CSV-grounded load ceilings, equipment constraints, and complete mobile MMC/stretch formatting on every dynamically generated workout.
 
 ---
 

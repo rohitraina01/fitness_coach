@@ -20,10 +20,11 @@ Triggered when the trainee runs `/log` or says "process my incoming log", or sub
 4. **Execute Ingestion**:
    - Run `python scripts/ingest_workout.py --from-buffer` (or pass `--notes`).
    - Ensure buffer is reset to `(No pending unprocessed logs)`.
-5. **Update State Files**:
+5. **Update State Files & Dynamically Plan Next Session**:
+   - Run `python scripts/coach_brief_context.py` to inspect live recovery gaps, 14-day muscle volume, and per-exercise CSV baselines/PRs.
    - Update `COACH_MEMORY.md` (recovery map, volume, progressive overload notes).
-   - Update `CURRENT_STATUS.md` with latest metrics and current active day.
-   - Advance and prescribe the next workout in `CURRENT_NEXT_WORKOUT.md` following the program rotation and recovery rules.
+   - Update `CURRENT_STATUS.md` with latest metrics and active readiness state.
+   - **Dynamically engineer** `CURRENT_NEXT_WORKOUT.md` from scratch using live telemetry, exercise science (Rule 10 interleaving), and Tier-1 priorities (never copy static day templates).
    - Record entry in `CHANGELOG.md`.
 6. **Rebuild, Export & Fact-Check**:
    - Rebuild Excel dashboard: `python scripts/build_dashboard.py`.

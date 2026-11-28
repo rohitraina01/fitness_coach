@@ -1,7 +1,8 @@
 """
 audit_program.py - Automated Science, Sequencing, Equipment & History Fact-Checker
-Validates CURRENT_PROGRAM.md, CURRENT_NEXT_WORKOUT.md, and docs/next_workout.json
-against DATA/workout_sets.csv and COACHING_RULES.md (Rules 9 & 10).
+Validates CURRENT_PROGRAM.md (dynamic framework & equipment pool),
+CURRENT_NEXT_WORKOUT.md, and docs/next_workout.json against DATA/workout_sets.csv
+and COACHING_RULES.md (Rules 9 & 10).
 """
 
 import os
@@ -13,7 +14,6 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "DATA")
 PROGRAM_MD = os.path.join(BASE_DIR, "CURRENT_PROGRAM.md")
-NEXT_MD = os.path.join(BASE_DIR, "CURRENT_NEXT_WORKOUT.md")
 NEXT_JSON = os.path.join(BASE_DIR, "docs", "next_workout.json")
 
 
@@ -50,8 +50,6 @@ def classify_exercise(name):
         return "DB_SINGLE_ARM_ROW", "LATS_BACK"
     if "seated cable row" in n or "cable row" in n:
         return "SEATED_CABLE_ROW", "LATS_BACK"
-    if "chest-supported row" in n:
-        return "CHEST_SUPPORTED_ROW", "LATS_BACK"
     if "rear delt" in n or "reverse pec deck" in n:
         return "REAR_DELT_FLY", "REAR_DELT"
     if "ez-bar" in n or "ez bar" in n:
@@ -98,7 +96,6 @@ def check_load_realism(eid, text, hist, context_label, errors):
     max_hist = hist[eid]["max_load"]
     if max_hist <= 0:
         return
-    # Extract kg numbers from target load text (ignoring drop set or pin-jump warnings in parentheses where possible)
     primary_part = re.split(r"\(|fallback|swap|no\s+\d", text, flags=re.IGNORECASE)[0]
     nums = [float(x) for x in re.findall(r"(\d+(?:\.\d+)?)\s*kg", primary_part, flags=re.IGNORECASE)]
     allowed_ceiling = max(max_hist * 1.20, max_hist + 5.0)
@@ -124,72 +121,34 @@ def audit_program():
     errors = []
     hist = load_csv_history()
 
-    # 1. Audit CURRENT_PROGRAM.md
+    # 1. Verify CURRENT_PROGRAM.md exists & respects dynamic framework + equipment guardrails
     if not os.path.exists(PROGRAM_MD):
         errors.append("CURRENT_PROGRAM.md missing.")
     else:
         with open(PROGRAM_MD, "r", encoding="utf-8") as f:
-            prog_lines = f.read().splitlines()
+            prog_text = f.read()
+        check_forbidden_equipment(prog_text, "CURRENT_PROGRAM.md", errors)
 
-        current_day = None
-        day_exercises = {}
-        for line in prog_lines:
-            s = line.strip()
-            if s.startswith("### DAY "):
-                current_day = s.replace("### ", "")
-                day_exercises[current_day] = []
-            elif current_day and s.startswith("|") and not s.startswith("| Order") and not s.startswith("| :---:"):
-                cols = [c.strip() for c in s.split("|")[1:-1]]
-                if len(cols) >= 7 and cols[0].isdigit():
-                    ex_name = cols[1].replace("**", "")
-                    notes = cols[6]
-                    eid, grp = classify_exercise(ex_name)
-                    day_exercises[current_day].append((ex_name, eid, grp, notes))
-                    check_forbidden_equipment(f"{ex_name} {notes}", f"CURRENT_PROGRAM [{current_day}]", errors)
-                    check_load_realism(eid, notes, hist, f"CURRENT_PROGRAM [{current_day} -> {ex_name}]", errors)
-
-        for day, items in day_exercises.items():
-            # Rule 10: No back-to-back same primary muscle
-            for i in range(1, len(items)):
-                prev_name, _, prev_grp, _ = items[i - 1]
-                cur_name, _, cur_grp, _ = items[i]
-                if cur_grp == prev_grp and cur_grp not in ("OTHER", "CORE", "MOBILITY"):
-                    errors.append(
-                        f"CURRENT_PROGRAM [{day}]: Back-to-back {cur_grp} exercises ('{prev_name}' -> '{cur_name}'). "
-                        "Interleave a non-competing muscle."
-                    )
-            # Push days must have dual-profile lateral delts (Cable + DB)
-            if "PUSH" in day.upper():
-                eids = {it[1] for it in items}
-                if "CABLE_LATERAL_RAISE" not in eids or "DB_LATERAL_RAISE" not in eids:
-                    errors.append(f"CURRENT_PROGRAM [{day}]: Push session missing dual-profile Lateral Raises (Cable + DB).")
-            # Pull days must hit Rear Delts before Seated/DB rows
-            if "PULL" in day.upper():
-                names_eids = [it[1] for it in items]
-                if "REAR_DELT_FLY" in names_eids:
-                    rd_idx = names_eids.index("REAR_DELT_FLY")
-                    for row_eid in ("SEATED_CABLE_ROW", "DB_SINGLE_ARM_ROW"):
-                        if row_eid in names_eids and rd_idx > names_eids.index(row_eid):
-                            errors.append(
-                                f"CURRENT_PROGRAM [{day}]: REAR_DELT_FLY should precede {row_eid} to avoid post-row delt fatigue."
-                            )
-
-    # 2. Audit docs/next_workout.json
+    # 2. Audit docs/next_workout.json (the dynamically synthesized session)
     if not os.path.exists(NEXT_JSON):
         errors.append("docs/next_workout.json missing.")
     else:
         with open(NEXT_JSON, "r", encoding="utf-8") as f:
             nw = json.load(f)
 
+        title = nw.get("title", "").upper()
         exercises = nw.get("exercises", [])
         if not exercises:
             errors.append("docs/next_workout.json has 0 exercises.")
 
         prev_grp = None
         prev_name = None
+        eids_seen = []
         for idx, ex in enumerate(exercises, 1):
             name = ex.get("name", f"Exercise {idx}")
             eid, grp = classify_exercise(name)
+            if eid:
+                eids_seen.append(eid)
             target = ex.get("target", "")
             weight = ex.get("target_weight", "")
             cue = ex.get("cue", "").strip()
@@ -219,11 +178,20 @@ def audit_program():
                 check_forbidden_equipment(f"{name} {weight} {cue}", f"CURRENT_NEXT_WORKOUT [{name}]", errors)
                 check_load_realism(eid, weight, hist, f"CURRENT_NEXT_WORKOUT [{name}]", errors)
 
+        if "PUSH" in title:
+            if "CABLE_LATERAL_RAISE" not in eids_seen or "DB_LATERAL_RAISE" not in eids_seen:
+                errors.append("CURRENT_NEXT_WORKOUT [PUSH]: Missing dual-profile Lateral Raises (Cable + DB).")
+        if "PULL" in title and "REAR_DELT_FLY" in eids_seen:
+            rd_idx = eids_seen.index("REAR_DELT_FLY")
+            for row_eid in ("SEATED_CABLE_ROW", "DB_SINGLE_ARM_ROW"):
+                if row_eid in eids_seen and rd_idx > eids_seen.index(row_eid):
+                    errors.append(f"CURRENT_NEXT_WORKOUT [PULL]: REAR_DELT_FLY should precede {row_eid}.")
+
     print("==================================================")
     print("    COACHING SCIENCE, HISTORY & PROGRAM AUDIT     ")
     print("==================================================")
     if not errors:
-        print("STATUS: PASSED (Sequencing, CSV Loads, Equipment & MMC Verified)")
+        print("STATUS: PASSED (Dynamic Sequencing, CSV Loads, Equipment & MMC Verified)")
         return 0
     print(f"ERRORS DETECTED ({len(errors)}):")
     for e in errors:

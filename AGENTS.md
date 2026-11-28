@@ -59,9 +59,9 @@ Whenever the trainee submits a workout report (or raw gym log), execute the **7-
    - Detect ambiguities (e.g. dumbbell load per hand vs combined; machine weight differences).
    - Prompt for clarification only when decision-critical; otherwise document assumptions explicitly.
 2. **STAGE 2: RETRIEVE**
+   - Run `python scripts/coach_brief_context.py` to pull live days-elapsed, 14-day volume, Rule 9 lock status, and per-exercise CSV baselines/PRs.
    - Read `COACH_MEMORY.md`, `CURRENT_STATUS.md`, `CURRENT_PROGRAM.md`, and historical sets from `DATA/workout_sets.csv`.
-   - Retrieve the most recent session for each exercise to establish exact performance baselines.
-   - Consult the active autoregulation queue and current muscle recovery status before prescribing any subsequent workout.
+   - Consult the active autoregulation state and current muscle recovery map before dynamically synthesizing any subsequent workout (never copy static day templates).
 3. **STAGE 3: ANALYZE**
    - Compare performance under strict double-progression rules.
    - Categorize each exercise as Progression, Maintenance, Regression, or Deload/Testing.

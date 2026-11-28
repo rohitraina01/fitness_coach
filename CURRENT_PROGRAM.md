@@ -1,117 +1,65 @@
-# CURRENT TRAINING PROGRAM: AESTHETIC V-TAPER, CAPPED DELTS & ANTI-APT ARCHITECTURE
+# DYNAMIC TRAINING ARCHITECTURE: REAL-TIME HYPERTROPHY & ANTI-APT ENGINE
 
-*Version: 3.0 (Science-Verified Interleaved Sequencing & CSV-Calibrated Loads)*  
+*Version: 4.0 (Zero-Static-Template Dynamic Synthesis)*  
 *Active Since: 2026-11-28*  
-*Target Frequency: Flexible 4–5 Days/Week Rolling Split*  
-*Session Time Guardrail: 50–55 Minutes Max (Strict 14–17 Working Sets per Session)*  
-*Priority Muscles: Lateral Delts (12–16 sets/wk), Lats & V-Taper (12 sets/wk), Arms (12–14 sets/wk), Upper Chest (10–12 sets/wk), Anti-APT Core & Hamstrings (8–10 sets/wk)*
+*Core Philosophy: Workouts are NEVER copied from a static weekly template. Every next session (`CURRENT_NEXT_WORKOUT.md`) is synthesized fresh in real time from `DATA/workouts.csv`, `DATA/workout_sets.csv`, `COACH_MEMORY.md`, recovery days elapsed, and exercise science.*
 
 ---
 
-## 1. ROLLING SPLIT ARCHITECTURE (THE ANTI-LEG-SKIPPING STATE MACHINE)
+## 1. DYNAMIC DECISION ENGINE (HOW EVERY NEXT WORKOUT IS BUILT)
 
-To prevent upper-body overuse and guarantee posture restoration, the split follows an immutable rolling loop:
-
-```
-[Day 1: Push A] → [Day 2: Legs & Core] → [Day 3: Pull A] → [Day 4: Rest] →
-[Day 5: Push B] → [Day 6: Legs & Core] → [Day 7: Pull B] → [Day 8: Rest]
-```
-
-> **Strict System Rule (Rule 9)**: No more than 2 consecutive upper-body workouts may ever be scheduled without an intervening Legs & Core session.  
-> **Strict Sequencing Rule (Rule 10 — No Same-Muscle Stacking)**: Never place two exercises targeting the same primary muscle group back-to-back. Always interleave a non-competing muscle (e.g., Lateral Delts between Chest presses; Rear Delts/Biceps between Back pulls; Hamstrings between Quad movements) for local metabolic clearance.
-
----
-
-## 2. DETAILED SESSION BLUEPRINTS (INTERLEAVED • 50–55 MINS)
-
-### DAY 1: PUSH A (UPPER CHEST, DUAL LATERAL DELTS & HORSESHOE TRICEPS)
-*Focus: Clavicular Upper Chest, Dual-Profile Lateral Delt Width, Interleaved Chest Recovery, Lateral/Medial Triceps*
-
-| Order | Exercise | Sets | Rep Range | Rest (s) | Target RIR | Execution & Overload Protocol |
-| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
-| 1 | **Incline DB Bench Press** | 3 | 6–10 / 8–12 | 150 | 1–2 | **Top-Set + Back-Off**: Set 1 @ 22.5 kg (6–10 reps). Sets 2–3 @ 20.0 kg (8–12 reps). Bench at 30°. Mandatory 17.5 kg × 4 feeler set. |
-| 2 | **Cable Lateral Raise** | 3 | 12–15 | 60–90 | 0–1 | 2.5 kg pin (advance to 5.0 kg once 3×15 clean). Lengthened-range tension; gives chest/triceps active recovery. |
-| 3 | **Smith Machine Bench Press** | 3 | 6–8 | 150 | 1–2 | Sternal chest anchor (refreshed after cable laterals). 42.5–47.5 kg total. Controlled 2s descent. |
-| 4 | **DB Lateral Raise (Drop Set)** | 3 | 12–15 | 60–90 | 0–1 | 5.0 kg DBs + Set 3 drop set to 2.5 kg. Shortened-range peak + active chest breather before Pec Deck. (No 6kg DB in gym). |
-| 5 | **Pec Deck Machine Fly** | 2 | 10–12 | 90 | 0–1 | 35.0 kg pin (fallback 30.0 kg). Chest refreshed after DB laterals. 1s apex squeeze, 3s stretch. |
-| 6 | **Cable Triceps Pushdown** | 3 | 12–15 | 60–90 | 0–1 | Straight bar @ 20.0 kg pin (earn 3×12–15 before +5 kg jump to 25.0 kg). Elbows pinned to ribs. |
-
-*Total Volume: 17 working sets (8 chest, 6+1 lateral delt, 3 triceps) | Target Duration: 50–55 minutes*
+Before prescribing `CURRENT_NEXT_WORKOUT.md`, the coach executes `python scripts/coach_brief_context.py` and evaluates 4 live inputs:
+1. **Systemic & Muscular Freshness (`COACH_MEMORY.md` + Days Elapsed)**:
+   - Which muscle groups have rested $\ge$ 48–72 hours (or > 7–14 days)?
+   - Was there external lower-body or systemic stress (e.g., cricket, trekking, poor sleep, high work stress)?
+2. **Rule 9 Anti-Leg-Skipping Gate**:
+   - Maximum **2 consecutive upper-body sessions (Push or Pull)** before **Legs & Core** is mandatory.
+   - Outside that hard lock, session type (`Push`, `Pull`, `Legs & Core`) is autoregulated to target the freshest, highest-priority musculature.
+3. **Real-Time CSV Telemetry (`DATA/workout_sets.csv`)**:
+   - **Cleared Rep Ceiling**: Advance load by the smallest real gym increment (e.g., +2.5 kg DB, +5 kg cable stack) OR expand rep target.
+   - **Layoff > 14 Days**: Include a mandatory submaximal feeler set (e.g., 17.5 kg × 4 before 22.5 kg Incline DB) and cap RIR at 1–2 on compounds.
+   - **Fatigue / Rep Collapse**: Diagnose whether exercise ordering caused local metabolic fatigue (e.g., back-to-back pressing/rowing) and reorder or swap to a higher-stability angle.
+4. **Tier-1 Aesthetic Priority Allocation (`GOALS.md`)**:
+   - **Lateral Delts (Tier 1 — 12–16 sets/wk)**: Must be hit from **both** lengthened (Cable) and shortened (DB) profiles on Push days when training frequency is < 4–5x/week.
+   - **Lats & Upper Back (Tier 1 — 12–16 sets/wk)**: Vertical pull + horizontal row with wrist straps mandatory; Rear Delts placed *before* heavy rows to prevent post-row shoulder burn.
+   - **Arms — Biceps & Triceps (Tier 1 — 12–14 sets/wk)**: Prioritize stretch-mediated growth (**Overhead Cable Triceps Extension** for long head; **EZ-Bar + Hammer Curl** for peak/brachialis).
+   - **Upper Chest (Tier 1 — 10–12 sets/wk)**: 30° Incline DB Press anchor; avoid flat-press overlap unless sternal chest is lagging or rested > 14 days.
+   - **Anti-APT Core & Hamstrings (Tier 2 — 8–10 sets/wk)**: Dorsiflexed Leg Curls + Lumbar-Glued Floor Crunch & Deadbug + Hip Flexor Stretch. **0% glutes**.
 
 ---
 
-### DAY 2: LEGS & ANTI-APT CORE (QUAD SWEEP, HAMSTRINGS & PELVIC RESTORATION)
-*Focus: Antagonist-Interleaved Quads & Hamstrings, Diamond Calves, 9h Desk APT Reversal (0% Glute Work)*
+## 2. SCIENTIFIC SEQUENCING & SESSION GUARDRAILS (RULES 9 & 10)
 
-| Order | Exercise | Sets | Rep Range | Rest (s) | Target RIR | Execution & Anti-Glute Focus |
-| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
-| 1 | **Leg Press (Narrow / Mid-Low Stance)** | 3 | 10–12 | 150 | 1–2 | Feet low-to-mid platform, hip-width apart. 0% glute recruitment. 54.0–60.0 kg sled. |
-| 2 | **Lying or Seated Leg Curl** | 3–4 | 10–12 | 90 | 0–1 | **Antagonist Interleave**: Gives quads active recovery while pulling pelvis neutral. **Dorsiflex feet (toes to shins)**. 5.0–7.5 kg pin. |
-| 3 | **Leg Extension Machine** | 3 | 12–15 | 90 | 0–1 | Refreshed quad isolation after leg curls. 12.0 kg pin (1s peak lockout flex, 3s eccentric negative). |
-| 4 | **Bodyweight / Single-Leg Calf Raise** | 3–4 | 12–20 | 60 | 0 | **No standing calf raise machine in gym**. Elevated step (single-leg BW or 10–15 kg DB hold). **2s dead stop in deep stretch**. |
-| 5 | **Bodyweight Floor Crunch & Deadbugs Superset** | 3 | 12–15 / 8–12 | 60 | 0–1 | **Anti-APT Anchor**: Lower back 100% glued flat to floor. Curl ribcage to pelvis; exhale all air at peak. |
-
-*Post-Workout Reset*: Half-Kneeling Hip Flexor Stretch — 4 total holds (2 per leg × 30–45 sec hold).  
-*Total Volume: 15–17 working sets | Target Duration: 50–55 minutes*
+- **Rule 10 — Zero Back-to-Back Same-Muscle Stacking**:
+  - Never place two exercises targeting the same primary muscle group consecutively (`Chest → Chest`, `Back → Back`, `Quads → Quads`, `Biceps → Biceps`, `Triceps → Triceps`).
+  - Always interleave a non-competing muscle between them (e.g., `Incline DB → Cable Lateral → Smith Bench → Overhead Triceps → DB Lateral → Pec Deck`, or `Pulldown → Rear Delt Fly → Seated Row → EZ Curl → DB Row → Hammer Curl`, or `Leg Press → Leg Curl → Leg Extension`).
+- **Session Density Cap**: **14–17 working sets max**, completed in **50–55 minutes**.
+- **RIR Standards**: **1–2 RIR** on multi-joint compounds; **0–1 RIR** on stable machines and isolations.
 
 ---
 
-### DAY 3: PULL A (LAT WIDTH, UPPER BACK DENSITY & BICEPS)
-*Focus: Interleaved Vertical/Horizontal Pulling, Rear Delts Fresh Before Rows, Bicep Peak & Brachialis*
+## 3. APPROVED EQUIPMENT-VERIFIED EXERCISE POOL
 
-| Order | Exercise | Sets | Rep Range | Rest (s) | Target RIR | Execution & Stability Protocol |
-| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
-| 1 | **Pull-Up / Lat Pulldown (Neutral)** | 3 | 5–10 | 150 | 1–2 | **Lifting Wrist Straps Mandatory**. Set 1 BW Pull-Ups (target 5–6+ reps) or Lat Pulldown 50.0 kg top / 45.0 kg back-off. |
-| 2 | **Reverse Pec Deck (Rear Delt Fly)** | 3 | 12–15 | 90 | 0–1 | **Interleaved**: Hits rear delts fresh (17.5 kg pin) before heavy rows fatigue the shoulder girdle, while giving lats active recovery. |
-| 3 | **Seated Cable Row (V-Bar)** | 3 | 8–12 | 120 | 1–2 | 60.0–65.0 kg pin (refreshed!). **Elbows tucked 30°–45°**; pull into waistband/hip pocket (zero trap shrugging or side-delt flare). |
-| 4 | **EZ-Bar Bicep Curl** | 3 | 8–12 | 90 | 0–1 | 20.0 kg bar. Elbows pinned to ribs, 3s negative. Refreshes lats before straight-arm finisher. |
-| 5 | **Straight-Arm Cable Pulldown** | 2–3 | 12–15 | 90 | 0–1 | 15.0 kg pin. Pure lat isolation with zero bicep assist; sweep bar/rope to upper thighs. |
-| 6 | **Dumbbell Hammer Curl** | 2–3 | 8–12 | 60–90 | 0 | **5.0–7.5 kg DBs per hand** (refreshed after straight-arm pulldowns). Neutral grip builds brachialis & forearm thickness. |
+The coach dynamically selects and orders 5–6 movements per session from this verified catalog (never prescribing banned movements or missing equipment):
 
-*Total Volume: 16–18 working sets | Target Duration: 50–55 minutes*
-
----
-
-### DAY 4: REST & ACTIVE RECOVERY
-- 8,000–10,000 steps.
-- 6-Minute Desk Worker Posture Reset (Thoracic extension over chair, wall slides, double chin tucks).
-- 100% macro adherence: 1,850 kcal, 145–150g protein floor.
+| Movement Slot | Approved Exercises | Verified Gym Equipment Constraints |
+| :--- | :--- | :--- |
+| **Upper Chest** | `INCLINE_DB_PRESS` (30°), `INCLINE_MACHINE_PRESS` | DBs: 1,2,3,4,5,7,8, 10, 12.5, 15, 17.5, 20, 22.5 kg |
+| **Sternal / Mid Chest** | `SMITH_BENCH`, `FLAT_BB_BENCH`, `PEC_DECK_FLY` | Pec Deck +5 kg increments above 10 kg |
+| **Lateral Delts** | `CABLE_LATERAL_RAISE` (lengthened), `DB_LATERAL_RAISE` (shortened) | **NO 6.0 kg DB** (5 → 7 kg is +40%; build reps to 15–20 @ 5 kg or use 2.5 kg cables) |
+| **Triceps** | `OVERHEAD_TRICEPS_EXT` (long-head stretch priority), `TRICEPS_PUSHDOWN`, `ROPE_PUSHDOWN` | +5 kg jumps on stacks (master 12–15 reps before jumping pin) |
+| **Vertical Pull (Lats)** | `PULL_UP`, `LAT_PULLDOWN` (Neutral/Close), `SINGLE_ARM_LAT_PULLDOWN`, `STRAIGHT_ARM_PULLDOWN` | Lifting wrist straps mandatory |
+| **Horizontal Pull (Back)** | `SEATED_CABLE_ROW` (V-Bar, elbows 30–45°), `DB_SINGLE_ARM_ROW` (bench-braced) | **NO unstable standing/unsupported cable rows** |
+| **Rear Delts** | `REAR_DELT_FLY` (Reverse Pec Deck), `FACE_PULL` | Train *before* heavy rows to avoid rear/side delt burn |
+| **Biceps / Brachialis** | `EZ_BAR_CURL`, `HAMMER_CURL`, `CABLE_CURL`, `INCLINE_DB_CURL` | 5.0 / 7.5 kg DBs for Hammer Curls |
+| **Quads (0% Glute)** | `LEG_PRESS` (narrow/mid-low stance), `LEG_EXTENSION` | **ZERO Squats, Deadlifts, Hip Thrusts, Lunges** |
+| **Hamstrings** | `LEG_CURL` (Lying/Seated, toes strictly dorsiflexed) | Shuts off calves to isolate hamstrings |
+| **Calves** | `BW_CALF_RAISE` (elevated step / single-leg / DB-loaded) | **NO Standing Calf Raise Machine in gym** |
+| **Anti-APT Core & Posture** | `FLOOR_CRUNCH`, `DEADBUG`, `LYING_LEG_RAISE`, `Half-Kneeling Hip Flexor Stretch` | Stretches prescribed in **hold seconds** (`4 total holds: 2/leg × 30–45s`), never reps |
 
 ---
 
-### DAY 5: PUSH B (LATERAL DELT SPECIALIZATION & LONG-HEAD TRICEPS)
-*Focus: Interleaved High-Volume Lateral Delts, Sternal/Upper Chest, Dual-Head Triceps (Overhead + Pushdown)*
-
-| Order | Exercise | Sets | Rep Range | Rest (s) | Target RIR | Execution & Overload Protocol |
-| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
-| 1 | **Incline DB Bench Press (30°)** | 3 | 6–10 / 8–12 | 150 | 1–2 | 22.5 kg top-set / 20.0 kg back-off (with 17.5 kg × 4 feeler). Controlled 2s descent. |
-| 2 | **Overhead Cable Triceps Ext** | 3 | 8–12 | 90 | 0–1 | 20.0 kg pin (matched Nov 14 PR across 3 sets). Long-head triceps stretch behind head; gives chest active recovery. |
-| 3 | **Cable Lateral Raise** | 3 | 12–15 | 60–90 | 0–1 | 2.5–5.0 kg pin. Constant cable tension in lengthened bottom range. |
-| 4 | **Pec Deck Machine Fly** | 3 | 10–12 | 90 | 0–1 | 35.0 kg pin (chest completely refreshed after triceps + cable laterals). 1s apex squeeze. |
-| 5 | **DB Lateral Raise (Burnout Drop Set)** | 3 | 12–15 | 60–90 | 0 | 5.0 kg DBs → immediate drop to 2.5 kg on final set. |
-| 6 | **Cable Triceps Pushdown** | 2–3 | 12–15 | 60–90 | 0–1 | 20.0 kg pin (refreshed after Pec Deck + DB laterals). Finishes lateral/medial triceps heads. |
-
-*Total Volume: 17–18 working sets | Target Duration: 50–55 minutes*
-
----
-
-### DAY 6: PULL B (HIGH-STABILITY BACK THICKNESS & ARM SPECIALIZATION)
-*Focus: Interleaved Sagittal Lats, Mid-Back Density, Bench-Braced DB Rows (Calibrated 12.5–15 kg), Biceps*
-
-| Order | Exercise | Sets | Rep Range | Rest (s) | Target RIR | Execution & Stability Protocol |
-| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
-| 1 | **Close-Grip / V-Bar Lat Pulldown** | 3 | 7–10 | 120 | 1–2 | Straps locked. Drive elbows down in sagittal plane. 50.0 kg top-set / 45.0 kg back-off. |
-| 2 | **Reverse Pec Deck (Rear Delt Fly)** | 3 | 12–15 | 90 | 0–1 | **Interleaved**: 17.5 kg pin while rear delts are fresh (prevents post-row shoulder burn) and gives lats recovery. |
-| 3 | **Seated Cable Row (V-Bar or Neutral)** | 3 | 10–12 | 120 | 1–2 | 65.0 kg pin (match/exceed Nov 21 12, 12, 10 PR). **Elbows 30°–45° to waistband**; zero trap shrug. |
-| 4 | **EZ-Bar Bicep Curl** | 3 | 8–12 | 90 | 0–1 | 20.0 kg bar (refreshed arms; gives back 6–7 min recovery before DB rows). |
-| 5 | **Bench-Braced One-Arm DB Row** | 3 | 10–12 | 90 | 1–2 | **12.5–15.0 kg DB** (CSV-calibrated to Nov 21 12.5 kg PR). Knee & hand on flat bench; pull smoothly into hip pocket. |
-| 6 | **Dumbbell Hammer Curl** | 2–3 | 8–12 | 60–90 | 0 | **5.0–7.5 kg DBs per hand** (refreshed after DB rows). Neutral grip brachialis finisher. |
-
-*Optional Anti-APT Core Finisher (if energy/time < 50m)*: Floor Crunch + Deadbugs (2–3 supersets).  
-*Total Volume: 17–18 working sets | Target Duration: 50–55 minutes*
-
----
-
-### DAY 7: REST & SYSTEMIC RECHARGE
-- Complete physical recovery. Hydration: 3.5 liters.
-- Meal prep for upcoming week: Chicken breast, eggs, low-fat paneer, whey.
+## 4. DAILY 5-MINUTE DESK WORKER POSTURE RESET (FOR 9-HR SITTING)
+- **Half-Kneeling Hip Flexor Stretch**: 2 sets × 45s per side (squeeze rear glute, posterior pelvic tilt).
+- **Scapular Wall Slides**: 15 slow reps against wall (wrists & elbows flat).
+- **Suboccipital Release & Wall Chin Tucks**: 60s skull-base release + 15 × 3s chin retractions.
